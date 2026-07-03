@@ -1,0 +1,17 @@
+{
+  "name": "promatic-starter",
+  "owner": {
+    "name": "OrcaCl"
+  },
+  "plugins": [
+    {
+      "name": "promatic-core",
+      "source": "./plugins/promatic-core",
+      "description": "Metodología, convenciones y personalidad de agente de PROMATIC — spec-driven development, sistema brain/ ADR, TDD por niveles, convenciones de frontend, y disciplina de simplicidad de código.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Orlando (OrcaCl)"
+      }
+    }
+  ]
+}
