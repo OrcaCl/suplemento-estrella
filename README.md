@@ -1,76 +1,213 @@
-# promatic-starter
+# ⭐ Star Supplement
 
-Marketplace de Claude Code con la metodología, convenciones y personalidad de agente de PROMATIC — punto de partida para proyectos nuevos, en vez de reconstruir desde cero cada vez.
+> **Una metodología, base de conocimiento y punto de partida para desarrolladores y agentes de código.**
 
-No es una plantilla de código (no trae modelos, endpoints, ni lógica de negocio de ningún proyecto específico). Es metodología: cómo se documenta, cómo se decide, cómo se prueba, y qué convenciones de código se siguen — extraído y generalizado a partir de proyectos reales de PROMATIC (`--redacted--`, `--redacted--`).
+Star Supplement es una metodología para desarrollar software junto a agentes de código.
 
-## Instalación
+No es un framework. No es un boilerplate. No es una plantilla de proyecto.
 
-Dentro de una sesión de Claude Code, en cualquier proyecto:
+Su objetivo es definir **cómo colaboran un desarrollador y un agente de código** durante todo el ciclo de vida de un proyecto: desde la planificación inicial hasta el cierre de cada sesión de trabajo.
 
-```
-/plugin marketplace add OrcaCl/promatic-starter
-/plugin install promatic-core@promatic-starter
-```
+La implementación de referencia está pensada para **Claude Code**, pero la metodología es independiente del modelo de IA y puede adaptarse a otros agentes mediante forks o implementaciones específicas.
 
-Esto instala las skills del plugin `promatic-core`, que se activan automáticamente según el contexto de la tarea — no hace falta invocarlas por nombre.
+---
 
-## Qué incluye — plugin `promatic-core`
+# ¿Qué problemas busca resolver?
 
-| Skill | Cuándo se activa |
-|---|---|
-| `project-init` | Al inicializar un proyecto nuevo — pregunta el tamaño esperado y crea la estructura de documentación correspondiente |
-| `spec-driven-development` | Trabajo diario con `SPEC.md` + `spec/` como fuente de verdad |
-| `brain-adr` | Decisiones de arquitectura, sistema de ADR, para proyectos con estructura completa |
-| `sequential-mode` | Modo de trabajo por defecto — secuencial, sin subagentes salvo independencia clara y beneficio evidente |
-| `documentation-convention` | Registro inmediato post-breakthrough, mantenimiento de `PLUGINS.md` |
-| `raw-data-audit-trail` | Auditoría de datos importados de fuentes externas — captura + exposición controlada |
-| `tdd-workflow` | TDD estricto (rojo antes que verde) + estrategia de testing por niveles |
-| `frontend-conventions` | CSS/JS atómico, BEM, y el puente `data-*` entre templates server-side y JavaScript |
-| `tooling-roles` | Mapeo de roles funcionales de herramientas (gestor de paquetes, ORM, testing, etc.) a stacks distintos de Python |
-| `code-simplicity` | KISS, DRY, y evitar sobreingeniería salvo que sea inevitable |
+Con el paso de las sesiones, gran parte del conocimiento de un proyecto deja de vivir en el código y pasa a vivir en la cabeza del desarrollador.
 
-## Filosofía
+¿Por qué tomamos esta decisión?
 
-Metodología, no contenido. Cada skill fue extraída deliberadamente separando:
-- **Lo que sí se lleva:** estructura de decisión, convenciones de nomenclatura, reglas de proceso, patrones de arquitectura genéricos
-- **Lo que NO se lleva:** nombres de tablas, tipos de incidencia, IPs, credenciales, cualquier detalle específico de un proyecto o cliente
+¿Qué probamos la semana pasada?
 
-Si en algún momento una skill de este starter menciona algo que suena a un proyecto específico, es un error — repórtalo para corregirlo.
+¿Qué quedó pendiente?
 
-## Estado
+¿Qué riesgos descubrimos?
 
-Versión `0.1.0` — primera iteración. Pendientes conocidos, ver `TOASK.md`:
-- Resolver el solapamiento entre Superpowers (`writing-plans`, `subagent-driven-development`) y otros plugins de flujo de trabajo que pudieran instalarse en paralelo — decisión diferida hasta tener más evidencia de uso real.
-- Evaluar si `code-simplicity` debería referenciar directamente YAGNI de Superpowers en vez de mantener redacción propia paralela, cuando ambos plugins están activos en el mismo proyecto.
+¿Qué ideas queremos implementar más adelante?
 
-## Estructura del repo
+Cuando el contexto se pierde, el agente también lo pierde.
 
-```
-promatic-starter/
-├── .claude-plugin/
-│   └── marketplace.json
-├── plugins/
-│   └── promatic-core/
-│       ├── .claude-plugin/
-│       │   └── plugin.json
-│       └── skills/
-│           ├── project-init/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           ├── spec-driven-development/
-│           ├── brain-adr/
-│           ├── sequential-mode/
-│           ├── documentation-convention/
-│           ├── raw-data-audit-trail/
-│           ├── tdd-workflow/
-│           ├── frontend-conventions/
-│           ├── tooling-roles/
-│           └── code-simplicity/
-├── TOASK.md
-└── README.md
-```
+Star Supplement busca que ese conocimiento permanezca disponible para ambos.
 
-## Origen
+---
 
-Metodología extraída y generalizada a partir del trabajo real en `--redacted--` y `--redacted--` — [OrcaCl](https://github.com/OrcaCl).
+# Filosofía
+
+Star Supplement reutiliza **metodología**, no proyectos.
+
+Se extraen y generalizan prácticas reales de desarrollo, separando cuidadosamente:
+
+✅ Lo que sí se reutiliza
+
+* Metodologías de trabajo.
+* Convenciones de documentación.
+* Organización del proyecto.
+* Patrones de arquitectura.
+* Estrategias de testing.
+* Buenas prácticas.
+* Herramientas recomendadas.
+
+❌ Lo que nunca se reutiliza
+
+* Código de negocio.
+* Información de clientes.
+* Credenciales.
+* Datos privados.
+* Infraestructura específica.
+* Configuraciones propietarias.
+
+Si alguna parte de Star Supplement hace referencia a un proyecto específico, es un error y debe corregirse.
+
+---
+
+# Principio de Integración
+
+Star Supplement propone herramientas, metodologías y convenciones, pero **siempre prioriza respetar los estándares, restricciones y decisiones del proyecto en el que se integra.**
+
+El agente debe adaptarse al proyecto.
+
+El proyecto no debe adaptarse al agente.
+
+Los cambios estructurales sólo deben proponerse cuando exista una necesidad real y el desarrollador decida implementarlos.
+
+---
+
+# Ecosistema actual
+
+Actualmente Star Supplement está diseñado para funcionar junto a Claude Code.
+
+Se complementa especialmente con los siguientes plugins:
+
+| Plugin              | Función                                                                                                               |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Superpowers**     | Planificación, estrategias de implementación, subagentes, trabajo paralelo, dry-run y apoyo al proceso de desarrollo. |
+| **Claude Mem**      | Memoria operativa del agente para conocimiento interno que no necesita formar parte de la documentación compartida.   |
+| **Star Supplement** | Metodología, documentación, estructura del proyecto y contexto compartido entre el desarrollador y el agente.         |
+
+Star Supplement evita duplicar funcionalidades que ya resuelven correctamente otros plugins.
+
+---
+
+# Flujo de trabajo
+
+## 1. Inicializar el proyecto
+
+Instalar el plugin y ejecutar la inicialización del proyecto.
+
+El agente irá guiando al desarrollador para completar la información inicial y generar la estructura documental correspondiente.
+
+Dependiendo del tamaño esperado del proyecto, podrá crear una estructura simple o una estructura completa.
+
+---
+
+## 2. Construir el contexto
+
+El contexto inicial del proyecto se registra principalmente en:
+
+* `SPEC.md`
+* `CLAUDE.md`
+* `PLUGINS.md`
+* `brain/` (cuando corresponda)
+
+El objetivo es que el agente comprenda el proyecto antes de comenzar a escribir código.
+
+---
+
+## 3. Desarrollar
+
+Antes de comenzar una sesión suele bastar con una instrucción como:
+
+> Lee el `SPEC.md` y el `brain/` para sincronizar el contexto del proyecto.
+
+A partir de ese momento el desarrollo continúa normalmente.
+
+---
+
+## 4. Cerrar la sesión
+
+Antes de finalizar se recomienda:
+
+* actualizar `SPEC.md`
+* registrar nuevos ADR, REF, NOC o DEP cuando corresponda
+* actualizar `sesiones.md`
+* limpiar `TOASK.md`
+* mover tareas resueltas a `spec/completado.md`
+* realizar `commit`
+* realizar `push`
+
+De esta forma cualquier sesión futura podrá continuar sin reconstruir el contexto desde cero.
+
+---
+
+# Brain
+
+Brain es el sistema de memoria persistente del proyecto.
+
+Su objetivo es conservar el conocimiento que normalmente sólo existe en la memoria del desarrollador.
+
+No pretende reemplazar a Claude Mem.
+
+Ambos cumplen funciones distintas.
+
+Mientras Claude Mem conserva conocimiento operativo del agente, Brain mantiene el contexto compartido del proyecto.
+
+Entre sus principales documentos se encuentran:
+
+| Documento       | Propósito                                                       |
+| --------------- | --------------------------------------------------------------- |
+| **ADR**         | Decisiones permanentes de arquitectura.                         |
+| **REF**         | Referencias técnicas vivas.                                     |
+| **NOC**         | Notas de cuidado, riesgos y observaciones.                      |
+| **DEP**         | Registro histórico de elementos retirados o reemplazados.       |
+| **sesiones.md** | Resumen de cada sesión de trabajo.                              |
+| **TOASK.md**    | Preguntas pendientes clasificadas según quién debe resolverlas. |
+
+---
+
+# SPEC
+
+`SPEC.md` es el panel de control del proyecto.
+
+Resume el estado actual, las prioridades, las reglas críticas, las decisiones permanentes y el estado general del desarrollo.
+
+Cuando el proyecto crece, la información se distribuye dentro de la carpeta `spec/`, manteniendo `SPEC.md` como índice principal.
+
+---
+
+# ¿Qué incluye?
+
+Actualmente Star Supplement incorpora skills para:
+
+* Inicialización de proyectos.
+* SPEC Driven Development.
+* Brain.
+* Documentación continua.
+* Testing (TDD).
+* Desarrollo secuencial.
+* Convenciones Frontend.
+* Simplicidad de código (KISS, DRY y YAGNI).
+* Organización del stack tecnológico.
+* Auditoría de datos.
+* Convenciones generales de desarrollo.
+
+La metodología continúa evolucionando a medida que se utiliza en proyectos reales.
+
+---
+
+# Estado del proyecto
+
+Star Supplement se encuentra en desarrollo activo.
+
+La implementación oficial está orientada a Claude Code, aunque la metodología fue diseñada para poder adaptarse a otros agentes de código en el futuro.
+
+Los forks y contribuciones son bienvenidos.
+
+---
+
+# Licencia
+
+MIT
+
+**Comparte metodología. No deuda técnica.**
+

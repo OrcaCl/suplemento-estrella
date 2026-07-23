@@ -1,6 +1,6 @@
 # Plantilla — SPEC.md
 
-Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de PROMATIC, independiente del dominio del proyecto.
+Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de Suplemento Estrella, independiente del dominio del proyecto.
 
 `SPEC.md` es el panel de control: corto, vivo, se actualiza cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
 

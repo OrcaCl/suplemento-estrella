@@ -5,7 +5,7 @@ description: Regla de modo de trabajo por defecto — ejecución secuencial, una
 
 # Sequential Mode
 
-Modo de trabajo por defecto en proyectos PROMATIC: una tarea a la vez, confirmación explícita entre pasos, sin paralelismo salvo justificación clara.
+Modo de trabajo por defecto en proyectos Suplemento Estrella: una tarea a la vez, confirmación explícita entre pasos, sin paralelismo salvo justificación clara.
 
 ## La regla
 
@@ -18,7 +18,7 @@ Si solo se cumple una condición, seguir en modo secuencial.
 
 ## Por qué — el razonamiento, no solo la regla
 
-El paralelismo multiplica el consumo de tokens por el número de agentes activos simultáneos. En la mayoría de los proyectos PROMATIC las tareas son mayoritariamente secuenciales y dependientes entre sí (un cambio de schema afecta al importador, que afecta al detector, que afecta a la vista) — el paralelo no solo no ahorra tiempo en ese caso, agrega el costo de tener que reconciliar resultados de agentes que trabajaron con contexto parcial entre sí.
+El paralelismo multiplica el consumo de tokens por el número de agentes activos simultáneos. En la mayoría de los proyectos Suplemento Estrella las tareas son mayoritariamente secuenciales y dependientes entre sí (un cambio de schema afecta al importador, que afecta al detector, que afecta a la vista) — el paralelo no solo no ahorra tiempo en ese caso, agrega el costo de tener que reconciliar resultados de agentes que trabajaron con contexto parcial entre sí.
 
 Esta regla existe para preservar presupuesto de tokens y evitar errores de reconciliación, no por preferencia estética.
 

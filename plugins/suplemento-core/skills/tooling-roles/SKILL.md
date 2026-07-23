@@ -1,15 +1,15 @@
 ---
 name: tooling-roles
-description: Tabla de roles funcionales de herramientas (gestor de paquetes, ORM+migraciones, config tipada, cliente HTTP, CLI, testing, auditoría de dependencias) con el stack Python de referencia como preset por defecto, y equivalentes conocidos en JavaScript/TypeScript y PHP. Úsala al inicializar un proyecto nuevo que no sea Python, al elegir una librería para una responsabilidad ya cubierta en otro proyecto PROMATIC, o cuando falte decidir qué herramienta usar para un rol funcional específico.
+description: Tabla de roles funcionales de herramientas (gestor de paquetes, ORM+migraciones, config tipada, cliente HTTP, CLI, testing, auditoría de dependencias) con el stack Python de referencia como preset por defecto, y equivalentes conocidos en JavaScript/TypeScript y PHP. Úsala al inicializar un proyecto nuevo que no sea Python, al elegir una librería para una responsabilidad ya cubierta en otro proyecto Suplemento Estrella, o cuando falte decidir qué herramienta usar para un rol funcional específico.
 ---
 
 # Tooling Roles
 
-La mayoría del stack de PROMATIC no es "dependencias de Python" en sí — son roles funcionales que cualquier proyecto necesita, con una implementación Python elegida como preset. Esta skill separa el rol de la herramienta, para que un proyecto en otro lenguaje pueda mapear los mismos roles sin perder la metodología.
+La mayoría del stack de Suplemento Estrella no es "dependencias de Python" en sí — son roles funcionales que cualquier proyecto necesita, con una implementación Python elegida como preset. Esta skill separa el rol de la herramienta, para que un proyecto en otro lenguaje pueda mapear los mismos roles sin perder la metodología.
 
 ## Tabla de roles
 
-| Rol funcional | Preset Python (PROMATIC) | Equivalente JS/TS | Equivalente PHP |
+| Rol funcional | Preset Python (Suplemento Estrella) | Equivalente JS/TS | Equivalente PHP |
 |---|---|---|---|
 | Gestor de paquetes | `uv` | `pnpm` / `npm` | `composer` |
 | ORM + migraciones | `SQLAlchemy` + `Alembic` | `Prisma` / `TypeORM` | `Eloquent` / `Doctrine` |

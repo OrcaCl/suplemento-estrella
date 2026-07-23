@@ -1,11 +1,11 @@
 ---
 name: code-simplicity
-description: Principios de simplicidad de código para todo desarrollo dentro de proyectos PROMATIC — KISS, DRY y evitar sobreingeniería salvo que sea inevitable. Usar siempre que se esté diseñando una solución nueva, evaluando si abstraer código repetido, decidiendo entre una función directa y un patrón de diseño, o revisando si una implementación es más compleja de lo que el problema requiere. Aplica a Python, SQL, JavaScript, CSS y cualquier otro lenguaje del proyecto.
+description: Principios de simplicidad de código para todo desarrollo dentro de proyectos Suplemento Estrella — KISS, DRY y evitar sobreingeniería salvo que sea inevitable. Usar siempre que se esté diseñando una solución nueva, evaluando si abstraer código repetido, decidiendo entre una función directa y un patrón de diseño, o revisando si una implementación es más compleja de lo que el problema requiere. Aplica a Python, SQL, JavaScript, CSS y cualquier otro lenguaje del proyecto.
 ---
 
 # Code Simplicity
 
-Tres principios que gobiernan toda decisión de diseño de código en proyectos PROMATIC, en este orden de prioridad cuando entran en tensión entre sí.
+Tres principios que gobiernan toda decisión de diseño de código en proyectos Suplemento Estrella, en este orden de prioridad cuando entran en tensión entre sí.
 
 ## Los tres principios
 

@@ -1,11 +1,11 @@
 ---
 name: project-init
-description: Skill de onboarding para inicializar un proyecto nuevo bajo la metodología PROMATIC. Úsala siempre que el usuario esté arrancando un repositorio nuevo, pida "inicializar el proyecto", "arrancar con la metodología", "crear la estructura base", o cuando detectes que un repo no tiene todavía SPEC.md ni carpeta spec/. Pregunta el tamaño esperado del proyecto y crea la estructura de archivos correspondiente (simple: SPEC.md + spec/ · complejo: además brain/ ADR desde el inicio) para evitar el retrofit costoso de agregar brain/ a mitad de proyecto.
+description: Skill de onboarding para inicializar un proyecto nuevo bajo la metodología Suplemento Estrella. Úsala siempre que el usuario esté arrancando un repositorio nuevo, pida "inicializar el proyecto", "arrancar con la metodología", "crear la estructura base", o cuando detectes que un repo no tiene todavía SPEC.md ni carpeta spec/. Pregunta el tamaño esperado del proyecto y crea la estructura de archivos correspondiente (simple: SPEC.md + spec/ · complejo: además brain/ ADR desde el inicio) para evitar el retrofit costoso de agregar brain/ a mitad de proyecto.
 ---
 
 # Project Init
 
-Punto de entrada de todo proyecto nuevo bajo metodología PROMATIC. Decide qué estructura de documentación crear según la escala esperada del proyecto, y deja los archivos base listos para empezar a trabajar.
+Punto de entrada de todo proyecto nuevo bajo metodología Suplemento Estrella. Decide qué estructura de documentación crear según la escala esperada del proyecto, y deja los archivos base listos para empezar a trabajar.
 
 ## Por qué existe esta skill
 
