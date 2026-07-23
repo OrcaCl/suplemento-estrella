@@ -1,0 +1,3 @@
+#Bloqueados de desarrollo. Plugin posee su propio template de .gitignore
+
+.old
