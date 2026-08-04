@@ -125,8 +125,6 @@ Instalar el plugin y ejecutar la inicialización del proyecto.
 
 El agente irá guiando al desarrollador para completar la información inicial y generar la estructura documental correspondiente.
 
-Dependiendo del tamaño esperado del proyecto, podrá crear una estructura simple o una estructura completa.
-
 ---
 
 ## 2. Construir el contexto
@@ -149,6 +147,11 @@ Antes de comenzar una sesión suele bastar con una instrucción como:
 > Lee el `SPEC.md` y el `brain/` para sincronizar el contexto del proyecto.
 
 A partir de ese momento el desarrollo continúa normalmente.
+
+**Checkpoints**
+
+Durante el desarrollo, puedes pedirle a Code que haga un "checkpoint" para que genere una actualización de los hitos logrados a SPEC.md, a los otros sistemas de control y registro, commit y push. 
+(Por si estás cerca a que se te acaben los tokens)
 
 ---
 
