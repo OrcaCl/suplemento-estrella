@@ -1,3 +1,7 @@
 #Bloqueados de desarrollo. Plugin posee su propio template de .gitignore
 
 .old/
+
+# Brain — archivos privados
+brain/files/secure/*
+brain/files/secure/backup/*

@@ -1,0 +1,15 @@
+# Git
+.git/
+
+# Editor
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Carpeta de trabajo bloqueado (superseded por el plugin instalable)
+.old/
+
+# Archivos seguros / sensibles (doble protección junto con .gitignore)
+brain/files/secure/
