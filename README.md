@@ -21,10 +21,10 @@ La implementación de referencia está pensada para **Claude Code**, pero la met
 
 **No clones este repo directamente para usar el plugin.** La forma correcta de instalarlo en un proyecto es:
 
-\`\`\`
+```
 /plugin marketplace add OrcaCl/suplemento-estrella
 /plugin install suplemento-core@suplemento-estrella
-\`\`\`
+```
 
 Esto instala únicamente el contenido del plugin (`plugins/suplemento-core/`) — no trae `docs/`, `.old/`, ni el resto del andamiaje de construcción del propio repo.
 
