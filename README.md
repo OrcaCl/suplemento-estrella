@@ -16,6 +16,20 @@ Su objetivo es definir **cómo colaboran un desarrollador y un agente de código
 
 La implementación de referencia está pensada para **Claude Code**, pero la metodología es independiente del modelo de IA y puede adaptarse a otros agentes mediante forks o implementaciones específicas.
 
+
+## Instalación
+
+**No clones este repo directamente para usar el plugin.** La forma correcta de instalarlo en un proyecto es:
+
+\`\`\`
+/plugin marketplace add OrcaCl/suplemento-estrella
+/plugin install suplemento-core@suplemento-estrella
+\`\`\`
+
+Esto instala únicamente el contenido del plugin (`plugins/suplemento-core/`) — no trae `docs/`, `.old/`, ni el resto del andamiaje de construcción del propio repo.
+
+Si en cambio quieres explorar el código fuente sin instalarlo, usa `git clone` con sparse checkout apuntando solo a `plugins/suplemento-core/` — ver `docs/` para el detalle.
+
 ---
 
 # ¿Qué problemas busca resolver?

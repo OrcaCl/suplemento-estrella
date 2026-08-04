@@ -104,7 +104,7 @@ Preguntas o ideas que surgen durante el desarrollo pero que no son la tarea actu
 ```markdown
 # Preguntas pendientes (TOASK)
 
-Categorías: **A** = usuario/administrador del proyecto · **D** = desarrollador/proveedor externo · **S** = investigable internamente por el agente
+Categorías: **A** = humano :) /administrador del proyecto · **D** = desarrollador/proveedor externo · **S** = investigable internamente por el agente
 
 ## Pendientes
 

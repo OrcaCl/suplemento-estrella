@@ -1,6 +1,6 @@
 # Preguntas pendientes (TOASK) — suplemento-estrella
 
-Categorías: **A** = Orlando/decisión de producto · **D** = dependencia de terceros (plugins externos) · **S** = investigable internamente
+Categorías: **A** = Humano/decisión de producto · **D** = dependencia de terceros (plugins externos) · **S** = investigable internamente
 
 ## Pendientes
 
