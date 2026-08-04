@@ -1,14 +1,14 @@
 {
   "name": "suplemento-estrella",
+  "description": "Suplemento Estrella — brújula con esteroides IA. Marketplace de metodología reutilizable para proyectos con Claude Code.",
   "owner": {
     "name": "OrcaCl"
   },
   "plugins": [
     {
-      "name": "Suplemento Estrella-core",
-      "source": "./plugins/Suplemento Estrella-core",
-      "description": "Metodología, convenciones y personalidad de agente de Suplemento Estrella — spec-driven development, sistema brain/ ADR, TDD por niveles, convenciones de frontend, y disciplina de simplicidad de código.",
-      "version": "0.1.0",
+      "name": "suplemento-core",
+      "source": "./plugins/suplemento-core",
+      "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ ADR, TDD por niveles, convenciones de frontend, y disciplina de simplicidad de código.",
       "author": {
         "name": "Orlando (OrcaCl)"
       }
