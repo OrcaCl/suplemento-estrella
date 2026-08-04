@@ -30,6 +30,14 @@ Esto instala únicamente el contenido del plugin (`plugins/suplemento-core/`) �
 
 Si en cambio quieres explorar el código fuente sin instalarlo, usa `git clone` con sparse checkout apuntando solo a `plugins/suplemento-core/` — ver `docs/` para el detalle.
 
+Cuando ya esté todo descargado, dile a Code que inicie el proyecto con 
+
+```
+project-init
+```
+
+Y sigue los pasos que te va a ir preguntando para que quede todo listo para darle con todo!
+
 ---
 
 # ¿Qué problemas busca resolver?
