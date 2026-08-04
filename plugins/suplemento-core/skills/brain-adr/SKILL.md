@@ -1,81 +1,98 @@
 ---
 name: brain-adr
-description: Disciplina de trabajo con el sistema brain/ (ADR — Architecture Decision Records) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, diseño, o tecnología que sería costosa de revertir; cuando el usuario pida documentar el "por qué" de un cambio; al cerrar una sesión de trabajo en un proyecto con brain/; o cuando un proyecto con estructura simple (solo spec/) muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
+description: Disciplina de trabajo con el sistema brain/ (registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión o checkpoint en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
 ---
 
 # Brain ADR
 
-Cómo trabajar día a día con el sistema `brain/` una vez creado (por `project-init`, en la estructura completa). Esta skill gobierna cuándo crear un ADR, cómo mantener `index.md` y `sesiones.md` sin que se dupliquen, y cómo usar `trackers/` y `TOASK.md`.
+Cómo trabajar día a día con el sistema `brain/` una vez creado (por `project-init`). Esta skill gobierna cuándo crear cada tipo de registro, cómo mantener `index.md` y `sesiones.md` sin que se dupliquen, y cómo usar `trackers/` y `TOASK.md`.
 
-## Cuándo crear un ADR — el criterio, no solo el checklist
+## Las cinco categorías de registro — tabla de decisión
 
-Un ADR documenta una decisión que sería costosa de revertir o que alguien (humano o agente) va a necesitar entender el "por qué" meses después, sin el contexto de la conversación original.
+`brain/` no documenta solo "decisiones de arquitectura". Hay cinco tipos de registro, cada uno con un propósito distinto.
 
-| Situación | ¿ADR? |
+| Prefijo | Nombre | Qué documenta | Tono |
+|---|---|---|---|
+| `ADR-NNN` | Architecture Decision Record | Una decisión que afecta **lo que el sistema hace o cómo se comporta** — tecnología elegida, patrón adoptado, convención de código que impacta el producto | Formal: contexto, decisión, razones, consecuencias |
+| `INT-NNN` | Interno | Una decisión que afecta **solo cómo el humano y Code trabajan juntos** — proceso de desarrollo, herramientas, o incluso convenciones de comunicación (ej. cómo se dirige el usuario a la instancia) — pero nunca lo que el sistema construido hace o cómo se comporta | Mismo formato que ADR, pero el objeto de la decisión es la relación/proceso de trabajo, no el producto |
+| `NOC-NNN` | Nota de Cuidado | Un hallazgo de **riesgo o cuidado mixto** — ni puramente arquitectura, ni puramente seguridad, sino algo que combina ambos y amerita registro sin encuadrarse como alarma de seguridad ni forzarse dentro del formato de decisión de un ADR | Neutro, menos formal que un ADR — describe una preocupación a **monitorear**, no una decisión tomada |
+| `DEP-NNN` | Retiro (Deprecation) | El retiro de una herramienta, archivo, patrón o plugin de la estructura de desarrollo — documenta un **cierre**, no una decisión hacia adelante | Breve: qué se retira, por qué, qué lo reemplaza si algo lo reemplaza |
+| `REF-NNN` | Referencia | Material de observación o contexto de dominio propio de este proyecto, que no es una decisión — hallazgos, notas de investigación | Descriptivo, sin estructura de decisión |
+| `REFX-NNN` | Referencia cruzada | Material descubierto **en otro proyecto**, que agrega contexto a este proyecto pero se mantiene deliberadamente separado — no se mezcla ni se reescribe como si fuera propio, se registra citando su origen. **Guardrail:** es información que el humano trae manualmente; Code nunca navega ni consulta el proyecto de origen por su cuenta | Descriptivo, con procedencia explícita (de qué proyecto vino) |
+
+**Criterio de corte ADR vs. INT, en una frase:** si la pregunta "¿esto cambia lo que el sistema hace o cómo se comporta desde afuera?" responde que sí, es `ADR`. Si solo afecta el proceso o la relación de trabajo — aunque sea algo tan no-técnico como un nombre que adopta la instancia de Code — es `INT`.
+
+## Cuándo crear cada tipo — ejemplos de corte
+
+| Situación | Categoría |
 |---|---|
-| Se eligió una tecnología, librería, o patrón arquitectónico entre varias opciones | Sí |
-| Se descubrió una limitación de un sistema externo que cambia cómo se diseña algo propio | Sí |
-| Se estableció una convención de código que va a aplicar de ahí en adelante (ej. "toda tabla de importación lleva columna raw_data") | Sí |
-| Se completó una tarea siguiendo un patrón ya establecido en un ADR anterior | No — solo `sesiones.md` |
-| Se corrigió un bug sin cambiar ningún diseño | No — solo `sesiones.md` |
-| Se hizo un refactor que no cambia decisiones previas, solo prolijidad | No — solo `sesiones.md`, salvo que el refactor en sí mismo fije una convención nueva |
-
-Ante la duda: si en 3 meses alguien preguntara "¿por qué se hizo así y no de otra forma?" y la respuesta no es obvia solo mirando el código, es un ADR.
+| Se eligió SQLAlchemy sobre otro ORM para el proyecto | `ADR` |
+| Se decidió pasar a alcance de test quirúrgico en vez de suite completa automática | `INT` |
+| El usuario le pidió a Code que adoptara un nombre propio para dirigirse a ella con menos fricción | `INT` |
+| Se detectó una tabla de datos sensibles creciendo rápido con credenciales compartidas entre servicios — sin acción tomada, pero a vigilar | `NOC` |
+| Se dejó de usar un plugin de Claude Code que quedó obsoleto | `DEP` |
+| Se encontró en otro proyecto propio una forma de resolver un problema similar, útil como contexto pero sin adaptar todavía | `REFX` |
+| Se completó una tarea siguiendo un patrón ya establecido en un registro anterior | Ninguno — solo `sesiones.md` |
 
 ## Numeración y estado
 
-- Numeración secuencial, nunca se reutiliza un número.
-- Un ADR **nunca se edita para cambiar la decisión original** — si la decisión cambia, se crea un ADR nuevo y el anterior se marca `Obsoleto — reemplazado por ADR-XXX`. Esto preserva el historial de *por qué* se decidió algo distinto después, que es tan valioso como la decisión vigente.
-- Estados válidos: `Vigente`, `En progreso` (aprobado pero implementación pendiente), `Obsoleto — reemplazado por ADR-XXX`.
+- Cada prefijo tiene su propia numeración secuencial independiente.
+- **Excepción de numeración conceptual:** un registro puede llevar `000` en vez del siguiente número consecutivo cuando es *conceptualmente anterior* a un registro ya existente de la misma categoría — por ejemplo, `INT-000` documentando una convención de base que resulta ser lógicamente previa a `INT-001`, aunque se haya escrito después en el tiempo. Usar esto con moderación — es la excepción, no el patrón general.
+- Un `ADR` o `INT` **nunca se edita para cambiar la decisión original** — si la decisión cambia, se crea uno nuevo y el anterior se marca `Obsoleto — reemplazado por ADR-XXX` (o `INT-XXX`).
+- Un `NOC` puede actualizarse in situ agregando entradas de seguimiento con fecha, porque es vigilancia activa, no una decisión cerrada.
+- Un `DEP` no cambia de estado una vez creado.
+- `REF`/`REFX` no tienen estado de vigencia — son contexto, no decisiones.
 
-Ver `references/adr-template.md` (compartida con `project-init`, en `project-init/references/brain-adr-template.md`) para el formato completo.
+## La sección `## Commit`, al cierre de todo registro tipo ADR/INT
 
-## La regla más importante: index.md vs. sesiones.md nunca se duplican
+Cada `ADR-*.md` e `INT-*.md` termina con una sección `## Commit` que apunta a la entrada correspondiente en `brain/sesiones.md` — si el registro se creó antes de que ese commit exista todavía (por ejemplo, a mitad de sesión, antes del próximo checkpoint), dejar anotado explícitamente que está "pendiente al próximo `/checkpoint` o cierre de sesión", en vez de omitir la sección o inventar una referencia que todavía no existe.
 
-Esta es una lección aprendida de un caso real, no una precaución teórica: en un proyecto de referencia, `brain/index.md` terminó acumulando ~30 secciones de "estado actual del proyecto" — una por cada sesión — que deberían haber vivido exclusivamente en `sesiones.md`. La causa fue querer tener "lo último" a mano sin scrollear hasta `sesiones.md`.
+Ver `references/adr-template.md`, `references/int-template.md`, `references/noc-template.md`, `references/dep-template.md`, y `references/ref-template.md` en `project-init/references/` para el formato completo de cada uno.
 
-**Regla estricta:**
+## brain/index.md — una sola tabla con columna "Tipo"
 
-| Archivo | Contiene | No contiene |
-|---|---|---|
-| `brain/index.md` | Tabla de ADRs (ID, título, estado) + puntero a `sesiones.md` | Resúmenes de sesión, aunque sea "solo el último" |
-| `brain/sesiones.md` | Registro cronológico completo, entrada por sesión | Nada — este es el único lugar para el detalle |
+```markdown
+## Registros de decisión y contexto
 
-Si en algún momento sientes la tentación de agregar un resumen de sesión a `index.md` "para tenerlo a mano", esa es exactamente la señal de alerta — la solución correcta es que `sesiones.md` tenga las entradas más recientes arriba (ya es la convención), no duplicar contenido en otro archivo.
+| ID | Tipo | Título | Estado |
+|---|---|---|---|
+| ADR-001 | ADR | ... | Vigente |
+| INT-000 | INT | ... | Vigente |
+| INT-001 | INT | ... | Vigente |
+| NOC-001 | NOC | ... | Monitoreo activo |
+| DEP-001 | DEP | ... | — |
+| REFX-001 | REFX | ... | — |
+```
 
-## Registro al cierre de sesión
+**Regla no negociable, sigue vigente sin cambios:** `index.md` contiene únicamente esta tabla y un puntero a `sesiones.md`. Nunca pegar resúmenes de sesión aquí, sin importar cuántas categorías se agreguen.
 
-Al finalizar cualquier sesión que haya tocado el proyecto, proponer sin esperar instrucción explícita:
+## Registro al cierre de sesión o checkpoint
+
+Al ejecutar un checkpoint o cerrar sesión (ver skill `documentation-convention` y el comando `checkpoint`), proponer:
 
 1. `brain/sesiones.md` — nueva entrada con hitos, archivos modificados, próximo paso
-2. `brain/ADR-NNN.md` — si se tomó una decisión que cumple el criterio de arriba
-3. `brain/index.md` — solo si hay un ADR nuevo que agregar a la tabla (nunca para resumen de sesión)
-4. `SPEC.md` — footer y sección de pendientes, como en `spec-driven-development`
+2. El registro que corresponda según la tabla de decisión (`ADR`, `INT`, `NOC`, `DEP`, `REF`, o `REFX`) — puede ser más de uno
+3. `brain/index.md` — agregar la fila correspondiente a cualquier registro nuevo
+4. `SPEC.md` — footer y sección de pendientes
+5. Completar la sección `## Commit` de cualquier `ADR`/`INT` creado en la sesión, ahora que el commit real ya existe
 
-## trackers/ — bugs y features hacia sistemas externos
+## trackers/ — bugs, features, y plantilla de retiros
 
-`brain/trackers/` documenta problemas o pedidos que van dirigidos a un sistema **externo** al proyecto (una API de terceros, un proveedor) — no bugs propios, esos van directo a resolverse en el código.
+- `bugs.md` + `bugs-report-template.md` → algo que un sistema externo hace mal
+- `features.md` + `features-proposal-template.md` → algo que se le pediría a un sistema externo
+- `deprecation-template.md` → plantilla de referencia para registros `DEP` (el registro en sí vive en `brain/DEP-NNN.md`, de primer nivel, igual que ADR/INT/NOC — la plantilla vive en `trackers/` por convención de ubicación de plantillas, no el registro)
 
-- `bugs.md` + `bugs-report-template.md` → algo que el sistema externo hace mal
-- `features.md` + `features-proposal-template.md` → algo que se le pediría al sistema externo que agregue
+Instancias completas de bugs y features siempre van en `trackers/generated/`.
 
-Instancias completas siempre van en `trackers/generated/`, nunca sueltas en la raíz de `trackers/`. Ver plantillas completas en `project-init/references/trackers-templates.md`.
+## TOASK.md — sin cambios
 
-## TOASK.md — el post-it digital, no un backlog formal
+Preguntas o ideas tangenciales, categorizadas por audiencia (A/D/S). No promover automáticamente un ítem a un registro formal sin confirmación del usuario.
 
-`brain/TOASK.md` es para preguntas o ideas que surgen mientras se trabaja en otra cosa, y que no son la tarea actual. La categorización por audiencia importa porque determina qué hacer con cada pregunta:
+## Migración desde estructura simple
 
-- **A** (usuario/administrador) — preguntar en la próxima interacción con esa persona
-- **D** (desarrollador/proveedor externo) — acumular para la próxima coordinación formal
-- **S** (investigable internamente) — el propio agente puede resolverla cuando tenga un momento, sin bloquear la tarea actual
-
-No promover automáticamente un ítem de `TOASK.md` a una feature formal en `trackers/` sin que el usuario lo confirme — son etapas distintas de madurez de una idea.
-
-## Migración desde estructura simple (spec/ → brain/)
-
-Si un proyecto arrancó con estructura simple y la skill `spec-driven-development` detectó señales de que necesita escalar:
+Ya no ocurre por defecto en proyectos nuevos (con `project-init` creando siempre la estructura completa), pero puede seguir siendo relevante para proyectos existentes de una versión anterior de la skill:
 
 1. Confirmar con el usuario antes de mover nada.
-2. Revisar `spec/historial.md` completo y decidir, entrada por entrada, cuáles corresponden a una decisión de arquitectura (se convierten en ADR retroactivo) y cuáles son simplemente historial operativo (se quedan en `spec/historial.md`, que sigue existiendo — `brain/` no reemplaza `spec/`, lo complementa).
-3. Crear `brain/index.md` y `brain/sesiones.md` desde ese punto en adelante — no hace falta reconstruir retroactivamente todo el historial de sesiones pasadas en `brain/sesiones.md`, solo los ADRs que se identifiquen como tal.
-4. Documentar en el primer ADR nuevo, o en `sesiones.md`, la fecha de la migración — para que quede claro por qué el historial de decisiones "empieza" en un punto intermedio del proyecto.
+2. Clasificar cada entrada del historial existente según la tabla de cinco categorías.
+3. Crear `brain/index.md` y `brain/sesiones.md` desde ese punto en adelante.
+4. Documentar la fecha de la migración.

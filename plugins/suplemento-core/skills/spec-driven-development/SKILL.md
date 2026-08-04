@@ -24,7 +24,7 @@ Después de cualquier breakthrough (feature completada, bug crítico resuelto, m
 
 1. `SPEC.md` — marcar ítems `[x]`, actualizar tabla de estado (sección 2) y footer con conteo de tests
 2. `spec/completado.md` — agregar la línea del ítem completado
-3. `spec/historial.md` — agregar la entrada narrativa (qué se hizo, por qué, hallazgos)
+3. `spec/historial.md` — agregar contenido de references/historial-md-template.md
 4. Si el proyecto usa `brain/`: evaluar si esta decisión amerita un ADR nuevo (ver skill `brain-adr` para el criterio)
 
 **No esperar al cierre de sesión para hacer esto.** Acumular actualizaciones "para el final" es la causa más común de que `SPEC.md` quede desactualizado.

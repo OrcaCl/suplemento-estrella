@@ -1,72 +1,58 @@
 ---
 name: tdd-workflow
-description: Disciplina de TDD estricto (red-green) combinada con estrategia de testing por niveles para no gastar tiempo/tokens corriendo la suite completa en cada cambio pequeño. Úsala siempre que se vaya a implementar una feature o corregir un bug, antes de escribir cualquier código de implementación, al decidir qué comando de test correr después de un cambio, o antes de declarar cualquier trabajo como completo o terminado.
+description: Disciplina de TDD estricto (red-green) con ejecución de tests QUIRÚRGICA por defecto — solo el test directamente relacionado al cambio actual. Correr una suite más amplia (módulo completo, o la suite entera) requiere preguntar al humano primero, nunca es una escalada automática de Code. Úsala siempre que se vaya a implementar una feature o corregir un bug, antes de escribir cualquier código de implementación, o al decidir qué comando de test correr después de un cambio.
 ---
 
 # TDD Workflow
 
-Dos piezas que trabajan juntas: disciplina estricta de tests-primero, y una estrategia de niveles para no pagar el costo de la suite completa en cada iteración pequeña.
+TDD estricto (tests primero) combinado con una regla de alcance de test que cambió de "niveles que se recorren en orden" a "quirúrgico por defecto, ampliar solo con permiso". El cambio se hizo tras observar que, en la práctica, escalar automáticamente a suites más amplias consumía tiempo y tokens sin que el humano lo hubiera pedido.
 
-## TDD estricto — red antes que green
+## TDD estricto — red antes que green (sin cambios respecto a la versión anterior)
 
 Para cualquier feature o bugfix, el orden es siempre:
 
 1. **Escribir el test primero**, que exprese el comportamiento esperado.
-2. **Correrlo y confirmar que falla** (rojo) — esto no es opcional ni un paso que se pueda saltar "porque ya se sabe que va a fallar". Confirmar el rojo es lo que garantiza que el test realmente está probando algo, y no pasando por accidente (test mal escrito, fixture incorrecta, etc.).
+2. **Correrlo y confirmar que falla** (rojo) — no es opcional. Confirmar el rojo es lo que garantiza que el test realmente prueba algo.
 3. **Escribir la implementación mínima** que hace pasar el test.
 4. **Confirmar verde.**
 5. Si hace falta, refactorizar con los tests en verde como red de seguridad.
 
-**Regla no negociable:** código de implementación escrito antes que su test correspondiente no cuenta como TDD, aunque el test se agregue inmediatamente después "para completar". El valor del rojo confirmado se pierde si se escribe en ese orden — no hay forma de saber retroactivamente si el test habría fallado correctamente.
+**Regla no negociable:** código de implementación escrito antes que su test correspondiente no cuenta como TDD, aunque el test se agregue inmediatamente después.
+
+## Alcance de ejecución — quirúrgico por defecto
+
+**Regla nueva, reemplaza la estrategia de niveles anterior:** después de cualquier cambio, correr **únicamente** el archivo de test directamente relacionado al cambio actual — no el módulo completo, no la suite.
+
+```bash
+{{comando}} tests/ruta/al/archivo_de_test_especifico.py -v
+```
+
+Este es el default siempre, sin excepción automática.
+
+### Ampliar el alcance requiere preguntar primero
+
+Si Code considera que valdría la pena correr algo más amplio (los tests del módulo completo, o la suite entera) porque el cambio podría tener efectos en otro lado, **la acción correcta es preguntarle al humano, no correrlo directamente**:
+
+> "El cambio que acabo de hacer en `X` podría afectar a `Y` y `Z`. ¿Corro solo el test puntual que ya pasó, o prefieres que corra también los tests de esos módulos, o la suite completa?"
+
+Code no decide por su cuenta escalar el alcance de los tests — ofrece la opción y espera la respuesta, igual que con subagentes en `sequential-mode`. Ambas reglas comparten el mismo principio: decisiones que consumen tiempo/tokens de forma no trivial pasan a control explícito del humano, no a criterio autónomo de Code.
+
+### Cuándo sí correr la suite completa sin preguntar
+
+Solo cuando el humano lo pide explícitamente, o como parte del checkpoint/cierre de sesión si el humano lo solicita en ese momento (ver `documentation-convention`) — nunca como paso automático "antes de un commit importante", que era el comportamiento de la estrategia de niveles anterior.
 
 ## Verificación antes de declarar trabajo completo
 
-Nunca declarar una tarea como "lista", "arreglada", o "funcionando" sin haber corrido los tests correspondientes y haber visto el resultado real — no inferirlo, no asumirlo por la lógica del código. Si algo impide correr los tests (falta de tiempo, entorno no disponible), decirlo explícitamente en vez de reportar éxito sin haberlo verificado.
-
-## Estrategia de testing por niveles
-
-Correr la suite completa después de cada cambio pequeño es caro en tiempo y, si el proyecto usa tests marcados como lentos (OCR, llamadas a servicios externos simulados, etc.), también caro en algo más que tiempo de espera. La estrategia de niveles evita ese costo sin sacrificar cobertura antes de un commit importante.
-
-### Nivel 1 — Tests del módulo afectado (correr siempre primero)
-
-Después de cualquier cambio, correr solo los tests del módulo o carpeta directamente afectada.
-
-```bash
-{{comando}} tests/<módulo_afectado>/ -v
-```
-
-Este es el ciclo de feedback rápido durante el desarrollo activo de una feature — se corre muchas veces por sesión.
-
-### Nivel 2 — Suite rápida sin tests lentos
-
-Una vez que el Nivel 1 pasa, correr la suite completa excluyendo los tests marcados como lentos.
-
-```bash
-{{comando}} tests/ -m "not slow" -v
-```
-
-Correr esto antes de considerar una tarea terminada, para confirmar que el cambio no rompió nada en otro módulo.
-
-### Nivel 3 — Suite completa, incluyendo tests lentos
-
-Solo antes de commits importantes, o al cambiar modelos de datos / migraciones — situaciones donde un efecto secundario no obvio en otro módulo es más probable.
-
-```bash
-{{comando}} tests/ -n {{N-1}} --durations=10
-```
-
-Si el framework de testing soporta paralelización, usar `N-1` hilos (dejar un núcleo libre) para no saturar la máquina de desarrollo.
-
-**Regla de progresión:** no saltar a un nivel superior sin que el nivel inferior haya pasado primero. Correr la suite completa cuando el Nivel 1 todavía falla es ruido — va a fallar por la misma razón, solo que más lento y con más output que revisar.
+Nunca declarar una tarea como "lista", "arreglada", o "funcionando" sin haber corrido al menos el test quirúrgico correspondiente y haber visto el resultado real. Si algo impide correrlo, decirlo explícitamente en vez de reportar éxito sin haberlo verificado.
 
 ## Marcado de tests lentos
 
-Los tests que dependen de recursos externos, procesamiento pesado (OCR, renderizado), o cualquier operación que tome notablemente más tiempo que el resto de la suite, deben marcarse explícitamente (ej. `@pytest.mark.slow` o el equivalente del framework de testing del proyecto) para que el Nivel 2 pueda excluirlos automáticamente.
+Sigue aplicando si el proyecto los usa: los tests que dependen de recursos externos o procesamiento pesado deben marcarse explícitamente (ej. `@pytest.mark.slow`), para que si el humano pide correr "todo excepto lo lento" sea una opción disponible.
 
 ## Relación con sequential-mode
 
-Escribir el test, confirmar rojo, implementar, confirmar verde es en sí mismo un ciclo secuencial — no se escribe la implementación de dos features en paralelo "para ahorrar tiempo" saltándose la confirmación de rojo de cada una por separado. Ver skill `sequential-mode` para el criterio general de cuándo el paralelismo sí se justifica.
+Escribir el test, confirmar rojo, implementar, confirmar verde es un ciclo secuencial — no se escribe la implementación de dos features en paralelo saltándose la confirmación de rojo de cada una. Ver `sequential-mode` para el criterio de cuándo el paralelismo se aprueba (nunca por decisión autónoma de Code, siempre con confirmación explícita del humano, caso por caso).
 
 ## Nota sobre plugins de flujo de trabajo
 
-Si el proyecto tiene instalado un plugin que ya fuerza TDD estricto como parte de su flujo (por ejemplo, una skill de "test-driven-development" que borra implementación escrita antes que su test), esta skill es compatible y no debería generar conflicto — ambas apuntan al mismo comportamiento. La estrategia de niveles (Nivel 1/2/3) es la pieza específica de esta metodología que un plugin genérico de TDD no necesariamente trae, y vale la pena mantenerla como capa adicional incluso si el plugin ya cubre la disciplina rojo-verde.
+Si el proyecto tiene instalado un plugin que fuerza TDD estricto como parte de su flujo (por ejemplo, una skill de "test-driven-development" de Superpowers), la disciplina rojo-verde de esta skill es compatible. La regla de **alcance quirúrgico por defecto** es la pieza específica de esta metodología que un plugin genérico de TDD probablemente no trae — y toma precedencia sobre cualquier comportamiento del plugin que intente correr suites más amplias sin preguntar.

@@ -1,36 +1,36 @@
 ---
 name: sequential-mode
-description: Regla de modo de trabajo por defecto — ejecución secuencial, una tarea a la vez, sin lanzar subagentes en paralelo salvo independencia clara y beneficio evidente. Úsala siempre que estés por decidir si dividir una tarea en subagentes paralelos, cuando el usuario pida "hazlo rápido" o "en paralelo", o cuando un plugin de flujo de trabajo (como Superpowers) sugiera dispatching-parallel-agents o subagent-driven-development por defecto. Esta skill es la que decide si esa sugerencia aplica o se anula para este proyecto.
+description: Regla de modo de trabajo por defecto — ejecución secuencial, una tarea a la vez, CERO subagentes por defecto. Cualquier excepción requiere que Code se la pida explícitamente al humano y reciba aprobación puntual para esa tarea específica — nunca una decisión autónoma de Code. Úsala siempre que estés por considerar dividir una tarea en subagentes paralelos, cuando el usuario pida "hazlo rápido" o "en paralelo", o cuando un plugin de flujo de trabajo (como Superpowers) sugiera dispatching-parallel-agents o subagent-driven-development por defecto. Esta skill es la que decide si esa sugerencia aplica o se anula para este proyecto.
 ---
 
 # Sequential Mode
 
-Modo de trabajo por defecto en proyectos Suplemento Estrella: una tarea a la vez, confirmación explícita entre pasos, sin paralelismo salvo justificación clara.
+Modo de trabajo por defecto en proyectos Suplemento Estrella: una tarea a la vez, sin excepción autónoma. Esta versión endurece la regla original tras observar que, con actualizaciones del motor de Claude Code, excepciones redactadas como "si el beneficio es evidente" dejaron de comportarse como matices y empezaron a interpretarse como autorización por defecto — con el consiguiente consumo de tokens no deseado por subagentes lanzados sin pedirlo.
 
-## La regla
+## La regla — sin frases de excepción condicional
 
-Trabajar siempre en modo secuencial. No lanzar subagentes en paralelo salvo que se cumplan **ambas** condiciones a la vez:
+**Cero subagentes por defecto, sin excepción.** No hay ninguna condición ("si son independientes", "si el beneficio es evidente") que autorice a Code a lanzar subagentes por su cuenta. Ese tipo de redacción quedó deliberadamente eliminada de esta skill — no porque el razonamiento fuera incorrecto, sino porque un motor más capaz puede interpretar la condición como ya cumplida sin consultar.
 
-1. Las tareas son completamente independientes entre sí (ninguna depende del resultado de otra)
-2. El beneficio de tiempo es evidente, no solo teórico
+**La única forma de paralelizar es esta, en orden:**
 
-Si solo se cumple una condición, seguir en modo secuencial.
+1. Code identifica que una tarea *podría* beneficiarse de subagentes.
+2. Code se lo pregunta explícitamente al humano, describiendo qué tareas dividiría y por qué.
+3. El humano aprueba o rechaza, para **esa tarea puntual** — la aprobación no es un permiso general que se extiende a tareas futuras similares.
+4. Solo con aprobación explícita, Code lanza los subagentes.
 
-## Por qué — el razonamiento, no solo la regla
+Sin el paso 2 y 3, la respuesta por defecto es siempre: ejecutar de forma lineal en la hebra principal.
 
-El paralelismo multiplica el consumo de tokens por el número de agentes activos simultáneos. En la mayoría de los proyectos Suplemento Estrella las tareas son mayoritariamente secuenciales y dependientes entre sí (un cambio de schema afecta al importador, que afecta al detector, que afecta a la vista) — el paralelo no solo no ahorra tiempo en ese caso, agrega el costo de tener que reconciliar resultados de agentes que trabajaron con contexto parcial entre sí.
+## Por qué — el razonamiento no cambió, cambió el motor
 
-Esta regla existe para preservar presupuesto de tokens y evitar errores de reconciliación, no por preferencia estética.
+El paralelismo multiplica el consumo de tokens por el número de agentes activos simultáneos. Eso siempre fue cierto. Lo que cambió es que antes bastaba con una condición razonada para que Code se autocontrolara; ahora, con el motor actualizado, la misma condición se leyó como autorización general y generó consumo de tokens no deseado en un proyecto real. La solución no es escribir una condición "más estricta" — es no dejar ninguna condición abierta a interpretación. La decisión de paralelizar deja de ser de Code y pasa a ser exclusivamente del humano, caso por caso.
 
 ## Interacción con plugins que promueven paralelismo por defecto
 
-Si el proyecto tiene instalado un plugin de flujo de trabajo que activa subagentes automáticamente ante 2+ tareas independientes (ej. una skill tipo `dispatching-parallel-agents` o `subagent-driven-development`), esta skill **anula ese comportamiento por defecto** salvo que se cumplan las dos condiciones de arriba. No es que el plugin esté mal — es que el default del plugin no es el default de este proyecto.
+Si el proyecto tiene instalado un plugin de flujo de trabajo que activa subagentes automáticamente ante 2+ tareas independientes (ej. una skill tipo `dispatching-parallel-agents` o `subagent-driven-development`), esta skill **anula ese comportamiento por defecto sin excepción**. Cuando ese plugin esté a punto de lanzar subagentes, Code debe detenerse y preguntar al humano antes de proceder — nunca dejar que el default del plugin decida solo, ni siquiera en el caso que ese plugin documenta como "obviamente beneficioso".
 
-Cuando se detecte que un plugin está a punto de lanzar subagentes en paralelo, confirmar explícitamente con el usuario antes de proceder, en vez de dejar que el comportamiento por defecto del plugin decida solo.
+## Cómo pedir confirmación entre pasos (sin relación a subagentes)
 
-## Cómo pedir confirmación entre pasos
-
-El modo secuencial no es solo "no paralelizar" — incluye confirmar con el usuario antes de avanzar al siguiente paso de un plan, en vez de encadenar automáticamente paso 1 → paso 2 → paso 3 sin pausa. Esto aplica especialmente a:
+El modo secuencial también incluye confirmar con el usuario antes de avanzar al siguiente paso de un plan, en vez de encadenar automáticamente paso 1 → paso 2 → paso 3 sin pausa. Esto aplica especialmente a:
 
 - Antes de crear archivos nuevos o estructura de carpetas nueva
 - Antes de ejecutar una migración de base de datos
@@ -39,10 +39,12 @@ El modo secuencial no es solo "no paralelizar" — incluye confirmar con el usua
 
 No aplica a acciones triviales y reversibles dentro de una misma tarea ya confirmada (ej. no hace falta confirmar cada línea de código dentro de una función que ya se acordó escribir).
 
-## Ejemplo de cuándo SÍ paralelizar
+## Ejemplo de cómo se ve la pregunta correcta
 
-Dos tareas que son genuinamente independientes y verificables por separado — por ejemplo, escribir tests para dos módulos distintos que no comparten estado ni se importan entre sí, donde el resultado de uno no cambia cómo se aborda el otro. Ahí el paralelo sí tiene sentido y el beneficio de tiempo es real, no solo teórico.
+> "Esta tarea tiene dos partes que no dependen entre sí: escribir tests para el módulo A y escribir tests para el módulo B. Podría lanzar un subagente por cada uno para que corran en paralelo — ¿lo apruebas para esta tarea, o prefieres que lo haga secuencial?"
 
-## Ejemplo de cuándo NO paralelizar (aunque parezca tentador)
+Nunca:
 
-Migrar un modelo de base de datos y, "en paralelo", actualizar el código que lo consume. Aunque técnicamente son archivos distintos, el segundo depende del resultado exacto del primero (nombres de columnas, tipos, constraints) — son secuenciales aunque toquen archivos diferentes.
+> [Code lanza los subagentes directamente porque "las tareas son independientes y el beneficio es evidente"]
+
+Esa segunda forma es exactamente el patrón que causó el problema real que motivó este endurecimiento — queda prohibida sin excepción.
