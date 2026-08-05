@@ -171,7 +171,7 @@ Durante el desarrollo, puedes pedirle a Code que haga un "checkpoint" para que g
 
 Antes de cerrar sesión, dile a Code lo siguiente:
 
-> Code (o el nombre que hayas decidido ponerle), hagamos un **checkout** y cerremos sesión.
+> Code (o el nombre que hayas decidido ponerle), hagamos un **checkpoint** y cerremos sesión.
 
 Lo que Code hará es: 
 
