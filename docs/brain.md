@@ -201,17 +201,6 @@ Su objetivo es explicar **por qué** dejaron de utilizarse.
 
 Muchas veces conocer la razón de una decisión antigua evita volver a cometer el mismo error algunos meses después.
 
-```text
-                                              _______
-                                             //  ||\ \
-      ¡Adiós, y gracias                    //___||_\_\______
-    por traernos hasta acá!               )   ______________ \
-                                           |__/              \_|
-                                              O              O
-
-..............................................................
-```
-
 ---
 
 # sesiones.md
