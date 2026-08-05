@@ -1,18 +1,14 @@
-# ⭐ Star Supplement
+# ⭐ Suplemento Estrella (Star Supplement)
 
 **TL;DR:**
 
 Suplemento Estrella es una Brújula con esteroides IA.
 
-La creé para orientar el desarrollo entre un desarrollador humano y su Agente IA. Tiene una metodología basada en mi experiencia personal y en estándares del desarrollo de software, base de conocimientos y un sistema de guía, tanto para el saco de carne y huesos, como para el super agente 86 de IA. En mi caso, Claude Code.
+Permite orientar y definir **cómo colaboran un desarrollador humano y su Agente IA** durante todo el ciclo de vida de un proyecto: desde la planificación inicial hasta el cierre de cada sesión de trabajo. 
 
-> **Una metodología, base de conocimiento y punto de partida para desarrolladores y agentes de código.**
+Tiene una metodología basada en mi experiencia personal, en estándares del desarrollo de software, base de conocimientos y un sistema de guía, tanto para el saco de carne y huesos, como para el super agente 86 de IA. En mi caso, Claude Code. 
 
-Star Supplement es una metodología para desarrollar software junto a agentes de código.
-
-No es un framework. No es un boilerplate. No es una plantilla de proyecto.
-
-Su objetivo es definir **cómo colaboran un desarrollador y su agente** durante todo el ciclo de vida de un proyecto: desde la planificación inicial hasta el cierre de cada sesión de trabajo.
+**No es un framework. No es un boilerplate. No es una plantilla de proyecto.**
 
 La implementación de referencia está pensada para **Claude Code**, pero la metodología es independiente del modelo de IA y puede adaptarse a otros agentes mediante forks o implementaciones específicas.
 
