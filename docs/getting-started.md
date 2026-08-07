@@ -124,7 +124,11 @@ Una sesión no termina cuando el código funciona.
 
 Termina cuando el contexto queda preparado para retomarlo mañana.
 
-Antes de cerrar se recomienda:
+Antes de cerrar dile a Code que:
+
+Has un `checkpoint` y prepárate para hacer un cierre de sesión.
+
+Code hará lo siguiente:
 
 * actualizar `SPEC.md`
 * registrar nuevos ADR, REF, NOC o DEP cuando corresponda
