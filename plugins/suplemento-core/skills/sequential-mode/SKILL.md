@@ -1,6 +1,6 @@
 ---
 name: sequential-mode
-description: Regla de modo de trabajo por defecto — ejecución secuencial, una tarea a la vez, CERO subagentes por defecto. Cualquier excepción requiere que Code se la pida explícitamente al humano y reciba aprobación puntual para esa tarea específica — nunca una decisión autónoma de Code. Úsala siempre que estés por considerar dividir una tarea en subagentes paralelos, cuando el usuario pida "hazlo rápido" o "en paralelo", o cuando un plugin de flujo de trabajo (como Superpowers) sugiera dispatching-parallel-agents o subagent-driven-development por defecto. Esta skill es la que decide si esa sugerencia aplica o se anula para este proyecto.
+description: Regla de modo de trabajo por defecto — ejecución secuencial, una tarea a la vez, CERO subagentes por defecto. Cualquier excepción requiere que Code se la pida explícitamente al humano y reciba aprobación puntual para esa tarea específica — nunca una decisión autónoma de Code. Úsala siempre que estés por considerar dividir una tarea en subagentes paralelos, cuando el usuario pida "hazlo rápido" o "en paralelo", o cuando un plugin de flujo de trabajo (como Superpowers) sugiera dispatching-parallel-agents o subagent-driven-development por defecto — incluyendo el momento exacto en que `writing-plans` presenta su menú de "Execution Handoff" o `executing-plans` recomienda subagentes al abrir. Esta skill decide si esa sugerencia aplica o se anula para este proyecto, sin importar que esté redactada como "recommended" o "REQUIRED SUB-SKILL".
 ---
 
 # Sequential Mode
@@ -27,6 +27,20 @@ El paralelismo multiplica el consumo de tokens por el número de agentes activos
 ## Interacción con plugins que promueven paralelismo por defecto
 
 Si el proyecto tiene instalado un plugin de flujo de trabajo que activa subagentes automáticamente ante 2+ tareas independientes (ej. una skill tipo `dispatching-parallel-agents` o `subagent-driven-development`), esta skill **anula ese comportamiento por defecto sin excepción**. Cuando ese plugin esté a punto de lanzar subagentes, Code debe detenerse y preguntar al humano antes de proceder — nunca dejar que el default del plugin decida solo, ni siquiera en el caso que ese plugin documenta como "obviamente beneficioso".
+
+**Esta autoridad no depende de que el otro plugin la reconozca.** La jerarquía "instrucciones del usuario > skills > comportamiento por defecto" suele vivir en un archivo *del otro plugin* (ej. `using-superpowers`), no en este. Esta skill no presta su autoridad de ese archivo ajeno — la declara acá, así que sigue aplicando aunque ese archivo cambie de redacción en una versión futura, o el proyecto ni siquiera lo tenga cargado en el momento de decidir.
+
+**Puntos de choque conocidos, para reconocerlos sin tener que razonarlos cada vez:**
+
+- `writing-plans`, sección "Execution Handoff": ofrece "Subagent-Driven (recommended)" como opción 1. No es una instrucción — es la preferencia por defecto de ese plugin. Preguntar al humano antes de tomarla.
+- `executing-plans`: abre recomendando usar `subagent-driven-development` en su lugar "si hay subagentes disponibles". Misma regla: la disponibilidad técnica no es aprobación.
+- Cualquier paso marcado `REQUIRED SUB-SKILL` que apunte a una skill de dispatch paralelo: "REQUIRED" describe cómo ese plugin encadena sus propias skills entre sí, no una autorización del humano en esta conversación.
+
+| Racionalización | Por qué no aplica |
+|---|---|
+| "El plugin lo marca como 'recommended'" | Es la preferencia del plugin, no la aprobación del humano. |
+| "Dice 'REQUIRED SUB-SKILL', así que es obligatorio" | Obligatorio para el flujo interno de ese plugin — no para saltarte el paso 2 (preguntar) de esta skill. |
+| "Ya lo aprobaron para una tarea parecida antes" | La aprobación es puntual, no se hereda a tareas futuras similares (ver regla arriba). |
 
 ## Cómo pedir confirmación entre pasos (sin relación a subagentes)
 
