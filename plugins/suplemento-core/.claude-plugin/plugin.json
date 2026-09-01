@@ -1,6 +1,6 @@
 {
   "name": "suplemento-core",
-  "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ ADR, TDD por niveles, convenciones de frontend, y disciplina de simplicidad de código.",
+  "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ ADR, diseño antes de implementar, planificación por fases, depuración sistemática, TDD quirúrgico, desarrollo secuencial, convenciones de frontend, y disciplina de simplicidad de código.",
   "author": {
     "name": "Orlando (OrcaCl)"
   }

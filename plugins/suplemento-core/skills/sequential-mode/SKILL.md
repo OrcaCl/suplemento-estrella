@@ -32,6 +32,7 @@ Si el proyecto tiene instalado un plugin de flujo de trabajo que activa subagent
 
 **Puntos de choque conocidos, para reconocerlos sin tener que razonarlos cada vez:**
 
+- `planificacion-por-fases` (esta metodología) ya ejecuta secuencial por defecto y no ofrece subagentes como recomendación — es el reemplazo propio de `writing-plans`. Si igual está cargado `writing-plans` de Superpowers, aplica lo de abajo.
 - `writing-plans`, sección "Execution Handoff": ofrece "Subagent-Driven (recommended)" como opción 1. No es una instrucción — es la preferencia por defecto de ese plugin. Preguntar al humano antes de tomarla.
 - `executing-plans`: abre recomendando usar `subagent-driven-development` en su lugar "si hay subagentes disponibles". Misma regla: la disponibilidad técnica no es aprobación.
 - Cualquier paso marcado `REQUIRED SUB-SKILL` que apunte a una skill de dispatch paralelo: "REQUIRED" describe cómo ese plugin encadena sus propias skills entre sí, no una autorización del humano en esta conversación.

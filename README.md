@@ -237,6 +237,9 @@ Actualmente Star Supplement incorpora skills para:
 * Inicialización de proyectos.
 * SPEC Driven Development.
 * Brain (Documentación continua).
+* Diseño antes de implementar (clasificar, entender, proponer, aprobar).
+* Planificación por fases (plan de implementación con tareas del tamaño de un bocado).
+* Depuración sistemática (causa raíz antes que fix).
 * Testing (TDD).
 * Desarrollo secuencial.
 * Convenciones Frontend.
