@@ -105,9 +105,11 @@ Se complementa especialmente con los siguientes plugins:
 
 | Plugin              | Función                                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| **Superpowers**     | Planificación, estrategias de implementación, subagentes, trabajo paralelo, dry-run y apoyo al proceso de desarrollo. |
-| **Claude Mem**      | Memoria operativa del agente para conocimiento interno que no necesita formar parte de la documentación compartida.   |
-| **Star Supplement** | Metodología, documentación, estructura del proyecto y contexto compartido entre el desarrollador y el agente.         |
+| Superpowers     | Planificación, estrategias de implementación, subagentes, trabajo paralelo, dry-run y apoyo al proceso de desarrollo. |
+| Claude Mem     | Memoria operativa del agente para conocimiento interno que no necesita formar parte de la documentación compartida.   |
+| **Suplemento-Core** | Metodología, documentación, estructura del proyecto y contexto compartido entre el desarrollador y el agente.         |
+
+**// EDIT: Los nuevos cambios en la mecánica de Claude Code v5 han hecho que usar claude-mem y superpowers se solapen, y estoy evaluando si dejo los plugins o si los elimino definitivamente y hago skills a la medida basados en estas otras skills.**
 
 Star Supplement evita duplicar funcionalidades que ya resuelven correctamente otros plugins.
 
