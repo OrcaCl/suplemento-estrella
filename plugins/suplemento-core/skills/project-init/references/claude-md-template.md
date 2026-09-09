@@ -18,6 +18,8 @@ Al iniciar cada sesión, después de leer SPEC.md {{y brain/index.md si el proye
 
 {{2-3 líneas: qué hace el proyecto, para quién, en qué estado está}}
 
+{{A la instancia de Code en este proyecto se le llama NOMBRE. — línea que define el Paso 3a de project-init; omitir por completo si el usuario eligió la opción 4 (sin nombre)}}
+
 ---
 
 ## Stack tecnológico
@@ -105,5 +107,6 @@ Después de cualquier breakthrough importante (feature completada, bug crítico 
 ## Notas de uso
 
 - Los bloques `{{...}}` condicionados a "si el proyecto usa brain/" deben eliminarse por completo (no dejar el placeholder vacío) si el proyecto eligió la estructura simple en `project-init`.
+- La línea del nombre de la instancia en `## Contexto del proyecto` la define el Paso 3a de `project-init` — el default es "Tomás"; si el usuario elige la opción 4 (sin nombre), eliminar la línea entera.
 - La sección de "Regla crítica" empieza vacía en un proyecto nuevo — eso es correcto y esperado. Se llena orgánicamente. No inventar una regla crítica ficticia solo para no dejar la sección vacía.
 - Si el proyecto tiene plugins de Claude Code instalados (Superpowers, sistemas de memoria, etc.), agregar una sección adicional de "Plugins" con puntero a `PLUGINS.md` — ver convención en el proyecto de referencia para el formato de ese archivo.

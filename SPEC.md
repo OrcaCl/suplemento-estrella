@@ -2,8 +2,8 @@
 
 ## Documento de contexto y descubrimientos
 
-**Versión:** 0.1
-**Última actualización:** 4 ago 2026
+**Versión:** 0.2
+**Última actualización:** 2026-09-09
 
 ---
 
@@ -27,7 +27,7 @@ Suplemento Estrella es una metodología de desarrollo asistido por agentes de c�
 |---|---|
 | Skills en `suplemento-core` | Ver `plugins/suplemento-core/skills/` |
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
-| Última sesión | 4 ago 2026 — **Inicialización meta de SPEC.md + brain/**: se detectó que este repo requería `project-init` en modo uso meta (constructor de plugin, no consumidor) |
+| Última sesión | 2026-09-09 — **Nombre humano para la instancia en `project-init`**: nuevo Paso 3a con 4 opciones para nombrar la instancia (default "Tomás"); formaliza INT-000 |
 
 ---
 
@@ -52,6 +52,7 @@ Suplemento Estrella es una metodología de desarrollo asistido por agentes de c�
 | Decisión | Detalle |
 |---|---|
 | Este repo usa `project-init` en modo meta | `brain/` documenta decisiones de la metodología en sí, no código de negocio de un proyecto cliente |
+| La instancia de Code en este proyecto se llama Tomás | Convención de comunicación (INT-000), no regla técnica. `project-init` ofrece esta elección a todo proyecto nuevo en su Paso 3a |
 | Versionado del plugin por hash de commit | `plugin.json` no fija versión — habilita seguimiento en vivo durante el desarrollo |
 | `CHANGELOG.md` vive en `plugins/suplemento-core/` | No en la raíz del repo — el versionado real es del plugin distribuido, no del repo constructor |
 
@@ -88,4 +89,4 @@ Suplemento Estrella es una metodología de desarrollo asistido por agentes de c�
 
 ---
 
-_SPEC.md  — v0.1._
+_SPEC.md  — v0.2. Última actualización: 2026-09-09._

@@ -173,6 +173,20 @@ Todo proyecto nuevo lleva un `CLAUDE.md` con estas secciones mínimas (ver `refe
 5. Estrategia de testing por niveles, con alcance de test **quirúrgico por defecto** — ampliar solo con confirmación explícita del humano (ver skill `tdd-workflow`)
 6. Modo de trabajo: **cero subagentes por defecto, sin excepción autónoma** — cualquier paralelismo requiere que Code se lo pida al humano y este lo apruebe para esa tarea puntual (ver skill `sequential-mode`)
 7. Convención de documentación: commits de código con normalidad; registro de `brain/`/`SPEC.md` diferido a checkpoint explícito o cierre de sesión obligatorio — nunca inmediato ni automático (ver skill `documentation-convention`)
+8. Nombre humano de la instancia, registrado en `## Contexto del proyecto` (ver Paso 3a)
+
+## Paso 3a — Asignar un nombre humano a la instancia
+
+Antes de finalizar `CLAUDE.md`, ofrecer al usuario darle un nombre a la instancia de Code con la que va a trabajar en este proyecto. Un nombre propio baja la fricción de la conversación día a día y hace que la relación de trabajo se sienta continua entre sesiones, en vez de que cada una arranque con una entidad genérica y anónima. Es una convención de comunicación, no una regla técnica — no cambia el comportamiento de la instancia, que sigue aplicando todo lo que dice `CLAUDE.md` igual que antes. (Origen de la práctica: `brain/INT-000` del repo constructor de la metodología.)
+
+Presentar exactamente estas 4 opciones:
+
+1. **Code elige su propio nombre** — desde el universo de nombres humanos (femeninos o masculinos) o de alguna referencia popular reconocible. Nunca algo grosero, soez ni ofensivo de ningún tipo.
+2. **El usuario asigna el nombre** — el que quiera.
+3. **Mantener el nombre predeterminado: Tomás.**
+4. **Sin nombre** — seguir refiriéndose a la instancia como "Claude Code" o "Code", tal como viene por omisión.
+
+El nombre resultante (o su ausencia, en el caso de la opción 4) se registra en `CLAUDE.md`, sección `## Contexto del proyecto`, con una línea breve — ej. _"A la instancia de Code en este proyecto se le llama **Tomás**."_ — para que futuras sesiones lo hereden sin volver a preguntarlo. Si más adelante se quiere cambiar, basta con editar esa línea.
 
 ## Paso 4 — Confirmar antes de escribir
 

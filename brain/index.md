@@ -8,8 +8,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 
 | ID | Título | Categoría | Estado |
 |---|---|---|---|
-
-_Sin registros todavía — el primero se crea cuando ocurra la primera decisión real a documentar._
+| [INT-000](INT-000-nombre-humano-para-la-instancia.md) | Adoptar un nombre humano para la instancia de Code en el proyecto | INT | Vigente |
 
 ---
 
