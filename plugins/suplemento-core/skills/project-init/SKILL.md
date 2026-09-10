@@ -1,7 +1,6 @@
 ---
 name: project-init
 description: Skill de onboarding para inicializar un proyecto nuevo bajo la metodología Suplemento Estrella. Úsala siempre que el usuario esté arrancando un repositorio nuevo, pida "inicializar el proyecto", "arrancar con la metodología", "crear la estructura base", o cuando detectes que un repo no tiene todavía SPEC.md ni carpeta spec/. Verifica primero que git esté instalado localmente y que el repo esté conectado a un remoto en GitHub, y luego crea siempre la estructura completa (spec/ + brain/ desde el inicio, con las seis categorías de registro: ADR, INT, NOC, DEP, REF, REFX) — no pregunta el tamaño del proyecto.
----
 
 # Project Init
 
