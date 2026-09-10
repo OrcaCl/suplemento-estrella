@@ -19,7 +19,6 @@ Actualmente la implementación oficial está diseñada para **Claude Code**.
 Se recomienda trabajar con el siguiente ecosistema:
 
 * Claude Code
-* Superpowers
 * Claude Mem
 * Star Supplement
 
