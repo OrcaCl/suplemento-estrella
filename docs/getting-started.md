@@ -19,7 +19,6 @@ Actualmente la implementación oficial está diseñada para **Claude Code**.
 Se recomienda trabajar con el siguiente ecosistema:
 
 * Claude Code
-* Superpowers
 * Claude Mem
 * Star Supplement
 
@@ -29,7 +28,15 @@ La metodología puede adaptarse a otros agentes de código, pero hoy la experien
 
 # Instalación
 
-Dentro de cualquier proyecto nuevo:
+Dentro de cualquier proyecto nuevo o 
+Suplemento Estrella funciona de forma estrecha con Git/Github, por lo que será necesario que tengas un repo creado via navegador y después hagas:
+
+git clone <dirección del repo>
+git init
+
+Después instalar el plugin de Claude Code para VS Code que puedes encontrar en el Marketplace de VS Code.
+
+Ahora, podrás instalar el plugin de Suplemento Estrella usando la terminal de Code o a través de la UI (Ventana tipo Chat)
 
 ```bash
 /plugin marketplace add OrcaCl/star-supplement
@@ -38,7 +45,6 @@ Dentro de cualquier proyecto nuevo:
 
 Luego instala (o verifica) los plugins recomendados.
 
-* Superpowers
 * Claude Mem
 
 Star Supplement intenta complementar estas herramientas, no reemplazarlas.
