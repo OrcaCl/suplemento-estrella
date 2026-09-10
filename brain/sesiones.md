@@ -2,6 +2,23 @@
 
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
+
+## Sesión — 2026-09-10 — Auditoría y estandarización de 13 Skills (Gemini Runtime)
+
+**Contexto:** Sincronización e integración de la metodología Suplemento Estrella + Brain KMS para el runtime de Gemini en Antigravity IDE.
+
+- **Skill 01 (brain-kms):** Mapeo explícito a plantillas base en `skills/references/` (lectura bajo demanda).
+- **Skill 02 (project-init):** Onboarding con regla del par `.gitignore` + `.geminiignore`, doble protección de `brain/files/secure/` y nombrado humano.
+- **Skills de Código y Ejecución (03 - 10):** Integración de `code-simplicity`, `depuracion-sistematica` (límite 3 fixes), `disenar-antes-de-implementar` (compuerta dura), `documentation-convention` (checkpoints diferidos), `frontend-conventions` (puente `data-*`), `planificacion-por-fases` (cero placeholders), `raw-data-audit-trail` y `sequential-mode` (tolerancia cero a subagentes autónomos).
+- **Skills de Flujo Diario y Stack (11 - 13):** Estandarización de `spec-driven-development` (rutas de enrutamiento sin emojis), `tdd-workflow` (alcance quirúrgico de tests) y `tooling-roles` (matriz agnóstica de stack).
+- **Catálogo:** Finalizada la revisión de las 13 skills principales del sistema.
+
+### Archivos modificados
+- `skills/01-brain-kms.md` hasta `skills/13-tooling-roles.md`
+- `skills/references/*` (Templates estáticos)
+
+### Próximo
+- Construir el archivo consolidado `GEMINI-RUNTIME.md` (rework unificado) al retomar en la siguiente sesión.
 ---
 
 ## Sesión — 2026-09-09 — Nombre humano para la instancia en project-init

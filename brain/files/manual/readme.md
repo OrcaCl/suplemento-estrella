@@ -1,0 +1,1 @@
+En esta carpeta se almacenan los archivos que son generados por el agente y que tienen relación con el desarrollo del proyecto o del aprendizaje del agente
