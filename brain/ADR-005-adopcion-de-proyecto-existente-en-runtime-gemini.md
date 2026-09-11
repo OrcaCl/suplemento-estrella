@@ -38,6 +38,10 @@ Al buscar el equivalente en Gemini, se encontró que **`runtimes/gemini-antigrav
 - Verificado (`wc -l` sobre las 13 skills de Gemini): `02-project-init.md` era la única vacía — las 12 restantes ya tenían contenido. No queda ninguna skill vacía oculta en el runtime de Gemini.
 - No cambia ninguna regla técnica de `sequential-mode`, `tdd-workflow`, ni la disciplina general — esta decisión es de contenido de skill y flujo de adopción, no de arquitectura del harness.
 
+## Validación
+
+**2026-09-11:** validado en producción por el usuario sobre un proyecto real en Antigravity IDE — flujo completo `curl | bash` (`install-gemini.sh`) → `project-init` dentro de Gemini. Resultado reportado: "La transición desde Claude Code a Gemini quedó completamente establecida y alineada." Ver detalle en `brain/sesiones.md`, entrada "Sesión — 2026-09-11 (continuación 6)".
+
 ## Commit
 
 Ver entrada "Sesión — 2026-09-11 (continuación 5) — Modo adopción en project-init de Gemini" en `brain/sesiones.md`.

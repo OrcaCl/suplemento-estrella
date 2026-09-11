@@ -3,6 +3,21 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-11 (continuación 6) — Validación en producción: modo adopción funcionó
+
+**Contexto:** el usuario probó en Antigravity IDE, sobre un proyecto real ya inicializado con Claude Code, el flujo completo: `curl | bash` (install-gemini.sh) → `project-init` dentro de Gemini.
+
+- **Resultado: modo adopción de ADR-005 confirmado en producción, no solo en diseño.** El usuario reportó: "La transición desde Claude Code a Gemini quedó completamente establecida y alineada" — corrió el instalador y `project-init` completo, no solo una verificación parcial.
+- Sin incidentes reportados en el instalador ni en la detección de proyecto existente — los dos bugs corregidos antes de esta prueba (nombres de archivo en `install-gemini.sh`/`GEMINI-RUNTIME.md`, skill vacía en `02-project-init.md`) no volvieron a aparecer.
+
+### Archivos modificados
+- Ninguno — sesión de validación, sin cambios de código.
+
+### Próximo
+- (Pendientes heredados sin cambios: `docs/conventions.md`/`glossary.md`, destino de `docs/principles.md`/`decisions.md`, renombre Brain KMS en Claude Code, `brain/TOASK.md`.)
+
+---
+
 ## Sesión — 2026-09-11 (continuación 5) — Modo adopción en project-init de Gemini
 
 **Contexto:** el usuario preguntó cómo manejar retomar, con Gemini + Antigravity IDE, un proyecto ya inicializado con Claude Code en la misma carpeta (`SPEC.md`/`brain/`/`CLAUDE.md` ya existentes) — un cambio real de agente e IDE, no solo de carpeta, así que "project-init" ya no aplicaría en modo "crear desde cero".
