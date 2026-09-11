@@ -3,6 +3,23 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-11 (continuación 4) — GEMINI-RUNTIME.md reescrito y aceptado
+
+**Contexto:** el usuario reescribió `runtimes/gemini-antigravity/GEMINI-RUNTIME.md` completo (estructura más formal: target/compatibility/versión en encabezado, misión y principios del agente, mapa de arquitectura, protocolo de apertura de sesión, matriz de enrutamiento de skills, estrategia de git/changelog) y pidió aceptarlo.
+
+- Documento ya alineado con lo decidido en la sesión: SemVer independiente por runtime, Changelog único con etiqueta de capa, Conventional Commits con scope.
+- **Corregido antes de aceptar:** el árbol de archivos en §2 repetía el mismo error de nombres ya corregido en `install-gemini.sh` (`gitignore-template.md`, `geminiignore-template.md`, `spec-md-template.md`, `references/trackers/` no existen) — ajustado a los nombres reales.
+- **Corregido antes de aceptar:** el encabezado fijaba `Runtime Target: Gemini 1.5 Pro / Ultra`, contradiciendo ADR-003 (que descartó atar el manifest a una versión de modelo específica). Cambiado a `Gemini (Antigravity IDE)`, sin versión.
+
+### Archivos modificados
+- runtimes/gemini-antigravity/GEMINI-RUNTIME.md
+- brain/sesiones.md
+
+### Próximo
+- (Pendientes heredados sin cambios: `docs/conventions.md`/`glossary.md`, destino de `docs/principles.md`/`decisions.md`, renombre Brain KMS en Claude Code, `brain/TOASK.md`.)
+
+---
+
 ## Sesión — 2026-09-11 (continuación 3) — Launcher de Gemini terminado, README reorganizado
 
 **Contexto:** el usuario terminó `install-gemini.sh` (instalador de una línea, descarga el runtime a `.gemini/` sin clonar el repo) y trajo un borrador de sección de README con el comando de instalación. Pidió revisar y reorganizar `README.md` (272 líneas, desactualizado) moviendo contenido extenso a `docs/`, que tenía 8 de 10 archivos vacíos.
