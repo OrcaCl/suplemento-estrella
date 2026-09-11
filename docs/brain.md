@@ -1,12 +1,14 @@
-# Brain
+# Brain KMS
 
 > *La memoria compartida entre el desarrollador y su agente de código.*
+
+**Brain KMS** — Brain Knowledge Management System, nombre formal desde v0.10.0 (ver ADR-001 en `brain/`). En este documento se sigue llamando simplemente "Brain" en el texto por brevedad.
 
 ---
 
 ## ¿Qué es Brain?
 
-Brain es el sistema de memoria persistente de Star Supplement.
+Brain es el sistema de memoria persistente de Suplemento Estrella.
 
 Su objetivo es preservar el contexto que normalmente sólo existe en la cabeza del desarrollador: decisiones, descubrimientos, riesgos, referencias técnicas, documentación auxiliar y el historial del proyecto.
 
@@ -145,7 +147,7 @@ Una vez publicados, normalmente no se modifican.
 
 Si una decisión cambia, se genera un nuevo ADR explicando la evolución de la decisión anterior.
 
-Star Supplement utiliza como referencia el formato clásico de Architecture Decision Records, adaptándolo al flujo de trabajo del proyecto.
+Suplemento Estrella utiliza como referencia el formato clásico de Architecture Decision Records, adaptándolo al flujo de trabajo del proyecto.
 
 ---
 

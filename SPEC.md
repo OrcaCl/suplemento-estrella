@@ -18,7 +18,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | `runtimes/` | Adaptaciones del mismo harness a otros agentes (Google Gemini en `gemini-antigravity/`, y los que vengan) |
 | `CHANGELOG.md` (raíz) | Registro único de hitos de todas las capas (Core + runtimes), versionado independiente por capa — ver ADR-002 |
 | `LICENSE` (raíz) | MIT — ver ADR-003 |
-| `docs/` | Documentación conceptual dirigida a quien instala y usa el harness — **incompleta**: ver pendiente en sección 3 |
+| `docs/` | Documentación conceptual dirigida a quien instala y usa el harness — mayormente completa; `conventions.md` y `glossary.md` pendientes (ver sección 3) |
 
 **Objetivo:** mantener el harness coherente, documentar el porqué de sus propias decisiones de diseño, y que el plugin siga siendo instalable y funcional en proyectos reales.
 
@@ -33,7 +33,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.10.0` (fijada en `plugin.json` — primera vez que se fija semver; antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.0` (`runtimes/gemini-antigravity/runtime.json`, nuevo — versiona independiente del plugin de Claude Code, con campo `core_version` de referencia) |
-| Última sesión | 2026-09-11 — **v0.10.0: harness multi-runtime**. Primer runtime adicional completado (Gemini/Antigravity). Sistema `brain/` rebautizado como **Brain KMS** (Brain Knowledge Management System) — adoptado en Gemini, pendiente propagar a Claude Code. Terminología "brújula" → "harness" |
+| Última sesión | 2026-09-11 — **v0.10.0: harness multi-runtime**. Primer runtime adicional completado (Gemini/Antigravity), incluyendo `install-gemini.sh` (instalador de una línea). Licencia MIT formalizada. README reorganizado — contenido movido a `docs/` |
 
 ---
 
@@ -45,8 +45,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 - [ ] Revisar `brain/TOASK.md` cuando haya tiempo disponible para las preguntas tipo **S**
 - [ ] Evaluar propagar el rebautizo Brain KMS a Claude Code (`plugins/suplemento-core/skills/brain-adr/` → `brain-kms/`), incluyendo referencias en otras skills y en `CLAUDE.md` del proyecto
-- [ ] Reconstruir contenido de `docs/` — 8 de 10 archivos están vacíos (`workflow.md`, `principles.md`, `philosophy.md`, `plugins.md`, `decisions.md`, `conventions.md`, `spec.md`, `glossary.md`); quedaron de una sesión de chat con otra instancia de Claude que no se pasó en limpio. Retomar cuando el autor recupere ese material
-- [ ] Terminar el launcher de Gemini (en curso por el autor)
+- [ ] Completar `docs/conventions.md` y `docs/glossary.md` — únicos 2 archivos de `docs/` que siguen vacíos tras la reorganización del README (2026-09-11); el resto (`workflow.md`, `philosophy.md`, `plugins.md`, `spec.md`, `getting-started.md`, `brain.md`) ya tiene contenido. `docs/decisions.md` y `docs/principles.md` quedaron sin usar en el reparto — evaluar si se fusionan con otro doc o se retiran (`DEP`)
 
 ---
 

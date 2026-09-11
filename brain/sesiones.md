@@ -3,6 +3,31 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-11 (continuación 3) — Launcher de Gemini terminado, README reorganizado
+
+**Contexto:** el usuario terminó `install-gemini.sh` (instalador de una línea, descarga el runtime a `.gemini/` sin clonar el repo) y trajo un borrador de sección de README con el comando de instalación. Pidió revisar y reorganizar `README.md` (272 líneas, desactualizado) moviendo contenido extenso a `docs/`, que tenía 8 de 10 archivos vacíos.
+
+- **Bug encontrado y corregido en `install-gemini.sh`:** la lista `REFERENCES` pedía nombres de archivo que no existen en `skills/references/` (`gitignore-template.md`, `geminiignore-template.md`, `spec-md-template.md` en vez de `ignore-template.md`, `spec-folder-template.md`, `gemini-template.md`, `trackers-templates.md`) — el script habría fallado en cualquier instalación real (`curl -f`). Corregido antes de seguir.
+- **ADR-004 (nuevo):** documenta la reorganización completa — README reducido a landing page (~65 líneas: TL;DR, instalación de ambos runtimes, índice a `docs/`, licencia); contenido movido y repartido en `docs/philosophy.md`, `docs/workflow.md`, `docs/spec.md`, `docs/plugins.md` (nuevos) y `docs/getting-started.md`, `docs/brain.md` (actualizados). Corrige también la nota `// EDIT:` obsoleta sobre Superpowers/claude-mem con el estado real (Superpowers retirado 2026-09-01).
+- `docs/conventions.md` y `docs/glossary.md` quedan sin contenido — sin fuente clara en el README, no se inventó nada; pendiente explícito.
+- `docs/principles.md` y `docs/decisions.md` quedan sin usar — su contenido esperado se fusionó en `philosophy.md` o no tenía fuente; pendiente evaluar si se fusionan formalmente o se retiran.
+- A pedido del usuario, se agregó al final del README: "Hecho en Chile 🇨🇱, con mucho cariño, para todos los amigos y amigas de la sobreingeniería."
+
+### Archivos modificados
+- README.md (reescrito)
+- docs/philosophy.md, docs/workflow.md, docs/spec.md, docs/plugins.md (nuevos)
+- docs/getting-started.md, docs/brain.md (actualizados)
+- install-gemini.sh (bug corregido)
+- brain/ADR-004-readme-breve-y-docs-como-fuente-detallada.md, brain/index.md, brain/sesiones.md
+- SPEC.md
+
+### Próximo
+- Completar `docs/conventions.md` y `docs/glossary.md`.
+- Decidir destino de `docs/principles.md` y `docs/decisions.md`.
+- (Pendientes heredados sin cambios: renombre Brain KMS en Claude Code, `brain/TOASK.md`.)
+
+---
+
 ## Sesión — 2026-09-11 — v0.10.0: harness multi-runtime + Brain KMS
 
 **Contexto:** formalización del hito iniciado en la sesión anterior (conversión completa de las 13 skills a `runtimes/gemini-antigravity/`). El usuario pidió registrar el hito, el rebautizo de `brain/` como Brain KMS (nombre sugerido por Gemini), y documentar la decisión de mantener `plugins/suplemento-core/` (Claude Code) en su ubicación actual en vez de reorganizarlo bajo `runtimes/`. A mitad de sesión el usuario corrigió el número de versión propuesto inicialmente (2.0.0 → 0.10.0, semver recién adoptado ~1.5 semanas atrás, sin serie previa real) y pidió reemplazar el eufemismo "brújula" por el término técnico "harness".

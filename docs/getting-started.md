@@ -1,6 +1,6 @@
 # Primeros pasos
 
-> **Bienvenido a Star Supplement.**
+> **Bienvenido a Suplemento Estrella.**
 
 Si llegaste hasta aquí, probablemente ya descubriste lo mismo que nosotros:
 
@@ -8,52 +8,47 @@ Programar con agentes de código no consiste solamente en escribir prompts.
 
 Consiste en construir y mantener un contexto compartido.
 
-Star Supplement existe precisamente para eso.
+Suplemento Estrella existe precisamente para eso.
 
 ---
 
 # ¿Qué necesitas?
 
-Actualmente la implementación oficial está diseñada para **Claude Code**.
+Suplemento Estrella es un harness multi-runtime — funciona con más de un agente de código. Elige tu runtime:
 
-Se recomienda trabajar con el siguiente ecosistema:
+- **Claude Code** — runtime de referencia, con el historial más largo de uso real.
+- **Google Gemini (Antigravity IDE)** — runtime adicional, ver `runtimes/gemini-antigravity/`.
 
-* Claude Code
-* Claude Mem
-* Star Supplement
-
-La metodología puede adaptarse a otros agentes de código, pero hoy la experiencia de referencia está construida sobre Claude Code.
+Ver [Instalación](../README.md#instalación) en el README para el comando exacto de cada runtime.
 
 ---
 
-# Instalación
+# Instalación — Claude Code
 
-Dentro de cualquier proyecto nuevo o 
-Suplemento Estrella funciona de forma estrecha con Git/Github, por lo que será necesario que tengas un repo creado via navegador y después hagas:
+Suplemento Estrella funciona de forma estrecha con Git/GitHub, por lo que necesitas un repo creado (vía navegador o `git init` local).
 
-git clone <dirección del repo>
-git init
+Instala el plugin de Claude Code para VS Code desde el Marketplace de VS Code si aún no lo tienes.
 
-Después instalar el plugin de Claude Code para VS Code que puedes encontrar en el Marketplace de VS Code.
-
-Ahora, podrás instalar el plugin de Suplemento Estrella usando la terminal de Code o a través de la UI (Ventana tipo Chat)
+Luego instala Suplemento Estrella usando la terminal de Claude Code o la UI de chat:
 
 ```bash
-/plugin marketplace add OrcaCl/star-supplement
-/plugin install star-supplement
+/plugin marketplace add OrcaCl/suplemento-estrella
+/plugin install suplemento-core@suplemento-estrella
 ```
 
-Luego instala (o verifica) los plugins recomendados.
+Opcionalmente instala también **Claude Mem** (memoria operativa del agente) — ver `docs/plugins.md` para el detalle de cómo se complementan.
 
-* Claude Mem
+---
 
-Star Supplement intenta complementar estas herramientas, no reemplazarlas.
+# Instalación — Google Gemini (Antigravity)
+
+Ver el comando de instalación de una línea en el [README](../README.md#instalación).
 
 ---
 
 # Crear un proyecto nuevo
 
-Una vez instalado el plugin, inicia un proyecto utilizando la skill **project-init**.
+Una vez instalado el runtime que corresponda, inicia un proyecto ejecutando la skill/comando **project-init**.
 
 Durante la inicialización el agente irá haciendo preguntas para construir el contexto inicial del proyecto.
 
@@ -71,7 +66,7 @@ Para ello se generan distintos documentos base, entre ellos:
 
 ```text
 SPEC.md
-CLAUDE.md
+CLAUDE.md (o GEMINI.md, según el runtime)
 PLUGINS.md
 TOASK.md
 ```
@@ -98,59 +93,27 @@ Una instrucción tan simple como esta suele ser suficiente:
 
 Eso permite que el agente recuerde rápidamente:
 
-* el estado actual del proyecto
-* las decisiones tomadas anteriormente
-* las reglas importantes
-* los pendientes activos
-* las prioridades de la siguiente sesión
+- el estado actual del proyecto
+- las decisiones tomadas anteriormente
+- las reglas importantes
+- los pendientes activos
+- las prioridades de la siguiente sesión
 
 ---
 
 # Durante el desarrollo
 
-Star Supplement favorece un desarrollo incremental.
+Suplemento Estrella favorece un desarrollo incremental. En general se recomienda:
 
-En general se recomienda:
+- comprender el problema antes de implementar
+- mantener el foco en una tarea a la vez
+- documentar únicamente aquello que merece permanecer en el tiempo
+- evitar sobreingeniería
+- escribir código simple antes que código inteligente
 
-* comprender el problema antes de implementar
-* mantener el foco en una tarea a la vez
-* documentar únicamente aquello que merece permanecer en el tiempo
-* evitar sobreingeniería
-* escribir código simple antes que código inteligente
+Las herramientas existen para ayudar al proyecto. Nunca al revés.
 
-Las herramientas existen para ayudar al proyecto.
-
-Nunca al revés.
-
----
-
-# Cerrar una sesión
-
-Una sesión no termina cuando el código funciona.
-
-Termina cuando el contexto queda preparado para retomarlo mañana.
-
-Antes de cerrar dile a Code que:
-
-Has un `checkpoint` y prepárate para hacer un cierre de sesión.
-
-Code hará lo siguiente:
-
-* actualizar `SPEC.md`
-* registrar nuevos ADR, REF, NOC o DEP cuando corresponda
-* actualizar `sesiones.md`
-* revisar `TOASK.md`
-* mover preguntas resueltas a `spec/completado.md`
-* realizar `commit`
-* realizar `push`
-
-Una buena sesión deja el proyecto listo para continuar aunque mañana:
-
-* se acaben los tokens,
-* cambie el modelo,
-* falle internet,
-* se corte la luz,
-* o simplemente ninguno de los dos recuerde exactamente qué estaba haciendo.
+Ver `docs/workflow.md` para el flujo de trabajo completo (inicializar → construir contexto → desarrollar → cerrar sesión).
 
 ---
 
@@ -168,7 +131,7 @@ El contexto importante no.
 
 # Bienvenido
 
-Star Supplement no pretende enseñarte a programar.
+Suplemento Estrella no pretende enseñarte a programar.
 
 Tampoco pretende decirte cuál framework utilizar.
 
@@ -179,4 +142,3 @@ Ayudarte a construir proyectos donde el conocimiento sobreviva a las conversacio
 Porque el mejor contexto no es el que está en la cabeza del desarrollador.
 
 Es el que cualquier miembro del equipo —humano o agente— puede recuperar cuando realmente lo necesita.
-
