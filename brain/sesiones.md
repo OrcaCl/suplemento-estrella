@@ -3,6 +3,24 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-11 (continuación 5) — Modo adopción en project-init de Gemini
+
+**Contexto:** el usuario preguntó cómo manejar retomar, con Gemini + Antigravity IDE, un proyecto ya inicializado con Claude Code en la misma carpeta (`SPEC.md`/`brain/`/`CLAUDE.md` ya existentes) — un cambio real de agente e IDE, no solo de carpeta, así que "project-init" ya no aplicaría en modo "crear desde cero".
+
+- **Hallazgo:** `runtimes/gemini-antigravity/skills/02-project-init.md` estaba completamente vacío (0 líneas) — la skill central para este escenario no tenía contenido. Verificado que las 12 skills restantes de Gemini sí tienen contenido (`wc -l` sobre todas).
+- **ADR-005 (nuevo):** completa `02-project-init.md` portando el Paso 0 de detección de proyecto existente de Claude Code, agregando un **modo adopción** explícito: si `SPEC.md`/`brain/` ya existen y `GEMINI.md` no, la skill confirma con el usuario, adopta el contexto real (lee `SPEC.md`/`brain/` para poblar `GEMINI.md`, no plantilla en blanco) sin recrear nada, y pregunta si reutilizar el nombre de instancia ya asignado a Claude Code o asignar uno distinto.
+- Se descartó crear un script de transición separado — `install-gemini.sh` ya no sobreescribe `GEMINI.md` existente; la lógica de adopción vive en la skill, no en el instalador.
+
+### Archivos modificados
+- runtimes/gemini-antigravity/skills/02-project-init.md (completado, antes vacío)
+- brain/ADR-005-adopcion-de-proyecto-existente-en-runtime-gemini.md, brain/index.md, brain/sesiones.md
+- SPEC.md
+
+### Próximo
+- (Pendientes heredados sin cambios: `docs/conventions.md`/`glossary.md`, destino de `docs/principles.md`/`decisions.md`, renombre Brain KMS en Claude Code, `brain/TOASK.md`.)
+
+---
+
 ## Sesión — 2026-09-11 (continuación 4) — GEMINI-RUNTIME.md reescrito y aceptado
 
 **Contexto:** el usuario reescribió `runtimes/gemini-antigravity/GEMINI-RUNTIME.md` completo (estructura más formal: target/compatibility/versión en encabezado, misión y principios del agente, mapa de arquitectura, protocolo de apertura de sesión, matriz de enrutamiento de skills, estrategia de git/changelog) y pidió aceptarlo.

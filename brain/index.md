@@ -13,6 +13,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-002](ADR-002-changelog-unico-en-la-raiz.md) | CHANGELOG.md único en la raíz, versionado por capa preservado | ADR | Vigente |
 | [ADR-003](ADR-003-licencia-mit-y-estructura-runtime-json.md) | Licencia MIT del repo y estructura de runtime.json (Gemini) | ADR | Vigente |
 | [ADR-004](ADR-004-readme-breve-y-docs-como-fuente-detallada.md) | README.md breve, docs/ como fuente detallada; instalador de Gemini corregido | ADR | Vigente |
+| [ADR-005](ADR-005-adopcion-de-proyecto-existente-en-runtime-gemini.md) | Modo adopción en project-init de Gemini para proyectos ya iniciados con otro agente | ADR | Vigente |
 
 ---
 
