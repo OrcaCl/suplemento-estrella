@@ -3,6 +3,33 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-11 — v0.10.0: harness multi-runtime + Brain KMS
+
+**Contexto:** formalización del hito iniciado en la sesión anterior (conversión completa de las 13 skills a `runtimes/gemini-antigravity/`). El usuario pidió registrar el hito, el rebautizo de `brain/` como Brain KMS (nombre sugerido por Gemini), y documentar la decisión de mantener `plugins/suplemento-core/` (Claude Code) en su ubicación actual en vez de reorganizarlo bajo `runtimes/`. A mitad de sesión el usuario corrigió el número de versión propuesto inicialmente (2.0.0 → 0.10.0, semver recién adoptado ~1.5 semanas atrás, sin serie previa real) y pidió reemplazar el eufemismo "brújula" por el término técnico "harness".
+
+- **ADR-001 (nuevo):** primer ADR del proyecto — documenta la decisión multi-runtime, la no-reorganización de Claude Code, el rebautizo a Brain KMS (adoptado en Gemini, pendiente en Claude Code), la fijación de versión `0.10.0` (no `2.0.0`) en `plugin.json`, el versionado independiente por capa (Core/Claude Code/Gemini), y tres hallazgos: `docs/` con 8 de 10 archivos vacíos (sesión de chat no pasada en limpio); el cambio de Claude Code a v5 hace ~2 semanas sin registro de versión propio en su momento; y su causa raíz — al retirar Superpowers, el usuario detectó que Superpowers y `claude-mem` generaban consumo excesivo de tokens porque v5 espera recibir el contexto completo de la tarea de una vez (no una secuencia de tareas chicas), lo que llevaba a `claude-mem` a inyectar automáticamente todo el contexto disponible (incluido `SPEC.md` completo) en cada sesión.
+- **`runtimes/README.md`** — documenta la convención: Claude Code queda en `plugins/`, `runtimes/` es para otros agentes.
+- **`runtimes/gemini-antigravity/runtime.json`** (nuevo) — versiona el runtime de Gemini de forma independiente (`0.1.0`), con campo `core_version` apuntando a qué versión del Core implementa.
+- **`plugin.json`** — primera vez que fija `"version"` (`0.10.0`), antes solo hash de commit; descripción usa "harness".
+- **`marketplace.json`** y **`CHANGELOG.md`** de `suplemento-core` — actualizados con "harness", multi-runtime, Brain KMS, y nota sobre el punto de partida de semver.
+- **`SPEC.md`** — pendiente de re-sincronizar con 0.10.0 (ver Próximo).
+
+### Archivos modificados
+- runtimes/README.md, runtimes/gemini-antigravity/runtime.json
+- plugins/suplemento-core/.claude-plugin/plugin.json
+- plugins/suplemento-core/CHANGELOG.md
+- .claude-plugin/marketplace.json
+- brain/ADR-001-harness-multi-runtime-y-brain-kms.md, brain/index.md, brain/sesiones.md
+
+### Próximo
+- Re-sincronizar `SPEC.md` con la versión corregida (0.10.0, no 2.0.0) y agregar el hallazgo de `docs/` incompleta a los pendientes.
+- Evaluar propagar el renombre Brain KMS a `plugins/suplemento-core/skills/brain-adr/` (Claude Code).
+- Reconstruir contenido de `docs/` (8 archivos vacíos) cuando el usuario recupere el material de la sesión de chat no traspasada.
+- Terminar el launcher de Gemini (en curso por el usuario, fuera de esta sesión de sincronización).
+- Revisar `brain/TOASK.md` cuando haya tiempo para las preguntas tipo S.
+
+---
+
 ## Sesión — 2026-09-10 — Auditoría y estandarización de 13 Skills (Gemini Runtime)
 
 **Contexto:** Sincronización e integración de la metodología Suplemento Estrella + Brain KMS para el runtime de Gemini en Antigravity IDE.

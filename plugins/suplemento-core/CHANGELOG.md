@@ -1,6 +1,15 @@
 # Changelog — suplemento-core
 
-Versionado por hash de commit git (ver `SPEC.md` del repo raíz, sección 5). Este archivo registra hitos relevantes del plugin, no cada commit individual.
+Versionado semántico (semver) desde 2026-09-11, cuando se fijó por primera vez una versión explícita en `plugin.json` (`0.10.0`) — antes se versionaba solo por hash de commit git, sin relación con semver. Este archivo registra hitos relevantes del plugin, no cada commit individual.
+
+**Nota sobre el punto de partida 0.10.0:** no es un cálculo retroactivo estricto de cada cambio histórico desde el origen del proyecto — es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver. Hitos anteriores a esta fecha (incluido el cambio de versión de Claude Code a v5, hace ~2 semanas a esta entrada, que impactó reglas del harness) no quedaron registrados con número de versión propio porque el proyecto no llevaba semver todavía — ver pendiente en `SPEC.md` sobre reconstruir ese tramo si el material de esa sesión aparece.
+
+## 2026-09-11 — v0.10.0
+
+- **Metodología multi-runtime**: Suplemento Estrella deja de ser exclusivo de Claude Code. Primera adaptación a otro agente completada: `runtimes/gemini-antigravity/` (Google Gemini / Antigravity), con las 13 skills traducidas al formato y ubicación que ese agente espera. `plugins/suplemento-core/` (Claude Code) se mantiene como harness de referencia — no se movió ni reorganizó.
+- **Rebautizo del sistema `brain/`**: pasa a llamarse formalmente **Brain KMS (Brain Knowledge Management System)**, reconociendo que ya cubre más que ADR (también INT, NOC, DEP, REF/REFX). Por ahora el nombre nuevo se adoptó en el runtime de Gemini (`01-brain-kms.md`); la skill `brain-adr` de Claude Code no se renombra todavía — queda pendiente de propagar.
+- **Terminología**: se deja el eufemismo "brújula" y se adopta el término técnico "harness" en la documentación de cara al usuario (`marketplace.json`, `plugin.json`).
+- Primera vez que `plugin.json` fija una versión semver (`0.10.0`) en lugar de versionarse solo por hash de commit. Cada runtime (Claude Code, Gemini) versiona de forma independiente desde ahora — ver `runtimes/gemini-antigravity/runtime.json`.
 
 ## 2026-09-01
 
