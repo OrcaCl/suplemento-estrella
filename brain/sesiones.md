@@ -22,11 +22,30 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 - brain/ADR-001-harness-multi-runtime-y-brain-kms.md, brain/index.md, brain/sesiones.md
 
 ### Próximo
-- Re-sincronizar `SPEC.md` con la versión corregida (0.10.0, no 2.0.0) y agregar el hallazgo de `docs/` incompleta a los pendientes.
 - Evaluar propagar el renombre Brain KMS a `plugins/suplemento-core/skills/brain-adr/` (Claude Code).
 - Reconstruir contenido de `docs/` (8 archivos vacíos) cuando el usuario recupere el material de la sesión de chat no traspasada.
 - Terminar el launcher de Gemini (en curso por el usuario, fuera de esta sesión de sincronización).
 - Revisar `brain/TOASK.md` cuando haya tiempo para las preguntas tipo S.
+
+---
+
+## Sesión — 2026-09-11 (continuación) — CHANGELOG.md único en la raíz
+
+**Contexto:** el usuario consultó a Gemini sobre cómo estructurar el changelog en escenario multi-runtime. Gemini recomendó un único `CHANGELOG.md` en la raíz con entradas etiquetadas por runtime, respaldado por Conventional Commits con scope — pero asumía versionado SemVer lockstep (una sola versión de proyecto compartida), lo que contradice el versionado independiente por capa recién decidido en ADR-001.
+
+- **ADR-002 (nuevo):** adopta el CHANGELOG único en la raíz y Conventional Commits con scope por runtime; **descarta explícitamente** la parte lockstep del consejo de Gemini — se preserva el versionado independiente por capa de ADR-001.
+- **`CHANGELOG.md`** (raíz, nuevo) — reemplaza a `plugins/suplemento-core/CHANGELOG.md` (eliminado), migra el historial completo y reestructura la entrada de hoy con etiquetas `[Core]` / `[Runtime Claude Code vX.Y.Z]` / `[Runtime Gemini vX.Y.Z]`.
+- **`SPEC.md`** — fila §5 sobre ubicación del changelog actualizada (obsoleta, reemplazada por ADR-002); tabla §1 agrega `CHANGELOG.md` como fuente de la raíz.
+
+### Archivos modificados
+- CHANGELOG.md (nuevo, raíz)
+- plugins/suplemento-core/CHANGELOG.md (eliminado)
+- brain/ADR-002-changelog-unico-en-la-raiz.md, brain/index.md, brain/sesiones.md
+- SPEC.md
+
+### Próximo
+- Adoptar prefijo de scope por runtime en commits futuros donde aplique (`feat(runtime-gemini)`, `fix(core)`), sin reescribir historial pasado.
+- (Pendientes heredados de la sesión anterior, sin cambios: renombre Brain KMS en Claude Code, reconstrucción de `docs/`, launcher de Gemini, `brain/TOASK.md`.)
 
 ---
 
