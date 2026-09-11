@@ -1,10 +1,18 @@
 {
   "name": "gemini-antigravity",
+  "display_name": "Gemini Runtime for Antigravity IDE",
   "agent": "Google Gemini (Antigravity)",
   "version": "0.1.0",
   "core_version": "0.10.0",
   "description": "Adaptación de la metodología Suplemento Estrella + Brain KMS para Google Gemini (Antigravity IDE) — 13 skills traducidas al formato y convenciones de ubicación que ese agente espera.",
+  "architecture": {
+    "type": "modular-lazy-loading",
+    "entry_point": "GEMINI.md",
+    "master_spec": "GEMINI-RUNTIME.md",
+    "skills_dir": "skills/"
+  },
   "author": {
     "name": "Orlando (OrcaCl)"
-  }
+  },
+  "license": "MIT"
 }

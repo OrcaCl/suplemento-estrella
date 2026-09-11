@@ -49,6 +49,27 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 ---
 
+## Sesión — 2026-09-11 (continuación 2) — Licencia MIT y ajuste de runtime.json
+
+**Contexto:** el usuario está armando el launcher de Gemini. Gemini le propuso un `runtime.json` con campos nuevos (`license: MIT`, `author: "Suplemento Estrella"`, `target_model`, `architecture`). El usuario pidió revisar si calzaba con lo ya decidido antes de aceptarlo.
+
+- **ADR-003 (nuevo):** adopta licencia MIT para todo el repo (antes no declarada en ningún lado); corrige `author` de `runtime.json` a la persona real (coherente con `plugin.json`); incorpora el bloque `architecture` de la propuesta de Gemini (aporta valor real); descarta `target_model` (ata el manifest a una versión de modelo que se desactualiza sola).
+- **`LICENSE`** (nuevo, raíz) — texto MIT, copyright Orlando (OrcaCl) 2026.
+- **`plugin.json`** y **`runtime.json`** — ambos declaran `"license": "MIT"` por igual.
+- **`runtime.json`** (Gemini) — agrega `display_name` y `architecture`; corrige `author`; sin `target_model`.
+
+### Archivos modificados
+- LICENSE (nuevo)
+- plugins/suplemento-core/.claude-plugin/plugin.json
+- runtimes/gemini-antigravity/runtime.json
+- brain/ADR-003-licencia-mit-y-estructura-runtime-json.md, brain/index.md, brain/sesiones.md
+- SPEC.md, CHANGELOG.md
+
+### Próximo
+- El usuario continúa armando el launcher de Gemini; sincronizar de nuevo cuando lo tenga.
+
+---
+
 ## Sesión — 2026-09-10 — Auditoría y estandarización de 13 Skills (Gemini Runtime)
 
 **Contexto:** Sincronización e integración de la metodología Suplemento Estrella + Brain KMS para el runtime de Gemini en Antigravity IDE.

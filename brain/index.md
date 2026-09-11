@@ -11,6 +11,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [INT-000](INT-000-nombre-humano-para-la-instancia.md) | Adoptar un nombre humano para la instancia de Code en el proyecto | INT | Vigente |
 | [ADR-001](ADR-001-harness-multi-runtime-y-brain-kms.md) | Harness multi-runtime (v0.10.0) y rebautizo de brain/ como Brain KMS | ADR | Vigente |
 | [ADR-002](ADR-002-changelog-unico-en-la-raiz.md) | CHANGELOG.md único en la raíz, versionado por capa preservado | ADR | Vigente |
+| [ADR-003](ADR-003-licencia-mit-y-estructura-runtime-json.md) | Licencia MIT del repo y estructura de runtime.json (Gemini) | ADR | Vigente |
 
 ---
 

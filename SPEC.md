@@ -17,6 +17,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | `plugins/suplemento-core/` | Skills, comandos y convenciones — runtime de referencia (Claude Code) |
 | `runtimes/` | Adaptaciones del mismo harness a otros agentes (Google Gemini en `gemini-antigravity/`, y los que vengan) |
 | `CHANGELOG.md` (raíz) | Registro único de hitos de todas las capas (Core + runtimes), versionado independiente por capa — ver ADR-002 |
+| `LICENSE` (raíz) | MIT — ver ADR-003 |
 | `docs/` | Documentación conceptual dirigida a quien instala y usa el harness — **incompleta**: ver pendiente en sección 3 |
 
 **Objetivo:** mantener el harness coherente, documentar el porqué de sus propias decisiones de diseño, y que el plugin siga siendo instalable y funcional en proyectos reales.
@@ -64,6 +65,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Versionado por capas, independiente por runtime, desde 2026-09-11 | Core (`SPEC.md`) / Claude Code (`plugin.json`) / Gemini (`runtime.json`) versionan cada uno por su cuenta; cada runtime referencia `core_version`. Antes: solo hash de commit. Ver ADR-001 en `brain/` |
 | Punto de partida de semver: `0.10.0`, no `1.0.0` ni `2.0.0` | Semver se adoptó ~1.5 semanas antes de este hito, sin serie 0.x/1.x previa real; `0.10.0` refleja pre-1.0/desarrollo activo. No es cálculo retroactivo estricto — ver ADR-001 |
 | `CHANGELOG.md` vive en la raíz del repo (único, todas las capas) | Antes vivía en `plugins/suplemento-core/` — decisión obsoleta y reemplazada por ADR-002. Cada entrada cita la versión de su propia capa; el versionado en sí sigue siendo independiente por capa, no lockstep |
+| Licencia del repo: MIT | `LICENSE` en la raíz, declarada en `plugin.json` y `runtime.json` (Gemini) por igual. Ver ADR-003 |
 | `plugins/suplemento-core/` es el runtime de referencia (Claude Code); otros agentes van en `runtimes/` | Decisión explícita: no se reorganizó Claude Code por simetría — evita romper la instalación activa y la ruta que espera `marketplace.json` |
 | Sistema `brain/` se llama formalmente **Brain KMS** (Brain Knowledge Management System) | Adoptado en el runtime de Gemini (`01-brain-kms.md`); pendiente evaluar propagar el renombre a `plugins/suplemento-core/skills/brain-adr/` |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |

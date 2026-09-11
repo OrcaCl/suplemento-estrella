@@ -4,5 +4,6 @@
   "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ Knowledge Management System (Brain KMS), diseño antes de implementar, planificación por fases, depuración sistemática, TDD quirúrgico, desarrollo secuencial, convenciones de frontend, y disciplina de simplicidad de código. Harness de referencia para Claude Code; ver runtimes/ en el repo raíz para adaptaciones a otros agentes (Google Gemini).",
   "author": {
     "name": "Orlando (OrcaCl)"
-  }
+  },
+  "license": "MIT"
 }
