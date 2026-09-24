@@ -1,12 +1,12 @@
 # Plantilla — brain/DEP-NNN-{slug}.md
 
-                   o  o  O  O                                  
-            ,_____  ____    O         ¡Adiós, y gracias
-            | PMD \_|[]|_'__Y       por traernos hasta acá!
-            |_______|__|_|__|}                                 
-=============oo--oo==oo--OOO\\===||                              
-
-
+```text
+               o  o  O  O
+        ,_____  ____    O         ¡Adiós, y gracias
+        | PMD \_|[]|_'__Y       por traernos hasta acá!
+        |_______|__|_|__|}
+=============oo--oo==oo--OOO\\===||
+```
 
 -------------------------------------------------------------------
 
