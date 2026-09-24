@@ -1,5 +1,12 @@
 # Plantilla — brain/DEP-NNN-{slug}.md
 
+                   o  o  O  O
+            ,_____  ____    O         ¡Adiós, y gracias
+            | PMD \_|[]|_'__Y       por traernos hasta acá!
+            |_______|__|_|__|}     
+=============oo--oo==oo--OOO\\===|||<<      {{fecha}}
+
+
 Documenta el **retiro** de una herramienta, archivo, patrón o plugin de la estructura de desarrollo — a diferencia de un ADR (decisión hacia adelante), esto documenta un cierre. Breve a propósito.
 
 ---
@@ -36,3 +43,8 @@ Documenta el **retiro** de una herramienta, archivo, patrón o plugin de la estr
 
 - Un DEP no cambia de estado — es un hecho consumado desde el momento en que se crea, no una decisión que se pueda revertir editando el mismo archivo. Si algo retirado se vuelve a adoptar más adelante, eso es un `ADR` o `INT` nuevo (según corresponda), no una edición del `DEP` original.
 - Referenciar el plugin de trackers: `trackers/deprecation-template.md` contiene esta misma plantilla como referencia rápida, pero el registro real siempre se crea como archivo de primer nivel en `brain/`, no dentro de `trackers/generated/`.
+
+
+### ASCII ART BY: 
+https://www.asciiart.eu/art/13c2a52128a190d5
+Unknown (Maybe PMD?? ) 
