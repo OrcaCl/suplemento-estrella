@@ -7,6 +7,9 @@
 =============oo--oo==oo--OOO\\===|||<<      {{fecha}}
 
 
+-------------------------------------------------------------------
+
+
 Documenta el **retiro** de una herramienta, archivo, patrón o plugin de la estructura de desarrollo — a diferencia de un ADR (decisión hacia adelante), esto documenta un cierre. Breve a propósito.
 
 ---
