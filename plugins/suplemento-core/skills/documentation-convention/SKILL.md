@@ -25,12 +25,13 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 El checkpoint hace, en orden:
 1. Revisa qué se hizo desde el último checkpoint o cierre de sesión
 2. Actualiza `brain/sesiones.md`
-3. Actualiza `SPEC.md` (ítems completados, catastro, footer)
+3. Actualiza `SPEC.md` **reemplazando, no acumulando** (ítems cerrados → `spec/completado.md`; "Última sesión", header y footer se sobrescriben; la narrativa va a `brain/sesiones.md`) — reglas completas en `spec-driven-development`
 4. Actualiza `brain/index.md` si corresponde
 5. Crea un ADR nuevo si hubo una decisión de arquitectura o proceso desde el último checkpoint
 6. **Muestra un resumen al humano antes de escribir** — nunca asume silenciosamente qué contó como hito
-7. `git commit` con mensaje descriptivo del período cubierto
-8. `git push`
+7. **Chequeo de tamaño de `SPEC.md`** antes del commit: `wc -c SPEC.md` (≤ ~15 KB) y `awk 'length>600{print NR}' SPEC.md` (ninguna línea > 600 caracteres); si excede, condensar y mover a su destino primero
+8. `git commit` con mensaje descriptivo del período cubierto
+9. `git push`
 
 Ver el archivo del comando para el detalle completo — esta skill no lo duplica, solo establece cuándo se invoca.
 

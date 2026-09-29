@@ -2,11 +2,17 @@
 
 Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de Suplemento Estrella, independiente del dominio del proyecto.
 
-`SPEC.md` es el panel de control: corto, vivo, se actualiza cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
+`SPEC.md` es el panel de control: corto (~15 KB máximo), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
 
 ---
 
 ```markdown
+<!-- LÍMITES DE ESTE ARCHIVO: ≤ 15 KB, ninguna línea > 600 caracteres.
+     Al actualizar: REEMPLAZAR, no acumular. Narrativa → brain/sesiones.md · ítems [x] → spec/completado.md ·
+     detalle técnico de componentes → spec/features.md · schemas de API → spec/api.md.
+     Header = solo fecha · §2 "Última sesión" = 1 fila ≤ 400 car. que sobrescribe la anterior · footer ≤ 300 car.
+     Antes de commitear: wc -c SPEC.md (≤ 15000) y awk 'length>600{print NR}' SPEC.md. Si excede, condensar primero. -->
+
 # {{Nombre del Proyecto}}
 
 ## Documento de contexto y descubrimientos
@@ -33,9 +39,9 @@ Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los p
 
 | Métrica | Valor |
 |---|---|
-| Tests en verde | {{N}} |
+| Tests en verde | {{N — omitir esta fila si el proyecto no tiene tests}} |
 | {{métrica relevante al dominio}} | {{valor}} |
-| Última sesión | {{fecha}} — **{{resumen de 1 línea}}**: {{detalle breve}} |
+| Última sesión | {{fecha}} — **{{resumen de 1 línea}}**: {{detalle breve, ≤ ~400 caracteres en total}} — _se sobrescribe cada sesión, nunca se agrega una fila "Sesión anterior"_ |
 
 ---
 
@@ -106,7 +112,7 @@ Ver `references/tooling-roles.md` (skill `tooling-roles`) para el mapeo completo
 
 ---
 
-_Documento de trabajo interno — v0.1. {{footer con conteo de tests y métricas clave, se actualiza cada sesión}}_
+_Documento de trabajo interno — v0.1. {{footer ≤ 300 caracteres: versión + fecha + métricas clave del dominio (conteo de tests solo si el proyecto tiene tests)}}_
 ```
 
 ---
@@ -114,5 +120,6 @@ _Documento de trabajo interno — v0.1. {{footer con conteo de tests y métricas
 ## Notas de uso
 
 - **Sección 4 (Reglas críticas)** debe mantenerse corta — si crece a más de 3-4 reglas, es señal de que el proyecto probablemente necesitaba la estructura completa (`brain/`) desde el principio, no la simple.
-- **El footer de la última línea** se actualiza en cada sesión con las métricas más recientes — es lo primero que el agente debe leer para tener una foto rápida del estado sin cargar todo el archivo.
+- **El footer de la última línea** es una foto rápida del estado (versión, fecha, métricas clave), no una bitácora: se **reemplaza** en cada sesión, nunca se le agrega texto encima del anterior, y no pasa de ~300 caracteres.
+- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md` (o `spec/historial.md` en estructura simple), los `[x]` se mueven a `spec/completado.md` y salen de la §3, y `SPEC.md` completo se mantiene bajo ~15 KB. Ver skill `spec-driven-development`.
 - Si el proyecto usa la estructura simple (sin `brain/`), la Sección 5 hace las veces de lo que en la estructura completa sería el catálogo de ADRs — mantenerla como tabla, no como narrativa.

@@ -4,6 +4,19 @@ Registro único de hitos del harness Suplemento Estrella — Core y todos sus ru
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
+## 2026-09-29
+
+### Fixed
+- **[Runtime Claude Code v0.10.1]** `SPEC.md` crecía sin límite en proyectos reales (5 KB → 126 KB en dos meses en un proyecto consumidor). Causa raíz: las instrucciones decían *qué* actualizar pero no que había que **reemplazar en vez de acumular**, no ponían tope de tamaño ni decían adónde iban los ítems cerrados. Cada checkpoint agregaba bloques "Antes (fecha) — …" al header y filas "Sesión anterior" a la §2 sin borrar los anteriores; los `[x]` se quedaban en la §3; y el footer ("conteo de tests") se usaba como bitácora en proyectos sin tests. Cambios:
+  - `spec-driven-development`: nuevas secciones "Árbitro de destino" (qué va en `SPEC.md` y qué no), "Reemplazar, no acumular" y "Tope de tamaño" (~15 KB, ninguna línea > 600 caracteres, chequeo con `wc -c` y `awk` antes del commit).
+  - `commands/checkpoint.md`: el paso 3 pasa a reemplazar-no-acumular y se agrega un paso obligatorio de chequeo de tamaño antes del commit.
+  - `documentation-convention`, `brain-adr`, `project-init` (`spec-md-template.md`, `claude-md-template.md`) y `CLAUDE.md` de este repo: alineados con la regla. El footer deja de pedir "conteo de tests" y pasa a "métricas clave del dominio (conteo de tests solo si el proyecto tiene tests)".
+  - `spec-md-template.md`: el template abre con un comentario HTML con los límites, para que aparezca en todo `SPEC.md` nuevo.
+- **[Runtime Gemini v0.1.1]** Misma corrección con paridad: `11-spec-driven-development.md` (nueva sección 3b), `06-documentation-convention.md`, `01-brain-kms.md` y `references/gemini-template.md`. `core_version` sube a `0.10.1`.
+
+### Known issues / pendientes
+- El mensaje de confirmación de contexto todavía incluye `[N] tests`, que no aplica a proyectos sin tests, en `spec-driven-development/SKILL.md` y `claude-md-template.md` (Claude Code), y en `GEMINI-RUNTIME.md`, `11-spec-driven-development.md` y `gemini-template.md` (Gemini). No se tocó en esta corrección — queda como ajuste aparte.
+
 ## 2026-09-11
 
 ### Added

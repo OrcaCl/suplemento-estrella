@@ -42,7 +42,7 @@ Trabajar siempre en modo secuencial — una tarea a la vez, **cero subagentes po
 Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` queda diferido hasta un checkpoint explícito (invocado por el humano) o hasta el cierre de sesión, que es obligatorio (ver skill `documentation-convention`).
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
-- `SPEC.md` — marcar ítems completados, actualizar footer con estado
+- `SPEC.md` — reemplazar, no acumular: ítems `[x]` a `spec/completado.md` (salen de la §3), "Última sesión" y footer se sobrescriben. Tope ~15 KB — correr `wc -c SPEC.md` y `awk 'length>600{print NR}' SPEC.md` antes del commit (ver skill `spec-driven-development`)
 - `brain/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` / `REF*-*.md` — si se tomó una decisión de ese tipo
 
 **No esperar instrucción explícita al cerrar sesión** — proponer qué registrar.

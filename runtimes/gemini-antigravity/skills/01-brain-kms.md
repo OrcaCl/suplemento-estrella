@@ -148,6 +148,6 @@ Al ejecutar un checkpoint o cierre de sesión, Gemini debe proponer la actualiza
 
 - brain/index.md $\rightarrow$ Agregar la fila a la tabla consolidada por cada registro nuevo.
 
-- SPEC.md $\rightarrow$ Actualizar el footer y la lista de pendientes.
+- SPEC.md $\rightarrow$ Reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia spec/completado.md. La narrativa de la sesión va en sesiones.md, nunca en SPEC.md (ver 11-spec-driven-development.md, sección 3b).
 
 - Completa la sección ## Commit de cualquier ADR/INT creado en la sesión con la referencia real del commit/checkpoint.

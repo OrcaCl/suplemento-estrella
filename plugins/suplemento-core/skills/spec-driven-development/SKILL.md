@@ -22,8 +22,8 @@ No empezar a trabajar sin esta confirmación — es la forma de detectar tempran
 
 Después de cualquier breakthrough (feature completada, bug crítico resuelto, migración ejecutada), actualizar de inmediato, antes de seguir con la siguiente tarea:
 
-1. `SPEC.md` — marcar ítems `[x]`, actualizar tabla de estado (sección 2) y footer con conteo de tests
-2. `spec/completado.md` — agregar la línea del ítem completado
+1. `SPEC.md` — reemplazar (no acumular) según "Reemplazar, no acumular" más abajo: sacar de la §3 los ítems cerrados, sobrescribir la fila "Última sesión" de la §2 y el footer
+2. `spec/completado.md` — agregar la línea del ítem completado (1 línea, con fecha)
 3. `spec/historial.md` — agregar contenido de references/historial-md-template.md
 4. Si el proyecto usa `brain/`: evaluar si esta decisión amerita un ADR nuevo (ver skill `brain-adr` para el criterio)
 
@@ -43,6 +43,36 @@ Después de cualquier breakthrough (feature completada, bug crítico resuelto, m
 | Una pregunta tangencial, no urgente, para otra audiencia | `brain/TOASK.md` (solo estructura completa) |
 
 Si algo no encaja claramente en una fila, es señal de que puede necesitar su propio archivo dentro de `spec/` — pero antes de crear uno nuevo, confirmar con el usuario. No expandir la estructura de archivos sin esa confirmación.
+
+## Árbitro de destino — qué NUNCA va en SPEC.md
+
+`SPEC.md` es un panel de control, no una bitácora. Un proyecto real pasó de 5 KB a 126 KB en dos meses porque cada checkpoint agregaba un bloque nuevo sin borrar el anterior. Al actualizarlo, cada tipo de contenido tiene un solo destino:
+
+| Qué | Dónde | Qué queda en `SPEC.md` |
+|---|---|---|
+| Narrativa de la sesión, hallazgos, el "por qué" | `brain/sesiones.md` (o `spec/historial.md` en estructura simple) | Nada — ni en el header, ni en el footer, ni en una fila |
+| Ítem terminado (`[x]`) | `spec/completado.md` (1 línea, con fecha) | Nada — sale de la §3 |
+| Detalle técnico de un componente | `spec/features.md` | 1 fila por componente en la §7, sin detalle |
+| Schema de API o hallazgo de integración | `spec/api.md` | Solo el puntero |
+| Decisión de arquitectura, proceso o riesgo | `brain/ADR\|INT\|NOC-*.md` + `brain/index.md` | Solo el puntero, en la §5 |
+
+## Reemplazar, no acumular
+
+- **"Última actualización"** (header) = solo la fecha.
+- **"Última sesión"** (§2) = 1 fila de ≤ ~400 caracteres que **sobrescribe** la anterior. Prohibidas las filas "Sesión anterior" y los bloques "Antes (fecha) — …".
+- **§3 Pendientes** contiene solo `[ ]`. Al marcar un ítem como hecho, se mueve a `spec/completado.md` y se saca de la §3.
+- **Footer** ≤ ~300 caracteres: versión + fecha + métricas clave del dominio (p. ej. conteo de tests **si** el proyecto tiene tests; si no, solo versión y fecha). No es una bitácora.
+
+## Tope de tamaño — chequeo obligatorio antes del commit
+
+`SPEC.md` no debe pasar de ~15 KB ni tener ninguna línea de más de 600 caracteres. Antes de commitear cualquier cambio a `SPEC.md` (checkpoint, cierre de sesión o registro inmediato):
+
+```
+wc -c SPEC.md
+awk 'length>600{print NR}' SPEC.md
+```
+
+Si excede el tope o alguna línea supera los 600 caracteres, condensar y mover el contenido a su destino según la tabla de arriba **antes** del commit. No commitear un `SPEC.md` excedido.
 
 ## Detección de inconsistencias entre SPEC.md y el código real
 

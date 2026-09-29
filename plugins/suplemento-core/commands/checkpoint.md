@@ -8,7 +8,7 @@ Al recibir la palabra "checkpoint" del humano, ejecutar en orden:
 
 1. Revisar qué se hizo desde el último checkpoint o cierre de sesión: commits de código sin documentar, cambios relevantes, decisiones tomadas en la conversación.
 2. **`brain/sesiones.md`** — agregar entrada con hitos, archivos clave y resultados medibles.
-3. **`SPEC.md`** — marcar ítems completados como `[x]`, actualizar el catastro de pendientes y el footer con el conteo de tests vigente.
+3. **`SPEC.md`** — reemplazar, no acumular (ver skill `spec-driven-development`, secciones "Árbitro de destino" y "Reemplazar, no acumular"): los ítems cerrados salen de la §3 hacia `spec/completado.md` (1 línea con fecha); la fila "Última sesión" de la §2 se sobrescribe (≤ ~400 caracteres, sin filas "Sesión anterior"); "Última actualización" es solo la fecha; el footer (≤ ~300 caracteres) lleva versión, fecha y métricas clave del dominio (conteo de tests solo si el proyecto tiene tests). La narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`.
 4. **`brain/index.md`** — actualizar si hay registros nuevos de cualquier categoría (solo tabla + puntero a `sesiones.md`, nunca resumen de sesión — ver skill `brain-adr`).
 5. **Crear el registro que corresponda, según la categoría** (ver skill `brain-adr` para el criterio completo de cuál usar):
    - **`brain/ADR-NNN.md`** — decisión que afecta lo que el sistema hace o cómo se comporta
@@ -19,8 +19,9 @@ Al recibir la palabra "checkpoint" del humano, ejecutar en orden:
    - **`brain/REFX-NNN.md`** — referencia traída manualmente desde otro proyecto (nunca consultada por Code por su cuenta — ver guardrail abajo)
 6. Mostrar al humano un resumen breve de lo que se va a registrar **antes** de escribir los archivos — no asumir silenciosamente qué contó como hito, ni qué categoría corresponde si hay ambigüedad entre dos.
 7. Completar la sección `## Commit` de cualquier `ADR`/`INT`/`NOC`/`DEP` creado en esta sesión, apuntando a la entrada de `sesiones.md` recién agregada.
-8. `git commit` con mensaje descriptivo del período cubierto.
-9. `git push` — el registro no existe hasta que está pusheado (ver skill `documentation-convention`).
+8. **Chequeo de tamaño de `SPEC.md` — obligatorio, antes del commit:** correr `wc -c SPEC.md` y `awk 'length>600{print NR}' SPEC.md`. Si pasa de ~15 KB (15000 bytes) o alguna línea supera 600 caracteres, condensar y mover el contenido a su destino primero — no commitear un `SPEC.md` excedido.
+9. `git commit` con mensaje descriptivo del período cubierto.
+10. `git push` — el registro no existe hasta que está pusheado (ver skill `documentation-convention`).
 
 No usar este comando para commits de código intermedios — es exclusivamente para el registro de documentación (`brain/`, `SPEC.md`) diferido según la skill `documentation-convention`.
 

@@ -83,7 +83,7 @@ Al finalizar cada sesión de trabajo, proponer actualizaciones a:
 
 - spec/historial.md {{o brain/sesiones.md si el proyecto usa Brain KMS}} — hitos y descubrimientos de la sesión
 
-- SPEC.md — marcar ítems completados, actualizar footer con conteo de tests
+- SPEC.md — reemplazar, no acumular: ítems [x] a spec/completado.md (salen de la §3), "Última sesión" y footer se sobrescriben (footer con métricas clave del dominio; conteo de tests solo si el proyecto tiene tests). Tope ~15 KB — correr wc -c SPEC.md antes del commit (ver skill 11-spec-driven-development)
 
 - {{brain/ADR-*.md — si se tomó una decisión de arquitectura relevante (solo Brain KMS)}}
 

@@ -37,10 +37,41 @@ Antes de ejecutar cualquier acción de desarrollo, Gemini debe leer `SPEC.md` y 
 ## 🔄 3. Registro de Avances y Breakthroughs
 
 Al finalizar una tarea o checkpoint, actualizar de forma sincronizada:
-1. `SPEC.md` → Marcar ítems completados `[x]`, actualizar el contador de pruebas unitarias y el footer.
-2. `spec/completado.md` → Agregar el checkbox marcado.
+1. `SPEC.md` → Reemplazar, no acumular (ver sección 3b): sacar de la §3 los ítems cerrados, sobrescribir la fila "Última sesión" de la §2 y el footer.
+2. `spec/completado.md` → Agregar el checkbox marcado (1 línea, con fecha).
 3. `spec/historial.md` (o `brain/sesiones.md` si el proyecto usa Brain KMS) → Registrar el contexto narrativo.
 4. Si la solución involucra un cambio de arquitectura o regla de proceso, proponer el correspondiente registro `ADR` o `INT`.
+
+---
+
+## 🧭 3b. Árbitro de Destino, Reemplazar y Tope de Tamaño
+
+`SPEC.md` es un panel de control, no una bitácora. Un proyecto real pasó de 5 KB a 126 KB en dos meses porque cada checkpoint agregaba un bloque nuevo sin borrar el anterior.
+
+**Árbitro de destino — qué NUNCA va en `SPEC.md`:**
+
+| Qué | Dónde | Qué queda en `SPEC.md` |
+|---|---|---|
+| Narrativa de la sesión, hallazgos, el "por qué" | `brain/sesiones.md` (o `spec/historial.md` en modo simple) | Nada — ni en el header, ni en el footer, ni en una fila |
+| Ítem terminado (`[x]`) | `spec/completado.md` (1 línea, con fecha) | Nada — sale de la §3 |
+| Detalle técnico de un componente | `spec/features.md` | 1 fila por componente en la §7 |
+| Schema de API o hallazgo de integración | `spec/api.md` | Solo el puntero |
+| Decisión de arquitectura, proceso o riesgo | `brain/ADR\|INT\|NOC-*.md` + `brain/index.md` | Solo el puntero, en la §5 |
+
+**Reemplazar, no acumular:**
+- "Última actualización" (header) = solo la fecha.
+- "Última sesión" (§2) = 1 fila de ≤ ~400 caracteres que **sobrescribe** la anterior. Prohibidas las filas "Sesión anterior" y los bloques "Antes (fecha) — …".
+- La §3 contiene solo pendientes `[ ]`.
+- Footer ≤ ~300 caracteres: versión + fecha + métricas clave del dominio (conteo de tests solo si el proyecto tiene tests).
+
+**Tope de tamaño — chequeo obligatorio antes del commit** (checkpoint, cierre de sesión o registro inmediato): `SPEC.md` ≤ ~15 KB y ninguna línea > 600 caracteres.
+
+```
+wc -c SPEC.md
+awk 'length>600{print NR}' SPEC.md
+```
+
+Si excede, condensar y mover el contenido a su destino según la tabla **antes** de commitear.
 
 ---
 

@@ -22,10 +22,11 @@ Se ejecuta **ÚNICAMENTE** cuando el humano dice *"checkpoint"* o solicita regis
 **Algoritmo de Checkpoint:**
 1. Revisar los avances desde el último checkpoint.
 2. Preparar borrador de actualización para `brain/sesiones.md` (resumen cronológico).
-3. Preparar actualización de `SPEC.md` (ítems completados, contador de tests, footer).
+3. Preparar actualización de `SPEC.md` **reemplazando, no acumulando**: ítems cerrados → `spec/completado.md` (salen de la §3); "Última sesión" (§2), header y footer se sobrescriben; la narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`. Reglas completas en `11-spec-driven-development.md` (sección 3b).
 4. Preparar actualización de `brain/index.md` si se crearon nuevos `ADR`, `INT`, `NOC`, etc.
 5. **Presentar el resumen al humano antes de escribir en disco.**
-6. Ejecutar `git commit` descriptivo del período y realizar `git push`.
+6. **Chequeo de tamaño de `SPEC.md` antes del commit:** `wc -c SPEC.md` (≤ ~15 KB) y `awk 'length>600{print NR}' SPEC.md` (ninguna línea > 600 caracteres). Si excede, condensar y mover a su destino primero.
+7. Ejecutar `git commit` descriptivo del período y realizar `git push`.
 
 ### 3. Cierre de Sesión (Obligatorio e Innegociable)
 Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar el procedimiento completo de Checkpoint sin necesidad de que se lo pidan explícitamente.

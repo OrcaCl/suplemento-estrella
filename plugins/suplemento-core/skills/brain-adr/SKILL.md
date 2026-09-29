@@ -73,7 +73,7 @@ Al ejecutar un checkpoint o cerrar sesión (ver skill `documentation-convention`
 1. `brain/sesiones.md` — nueva entrada con hitos, archivos modificados, próximo paso
 2. El registro que corresponda según la tabla de decisión (`ADR`, `INT`, `NOC`, `DEP`, `REF`, o `REFX`) — puede ser más de uno
 3. `brain/index.md` — agregar la fila correspondiente a cualquier registro nuevo
-4. `SPEC.md` — footer y sección de pendientes
+4. `SPEC.md` — reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia `spec/completado.md`. La narrativa de la sesión va en `sesiones.md`, nunca en `SPEC.md` (ver skill `spec-driven-development`)
 5. Completar la sección `## Commit` de cualquier `ADR`/`INT` creado en la sesión, ahora que el commit real ya existe
 
 ## trackers/ — bugs, features, y plantilla de retiros
