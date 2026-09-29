@@ -10,7 +10,7 @@
 Al iniciar cada sesión, después de leer SPEC.md {{y brain/index.md si el proyecto usa brain/}}, confirmar con este mensaje exacto en consola antes de cualquier acción:
 
 ✅ Contexto cargado — SPEC.md v[VERSION]
-| [N] tests | Próximo paso: [PRIMER_ITEM_PENDIENTE]
+| {{[N] tests | — solo si el proyecto tiene tests; si no, eliminar este segmento}}Próximo paso: [PRIMER_ITEM_PENDIENTE]
 
 ---
 

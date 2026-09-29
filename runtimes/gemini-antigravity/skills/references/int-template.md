@@ -32,5 +32,5 @@ Documenta una decisión sobre **cómo el humano y Code trabajan juntos** — pro
 
 ## Notas de uso
 
-- Usar `000` en vez del siguiente consecutivo cuando el registro es conceptualmente anterior a uno ya existente de la misma categoría — ver skill `brain-adr` para el criterio completo.
+- Usar `000` en vez del siguiente consecutivo cuando el registro es conceptualmente anterior a uno ya existente de la misma categoría — ver skill `brain-kms` para el criterio completo.
 - La sección "Nota de alcance" (opcional, no incluida en la plantilla base arriba) puede agregarse al principio del documento cuando el INT se relaciona directamente con otro INT existente — un enlace corto explicando la relación, como en el ejemplo real: *"igual que [INT-001](INT-001-...), este documento usa el prefijo INT — es una decisión sobre cómo trabajamos con la herramienta, no sobre la arquitectura del sistema."*

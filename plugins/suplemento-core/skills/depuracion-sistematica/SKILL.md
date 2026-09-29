@@ -103,7 +103,7 @@ Si la investigación sistemática revela que el problema es genuinamente ambient
 
 - **`tdd-workflow`** — la Fase 4 escribe primero el test que falla (rojo) y recién después el fix. El alcance de ejecución sigue siendo quirúrgico: solo el test de la reproducción, no la suite entera (a menos que el humano lo pida).
 - **`sequential-mode`** — depurar es una tarea a la vez. Nada de lanzar subagentes en paralelo para "probar varias hipótesis" sin aprobación explícita del humano.
-- **`brain-adr`** — un bug que no se va a arreglar ahora se anota en `brain/trackers/bugs.md`; un hallazgo de riesgo mixto que surge durante la depuración va a un `NOC`.
+- **`brain-kms`** — un bug que no se va a arreglar ahora se anota en `brain/trackers/bugs.md`; un hallazgo de riesgo mixto que surge durante la depuración va a un `NOC`.
 
 ## Nota sobre plugins de flujo de trabajo
 

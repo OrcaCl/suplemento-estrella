@@ -1,4 +1,4 @@
-# SKILL: Brain KMS Governance, Structuring & Record Management (brain-adr)
+# SKILL: Brain KMS Governance, Structuring & Record Management (brain-kms)
 
 ## Propósito y Disparadores
 Esta directiva gobierna el uso diario del sistema `brain/` (Brain KMS). Aplícala cuando:

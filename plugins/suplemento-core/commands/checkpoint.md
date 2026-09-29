@@ -9,8 +9,8 @@ Al recibir la palabra "checkpoint" del humano, ejecutar en orden:
 1. Revisar qué se hizo desde el último checkpoint o cierre de sesión: commits de código sin documentar, cambios relevantes, decisiones tomadas en la conversación.
 2. **`brain/sesiones.md`** — agregar entrada con hitos, archivos clave y resultados medibles.
 3. **`SPEC.md`** — reemplazar, no acumular (ver skill `spec-driven-development`, secciones "Árbitro de destino" y "Reemplazar, no acumular"): los ítems cerrados salen de la §3 hacia `spec/completado.md` (1 línea con fecha); la fila "Última sesión" de la §2 se sobrescribe (≤ ~400 caracteres, sin filas "Sesión anterior"); "Última actualización" es solo la fecha; el footer (≤ ~300 caracteres) lleva versión, fecha y métricas clave del dominio (conteo de tests solo si el proyecto tiene tests). La narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`.
-4. **`brain/index.md`** — actualizar si hay registros nuevos de cualquier categoría (solo tabla + puntero a `sesiones.md`, nunca resumen de sesión — ver skill `brain-adr`).
-5. **Crear el registro que corresponda, según la categoría** (ver skill `brain-adr` para el criterio completo de cuál usar):
+4. **`brain/index.md`** — actualizar si hay registros nuevos de cualquier categoría (solo tabla + puntero a `sesiones.md`, nunca resumen de sesión — ver skill `brain-kms`).
+5. **Crear el registro que corresponda, según la categoría** (ver skill `brain-kms` para el criterio completo de cuál usar):
    - **`brain/ADR-NNN.md`** — decisión que afecta lo que el sistema hace o cómo se comporta
    - **`brain/INT-NNN.md`** — decisión que afecta solo cómo el humano y Code trabajan juntos (proceso, herramientas, o convenciones de comunicación)
    - **`brain/NOC-NNN.md`** — hallazgo de riesgo o cuidado mixto, a monitorear, sin ser todavía una decisión

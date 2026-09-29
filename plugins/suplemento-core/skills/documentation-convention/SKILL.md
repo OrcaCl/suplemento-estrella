@@ -5,7 +5,7 @@ description: Convención de registro de cambios en la documentación del proyect
 
 # Documentation Convention
 
-Regla de cuándo se actualiza la documentación del proyecto — complementa a `spec-driven-development` y `brain-adr` (que dicen *dónde* va cada cosa) definiendo *cuándo* debe pasar. Esta versión reemplaza la regla anterior de "registro inmediato post-breakthrough" tras observar que, en la práctica, generaba commits demasiado frecuentes y granulares — el registro de documentación ahora se difiere a momentos explícitos, no a cada avance.
+Regla de cuándo se actualiza la documentación del proyecto — complementa a `spec-driven-development` y `brain-kms` (que dicen *dónde* va cada cosa) definiendo *cuándo* debe pasar. Esta versión reemplaza la regla anterior de "registro inmediato post-breakthrough" tras observar que, en la práctica, generaba commits demasiado frecuentes y granulares — el registro de documentación ahora se difiere a momentos explícitos, no a cada avance.
 
 ## La regla — tres momentos, no más
 

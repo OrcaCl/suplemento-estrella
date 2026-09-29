@@ -68,7 +68,9 @@ Al iniciar cualquier sesión en Antigravity IDE, Gemini debe ejecutar la rutina 
 3. Leer `SPEC.md` completo.
 4. Emitir el mensaje de confirmación estandarizado (SIN EMOJIS):
 
-✅ Contexto cargado — SPEC.md v[VERSION] | [N] tests | Nombre: [NOMBRE_HUMANO_INSTANCIA] | Próximo paso: [PRIMER_ITEM_PENDIENTE]
+✅ Contexto cargado — SPEC.md v[VERSION] | Nombre: [NOMBRE_HUMANO_INSTANCIA] | Próximo paso: [PRIMER_ITEM_PENDIENTE]
+
+Si el proyecto tiene tests, se agrega el segmento `| [N] tests` antes de `| Nombre`; si no los tiene, se omite.
 
 ## 4. Matriz de Disparadores y Enrutamiento Operativo
 

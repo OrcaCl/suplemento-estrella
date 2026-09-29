@@ -75,7 +75,7 @@ La narrativa detrás de cada ítem de `completado.md`. Entradas cronológicas, m
 ---
 ```
 
-**Nota de escala:** en un proyecto simple, `completado.md` + `historial.md` cumplen la función que en un proyecto complejo cumple el sistema `brain/` ADR. Si este archivo empieza a crecer mucho y a consumir tokens de contexto en cada sesión, es la señal de que conviene migrar a `brain/` — ver skill `brain-adr`.
+**Nota de escala:** en un proyecto simple, `completado.md` + `historial.md` cumplen la función que en un proyecto complejo cumple el sistema `brain/` ADR. Si este archivo empieza a crecer mucho y a consumir tokens de contexto en cada sesión, es la señal de que conviene migrar a `brain/` — ver skill `brain-kms`.
 
 ---
 

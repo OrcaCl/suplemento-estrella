@@ -144,7 +144,7 @@ git remote -v
         └── secure/         # material para enseñarle algo puntual al modelo y luego retirarlo — nunca se commitea, nunca se lee en contexto de forma persistente
 ```
 
-Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un checkpoint o cierre de sesión (ver skill `brain-adr`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
+Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un checkpoint o cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
 
 Nota sobre `objetivos.md`: el nombre debe adaptarse al dominio del proyecto (ej. `features.md`, `roadmap.md`) — la función es siempre la misma, backlog vivo entre lo que el usuario necesita y lo que el agente sugiere.
 

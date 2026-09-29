@@ -15,7 +15,9 @@ Aplica cuando:
 Antes de ejecutar cualquier acción de desarrollo, Gemini debe leer `SPEC.md` y confirmar el contexto en consola con este formato exacto:
 
 ✅ Contexto cargado — SPEC.md v[VERSION]
-| [N] tests | Próximo paso: [PRIMER_ITEM_PENDIENTE]
+| Próximo paso: [PRIMER_ITEM_PENDIENTE]
+
+Si el proyecto tiene tests, se agrega el segmento `[N] tests |` antes de `Próximo paso`; si no los tiene, se omite.
 
 ---
 

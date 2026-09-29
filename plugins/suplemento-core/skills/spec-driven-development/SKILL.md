@@ -13,8 +13,10 @@ Antes de cualquier acción, leer `SPEC.md` completo (es corto a propósito, esto
 
 ```
 ✅ Contexto cargado — SPEC.md v[VERSION]
-| [N] tests | Próximo paso: [PRIMER_ITEM_PENDIENTE]
+| Próximo paso: [PRIMER_ITEM_PENDIENTE]
 ```
+
+Si el proyecto tiene tests, se agrega el segmento `[N] tests |` antes de `Próximo paso`; si no los tiene, se omite.
 
 No empezar a trabajar sin esta confirmación — es la forma de detectar temprano si `SPEC.md` está desactualizado respecto al estado real del código (ver "Detección de inconsistencias" más abajo).
 
@@ -25,7 +27,7 @@ Después de cualquier breakthrough (feature completada, bug crítico resuelto, m
 1. `SPEC.md` — reemplazar (no acumular) según "Reemplazar, no acumular" más abajo: sacar de la §3 los ítems cerrados, sobrescribir la fila "Última sesión" de la §2 y el footer
 2. `spec/completado.md` — agregar la línea del ítem completado (1 línea, con fecha)
 3. `spec/historial.md` — agregar contenido de references/historial-md-template.md
-4. Si el proyecto usa `brain/`: evaluar si esta decisión amerita un ADR nuevo (ver skill `brain-adr` para el criterio)
+4. Si el proyecto usa `brain/`: evaluar si esta decisión amerita un ADR nuevo (ver skill `brain-kms` para el criterio)
 
 **No esperar al cierre de sesión para hacer esto.** Acumular actualizaciones "para el final" es la causa más común de que `SPEC.md` quede desactualizado.
 
@@ -91,7 +93,7 @@ Cuando se detecta una inconsistencia de este tipo:
 - Han aparecido 3+ decisiones de arquitectura que valdría la pena poder referenciar individualmente por ID en vez de tener que buscarlas dentro de una narrativa larga
 - El proyecto empezó a integrar con un segundo sistema externo o ganó un segundo colaborador (humano o agente) trabajando en paralelo
 
-Si se detecta esta señal, proponerlo al usuario explícitamente — no migrar la estructura sin confirmación. Ver skill `brain-adr` para el proceso de migración.
+Si se detecta esta señal, proponerlo al usuario explícitamente — no migrar la estructura sin confirmación. Ver skill `brain-kms` para el proceso de migración.
 
 ## Relación con el "modo de trabajo secuencial"
 

@@ -1,11 +1,11 @@
 ---
-name: brain-adr
-description: Disciplina de trabajo con el sistema brain/ (registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión o checkpoint en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
+name: brain-kms
+description: Disciplina de trabajo con el sistema brain/ (Brain KMS, Brain Knowledge Management System; registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión o checkpoint en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
 ---
 
-# Brain ADR
+# Brain KMS
 
-Cómo trabajar día a día con el sistema `brain/` una vez creado (por `project-init`). Esta skill gobierna cuándo crear cada tipo de registro, cómo mantener `index.md` y `sesiones.md` sin que se dupliquen, y cómo usar `trackers/` y `TOASK.md`.
+Cómo trabajar día a día con el sistema `brain/` (Brain KMS — Brain Knowledge Management System) una vez creado (por `project-init`). Esta skill gobierna cuándo crear cada tipo de registro, cómo mantener `index.md` y `sesiones.md` sin que se dupliquen, y cómo usar `trackers/` y `TOASK.md`.
 
 ## Las cinco categorías de registro — tabla de decisión
 
