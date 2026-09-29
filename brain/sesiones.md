@@ -3,6 +3,32 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-29 (continuación) — Brain KMS en Claude Code, docs completos y TOASK.md en la raíz
+
+**Contexto:** con el fix de `SPEC.md` ya pusheado, el usuario pidió cerrar los pendientes heredados: renombrar Brain ADR a Brain KMS "y las otras cosas". Aclaró, con el esquema que se había definido originalmente, que los 4 docs vacíos debían completarse (no retirarse) y que `TOASK.md` debía vivir en la raíz.
+
+- **Brain KMS propagado a Claude Code:** la skill `brain-adr` pasó a `brain-kms` (`git mv`), con las referencias actualizadas en Claude Code y Gemini. `brain-adr-template.md` conserva su nombre — es la plantilla de los registros ADR. Cierra el pendiente explícito de ADR-001. Plugin `0.11.0`, runtime Gemini `0.1.2` (`core_version` `0.11.0`).
+- **`[N] tests` fuera del mensaje de confirmación de contexto** (5 archivos): el segmento pasa a ser opcional, solo si el proyecto tiene tests. Cierra el pendiente que quedó anotado en la sesión anterior.
+- **4 docs completados:** `principles.md`, `decisions.md`, `glossary.md`, `conventions.md`, redactados desde las skills, los ADR y lo que el repo ya aplicaba. `decisions.md` deja explícita la distinción `brain.md ≠ decisions.md`. El usuario definió el propósito de cada uno.
+- **Hallazgo:** `docs/spec.md` decía que `SPEC.md` no debería pasar de ~1000 líneas, contradiciendo el tope de ~15 KB de ADR-006 — corregido. El README ahora lista los 4 docs nuevos.
+- **ADR-007 (nuevo):** `TOASK.md` se mueve de `brain/` a la raíz del proyecto y `project-init` (ambos runtimes) lo crea ahí. Se detectó que `docs/getting-started.md` ya lo listaba en la raíz, en contradicción con lo que generaba el harness. Los proyectos existentes con `brain/TOASK.md` siguen siendo válidos.
+- **Superpowers, decisión marcada como ejecutada:** los 2 ítems S de `TOASK.md` pasan a "Resueltas"; `spec/roadmap-skills.md` los pasa a "Hecho"/"Descartado"; `code-simplicity` deja de depender de Superpowers en su sección de YAGNI. Se dejó abierta en "En curso" solo la validación bajo presión de las 3 skills propias, que el texto original decía que faltaba.
+- **Observación:** ese ítem de validación pide un baseline con subagentes, lo que exige aprobación puntual del humano por `sequential-mode`.
+- Un cambio cosmético de `docs/plugins.md` ("Claude Mem" en negrita) que no hizo Code entró en el commit — probablemente edición manual del usuario desde el IDE.
+
+### Archivos modificados
+- plugins/suplemento-core/skills/brain-kms/ (renombrada desde brain-adr), skills/{code-simplicity,project-init,spec-driven-development}/, project-init/references/{brain-adr-template,claude-md-template}.md, commands/checkpoint.md, plugin.json (0.11.0)
+- runtimes/gemini-antigravity/{GEMINI-RUNTIME.md,runtime.json}, skills/{01,02,11}, skills/references/gemini-template.md
+- docs/{principles,decisions,glossary,conventions}.md (nuevos), docs/{brain,spec,plugins}.md, README.md
+- TOASK.md (movido desde brain/), spec/{completado,roadmap-skills}.md, CHANGELOG.md
+- brain/ADR-007-toask-en-la-raiz-del-proyecto.md, brain/ADR-001 (nota de actualización), brain/index.md, brain/sesiones.md, SPEC.md
+
+### Próximo
+- Validar bajo presión las 3 skills propias (`spec/roadmap-skills.md`) — requiere aprobación humana puntual si usa subagentes.
+- Decisión abierta: si el proyecto consumidor debe actualizar a `0.11.0` para adoptar `brain-kms` y el `TOASK.md` en la raíz.
+
+---
+
 ## Sesión — 2026-09-29 — SPEC.md se reemplaza, no se acumula (v0.10.1)
 
 **Contexto:** otra instancia de Code (Tomás 2), trabajando en `promatic-dashboard-pilot`, detectó que `SPEC.md` había crecido de 5 KB a 126 KB (jul→sep 2026) y trajo a este repo un prompt con la causa raíz, verificada en el historial de git del proyecto consumidor.

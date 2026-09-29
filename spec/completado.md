@@ -6,5 +6,8 @@
 - [x] Marketplace registrado y plugin suplemento-core instalado en el propio Claude Code — 4 ago 2026
 - [x] SPEC.md + brain/ inicializados para el propio repo (uso meta) — 4 ago 2026
 - [x] Superpowers retirado y sus skills reemplazadas por las 3 propias de `suplemento-core` (también en Gemini); cerrados los 2 ítems S de `TOASK.md` que dependían de esa decisión — ejecutado 1 sep 2026, registrado 29 sep 2026
+- [x] Skill `brain-adr` renombrada a `brain-kms` en Claude Code, cerrando el pendiente de ADR-001 (v0.11.0) — 29 sep 2026
+- [x] `[N] tests` retirado del mensaje de confirmación de contexto (opcional, solo si hay tests) en Core y Gemini — 29 sep 2026
+- [x] `docs/principles.md`, `decisions.md`, `glossary.md` y `conventions.md` completados; `docs/` sin archivos vacíos — 29 sep 2026
 - [x] `TOASK.md` movido a la raíz del proyecto (repo, plantillas de `project-init` y ambos runtimes) — 29 sep 2026
 - [x] SPEC.md se reemplaza, no se acumula: árbitro de destino + tope 15 KB en Core y Gemini (ADR-006, v0.10.1) — 29 sep 2026

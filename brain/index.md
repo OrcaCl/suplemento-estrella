@@ -15,6 +15,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-004](ADR-004-readme-breve-y-docs-como-fuente-detallada.md) | README.md breve, docs/ como fuente detallada; instalador de Gemini corregido | ADR | Vigente |
 | [ADR-005](ADR-005-adopcion-de-proyecto-existente-en-runtime-gemini.md) | Modo adopción en project-init de Gemini para proyectos ya iniciados con otro agente | ADR | Vigente |
 | [ADR-006](ADR-006-spec-md-se-reemplaza-no-se-acumula.md) | SPEC.md se reemplaza, no se acumula: árbitro de destino y tope de tamaño | ADR | Vigente |
+| [ADR-007](ADR-007-toask-en-la-raiz-del-proyecto.md) | TOASK.md vive en la raíz del proyecto, no dentro de brain/ | ADR | Vigente |
 
 ---
 

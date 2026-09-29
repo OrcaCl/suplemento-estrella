@@ -58,6 +58,14 @@ Ambos cambios (multi-runtime + rebautizo) se identificaron y decidieron el mismo
 - **Pendiente explícito, no resuelto en esta sesión:** el launcher de Gemini sigue sin terminar — el autor lo retoma después de esta sincronización.
 - No cambia ninguna regla técnica de `sequential-mode`, `tdd-workflow`, ni el resto de la disciplina — esta decisión es de estructura, versionado y nomenclatura, no de método de trabajo.
 
+## Actualización — 2026-09-29
+
+Dos de los pendientes explícitos de esta decisión quedaron resueltos, sin cambiar la decisión original:
+- **Renombre `brain-adr` → `brain-kms` en Claude Code:** ejecutado en v0.11.0.
+- **Contenido de `docs/`:** los archivos que seguían vacíos (`conventions.md`, `glossary.md`, `decisions.md`, `principles.md`) se completaron.
+
+Ver la entrada "Sesión — 2026-09-29 (continuación)" en `brain/sesiones.md`.
+
 ## Commit
 
 Ver entrada "Sesión — 2026-09-11 — v0.10.0: harness multi-runtime + Brain KMS" en `brain/sesiones.md`.
