@@ -3,6 +3,31 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-29 — SPEC.md se reemplaza, no se acumula (v0.10.1)
+
+**Contexto:** otra instancia de Code (Tomás 2), trabajando en `promatic-dashboard-pilot`, detectó que `SPEC.md` había crecido de 5 KB a 126 KB (jul→sep 2026) y trajo a este repo un prompt con la causa raíz, verificada en el historial de git del proyecto consumidor.
+
+- **Hallazgo:** las instrucciones de `suplemento-core` decían qué actualizar en `SPEC.md` pero no que había que reemplazar en vez de acumular, ni ponían tope de tamaño, ni decían adónde iban los ítems cerrados. Además, el footer pedía "conteo de tests" incluso en proyectos sin tests y se usó como bitácora.
+- **ADR-006 (nuevo):** árbitro de destino + reemplazar-no-acumular + tope de ~15 KB con chequeo `wc -c`/`awk` obligatorio antes del commit. Regla completa en `spec-driven-development`; el resto de los archivos lleva versión corta con puntero.
+- **Alcance:** los 12 puntos que indicaba el prompt, en Claude Code y con paridad en Gemini. Verificado con grep (el del prompt y variantes): no queda ninguna instrucción vieja.
+- **Versiones:** plugin `suplemento-core` 0.10.0 → 0.10.1; runtime Gemini 0.1.0 → 0.1.1 (`core_version` 0.10.1). Entrada en `CHANGELOG.md`.
+- **Push rechazado la primera vez:** `origin/main` tenía 7 commits del usuario (ediciones web sobre `plugins/suplemento-core/skills/project-init/references/dep-template.md`: ASCII art de despedida, notas de uso y crédito del arte). No solapaban con los cambios de esta sesión; se resolvió con `git pull --rebase`, sin forzar.
+- **Se aplicó la regla al propio `SPEC.md`:** "Última sesión" y footer sobrescritos, sin bloques "Antes (…)".
+- **Descubrimiento:** el `[N] tests` del mensaje de confirmación de contexto sigue en 5 archivos (Claude Code y Gemini) y tampoco aplica a proyectos sin tests — quedó como pendiente, fuera del alcance del prompt.
+
+### Archivos modificados
+- plugins/suplemento-core/skills/{spec-driven-development,documentation-convention,brain-adr}/SKILL.md, plugins/suplemento-core/commands/checkpoint.md
+- plugins/suplemento-core/skills/project-init/references/{spec-md-template,claude-md-template}.md
+- plugins/suplemento-core/.claude-plugin/plugin.json (0.10.1), CLAUDE.md (raíz)
+- runtimes/gemini-antigravity/skills/{01-brain-kms,06-documentation-convention,11-spec-driven-development}.md, skills/references/gemini-template.md, runtime.json (0.1.1)
+- CHANGELOG.md, brain/ADR-006-spec-md-se-reemplaza-no-se-acumula.md, brain/index.md, brain/sesiones.md, spec/completado.md, SPEC.md
+
+### Próximo
+- Quitar `[N] tests` del mensaje de confirmación de contexto en los 5 archivos.
+- (Pendientes heredados sin cambios: `docs/conventions.md`/`glossary.md`, destino de `docs/principles.md`/`decisions.md`, renombre Brain KMS en Claude Code, `brain/TOASK.md`.)
+
+---
+
 ## Sesión — 2026-09-11 (continuación 6) — Validación en producción: modo adopción funcionó
 
 **Contexto:** el usuario probó en Antigravity IDE, sobre un proyecto real ya inicializado con Claude Code, el flujo completo: `curl | bash` (install-gemini.sh) → `project-init` dentro de Gemini.

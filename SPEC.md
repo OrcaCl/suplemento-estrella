@@ -2,8 +2,12 @@
 
 ## Documento de contexto y descubrimientos
 
-**Versión:** 0.10.0
-**Última actualización:** 2026-09-11
+<!-- LÍMITES DE ESTE ARCHIVO (ADR-006): ≤ 15 KB, ninguna línea > 600 caracteres. REEMPLAZAR, no acumular.
+     Narrativa → brain/sesiones.md · [x] → spec/completado.md · header = solo fecha · "Última sesión" = 1 fila ≤ 400 car. · footer ≤ 300 car.
+     Antes de commitear: wc -c SPEC.md y awk 'length>600{print NR}' SPEC.md. -->
+
+**Versión:** 0.10.1
+**Última actualización:** 2026-09-29
 
 ---
 
@@ -31,9 +35,9 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Skills en `suplemento-core` (Claude Code) | Ver `plugins/suplemento-core/skills/` |
 | Runtimes adicionales | `runtimes/gemini-antigravity/` — 13 skills traducidas para Google Gemini (Antigravity) |
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
-| Versión del plugin `suplemento-core` (Claude Code) | `0.10.0` (fijada en `plugin.json` — primera vez que se fija semver; antes solo hash de commit) |
-| Versión del runtime Gemini | `0.1.0` (`runtimes/gemini-antigravity/runtime.json`, nuevo — versiona independiente del plugin de Claude Code, con campo `core_version` de referencia) |
-| Última sesión | 2026-09-11 — **v0.10.0: harness multi-runtime**. Primer runtime adicional completado (Gemini/Antigravity), incluyendo `install-gemini.sh` (instalador de una línea). Licencia MIT formalizada. README reorganizado — contenido movido a `docs/` |
+| Versión del plugin `suplemento-core` (Claude Code) | `0.10.1` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
+| Versión del runtime Gemini | `0.1.1` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.10.1`) |
+| Última sesión | 2026-09-29 — **v0.10.1: SPEC.md se reemplaza, no se acumula.** Corregida la causa raíz de un `SPEC.md` de 126 KB en un proyecto consumidor: árbitro de destino, regla de reemplazo y tope de ~15 KB en Core y Gemini (ADR-006) |
 
 ---
 
@@ -43,6 +47,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 **Prioridad 0 — Continuidad**
 
+- [ ] Quitar `[N] tests` del mensaje de confirmación de contexto (no aplica a proyectos sin tests) en `spec-driven-development/SKILL.md`, `claude-md-template.md`, `GEMINI-RUNTIME.md`, `11-spec-driven-development.md` y `gemini-template.md`
 - [ ] Revisar `brain/TOASK.md` cuando haya tiempo disponible para las preguntas tipo **S**
 - [ ] Evaluar propagar el rebautizo Brain KMS a Claude Code (`plugins/suplemento-core/skills/brain-adr/` → `brain-kms/`), incluyendo referencias en otras skills y en `CLAUDE.md` del proyecto
 - [ ] Completar `docs/conventions.md` y `docs/glossary.md` — únicos 2 archivos de `docs/` que siguen vacíos tras la reorganización del README (2026-09-11); el resto (`workflow.md`, `philosophy.md`, `plugins.md`, `spec.md`, `getting-started.md`, `brain.md`) ya tiene contenido. `docs/decisions.md` y `docs/principles.md` quedaron sin usar en el reparto — evaluar si se fusionan con otro doc o se retiran (`DEP`)
@@ -67,6 +72,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Licencia del repo: MIT | `LICENSE` en la raíz, declarada en `plugin.json` y `runtime.json` (Gemini) por igual. Ver ADR-003 |
 | `plugins/suplemento-core/` es el runtime de referencia (Claude Code); otros agentes van en `runtimes/` | Decisión explícita: no se reorganizó Claude Code por simetría — evita romper la instalación activa y la ruta que espera `marketplace.json` |
 | Sistema `brain/` se llama formalmente **Brain KMS** (Brain Knowledge Management System) | Adoptado en el runtime de Gemini (`01-brain-kms.md`); pendiente evaluar propagar el renombre a `plugins/suplemento-core/skills/brain-adr/` |
+| `SPEC.md` se reemplaza, no se acumula; tope ~15 KB | Narrativa → `brain/sesiones.md`, `[x]` → `spec/completado.md`, "Última sesión" = 1 fila que se sobrescribe. Chequeo `wc -c` + `awk` antes de cada commit. Ver ADR-006 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---
@@ -86,7 +92,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Componente | Módulo | Estado |
 |---|---|---|
 | Marketplace | `.claude-plugin/marketplace.json` | Registrado |
-| Plugin core (Claude Code) | `plugins/suplemento-core/` | Instalado y activo — v0.10.0 |
+| Plugin core (Claude Code) | `plugins/suplemento-core/` | Instalado y activo — v0.10.1 |
 | Skill project-init | `plugins/suplemento-core/skills/project-init/` | Vigente — usada para inicializar este mismo repo |
 | Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Vigente — 13 skills traducidas, incluye `01-brain-kms.md` |
 
@@ -103,4 +109,4 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 ---
 
-_SPEC.md  — v0.10.0. Última actualización: 2026-09-11._
+_SPEC.md — v0.10.1. Última actualización: 2026-09-29._
