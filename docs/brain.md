@@ -76,9 +76,10 @@ brain/
 ├── DEP-000.md
 │
 ├── index.md
-├── sesiones.md
-└── TOASK.md
+└── sesiones.md
 ```
+
+`TOASK.md` ya no vive dentro de `brain/`: está en la raíz del proyecto, junto a `SPEC.md` y `SHAME.md`, porque es un archivo operativo. Ver la sección `TOASK.md` más abajo.
 
 Cada proyecto puede adaptar esta estructura según sus necesidades.
 

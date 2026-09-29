@@ -114,7 +114,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 ---
 
-### C. brain/TOASK.md (Post-it Digital)
+### C. TOASK.md — en la raíz del proyecto (Post-it Digital)
 
 Categorías de audiencia: A = humano/administrador del proyecto · D = desarrollador/proveedor externo · S = investigable internamente por el agente.
 

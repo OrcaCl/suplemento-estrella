@@ -56,6 +56,6 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Test quirúrgico** — Regla de `tdd-workflow`: después de un cambio se corre únicamente el test directamente relacionado; ampliar el alcance requiere preguntar al humano.
 
-**TOASK** — `brain/TOASK.md`: preguntas pendientes, no un backlog. Se clasifican por quién debe responderlas: **A** (humano o decisión de producto), **D** (proveedor o servicio externo) y **S** (investigable por el agente, cuando el humano le diga que hay tiempo).
+**TOASK** — `TOASK.md` (raíz del proyecto): preguntas pendientes, no un backlog. Se clasifican por quién debe responderlas: **A** (humano o decisión de producto), **D** (proveedor o servicio externo) y **S** (investigable por el agente, cuando el humano le diga que hay tiempo).
 
 **Trackers** — `brain/trackers/`: bugs que un sistema externo tiene (`bugs.md`) y features que se le pedirían (`features.md`), con sus plantillas.

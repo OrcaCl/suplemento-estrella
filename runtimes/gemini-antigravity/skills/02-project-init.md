@@ -48,7 +48,7 @@ Si la respuesta del usuario en el paso 1 es no, tratar como proyecto nuevo y con
 
 Misma estructura que el runtime de Claude Code — ver `references/spec-folder-template.md` y las plantillas de `brain/` (`references/adr-template.md`, `int-template.md`, `noc-template.md`, `dep-template.md`, `ref-template.md`, `refx-template.md`).
 
-`brain/index.md`, `sesiones.md`, `TOASK.md` y la estructura de `trackers/`/`files/` se crean desde el día 1. Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, etc. no se crean vacíos — el primero de cada categoría se crea cuando ocurre la decisión real.
+`brain/index.md`, `sesiones.md` y la estructura de `trackers/`/`files/` se crean desde el día 1, y `TOASK.md` se crea en la **raíz** del proyecto (no dentro de `brain/`). Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, etc. no se crean vacíos — el primero de cada categoría se crea cuando ocurre la decisión real.
 
 ## Paso 2 — Archivos ignore, siempre como par
 

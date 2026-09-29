@@ -119,6 +119,7 @@ git remote -v
 ├── SPEC.md
 ├── CLAUDE.md
 ├── README.md
+├── TOASK.md                # preguntas/ideas tangenciales, categorizadas por audiencia — en la raíz, no dentro de brain/
 ├── .gitignore
 ├── .claudeignore
 ├── spec/
@@ -130,7 +131,6 @@ git remote -v
 └── brain/
     ├── index.md            # SOLO tabla de registros (todas las categorías) + puntero a sesiones.md
     ├── sesiones.md         # registro cronológico, entrada por sesión, más reciente arriba
-    ├── TOASK.md            # preguntas/ideas tangenciales, categorizadas por audiencia
     ├── trackers/
     │   ├── bugs.md
     │   ├── bugs-report-template.md

@@ -7,7 +7,7 @@ Suplemento Estrella nació pensado para Claude Code y se complementaba con los s
 | Plugin | Función |
 |---|---|
 | **suplemento-core** | Metodología, documentación, estructura del proyecto y contexto compartido entre el desarrollador y el agente. |
-| Claude Mem | Memoria operativa del agente para conocimiento interno que no necesita formar parte de la documentación compartida. |
+| **Claude Mem** | Memoria operativa del agente para conocimiento interno que no necesita formar parte de la documentación compartida. |
 | Superpowers | *(Retirado, 2026-09-01)* Planificación, estrategias de implementación, subagentes y apoyo al proceso de desarrollo. |
 
 **Estado actual:** Superpowers fue retirado — sus funciones de planificación, diseño colaborativo y depuración fueron reemplazadas por 3 skills propias del plugin (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`), con dos diferencias deliberadas: ejecución secuencial por defecto (sin ofrecer subagentes como recomendación) y rutas de guardado integradas con `brain/` (Brain KMS). Ver `CHANGELOG.md` (raíz) y `brain/` para el detalle de la decisión.

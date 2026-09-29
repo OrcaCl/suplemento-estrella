@@ -32,7 +32,7 @@ Si el proyecto tiene tests, se agrega el segmento `[N] tests |` antes de `Próxi
 | Convenciones, diccionarios de datos o anexos (sin secretos) | `spec/datos.md` |
 | Backlog vivo entre usuario y agente | `spec/objetivos.md` |
 | Decisión de arquitectura o producto (solo en Brain KMS) | `brain/ADR-NNN.md` |
-| Pregunta no urgente categorizada por audiencia (solo en Brain KMS) | `brain/TOASK.md` |
+| Pregunta no urgente categorizada por audiencia (solo en Brain KMS) | `TOASK.md` (raíz del proyecto) |
 
 ---
 

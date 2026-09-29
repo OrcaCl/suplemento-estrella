@@ -97,7 +97,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 ---
 
-## brain/TOASK.md
+## TOASK.md (en la raíz del proyecto)
 
 Preguntas o ideas que surgen durante el desarrollo pero que no son la tarea actual — un post-it digital, categorizado por audiencia para saber a quién preguntarle después.
 

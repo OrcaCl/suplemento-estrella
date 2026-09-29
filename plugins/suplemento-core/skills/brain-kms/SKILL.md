@@ -84,7 +84,9 @@ Al ejecutar un checkpoint o cerrar sesión (ver skill `documentation-convention`
 
 Instancias completas de bugs y features siempre van en `trackers/generated/`.
 
-## TOASK.md — sin cambios
+## TOASK.md — en la raíz del proyecto
+
+`TOASK.md` vive en la **raíz del proyecto**, junto a `SPEC.md` y `SHAME.md` — es un archivo operativo, no un registro de `brain/`. Los proyectos creados antes de v0.11.0 lo tienen en `brain/TOASK.md`; siguen siendo válidos y no hace falta moverlo.
 
 Preguntas o ideas tangenciales, categorizadas por audiencia (A/D/S). No promover automáticamente un ítem a un registro formal sin confirmación del usuario.
 

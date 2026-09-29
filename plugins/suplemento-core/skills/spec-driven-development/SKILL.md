@@ -42,7 +42,7 @@ Después de cualquier breakthrough (feature completada, bug crítico resuelto, m
 | Una convención, diccionario, o dato de referencia (nunca secretos) | `spec/datos.md` |
 | Un ítem de backlog, venga del usuario o sugerido por el agente | `spec/{{objetivos}}.md` |
 | Una decisión de arquitectura costosa de revertir | `brain/ADR-NNN.md` (solo si el proyecto usa estructura completa) |
-| Una pregunta tangencial, no urgente, para otra audiencia | `brain/TOASK.md` (solo estructura completa) |
+| Una pregunta tangencial, no urgente, para otra audiencia | `TOASK.md` en la raíz del proyecto (solo estructura completa) |
 
 Si algo no encaja claramente en una fila, es señal de que puede necesitar su propio archivo dentro de `spec/` — pero antes de crear uno nuevo, confirmar con el usuario. No expandir la estructura de archivos sin esa confirmación.
 

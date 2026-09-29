@@ -2,17 +2,18 @@
 
 ## En curso
 
-- [ ] Observar en uso real el solapamiento entre Superpowers y otros plugins de flujo de trabajo antes de fijar convención — origen: brain/TOASK.md
-- [ ] Probar en uso real las 3 skills nuevas (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`) que reemplazan a `brainstorming`/`writing-plans`/`systematic-debugging` de Superpowers — objetivo: poder desinstalar Superpowers entero. Falta validar bajo presión (baseline con subagentes) según `writing-skills`.
+- [ ] Validar bajo presión las 3 skills propias (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`) con un baseline con subagentes, según `writing-skills`. La decisión de retirar Superpowers ya está ejecutada; esto es solo la validación posterior
 
 ## Hecho
 
+- [x] Retirar Superpowers y reemplazar sus skills por las 3 skills propias de `suplemento-core` (traducidas al formato de cada runtime, incluido Gemini) — 2026-09-01
+- [x] Solapamiento entre Superpowers y otros plugins de flujo de trabajo — resuelto al retirar Superpowers — 2026-09-01
 - [x] Crear equivalentes propios de las 3 skills de Superpowers sin cobertura en suplemento-core (diseño/planificación/depuración) — 2026-09-01
 
 ## Backlog
 
-- [ ] Evaluar si `code-simplicity` debería referenciar YAGNI de Superpowers en vez de mantener redacción propia paralela
+_Nada todavía._
 
 ## Descartado
 
-_Nada todavía._
+- `code-simplicity` referenciando YAGNI de Superpowers — sin objeto: Superpowers fue retirado (2026-09-01); la skill mantiene su propia redacción

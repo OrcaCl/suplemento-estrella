@@ -35,11 +35,9 @@ Preguntas para decidir si una abstracción es inevitable o prematura:
 
 Si las respuestas apuntan a "no es necesario todavía", usar la solución directa.
 
-## Relación con YAGNI (Superpowers)
+## Relación con YAGNI
 
-Si el proyecto tiene el plugin Superpowers instalado, su skill `test-driven-development` incluye YAGNI (You Aren't Gonna Need It) como principio central. KISS/DRY/no-sobreingeniería de esta skill y YAGNI de Superpowers apuntan a la misma familia de disciplina — no son contradictorios, pero **conviene no duplicar la instrucción en dos lugares** del contexto del agente. Si ambos plugins están activos, esta skill puede referenciar YAGNI en vez de repetir la idea con otras palabras.
-
-> Nota abierta (ver `TOASK.md` del proyecto): la relación exacta entre las skills de planning/ejecución de Superpowers y las de otros plugins de memoria (si están instalados) sigue sin resolverse formalmente. No asumir prioridad de una sobre otra sin que el usuario lo confirme para ese proyecto específico.
+YAGNI (You Aren't Gonna Need It) es la misma familia de disciplina que KISS y "no sobreingeniería": no construir hoy lo que solo se necesitaría en un futuro hipotético. Esta skill lo cubre con su propia redacción, sin depender de ningún plugin externo — Superpowers, que antes aportaba su versión de YAGNI, fue retirado del ecosistema (2026-09-01).
 
 ## Ejemplos de aplicación
 
