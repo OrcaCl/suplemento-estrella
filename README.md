@@ -59,15 +59,17 @@ Este README es intencionalmente breve. El detalle vive en `docs/`:
 | [`docs/brain.md`](docs/brain.md) | Brain KMS — sistema de memoria persistente del proyecto (ADR, INT, NOC, DEP, REF/REFX) |
 | [`docs/spec.md`](docs/spec.md) | `SPEC.md` como panel de control, cuándo escalar a `spec/` |
 | [`docs/plugins.md`](docs/plugins.md) | Ecosistema recomendado, qué incluye la metodología, multi-runtime |
+| [`docs/principles.md`](docs/principles.md) | Principios concretos: KISS, DRY, TDD, SDD, diseño previo, modo secuencial |
+| [`docs/decisions.md`](docs/decisions.md) | Cómo se registran y mantienen las decisiones dentro de Brain KMS |
+| [`docs/conventions.md`](docs/conventions.md) | Convenciones de nombres, estructura, documentación, versionado y commits |
+| [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, checkpoint, SHAME…) |
 | [`CHANGELOG.md`](CHANGELOG.md) | Historial de hitos, todas las capas (Core + runtimes) |
-
-> **Nota:** `docs/conventions.md` y `docs/glossary.md` están pendientes de contenido — ver `SPEC.md` para el seguimiento.
 
 ---
 
 ## Estado del proyecto
 
-Suplemento Estrella se encuentra en **desarrollo activo** (v0.10.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
+Suplemento Estrella se encuentra en **desarrollo activo** (v0.11.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
 
 Los forks y contribuciones son bienvenidos.
 

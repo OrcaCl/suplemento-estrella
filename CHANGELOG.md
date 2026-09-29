@@ -14,7 +14,11 @@ Versionado semántico (semver) desde 2026-09-11 — antes cada componente versio
   - `spec-md-template.md`: el template abre con un comentario HTML con los límites, para que aparezca en todo `SPEC.md` nuevo.
 - **[Runtime Gemini v0.1.1]** Misma corrección con paridad: `11-spec-driven-development.md` (nueva sección 3b), `06-documentation-convention.md`, `01-brain-kms.md` y `references/gemini-template.md`. `core_version` sube a `0.10.1`.
 
+### Added
+- **[Core]** `docs/principles.md`, `docs/decisions.md`, `docs/glossary.md` y `docs/conventions.md` — los últimos 4 archivos de `docs/` que seguían vacíos. Redactados a partir de las skills, los ADR y las convenciones que el repo ya aplicaba, sin contenido nuevo inventado. `decisions.md` explica cómo se gestionan las decisiones dentro de Brain KMS y se distingue de `brain.md`, que explica el sistema. El README los lista en su tabla de documentación.
+
 ### Changed
+- **[Core]** `docs/spec.md` corregido: decía que `SPEC.md` no debería pasar de ~1000 líneas, lo que contradecía el tope de ~15 KB de ADR-006. `README.md` sube su versión de estado a v0.11.0.
 - **[Runtime Claude Code v0.11.0]** La skill `brain-adr` se renombra a **`brain-kms`** (`plugins/suplemento-core/skills/brain-kms/`), propagando el rebautizo Brain KMS que ADR-001 dejó pendiente para Claude Code. Se actualizan las referencias en `checkpoint.md`, `documentation-convention`, `spec-driven-development`, `depuracion-sistematica`, `project-init` (y sus `references/`) y en el runtime de Gemini. **Cambio visible para el usuario:** cualquier proyecto que invoque o cite la skill por nombre debe usar `brain-kms`. `brain-adr-template.md` conserva su nombre — sigue siendo la plantilla de los registros ADR.
 - **[Runtime Claude Code v0.11.0 / Runtime Gemini v0.1.2]** El mensaje de confirmación de contexto ya no incluye `[N] tests` por defecto — no aplica a proyectos sin tests. Si el proyecto tiene tests, el segmento se agrega; si no, se omite. Afecta `spec-driven-development`, `claude-md-template.md`, `GEMINI-RUNTIME.md`, `11-spec-driven-development.md` y `gemini-template.md`. `core_version` del runtime de Gemini sube a `0.11.0`.
 
