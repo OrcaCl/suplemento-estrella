@@ -44,11 +44,11 @@ Este aviso vive aquí (y no solo en el comando) porque si un comando local tapa 
 En orden (detalle completo en `commands/ward.md` — esta skill no lo duplica):
 1. Revisa qué se hizo desde el último ward o cierre de sesión
 2. Actualiza `brain/sesiones.md`
-3. Actualiza `SPEC.md` **reemplazando, no acumulando** — cierre de ítems al archivo único de cerrados (ID + fecha + evidencia), "Última sesión" y footer se sobrescriben — reglas completas en `spec-driven-development`
+3. Actualiza `SPEC.md` **reemplazando, no acumulando** — cierre de ítems a `spec/cerrados.md` (ID original + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben — reglas completas en `spec-driven-development`
 4. Reconcilia pendientes: `- [ ]` y listas fuera de §3 se consolidan en §3 o se marcan obsoletos
 5. Actualiza `brain/index.md` si corresponde y crea el registro (ADR/INT/NOC/DEP/REF/REFX) que corresponda
 6. **Muestra un resumen al humano antes de escribir** — nunca asume silenciosamente qué contó como hito
-7. **Chequeo mecánico de `SPEC.md`** con `check_spec.sh` antes del commit; si falla (código ≠ 0), no se commitea
+7. **Chequeo de `SPEC.md`** contra la lista de topes (líneas, sesiones, footer, pendientes fuera de §3) antes del commit; si excede, no se commitea
 8. `git commit` con mensaje descriptivo del período — **sin push**
 
 ## Cierre de sesión — el disparador que nunca se salta

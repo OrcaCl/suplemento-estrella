@@ -48,7 +48,7 @@ Métodos descartados (y por qué): {{si aplica}}
 
 ## spec/cerrados.md
 
-Archivo **único** de ítems cerrados (reemplaza a `completado.md` desde suplemento-core 0.12.0). Cada entrada lleva ID, fecha y evidencia.
+Archivo **único** de ítems cerrados (reemplaza a `completado.md` desde suplemento-core 0.12.0). Cada entrada lleva **el mismo ID que tenía en la lista de pendientes**, fecha y evidencia, y se ordena **por ID ascendente** (no por orden de llegada), para encontrar un ID sin ir adelante y atrás.
 
 ```markdown
 # Cerrados
@@ -57,27 +57,9 @@ Archivo **único** de ítems cerrados (reemplaza a `completado.md` desde supleme
 **2 — ✅ CERRADO ({{fecha}}), descartado.** {{Título}}. {{motivo}}. Evidencia: {{...}}.
 ```
 
-**Regla de cierre:** borrar la fila de la §3 de `SPEC.md` → pegarla aquí con ID + fecha + evidencia → agregar el ID a la lista "Cerrados" de la §3. Cerrar por "ya estaba hecho" exige evidencia verificable, no solo "se implementó". Los IDs no se reutilizan. La narrativa del *por qué* va en `historial.md` (o `brain/sesiones.md`), no aquí.
+**Regla de cierre:** borrar la fila de la §3 de `SPEC.md` → insertarla aquí, en su posición por ID, con ID + fecha + evidencia → agregar el ID a la lista "Cerrados" de la §3. Cerrar por "ya estaba hecho" exige evidencia verificable, no solo "se implementó". Los IDs no se reutilizan. La narrativa del *por qué* va en `historial.md` (o `brain/sesiones.md`), no aquí.
 
 Si el proyecto ya tiene un `spec/completado.md` (de 0.11 o anterior), no se borra: se marca `DEPRECATED` con un aviso que apunta a este archivo.
-
----
-
-## spec/historial.md
-
-La narrativa detrás de cada ítem de `cerrados.md`. Entradas cronológicas, más reciente arriba.
-
-```markdown
-# Historial
-
-## {{fecha}} — {{título breve}}
-
-{{2-4 líneas explicando qué se hizo, por qué, y cualquier hallazgo relevante}}
-
----
-```
-
-**Nota de escala:** en un proyecto simple, `cerrados.md` + `historial.md` cumplen la función que en un proyecto complejo cumple el sistema `brain/` ADR. Si este archivo empieza a crecer mucho y a consumir tokens de contexto en cada sesión, es la señal de que conviene migrar a `brain/` — ver skill `brain-kms`.
 
 ---
 

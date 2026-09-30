@@ -39,7 +39,7 @@ Skill: `sequential-mode`. Una tarea a la vez, **cero subagentes por defecto**. P
 
 ## Spec-Driven Development (SDD)
 
-Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad del proyecto: se lee primero en cada sesión y se mantiene corto. Un principio propio de esta metodología: **`SPEC.md` se reemplaza, no se acumula** — tope de 1000 líneas (configurable), verificado por `check_spec.sh`; narrativa a `brain/sesiones.md`, ítems cerrados a `spec/cerrados.md` con ID + fecha + evidencia. Ver [spec.md](spec.md) y ADR-006.
+Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad del proyecto: se lee primero en cada sesión y se mantiene corto. Un principio propio de esta metodología: **`SPEC.md` se reemplaza, no se acumula** — tope de 1000 líneas (configurable), revisado al leerlo y antes de cada commit; narrativa a `brain/sesiones.md`, ítems cerrados a `spec/cerrados.md` con ID + fecha + evidencia. Ver [spec.md](spec.md) y ADR-006.
 
 ## Documentar en momentos definidos
 

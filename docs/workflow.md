@@ -57,9 +57,9 @@ El agente hará lo siguiente:
 - registrar nuevos ADR, INT, NOC, DEP o REF/REFX cuando corresponda
 - actualizar `sesiones.md`
 - limpiar `TOASK.md`
-- cerrar los ítems resueltos: salen de la §3 y pasan a `spec/cerrados.md` con ID, fecha y evidencia
+- cerrar los ítems resueltos: salen de la §3 y pasan a `spec/cerrados.md` con su mismo ID, fecha y evidencia, ordenados por ID
 - revisar que no queden pendientes fuera de la lista de `SPEC.md`
-- verificar con `check_spec.sh` que `SPEC.md` no excede los topes
+- verificar que `SPEC.md` no excede los topes
 - realizar `commit`
 - realizar `push`
 

@@ -122,12 +122,9 @@ git remote -v
 ├── TOASK.md                # preguntas/ideas tangenciales, categorizadas por audiencia — en la raíz, no dentro de brain/
 ├── .gitignore
 ├── .claudeignore
-├── scripts/
-│   └── check_spec.sh       # copia de plugins/suplemento-core/scripts/check_spec.sh — sale ≠ 0 si SPEC.md excede los topes
 ├── spec/
 │   ├── api.md
-│   ├── cerrados.md         # archivo único de ítems cerrados: ID + fecha + evidencia
-│   ├── historial.md        # deprecated — se mantiene sin uso activo, ver nota
+│   ├── cerrados.md         # archivo único de ítems cerrados: ID original + fecha + evidencia, ordenado por ID
 │   ├── datos.md
 │   └── objetivos.md
 └── brain/
@@ -148,11 +145,7 @@ git remote -v
 
 Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un `ward` o cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
 
-**Nota sobre `scripts/check_spec.sh`:** copiarlo desde el plugin (`${CLAUDE_PLUGIN_ROOT}/scripts/check_spec.sh`) al crear el proyecto y avisar al humano que existe un hook `pre-commit` opcional que lo hace cumplir (ver `spec-driven-development/references/migracion-0.12.md`). El bloque "Configuración de SPEC" de `CLAUDE.md` (plantilla `claude-md-template.md`) fija sus topes.
-
 Nota sobre `objetivos.md`: el nombre debe adaptarse al dominio del proyecto (ej. `features.md`, `roadmap.md`) — la función es siempre la misma, backlog vivo entre lo que el usuario necesita y lo que el agente sugiere.
-
-**Nota sobre `spec/historial.md`:** archivo deprecated — se mantiene por continuidad histórica, sin uso activo. `brain/sesiones.md` y los registros de `brain/` cubren completamente el rol narrativo que este archivo cumplía antes de que `brain/` existiera siempre desde el inicio. No completarlo con contenido nuevo.
 
 **Nota sobre `files/secure/`:** no es solo "privado" en abstracto — es material que se usa para darle contexto puntual al modelo sobre algo (documentación de un sistema externo, un manual técnico) y que después de cumplir su propósito puede retirarse, a diferencia de los otros dos niveles de `files/` que se acumulan indefinidamente.
 

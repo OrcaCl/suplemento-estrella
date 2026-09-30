@@ -25,6 +25,19 @@ Esto instala únicamente el contenido del plugin (`plugins/suplemento-core/`), n
 
 Si quieres explorar el código fuente sin instalarlo, usa `git clone` con sparse checkout apuntando solo a `plugins/suplemento-core/`.
 
+#### Actualizar el plugin en un proyecto que ya está funcionando
+
+El plugin se instala una vez por usuario, no por proyecto: al actualizarlo, todos tus proyectos pasan a la versión nueva. Desde la terminal:
+
+```bash
+claude plugin marketplace update suplemento-estrella
+claude plugin update suplemento-core@suplemento-estrella
+```
+
+Reinicia Claude Code para que cargue la versión nueva y confirma con `claude plugin list`.
+
+Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`.
+
 ### 🟢 Gemini (Antigravity IDE)
 
 Desde la terminal integrada de tu espacio de trabajo:
@@ -35,6 +48,10 @@ curl -fsSL https://raw.githubusercontent.com/OrcaCl/suplemento-estrella/main/ins
 
 Instala el runtime en `.gemini/` dentro de tu proyecto, sin necesidad de clonar el repo completo. Ver `runtimes/gemini-antigravity/` para el detalle del runtime.
 
+#### Actualizar el runtime en un proyecto que ya está funcionando
+
+El runtime vive dentro de cada proyecto, así que se actualiza proyecto por proyecto: vuelve a correr el mismo comando de instalación desde la raíz del proyecto. Sobrescribe el contenido de `.gemini/` con la versión nueva; no toca `SPEC.md`, `brain/`, `spec/` ni tu `GEMINI.md`. Como con Claude Code, si la versión trae cambios de convención, revisa el [`CHANGELOG.md`](CHANGELOG.md); para la 0.12.0, la guía está en `.gemini/skills/references/spec-migracion-0.12.md`.
+
 ### Después de instalar (cualquier runtime)
 
 Dile al agente que inicie el proyecto:
@@ -44,6 +61,13 @@ project-init
 ```
 
 Y sigue los pasos que te va preguntando para dejar todo listo.
+
+Durante el trabajo, dos comandos cuidan el registro de la sesión:
+
+- **`ward`** — guarda en `brain/` y `SPEC.md` lo pendiente y hace commit local, sin push. Úsalo a mitad de sesión.
+- **`listeilor`** — cierra la sesión: verifica que no falte nada por respaldar, revisa que no queden pendientes sin anotar, y hace el commit y push finales.
+
+(`checkpoint`, el nombre anterior, quedó deprecado en 0.12.0.)
 
 ---
 
@@ -69,7 +93,7 @@ Este README es intencionalmente breve. El detalle vive en `docs/`:
 
 ## Estado del proyecto
 
-Suplemento Estrella se encuentra en **desarrollo activo** (v0.11.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
+Suplemento Estrella se encuentra en **desarrollo activo** (v0.12.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
 
 Los forks y contribuciones son bienvenidos.
 

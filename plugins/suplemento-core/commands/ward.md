@@ -10,7 +10,7 @@ Al recibir la palabra "ward" del humano, ejecutar en orden:
 1. Revisar qué se hizo desde el último ward o cierre de sesión: commits de código sin documentar, cambios relevantes, decisiones tomadas en la conversación.
 2. **`brain/sesiones.md`** — agregar entrada con hitos, archivos clave y resultados medibles.
 3. **`SPEC.md`** — reemplazar, no acumular (ver skill `spec-driven-development`, secciones "Árbitro de destino", "Reemplazar, no acumular" y "Regla de cierre de un ítem"):
-   - **Cerrar un ítem:** borrar su fila de la §3 → pegarla en el archivo de cerrados (`spec/cerrados.md`, o el que declare `archivo_cerrados` en `CLAUDE.md`) con formato `**ID — ✅ CERRADO (fecha)[, motivo].** Título. 1–2 frases de qué se hizo o por qué se descartó + evidencia`. Si el ítem se cierra por "ya estaba hecho", la evidencia debe ser **verificable** (consulta, test o commit), no solo "se implementó".
+   - **Cerrar un ítem:** borrar su fila de la §3 → insertarla en `spec/cerrados.md` **con el mismo ID que traía en la lista de pendientes**, en su posición por ID ascendente (el archivo se ordena por ID, no por orden de llegada), con formato `**ID — ✅ CERRADO (fecha)[, motivo].** Título. 1–2 frases de qué se hizo o por qué se descartó + evidencia` → agregar el ID a la lista "Cerrados" de la §3. Si el ítem se cierra por "ya estaba hecho", la evidencia debe ser **verificable** (consulta, test o commit), no solo "se implementó".
    - La fila "Última sesión" de la §2 se sobrescribe (≤ ~400 caracteres). Filas "Sesión anterior": exactamente las que declare `sesiones_anteriores_en_spec` (por defecto 0); lo más antiguo vive solo en `brain/sesiones.md`.
    - "Última actualización" es solo la fecha; el footer es una línea (≤ ~300 caracteres) con versión, fecha y métricas clave del dominio.
    - La narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`.
@@ -25,14 +25,10 @@ Al recibir la palabra "ward" del humano, ejecutar en orden:
    - **`brain/REFX-NNN.md`** — referencia traída manualmente desde otro proyecto (nunca consultada por Code por su cuenta — ver guardrail abajo)
 7. Mostrar al humano un resumen breve de lo que se va a registrar **antes** de escribir los archivos — no asumir silenciosamente qué contó como hito, ni qué categoría corresponde si hay ambigüedad entre dos.
 8. Completar la sección `## Commit` de cualquier `ADR`/`INT`/`NOC`/`DEP` creado en esta sesión, apuntando a la entrada de `sesiones.md` recién agregada.
-9. **Chequeo mecánico de `SPEC.md` — obligatorio, antes del commit:** correr `check_spec.sh` (ver abajo). Si sale con código ≠ 0, condensar y mover el contenido a su destino y volver a correrlo — **no commitear un `SPEC.md` que falla**. Las advertencias (`WARN`) se informan al humano pero no bloquean.
+9. **Chequeo de `SPEC.md` — obligatorio, antes del commit:** revisar la lista de topes de la skill `spec-driven-development` ("Tope de tamaño"): líneas ≤ `spec_tope_lineas` (1000 por defecto) y ninguna > 600 caracteres, filas "Sesión anterior" = `sesiones_anteriores_en_spec`, footer de una línea con la misma versión que la cabecera, ningún `- [ ]` fuera de §3 ni `[x]` dentro de ella, IDs sin duplicar. Si algo excede, condensar y mover el contenido a su destino — **no commitear un `SPEC.md` excedido**. Si está al 80 % del tope, avisar al humano.
 10. `git commit` con mensaje descriptivo del período cubierto. **Sin `git push`:** ward guarda localmente; el push lo hace `listeilor` al cerrar la sesión. Informar al humano que quedó commit local sin pushear.
 
 No usar este comando para commits de código intermedios — es exclusivamente para el registro de documentación (`brain/`, `SPEC.md`) diferido según la skill `documentation-convention`.
-
-## El script `check_spec.sh`
-
-Vive en `scripts/check_spec.sh` dentro del plugin: invocarlo como `bash "${CLAUDE_PLUGIN_ROOT}/scripts/check_spec.sh" SPEC.md`. Si la variable no está definida, usar la copia del proyecto (`scripts/check_spec.sh`) o ubicarlo con `find ~/.claude/plugins -path '*suplemento-core*/scripts/check_spec.sh'`. Sale con 1 si `SPEC.md` excede los topes (líneas, líneas > 600 caracteres, filas "Sesión anterior", footer, `- [ ]` fuera de §3, `[x]` sin sacar de §3, versión cabecera ≠ footer, IDs duplicados) y con 0 si pasa. `--report` lista todo sin bloquear (auditoría de higiene). Topes configurables en `CLAUDE.md` — ver skill `spec-driven-development`.
 
 ## Guardrail — REFX nunca dispara navegación a otro proyecto
 

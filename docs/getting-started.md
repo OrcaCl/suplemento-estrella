@@ -36,6 +36,8 @@ Luego instala Suplemento Estrella usando la terminal de Claude Code o la UI de c
 /plugin install suplemento-core@suplemento-estrella
 ```
 
+Para actualizar el plugin en un proyecto que ya está funcionando, ver [Actualizar el plugin](../README.md#actualizar-el-plugin-en-un-proyecto-que-ya-está-funcionando) en el README.
+
 Opcionalmente instala también **Claude Mem** (memoria operativa del agente) — ver `docs/plugins.md` para el detalle de cómo se complementan.
 
 ---

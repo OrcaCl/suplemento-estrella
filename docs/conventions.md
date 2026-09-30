@@ -62,7 +62,7 @@ Alcances usados: `core`, `runtime-gemini`, `brain`, `meta`. Si un cambio afecta 
 
 - Los commits de código son continuos; un commit de código no implica tocar `brain/` ni `SPEC.md`.
 - El commit de un `ward` cubre el período completo y es local (sin push); `listeilor` hace el commit final y el push (el registro no existe hasta que está pusheado).
-- Antes de commitear un cambio a `SPEC.md`: `bash scripts/check_spec.sh SPEC.md` (debe salir con código 0).
+- Antes de commitear un cambio a `SPEC.md`: revisar que no pase de 1000 líneas ni tenga líneas de más de 600 caracteres (ver `spec-driven-development`).
 
 ## Skills
 

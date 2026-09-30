@@ -58,4 +58,4 @@ El dato real sigue accesible vía consulta SQL directa contra la columna, para d
 
 ## Deuda técnica aceptable
 
-Si un modelo existente no tiene `raw_data` y se decide agregarlo, es aceptable que los registros históricos queden con `raw_data = NULL` — no hace falta backfill retroactivo si el dato original ya no está disponible. Documentar esto como deuda conocida en `spec/historial.md` o el ADR correspondiente, no como bloqueante.
+Si un modelo existente no tiene `raw_data` y se decide agregarlo, es aceptable que los registros históricos queden con `raw_data = NULL` — no hace falta backfill retroactivo si el dato original ya no está disponible. Documentar esto como deuda conocida en `brain/sesiones.md` o el ADR correspondiente, no como bloqueante.

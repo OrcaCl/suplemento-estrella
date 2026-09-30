@@ -32,8 +32,6 @@ Gemini no carga todas las reglas en la memoria activa del prompt inicial. Utiliz
 runtimes/gemini-antigravity/
 ├── GEMINI-RUNTIME.md                 # Este documento (Master Specification)
 ├── runtime.json                      # Metadatos del Runtime (v0.1.3 | core_version: 0.12.0)
-├── scripts/
-│   └── check_spec.sh                 # Verifica topes de SPEC.md (sale ≠ 0 si excede); igual al de plugins/suplemento-core/scripts/
 └── skills/
     ├── 01-brain-kms.md               # Bóveda de conocimiento, ADRs y registros
     ├── 02-project-init.md            # Onboarding, gitignore/geminiignore e INT-000

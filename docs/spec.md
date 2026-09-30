@@ -13,10 +13,10 @@ Cuando el proyecto crece, la información se distribuye dentro de la carpeta `sp
 La causa habitual de que crezca no es el proyecto, sino **acumular en vez de reemplazar**: en un proyecto real pasó de 5 KB a 134 KB en cuatro meses porque cada checkpoint agregaba un bloque nuevo sin borrar el anterior (ver ADR-006 en `brain/`). Por eso:
 
 - "Última actualización" es solo la fecha, y "Última sesión" (§2) es **una** fila que se sobrescribe.
-- Los ítems cerrados salen de la §3 y pasan al archivo único `spec/cerrados.md`, con **ID + fecha + evidencia**. La §3 es la **lista única** de pendientes: no hay `- [ ]` ni secciones "Próxima sesión" fuera de ella.
+- Los ítems cerrados salen de la §3 y pasan al archivo único `spec/cerrados.md`, con **el mismo ID que tenían + fecha + evidencia**, ordenados por ID (no por orden de llegada). La §3 es la **lista única** de pendientes: no hay `- [ ]` ni secciones "Próxima sesión" fuera de ella.
 - Se pueden conservar N filas "Sesión anterior" si el proyecto lo declara (`sesiones_anteriores_en_spec`); por defecto ninguna.
 - La narrativa de la sesión va a `brain/sesiones.md`, nunca a `SPEC.md`.
-- Antes de commitear un cambio a `SPEC.md` corre `scripts/check_spec.sh`: sale con código ≠ 0 si excede los topes (líneas, líneas largas, filas de sesión, footer, pendientes fuera de §3). Con `--report` audita sin bloquear. Un tope se **ajusta**, no se ignora.
+- El tope se controla al leer el archivo (la lectura informa el número de líneas) y antes de cada commit de `SPEC.md`: líneas, líneas largas, filas de sesión, footer y pendientes fuera de §3. No hay script. Un tope se **ajusta**, no se ignora.
 
 Si `SPEC.md` crece demasiado, la recomendación es **mover** (no borrar) el detalle hacia archivos específicos dentro de `spec/`.
 

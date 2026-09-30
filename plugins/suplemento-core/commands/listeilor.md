@@ -13,7 +13,7 @@ Al recibir la palabra "listeilor" del humano (o cuando la sesión esté terminan
    - ¿`SPEC.md` refleja el estado real (versión, "Última sesión", ítems ya cerrados fuera de §3)?
 2. **Revisión de pendientes.** ¿Quedaron cosas por hacer que no están en la lista de §3? Fuentes: colas de la narrativa de la sesión, `TODO`/"pendiente" dicho en la conversación, `- [ ]` fuera de §3 y ítems que la sesión dejó a medias. Proponer al humano los ítems nuevos (con ID nuevo) y los ítems a cerrar (con evidencia verificable, no solo "se implementó").
 3. Mostrar al humano un **resumen de lo faltante** (pasos 1 y 2) antes de escribir nada, y esperar su visto bueno — igual que `ward`.
-4. **Ejecutar el procedimiento de `ward`** (`commands/ward.md`, pasos 1 a 9) sobre lo pendiente, incluido el chequeo mecánico `check_spec.sh`. No duplicar aquí sus reglas.
+4. **Ejecutar el procedimiento de `ward`** (`commands/ward.md`, pasos 1 a 9) sobre lo pendiente, incluido el chequeo de topes de `SPEC.md` (paso 9). No duplicar aquí sus reglas.
 5. `git commit` final del período cubierto (si `ward` ya dejó el commit y no hay nada más, no crear uno vacío).
 6. `git push` — el registro no existe hasta que está pusheado.
 7. **Confirmar el cierre:** si el push no se pudo completar (sin conexión, remoto no configurado, rechazo), dejarlo señalado explícitamente como pendiente para la próxima sesión y **no** reportar la sesión como "cerrada correctamente".

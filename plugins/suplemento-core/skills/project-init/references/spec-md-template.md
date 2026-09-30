@@ -2,7 +2,7 @@
 
 Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de Suplemento Estrella, independiente del dominio del proyecto.
 
-`SPEC.md` es el panel de control: corto (≤ 1000 líneas por defecto, configurable con `spec_tope_lineas`), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
+`SPEC.md` es el panel de control: corto (≤ 1000 líneas por defecto, configurable con `spec_tope_lineas`), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `brain/`.
 
 ---
 
@@ -12,7 +12,7 @@ Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los p
      detalle técnico de componentes → spec/features.md · schemas de API → spec/api.md.
      Header = solo fecha · §2 "Última sesión" = 1 fila ≤ 400 car. que sobrescribe la anterior · footer = 1 línea ≤ 300 car.
      Pendientes: SOLO en §3 (sin "Próxima sesión"/"Prioridad N" ni `- [ ]` en otras secciones).
-     Antes de commitear: bash scripts/check_spec.sh SPEC.md (debe salir con código 0). Si falla, condensar primero. -->
+     Antes de commitear: revisar que no pase del tope de líneas ni tenga líneas > 600 caracteres. Si excede, condensar primero. -->
 
 # {{Nombre del Proyecto}}
 
@@ -48,7 +48,7 @@ Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los p
 
 ## 3. Pendientes activos
 
-> Lista única: los ítems abiertos existen **solo aquí**. Un ítem conserva su ID hasta cerrarse y el ID no se reutiliza. Al cerrarlo: borrar la fila → pegarla en `spec/cerrados.md` con ID + fecha + evidencia → agregar el ID a "Cerrados".
+> Lista única: los ítems abiertos existen **solo aquí**. Un ítem conserva su ID hasta cerrarse y el ID no se reutiliza. Al cerrarlo: borrar la fila → insertarla en `spec/cerrados.md` con su mismo ID + fecha + evidencia, en su posición por ID → agregar el ID a "Cerrados".
 
 **Alta**
 
@@ -114,8 +114,7 @@ Ver `references/tooling-roles.md` (skill `tooling-roles`) para el mapeo completo
 | [`spec/api.md`](spec/api.md) | Integración con sistemas externos: auth, comandos, estructura de respuestas |
 | [`spec/{{objetivos}}.md`](spec/{{objetivos}}.md) | Backlog vivo — lo que el usuario necesita + lo que el agente sugiere |
 | [`spec/datos.md`](spec/datos.md) | Convenciones, diccionarios, anexos — nunca secretos |
-| [`spec/historial.md`](spec/historial.md) | Narrativa de decisiones y hallazgos de sesiones pasadas |
-| [`spec/cerrados.md`](spec/cerrados.md) | Archivo único de ítems cerrados: ID + fecha + evidencia |
+| [`spec/cerrados.md`](spec/cerrados.md) | Archivo único de ítems cerrados: ID original + fecha + evidencia, ordenado por ID |
 
 ---
 
@@ -128,5 +127,5 @@ _Documento de trabajo interno — v0.1. {{footer ≤ 300 caracteres: versión + 
 
 - **Sección 4 (Reglas críticas)** debe mantenerse corta — si crece a más de 3-4 reglas, es señal de que el proyecto probablemente necesitaba la estructura completa (`brain/`) desde el principio, no la simple.
 - **El footer de la última línea** es una foto rápida del estado (versión, fecha, métricas clave), no una bitácora: se **reemplaza** en cada sesión, nunca se le agrega texto encima del anterior, y no pasa de ~300 caracteres.
-- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md` (o `spec/historial.md` en estructura simple), los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (ID + fecha + evidencia) y `SPEC.md` completo se mantiene bajo `spec_tope_lineas` (1000 por defecto), verificado con `scripts/check_spec.sh`. Ver skill `spec-driven-development`.
+- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md`, los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID) y `SPEC.md` completo se mantiene bajo `spec_tope_lineas` (1000 por defecto), revisado al leerlo y antes de cada commit. Ver skill `spec-driven-development`.
 - Si el proyecto usa la estructura simple (sin `brain/`), la Sección 5 hace las veces de lo que en la estructura completa sería el catálogo de ADRs — mantenerla como tabla, no como narrativa.

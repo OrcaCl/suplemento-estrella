@@ -39,18 +39,16 @@ Cuando `SPEC.md` supera las 500 líneas o el proyecto requiere modularización �
 ---
 
 ## 2. spec/cerrados.md (Archivo Único de Ítems Cerrados)
-*Reemplaza a completado.md desde core 0.12.0. Cada entrada lleva ID, fecha y evidencia verificable.*
+*Reemplaza a completado.md desde core 0.12.0. Cada entrada lleva el mismo ID que tenía en la lista de pendientes, fecha y evidencia verificable, y se ordena por ID ascendente (no por orden de llegada).*
 
 ## Cerrados
 
 **1 — ✅ CERRADO ({{fecha}}).** {{Título}}. {{1–2 frases: qué se hizo o por qué se descartó}}. Evidencia: {{consulta, test o commit}}.
 **2 — ✅ CERRADO ({{fecha}}), descartado.** {{Título}}. {{motivo}}. Evidencia: {{...}}.
 
-*Regla de cierre: borrar la fila de la §3 de SPEC.md → pegarla aquí con ID + fecha + evidencia → agregar el ID a "Cerrados" en §3. Los IDs no se reutilizan. Un spec/completado.md existente no se borra: se marca DEPRECATED con aviso.*
+*Regla de cierre: borrar la fila de la §3 de SPEC.md → insertarla aquí, en su posición por ID, con ID + fecha + evidencia → agregar el ID a "Cerrados" en §3. Los IDs no se reutilizan. Un spec/completado.md existente no se borra: se marca DEPRECATED con aviso.*
 
-## 3 HISTORIAL.MD DEPRECATED----
-
-## 4. spec/datos.md (Diccionario y Convenciones)
+## 3. spec/datos.md (Diccionario y Convenciones)
 
 Convenciones de nomenclatura, términos del dominio y anexos.
 
@@ -70,7 +68,7 @@ Convenciones de nomenclatura, términos del dominio y anexos.
 *REGLA NO NEGOCIABLE: NUNCA almacenar contraseñas, tokens, claves API ni credenciales sensibles en este archivo.*
 
 
-## 5. spec/objetivos.md (Backlog Vivo Adaptable)
+## 4. spec/objetivos.md (Backlog Vivo Adaptable)
 
 El nombre de este archivo se adapta al dominio del proyecto (ej. roadmap.md, incidencias.md, features.md).
 
