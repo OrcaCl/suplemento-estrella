@@ -6,4 +6,4 @@ Formato: `**ID — ✅ CERRADO (fecha)[, motivo].** Título. 1–2 frases de qu�
 
 Los cerrados anteriores a 0.12.0 no tenían ID: están en [`completado.md`](completado.md) (deprecado, se conserva como histórico).
 
-_(Sin ítems cerrados todavía con ID.)_
+**1 — ✅ CERRADO (2026-09-30).** Validar bajo presión las 3 skills propias (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`). Las skills se usaron en el proyecto "paciente cero" y en otros proyectos en desarrollo, y funcionan bien. Evidencia: validación del autor en uso real (proyectos privados), 2026-09-30.

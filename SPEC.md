@@ -47,7 +47,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 **Alta**
 
-- [ ] **1** — Validar bajo presión las 3 skills propias (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`): ver `spec/roadmap-skills.md`. El baseline pide subagentes: requiere aprobación humana puntual (`sequential-mode`)
+- _(vacío)_
 
 **Media**
 
@@ -58,7 +58,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 - _(vacío)_
 
-Cerrados: _(ninguno todavía — ver `spec/cerrados.md`)_
+Cerrados: 1 _(detalle en `spec/cerrados.md`)_
 
 ---
 

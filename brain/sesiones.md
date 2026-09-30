@@ -14,6 +14,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 - **Hallazgos:** la plantilla de `CLAUDE.md` de `project-init` traía una "Regla de registro inmediato — NO NEGOCIABLE" (otra cara de la contradicción); `project-init/SKILL.md` no tenía el `---` de apertura del frontmatter (la skill no se registraba), corregido; `docs/spec.md` había pasado de la regla original (~1000 líneas) a 15 KB en v0.10.1, ahora se revierte a líneas.
 - **README** incorpora cómo actualizar el plugin (Claude Code) y el runtime (Gemini) en proyectos ya en funcionamiento; se retiró `spec/historial.md` de las plantillas de `project-init` y Gemini.
 - **ADR-008 (nuevo)** e **INT-001** (renumerado desde INT-004, `Implementado`). Este repo migra su `SPEC.md` (v0.12.0, §3 con IDs), crea `spec/cerrados.md` y depreca `spec/completado.md`.
+- **Ítem 1 cerrado** (validación de las 3 skills propias): el autor las probó en uso real en el proyecto "paciente cero" y otros; primer ítem en `spec/cerrados.md`, y `roadmap-skills.md` lo pasa a "Hecho".
 - **Observación:** este repo sigue usando el plugin instalado 0.11.0 hasta que el autor lo actualice; `ward`/`listeilor` aún no están disponibles en su Claude Code local.
 
 ### Archivos modificados
@@ -25,7 +26,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 ### Próximo
 - Actualizar el plugin instalado (`claude plugin marketplace update suplemento-estrella` + `claude plugin update suplemento-core@suplemento-estrella`) y reiniciar, para usar `ward`/`listeilor` en este repo.
 - Migrar el proyecto "paciente cero" a 0.12.0 y comprobar los criterios de INT-001 §4 con los comandos reales.
-- Validar bajo presión las 3 skills propias (`spec/roadmap-skills.md`).
+- Sin pendientes de alta prioridad; el siguiente ítem abierto es el 2 de `SPEC.md` §3.
 
 ---
 
