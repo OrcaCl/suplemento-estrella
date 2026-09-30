@@ -1,5 +1,7 @@
 # Completado
 
+> ⚠️ DEPRECATED desde suplemento-core 0.12.0. Los ítems cerrados viven en [`cerrados.md`](cerrados.md), con ID, fecha y evidencia. Este archivo se conserva solo como histórico.
+
 - [x] Estructura de plugin instalable (`.claude-plugin/`, `plugins/suplemento-core/`) — 22 jul 2026
 - [x] Relanzamiento como Suplemento Estrella (nombres corregidos, sin versión fija) — 4 ago 2026
 - [x] Reglas endurecidas (subagentes, TDD, checkpoint) + brain/ ampliado a 6 categorías + comando checkpoint — 4 ago 2026

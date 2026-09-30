@@ -9,6 +9,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | ID | Título | Categoría | Estado |
 |---|---|---|---|
 | [INT-000](INT-000-nombre-humano-para-la-instancia.md) | Adoptar un nombre humano para la instancia de Code en el proyecto | INT | Vigente |
+| [INT-001](INT-001-checkpoint-spec-reemplazar-no-acumular.md) | Pedido de corrección: checkpoint y SPEC.md reemplazar, no acumular (origen: proyecto "paciente cero") | INT | Implementado (ver ADR-008) |
 | [ADR-001](ADR-001-harness-multi-runtime-y-brain-kms.md) | Harness multi-runtime (v0.10.0) y rebautizo de brain/ como Brain KMS | ADR | Vigente |
 | [ADR-002](ADR-002-changelog-unico-en-la-raiz.md) | CHANGELOG.md único en la raíz, versionado por capa preservado | ADR | Vigente |
 | [ADR-003](ADR-003-licencia-mit-y-estructura-runtime-json.md) | Licencia MIT del repo y estructura de runtime.json (Gemini) | ADR | Vigente |
@@ -16,6 +17,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-005](ADR-005-adopcion-de-proyecto-existente-en-runtime-gemini.md) | Modo adopción en project-init de Gemini para proyectos ya iniciados con otro agente | ADR | Vigente |
 | [ADR-006](ADR-006-spec-md-se-reemplaza-no-se-acumula.md) | SPEC.md se reemplaza, no se acumula: árbitro de destino y tope de tamaño | ADR | Vigente |
 | [ADR-007](ADR-007-toask-en-la-raiz-del-proyecto.md) | TOASK.md vive en la raíz del proyecto, no dentro de brain/ | ADR | Vigente |
+| [ADR-008](ADR-008-ward-listeilor-y-spec-con-tope-por-lineas.md) | ward y listeilor reemplazan a checkpoint; SPEC.md con tope por líneas y cerrados ordenados por ID | ADR | Vigente |
 
 ---
 

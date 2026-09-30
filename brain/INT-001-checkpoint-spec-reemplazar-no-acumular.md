@@ -6,7 +6,7 @@
 >
 > **Destinatario:** la instancia de Claude Code que mantiene el plugin `suplemento-core` (marketplace `suplemento-estrella`). Este documento es autocontenido: no requiere acceso al repo `gestion-incidencias`.
 
-**Estado:** propuesto (30 Sep 2026) · **Plugin observado:** `suplemento-core` 0.11.0 (el problema se originó bajo 0.10.x)
+**Estado:** implementado (30 Sep 2026) en `suplemento-core` 0.12.0, con desvíos — ver ADR-008 · **Plugin observado:** `suplemento-core` 0.11.0 (el problema se originó bajo 0.10.x)
 
 ## 1. Qué pasó (evidencia medida en un proyecto real)
 
@@ -103,4 +103,4 @@ Publicar como `suplemento-core` **0.12.0** (cambio de comportamiento del comando
 
 ## Commit
 
-Ver sesión 30 Septiembre 2026 — registrado en `brain/sesiones.md` y `brain/index.md`. Estado: enviado a la instancia del plugin el 30 Sep 2026; se espera `suplemento-core` 0.12.0.
+Ver sesión 30 Septiembre 2026 — registrado en `brain/sesiones.md` y `brain/index.md`. Implementado el 30 Sep 2026 en `suplemento-core` 0.12.0 (commits `b8e8d6e` y `f82fcb1`); las decisiones de implementación y los desvíos de §3 (sin script, tope por líneas, `ward`/`listeilor`, `cerrados.md` ordenado por ID) están en ADR-008. Ver entrada "Sesión — 2026-09-30 — ward/listeilor, SPEC por líneas y cerrados por ID (0.12.0)" en el `brain/sesiones.md` de este repo.

@@ -3,6 +3,32 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-09-30 — ward/listeilor, SPEC por líneas y cerrados por ID (0.12.0)
+
+**Contexto:** otra instancia de Code (la del proyecto "paciente cero") envió INT-004 (renumerado aquí como INT-001): su `SPEC.md` llegó a 134 KB pese al fix de 0.10.1. Pidió actualizar `suplemento-core` a 0.12.0. Antes de implementar se revisaron las propuestas y el autor corrigió varias (ver ADR-008).
+
+- **Release 0.12.0 (`b8e8d6e`):** `ward`/`listeilor`, `check_spec.sh` con hook opcional, `cerrados.md`, configuración por proyecto, guías de migración y normalización, runtime Gemini 0.1.3 en paridad. Publicado y pusheado.
+- **Corrección del autor (`f82fcb1`):** el plugin no debe traer código → se eliminó el script y el hook; el tope pasa a **1000 líneas**, controlado al leer el SPEC y en `ward`/`listeilor` con una lista. Se eliminaron las claves `archivo_cerrados` e `ids_en_pendientes`.
+- **`cerrados.md` con nombre fijo**, ID original del pendiente y **orden por ID** (no por llegada). El autor renombra a mano `catastro-historico.md` en el proyecto de origen.
+- **`ward` = checkpoint sin push; `listeilor` = cierre de sesión con push.** El nombre `ward` (del lore de internet: guardar algo para volver a revisarlo) además elimina la colisión con el `checkpoint.md` local. `checkpoint` queda deprecado como alias.
+- **Hallazgos:** la plantilla de `CLAUDE.md` de `project-init` traía una "Regla de registro inmediato — NO NEGOCIABLE" (otra cara de la contradicción); `project-init/SKILL.md` no tenía el `---` de apertura del frontmatter (la skill no se registraba), corregido; `docs/spec.md` había pasado de la regla original (~1000 líneas) a 15 KB en v0.10.1, ahora se revierte a líneas.
+- **README** incorpora cómo actualizar el plugin (Claude Code) y el runtime (Gemini) en proyectos ya en funcionamiento; se retiró `spec/historial.md` de las plantillas de `project-init` y Gemini.
+- **ADR-008 (nuevo)** e **INT-001** (renumerado desde INT-004, `Implementado`). Este repo migra su `SPEC.md` (v0.12.0, §3 con IDs), crea `spec/cerrados.md` y depreca `spec/completado.md`.
+- **Observación:** este repo sigue usando el plugin instalado 0.11.0 hasta que el autor lo actualice; `ward`/`listeilor` aún no están disponibles en su Claude Code local.
+
+### Archivos modificados
+- plugins/suplemento-core/{.claude-plugin/plugin.json, commands/{ward,listeilor,checkpoint}.md, skills/{spec-driven-development,documentation-convention,project-init,brain-kms,tdd-workflow,raw-data-audit-trail}/}
+- runtimes/gemini-antigravity/{GEMINI-RUNTIME.md, runtime.json, skills/{01,06,11}, skills/references/{gemini-template,spec-folder-template,spec-migracion-0.12}.md}, install-gemini.sh
+- README.md, CHANGELOG.md, CLAUDE.md, docs/{spec,conventions,workflow,principles,glossary,decisions,brain,getting-started}.md
+- brain/{ADR-008,INT-001,index,sesiones}, spec/{cerrados,completado,datos}.md, SPEC.md
+
+### Próximo
+- Actualizar el plugin instalado (`claude plugin marketplace update suplemento-estrella` + `claude plugin update suplemento-core@suplemento-estrella`) y reiniciar, para usar `ward`/`listeilor` en este repo.
+- Migrar el proyecto "paciente cero" a 0.12.0 y comprobar los criterios de INT-001 §4 con los comandos reales.
+- Validar bajo presión las 3 skills propias (`spec/roadmap-skills.md`).
+
+---
+
 ## Sesión — 2026-09-29 (continuación) — Brain KMS en Claude Code, docs completos y TOASK.md en la raíz
 
 **Contexto:** con el fix de `SPEC.md` ya pusheado, el usuario pidió cerrar los pendientes heredados: renombrar Brain ADR a Brain KMS "y las otras cosas". Aclaró, con el esquema que se había definido originalmente, que los 4 docs vacíos debían completarse (no retirarse) y que `TOASK.md` debía vivir en la raíz.
