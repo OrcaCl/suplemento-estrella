@@ -46,24 +46,26 @@ Métodos descartados (y por qué): {{si aplica}}
 
 ---
 
-## spec/completado.md
+## spec/cerrados.md
 
-Listado plano, sin narrativa. Cada línea es un checkbox marcado con fecha.
+Archivo **único** de ítems cerrados (reemplaza a `completado.md` desde suplemento-core 0.12.0). Cada entrada lleva ID, fecha y evidencia.
 
 ```markdown
-# Completado
+# Cerrados
 
-- [x] {{tarea}} — {{fecha}}
-- [x] {{tarea}} — {{fecha}}
+**1 — ✅ CERRADO ({{fecha}}).** {{Título}}. {{1–2 frases: qué se hizo o por qué se descartó}}. Evidencia: {{consulta, test o commit verificable}}.
+**2 — ✅ CERRADO ({{fecha}}), descartado.** {{Título}}. {{motivo}}. Evidencia: {{...}}.
 ```
 
-**Regla:** si sientes la necesidad de explicar el *por qué* de un ítem completado, esa explicación va en `historial.md`, no aquí. Este archivo es solo el índice.
+**Regla de cierre:** borrar la fila de la §3 de `SPEC.md` → pegarla aquí con ID + fecha + evidencia → agregar el ID a la lista "Cerrados" de la §3. Cerrar por "ya estaba hecho" exige evidencia verificable, no solo "se implementó". Los IDs no se reutilizan. La narrativa del *por qué* va en `historial.md` (o `brain/sesiones.md`), no aquí.
+
+Si el proyecto ya tiene un `spec/completado.md` (de 0.11 o anterior), no se borra: se marca `DEPRECATED` con un aviso que apunta a este archivo.
 
 ---
 
 ## spec/historial.md
 
-La narrativa detrás de cada ítem de `completado.md`. Entradas cronológicas, más reciente arriba.
+La narrativa detrás de cada ítem de `cerrados.md`. Entradas cronológicas, más reciente arriba.
 
 ```markdown
 # Historial
@@ -75,7 +77,7 @@ La narrativa detrás de cada ítem de `completado.md`. Entradas cronológicas, m
 ---
 ```
 
-**Nota de escala:** en un proyecto simple, `completado.md` + `historial.md` cumplen la función que en un proyecto complejo cumple el sistema `brain/` ADR. Si este archivo empieza a crecer mucho y a consumir tokens de contexto en cada sesión, es la señal de que conviene migrar a `brain/` — ver skill `brain-kms`.
+**Nota de escala:** en un proyecto simple, `cerrados.md` + `historial.md` cumplen la función que en un proyecto complejo cumple el sistema `brain/` ADR. Si este archivo empieza a crecer mucho y a consumir tokens de contexto en cada sesión, es la señal de que conviene migrar a `brain/` — ver skill `brain-kms`.
 
 ---
 

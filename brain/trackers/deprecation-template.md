@@ -20,4 +20,4 @@
 
 ## Commit
 
-{{Referencia a la entrada correspondiente en brain/sesiones.md, o "Pendiente al próximo /checkpoint o cierre de sesión."}}
+{{Referencia a la entrada correspondiente en brain/sesiones.md, o "Pendiente al próximo /ward o cierre de sesión."}}

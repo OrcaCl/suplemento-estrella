@@ -39,11 +39,11 @@ Skill: `sequential-mode`. Una tarea a la vez, **cero subagentes por defecto**. P
 
 ## Spec-Driven Development (SDD)
 
-Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad del proyecto: se lee primero en cada sesión y se mantiene corto. Un principio propio de esta metodología: **`SPEC.md` se reemplaza, no se acumula** — tope de ~15 KB, narrativa a `brain/sesiones.md`, ítems cerrados a `spec/completado.md`. Ver [spec.md](spec.md) y ADR-006.
+Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad del proyecto: se lee primero en cada sesión y se mantiene corto. Un principio propio de esta metodología: **`SPEC.md` se reemplaza, no se acumula** — tope de 1000 líneas (configurable), verificado por `check_spec.sh`; narrativa a `brain/sesiones.md`, ítems cerrados a `spec/cerrados.md` con ID + fecha + evidencia. Ver [spec.md](spec.md) y ADR-006.
 
 ## Documentar en momentos definidos
 
-Skill: `documentation-convention`. Los commits de código son continuos; el registro en `brain/` y `SPEC.md` se difiere a un **checkpoint** (lo pide el humano) o al **cierre de sesión** (obligatorio). El agente no decide por su cuenta que algo "amerita" registrarse. Ver [workflow.md](workflow.md).
+Skill: `documentation-convention`. Los commits de código son continuos; el registro en `brain/` y `SPEC.md` se difiere a un **`ward`** (lo pide el humano; guarda sin push) o al **cierre de sesión con `listeilor`** (obligatorio; verifica, revisa pendientes y hace push). El agente no decide por su cuenta que algo "amerita" registrarse. Ver [workflow.md](workflow.md).
 
 ## Integración
 

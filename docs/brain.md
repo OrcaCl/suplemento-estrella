@@ -261,7 +261,7 @@ Porque no toda pregunta merece consumir tiempo, contexto o tokens inmediatamente
 
 Una vez resueltas, las preguntas dejan de vivir en TOASK.
 
-Su respuesta consolidada pasa a `spec/completado.md`, mientras TOASK vuelve a representar únicamente el estado actual del proyecto.
+Su respuesta consolidada pasa a `spec/cerrados.md`, mientras TOASK vuelve a representar únicamente el estado actual del proyecto.
 
 ---
 

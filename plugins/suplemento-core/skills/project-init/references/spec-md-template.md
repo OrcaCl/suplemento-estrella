@@ -2,16 +2,17 @@
 
 Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de Suplemento Estrella, independiente del dominio del proyecto.
 
-`SPEC.md` es el panel de control: corto (~15 KB máximo), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
+`SPEC.md` es el panel de control: corto (≤ 1000 líneas por defecto, configurable con `spec_tope_lineas`), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `spec/historial.md` o `brain/`.
 
 ---
 
 ```markdown
-<!-- LÍMITES DE ESTE ARCHIVO: ≤ 15 KB, ninguna línea > 600 caracteres.
-     Al actualizar: REEMPLAZAR, no acumular. Narrativa → brain/sesiones.md · ítems [x] → spec/completado.md ·
+<!-- LÍMITES DE ESTE ARCHIVO: ≤ 1000 líneas (spec_tope_lineas), ninguna línea > 600 caracteres.
+     Al actualizar: REEMPLAZAR, no acumular. Narrativa → brain/sesiones.md · ítems cerrados → spec/cerrados.md (ID + fecha + evidencia) ·
      detalle técnico de componentes → spec/features.md · schemas de API → spec/api.md.
-     Header = solo fecha · §2 "Última sesión" = 1 fila ≤ 400 car. que sobrescribe la anterior · footer ≤ 300 car.
-     Antes de commitear: wc -c SPEC.md (≤ 15000) y awk 'length>600{print NR}' SPEC.md. Si excede, condensar primero. -->
+     Header = solo fecha · §2 "Última sesión" = 1 fila ≤ 400 car. que sobrescribe la anterior · footer = 1 línea ≤ 300 car.
+     Pendientes: SOLO en §3 (sin "Próxima sesión"/"Prioridad N" ni `- [ ]` en otras secciones).
+     Antes de commitear: bash scripts/check_spec.sh SPEC.md (debe salir con código 0). Si falla, condensar primero. -->
 
 # {{Nombre del Proyecto}}
 
@@ -41,22 +42,28 @@ Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los p
 |---|---|
 | Tests en verde | {{N — omitir esta fila si el proyecto no tiene tests}} |
 | {{métrica relevante al dominio}} | {{valor}} |
-| Última sesión | {{fecha}} — **{{resumen de 1 línea}}**: {{detalle breve, ≤ ~400 caracteres en total}} — _se sobrescribe cada sesión, nunca se agrega una fila "Sesión anterior"_ |
+| Última sesión | {{fecha}} — **{{resumen de 1 línea}}**: {{detalle breve, ≤ ~400 caracteres en total}} — _se sobrescribe cada sesión; filas "Sesión anterior" solo si el proyecto declara `sesiones_anteriores_en_spec: N` en `CLAUDE.md`_ |
 
 ---
 
 ## 3. Pendientes activos
 
-### 🗓 Próxima sesión
+> Lista única: los ítems abiertos existen **solo aquí**. Un ítem conserva su ID hasta cerrarse y el ID no se reutiliza. Al cerrarlo: borrar la fila → pegarla en `spec/cerrados.md` con ID + fecha + evidencia → agregar el ID a "Cerrados".
 
-**Prioridad 0 — {{título}}**
+**Alta**
 
-- [ ] {{tarea}}
-- [ ] {{tarea}}
+- [ ] **1** — {{tarea}}: {{una línea de contexto}}
+- [ ] **2** — {{tarea}}: {{una línea de contexto}}
 
-**Prioridad 1 — {{título}}**
+**Media**
 
-- [ ] {{tarea}}
+- [ ] **3** — {{tarea}}: {{una línea de contexto}}
+
+**Baja / Externo**
+
+- _(vacío)_
+
+Cerrados: _(ninguno todavía — ver `spec/cerrados.md`)_
 
 ---
 
@@ -108,7 +115,7 @@ Ver `references/tooling-roles.md` (skill `tooling-roles`) para el mapeo completo
 | [`spec/{{objetivos}}.md`](spec/{{objetivos}}.md) | Backlog vivo — lo que el usuario necesita + lo que el agente sugiere |
 | [`spec/datos.md`](spec/datos.md) | Convenciones, diccionarios, anexos — nunca secretos |
 | [`spec/historial.md`](spec/historial.md) | Narrativa de decisiones y hallazgos de sesiones pasadas |
-| [`spec/completado.md`](spec/completado.md) | Checklist plano de tareas completadas |
+| [`spec/cerrados.md`](spec/cerrados.md) | Archivo único de ítems cerrados: ID + fecha + evidencia |
 
 ---
 
@@ -121,5 +128,5 @@ _Documento de trabajo interno — v0.1. {{footer ≤ 300 caracteres: versión + 
 
 - **Sección 4 (Reglas críticas)** debe mantenerse corta — si crece a más de 3-4 reglas, es señal de que el proyecto probablemente necesitaba la estructura completa (`brain/`) desde el principio, no la simple.
 - **El footer de la última línea** es una foto rápida del estado (versión, fecha, métricas clave), no una bitácora: se **reemplaza** en cada sesión, nunca se le agrega texto encima del anterior, y no pasa de ~300 caracteres.
-- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md` (o `spec/historial.md` en estructura simple), los `[x]` se mueven a `spec/completado.md` y salen de la §3, y `SPEC.md` completo se mantiene bajo ~15 KB. Ver skill `spec-driven-development`.
+- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md` (o `spec/historial.md` en estructura simple), los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (ID + fecha + evidencia) y `SPEC.md` completo se mantiene bajo `spec_tope_lineas` (1000 por defecto), verificado con `scripts/check_spec.sh`. Ver skill `spec-driven-development`.
 - Si el proyecto usa la estructura simple (sin `brain/`), la Sección 5 hace las veces de lo que en la estructura completa sería el catálogo de ADRs — mantenerla como tabla, no como narrativa.

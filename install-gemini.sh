@@ -19,7 +19,7 @@ echo "======================================================================"
 
 # 1. Crear la estructura local .gemini/ en el proyecto del usuario
 echo "📂 Preparando espacio aislado en ./${DEST_DIR}..."
-mkdir -p "${DEST_DIR}/skills/references/trackers"
+mkdir -p "${DEST_DIR}/skills/references/trackers" "${DEST_DIR}/scripts"
 
 # 2. Función auxiliar para descargar de GitHub Raw
 download_file() {
@@ -38,6 +38,7 @@ download_file() {
 echo "📦 Descargando orquestador del runtime..."
 download_file "GEMINI-RUNTIME.md"
 download_file "runtime.json"
+download_file "scripts/check_spec.sh"   # verificación mecánica de SPEC.md: bash .gemini/scripts/check_spec.sh SPEC.md
 
 # 4. Descargar el Catálogo de 13 Skills Oficiales
 echo "🧠 Descargando catálogo de 13 skills..."
@@ -73,6 +74,7 @@ REFERENCES=(
   "gemini-template.md"
   "ignore-template.md"
   "spec-folder-template.md"
+  "spec-migracion-0.12.md"
   "trackers-templates.md"
 )
 

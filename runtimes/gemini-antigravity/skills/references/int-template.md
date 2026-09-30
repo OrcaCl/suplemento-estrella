@@ -25,7 +25,7 @@ Documenta una decisión sobre **cómo el humano y Code trabajan juntos** — pro
 
 ## Commit
 
-{{Referencia a la entrada correspondiente en brain/sesiones.md. Si el registro se crea antes de que ese commit exista, escribir: "Pendiente al próximo /checkpoint o cierre de sesión."}}
+{{Referencia a la entrada correspondiente en brain/sesiones.md. Si el registro se crea antes de que ese commit exista, escribir: "Pendiente al próximo /ward o cierre de sesión."}}
 ```
 
 ---

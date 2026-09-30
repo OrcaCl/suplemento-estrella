@@ -30,7 +30,7 @@ Documenta un hallazgo de **riesgo o cuidado mixto** — ni puramente arquitectur
 
 ## Commit
 
-{{Referencia a la entrada correspondiente en brain/sesiones.md, o "Pendiente al próximo /checkpoint o cierre de sesión."}}
+{{Referencia a la entrada correspondiente en brain/sesiones.md, o "Pendiente al próximo /ward o cierre de sesión."}}
 ```
 
 ---

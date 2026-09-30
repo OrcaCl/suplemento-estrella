@@ -1,6 +1,6 @@
 ---
 name: brain-kms
-description: Disciplina de trabajo con el sistema brain/ (Brain KMS, Brain Knowledge Management System; registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión o checkpoint en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
+description: Disciplina de trabajo con el sistema brain/ (Brain KMS, Brain Knowledge Management System; registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión (`listeilor`) o hacer un `ward` en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
 ---
 
 # Brain KMS
@@ -45,7 +45,7 @@ Cómo trabajar día a día con el sistema `brain/` (Brain KMS — Brain Knowledg
 
 ## La sección `## Commit`, al cierre de todo registro tipo ADR/INT
 
-Cada `ADR-*.md` e `INT-*.md` termina con una sección `## Commit` que apunta a la entrada correspondiente en `brain/sesiones.md` — si el registro se creó antes de que ese commit exista todavía (por ejemplo, a mitad de sesión, antes del próximo checkpoint), dejar anotado explícitamente que está "pendiente al próximo `/checkpoint` o cierre de sesión", en vez de omitir la sección o inventar una referencia que todavía no existe.
+Cada `ADR-*.md` e `INT-*.md` termina con una sección `## Commit` que apunta a la entrada correspondiente en `brain/sesiones.md` — si el registro se creó antes de que ese commit exista todavía (por ejemplo, a mitad de sesión, antes del próximo `ward`), dejar anotado explícitamente que está "pendiente al próximo `/ward` o cierre de sesión", en vez de omitir la sección o inventar una referencia que todavía no existe.
 
 Ver `references/adr-template.md`, `references/int-template.md`, `references/noc-template.md`, `references/dep-template.md`, y `references/ref-template.md` en `project-init/references/` para el formato completo de cada uno.
 
@@ -66,14 +66,14 @@ Ver `references/adr-template.md`, `references/int-template.md`, `references/noc-
 
 **Regla no negociable, sigue vigente sin cambios:** `index.md` contiene únicamente esta tabla y un puntero a `sesiones.md`. Nunca pegar resúmenes de sesión aquí, sin importar cuántas categorías se agreguen.
 
-## Registro al cierre de sesión o checkpoint
+## Registro al cierre de sesión o `ward`
 
-Al ejecutar un checkpoint o cerrar sesión (ver skill `documentation-convention` y el comando `checkpoint`), proponer:
+Al ejecutar un `ward` o cerrar sesión con `listeilor` (ver skill `documentation-convention` y los comandos `ward`/`listeilor`), proponer:
 
 1. `brain/sesiones.md` — nueva entrada con hitos, archivos modificados, próximo paso
 2. El registro que corresponda según la tabla de decisión (`ADR`, `INT`, `NOC`, `DEP`, `REF`, o `REFX`) — puede ser más de uno
 3. `brain/index.md` — agregar la fila correspondiente a cualquier registro nuevo
-4. `SPEC.md` — reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia `spec/completado.md`. La narrativa de la sesión va en `sesiones.md`, nunca en `SPEC.md` (ver skill `spec-driven-development`)
+4. `SPEC.md` — reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia el archivo de cerrados (`spec/cerrados.md`: ID + fecha + evidencia). La narrativa de la sesión va en `sesiones.md`, nunca en `SPEC.md` (ver skill `spec-driven-development`)
 5. Completar la sección `## Commit` de cualquier `ADR`/`INT` creado en la sesión, ahora que el commit real ya existe
 
 ## trackers/ — bugs, features, y plantilla de retiros

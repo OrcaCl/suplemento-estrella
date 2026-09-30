@@ -38,13 +38,15 @@ Cuando `SPEC.md` supera las 500 líneas o el proyecto requiere modularización �
 
 ---
 
-## 2. spec/completado.md (Índice Plano de Éxito)
-*Listado plano de checkboxes marcados. Sin narrativas ni explicaciones.*
+## 2. spec/cerrados.md (Archivo Único de Ítems Cerrados)
+*Reemplaza a completado.md desde core 0.12.0. Cada entrada lleva ID, fecha y evidencia verificable.*
 
-## Completado
+## Cerrados
 
-- [x] {{tarea}} — {{fecha}}
-- [x] {{tarea}} — {{fecha}}
+**1 — ✅ CERRADO ({{fecha}}).** {{Título}}. {{1–2 frases: qué se hizo o por qué se descartó}}. Evidencia: {{consulta, test o commit}}.
+**2 — ✅ CERRADO ({{fecha}}), descartado.** {{Título}}. {{motivo}}. Evidencia: {{...}}.
+
+*Regla de cierre: borrar la fila de la §3 de SPEC.md → pegarla aquí con ID + fecha + evidencia → agregar el ID a "Cerrados" en §3. Los IDs no se reutilizan. Un spec/completado.md existente no se borra: se marca DEPRECATED con aviso.*
 
 ## 3 HISTORIAL.MD DEPRECATED----
 

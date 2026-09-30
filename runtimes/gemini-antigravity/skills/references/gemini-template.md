@@ -83,15 +83,21 @@ Al finalizar cada sesión de trabajo, proponer actualizaciones a:
 
 - spec/historial.md {{o brain/sesiones.md si el proyecto usa Brain KMS}} — hitos y descubrimientos de la sesión
 
-- SPEC.md — reemplazar, no acumular: ítems [x] a spec/completado.md (salen de la §3), "Última sesión" y footer se sobrescriben (footer con métricas clave del dominio; conteo de tests solo si el proyecto tiene tests). Tope ~15 KB — correr wc -c SPEC.md antes del commit (ver skill 11-spec-driven-development)
+- SPEC.md — reemplazar, no acumular: ítems cerrados salen de la §3 hacia spec/cerrados.md (ID + fecha + evidencia), "Última sesión" y footer se sobrescriben (footer de una línea, con métricas clave del dominio; conteo de tests solo si el proyecto tiene tests). Tope por líneas — correr bash .gemini/scripts/check_spec.sh SPEC.md antes del commit; debe salir con código 0 (ver skill 11-spec-driven-development)
 
 - {{brain/ADR-*.md — si se tomó una decisión de arquitectura relevante (solo Brain KMS)}}
 
-No esperar instrucción explícita — al cerrar sesión, proponer qué registrar.
+No esperar instrucción explícita — al cerrar sesión (listeilor), proponer qué registrar. A mitad de sesión, el humano guarda con ward (commit local, sin push).
 
-## Regla de registro inmediato — NO NEGOCIABLE
+## Configuración de SPEC
 
-Después de cualquier breakthrough importante (feature completada, bug crítico resuelto, migración ejecutada) hay que registrar de inmediato, antes de continuar con la siguiente tarea. No acumular para el cierre de sesión.
+Valores por defecto del runtime; borrar la línea que no se quiera cambiar (ver skill 11-spec-driven-development).
+
+- registro: diferido            # diferido = en ward/listeilor · inmediato = tras cada breakthrough
+- spec_tope_lineas: 1000        # error al superarlo, advertencia al 80 %
+- sesiones_anteriores_en_spec: 0
+- archivo_cerrados: spec/cerrados.md
+- ids_en_pendientes: false      # true = cada ítem de §3 lleva ID estable y único
 
 ---
 

@@ -39,13 +39,21 @@ Trabajar siempre en modo secuencial — una tarea a la vez, **cero subagentes po
 
 ## Convención de documentación
 
-Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` queda diferido hasta un checkpoint explícito (invocado por el humano) o hasta el cierre de sesión, que es obligatorio (ver skill `documentation-convention`).
+Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` queda diferido hasta un `ward` explícito (invocado por el humano; commit local sin push) o hasta el cierre de sesión con `listeilor`, que es obligatorio (commit + push) (ver skill `documentation-convention`).
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
-- `SPEC.md` — reemplazar, no acumular: ítems `[x]` a `spec/completado.md` (salen de la §3), "Última sesión" y footer se sobrescriben. Tope ~15 KB — correr `wc -c SPEC.md` y `awk 'length>600{print NR}' SPEC.md` antes del commit (ver skill `spec-driven-development`)
+- `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (ID + fecha + evidencia), "Última sesión" y footer se sobrescriben. Tope por líneas — correr `bash plugins/suplemento-core/scripts/check_spec.sh SPEC.md` antes del commit; debe salir con código 0 (ver skill `spec-driven-development`)
 - `brain/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` / `REF*-*.md` — si se tomó una decisión de ese tipo
 
 **No esperar instrucción explícita al cerrar sesión** — proponer qué registrar.
+
+### Configuración de SPEC
+
+- registro: diferido
+- spec_tope_lineas: 1000
+- sesiones_anteriores_en_spec: 0
+- archivo_cerrados: spec/cerrados.md
+- ids_en_pendientes: false
 
 ---
 

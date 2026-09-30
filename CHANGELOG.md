@@ -4,6 +4,23 @@ Registro único de hitos del harness Suplemento Estrella — Core y todos sus ru
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
+## 2026-09-30
+
+### Changed
+- **[Runtime Claude Code v0.12.0]** `SPEC.md` volvió a degradarse en un proyecto real (134 KB, 55 filas de sesión, footer atrasado meses, 18+ `- [ ]` fuera de §3) pese al fix de 0.10.1. Causas: un `checkpoint` local tapaba al del plugin, las reglas del plugin se contradecían, y el chequeo de tamaño era prosa y no un mecanismo. Ver INT-001 en `brain/` y ADR-008.
+  - **`checkpoint` se divide en dos comandos:** `ward` (todo lo que hacía `checkpoint`, **sin push**) y `listeilor` (cierre de sesión: verifica respaldo en `brain/` y `SPEC.md`, revisa pendientes faltantes, commit + push). `checkpoint` queda como alias deprecado que avisa y ejecuta `ward`. **Cambio de comportamiento:** ya no hace push.
+  - **Aviso de colisión** con comandos/skills locales `ward`/`listeilor`/`checkpoint`, en `documentation-convention` y en los comandos (un comando local que tapa al del plugin impide que este se ejecute para avisar).
+  - **Tope de `SPEC.md` por líneas** (1000 por defecto, `spec_tope_lineas`; advertencia al 80 %), reemplaza el tope de ~15 KB de ADR-006. Se mantiene el límite de 600 caracteres por línea.
+  - **`scripts/check_spec.sh`** (nuevo): sale ≠ 0 si `SPEC.md` excede topes (líneas, líneas largas, filas "Sesión anterior", footer, `- [ ]` fuera de §3, `[x]` sin sacar de §3, versión cabecera ≠ footer, IDs duplicados). `--report` audita sin bloquear. Hook `pre-commit` opcional documentado.
+  - **Archivo único de cerrados** `spec/cerrados.md` (ID + fecha + evidencia verificable) reemplaza a `spec/completado.md`, que se depreca con aviso sin borrarse. Regla de cierre en tres movimientos.
+  - **Lista única de pendientes:** §3 es el único lugar de ítems abiertos; IDs estables y no reutilizables.
+  - **Configuración por proyecto** (líneas `clave: valor` en `CLAUDE.md`): `registro`, `spec_tope_lineas`, `sesiones_anteriores_en_spec`, `archivo_cerrados`, `ids_en_pendientes`.
+  - **Contradicción reconciliada:** `spec-driven-development` ("registro inmediato") vs `documentation-convention` ("diferido") → `registro: diferido | inmediato`, con `diferido` por defecto. También se corrige la plantilla de `CLAUDE.md` de `project-init`, que traía una "Regla de registro inmediato — NO NEGOCIABLE".
+  - `project-init`: plantillas de `SPEC.md`, `spec/` y `CLAUDE.md` nacen con `cerrados.md`, lista única y bloque de configuración; copia `check_spec.sh` al proyecto.
+  - Nuevas guías dentro de la skill `spec-driven-development`: `references/migracion-0.12.md` (nota de migración para proyectos con `checkpoint` local propio) y `references/normalizacion-spec.md` (procedimiento para normalizar un `SPEC.md` degradado).
+- **[Runtime Gemini v0.1.3]** Paridad con core 0.12.0 (`core_version` = 0.12.0): `06-documentation-convention` (ward/listeilor, aviso de colisión), `11-spec-driven-development` (configuración, regla de cierre, lista única, tope por líneas), `01-brain-kms`, plantillas `gemini-template` y `spec-folder-template`, y nueva `references/spec-migracion-0.12.md`. `scripts/check_spec.sh` (idéntico al de core) se instala en `.gemini/scripts/`; `install-gemini.sh` actualizado. Para actualizar, volver a correr el instalador.
+- **[Core]** `docs/` y `README.md` actualizados a `ward`/`listeilor`, tope por líneas y `cerrados.md`. El tope por líneas retoma la regla original del autor (~1000 líneas), que la v0.10.1 había cambiado a ~15 KB.
+
 ## 2026-09-29
 
 ### Fixed

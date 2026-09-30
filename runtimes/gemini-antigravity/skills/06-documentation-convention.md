@@ -1,12 +1,25 @@
-# SKILL: Documentation & Checkpoint Convention (When to Document)
+# SKILL: Documentation Convention — ward / listeilor (When to Document)
 
 ## Propósito y Disparadores
 Gobierna **CUÁNDO** se sincroniza la documentación del proyecto (`SPEC.md` y `brain/`).
 Aplica cuando:
 - Se realicen commits de código de trabajo continuo.
-- El humano solicite explícitamente un *"checkpoint"*.
+- El humano diga *"ward"*, *"listeilor"* o *"checkpoint"* (deprecado).
 - Se finalice o cierre la sesión de trabajo.
 - Se modifiquen dependencias de plugins o runtime del agente.
+
+**Modo de registro.** Lo descrito aquí es `registro: diferido`, el **por defecto**. Un proyecto puede declarar `registro: inmediato` en su `GEMINI.md` (ver `11-spec-driven-development.md`, sección 0); en ese caso se registra tras cada breakthrough, pero el cierre de sesión (`listeilor`) sigue siendo obligatorio.
+
+---
+
+## 🚦 Los dos comandos
+
+| Comando | Cuándo | Qué hace | Push |
+|---|---|---|---|
+| **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
+| **`listeilor`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el algoritmo de `ward`, commit y push finales | Sí |
+
+`checkpoint` (versiones anteriores) queda **deprecado**: ante esa palabra, avisar del cambio, ejecutar `ward` y ofrecer `listeilor`.
 
 ---
 
@@ -16,24 +29,33 @@ Aplica cuando:
 - Los commits de código en `src/`, `app/` o `tests/` se realizan normalmente según avanza el trabajo.
 - **Regla Estricta:** Un commit de código **NO** debe modificar `brain/` ni `SPEC.md` en medio del desarrollo activo, sin importar qué tan "importante" parezca el avance.
 
-### 2. Checkpoint Explícito (A Discreción del Humano)
-Se ejecuta **ÚNICAMENTE** cuando el humano dice *"checkpoint"* o solicita registrar el avance. Gemini **nunca** decide por su cuenta ejecutar un checkpoint.
+### 2. `ward` Explícito (A Discreción del Humano)
+Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar el avance. Gemini **nunca** decide por su cuenta ejecutar un `ward`.
 
-**Algoritmo de Checkpoint:**
-1. Revisar los avances desde el último checkpoint.
+**Algoritmo de `ward`:**
+0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward`, `listeilor` o `checkpoint`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint` local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
+1. Revisar los avances desde el último `ward` o cierre de sesión.
 2. Preparar borrador de actualización para `brain/sesiones.md` (resumen cronológico).
-3. Preparar actualización de `SPEC.md` **reemplazando, no acumulando**: ítems cerrados → `spec/completado.md` (salen de la §3); "Última sesión" (§2), header y footer se sobrescriben; la narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`. Reglas completas en `11-spec-driven-development.md` (sección 3b).
-4. Preparar actualización de `brain/index.md` si se crearon nuevos `ADR`, `INT`, `NOC`, etc.
-5. **Presentar el resumen al humano antes de escribir en disco.**
-6. **Chequeo de tamaño de `SPEC.md` antes del commit:** `wc -c SPEC.md` (≤ ~15 KB) y `awk 'length>600{print NR}' SPEC.md` (ninguna línea > 600 caracteres). Si excede, condensar y mover a su destino primero.
-7. Ejecutar `git commit` descriptivo del período y realizar `git push`.
+3. Preparar actualización de `SPEC.md` **reemplazando, no acumulando**: cerrar ítems con la regla de cierre (borrar fila de §3 → pegarla en el archivo de cerrados con ID + fecha + evidencia → agregar el ID a "Cerrados"); "Última sesión" (§2), header y footer se sobrescriben; la narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`. Reglas completas en `11-spec-driven-development.md` (secciones 3 y 3b).
+4. **Reconciliar pendientes:** buscar `- [ ]` y listas de pendientes fuera de §3 ("Próxima sesión", "Prioridad N", "Pendientes de X") y consolidarlas en §3 o marcarlas obsoletas/cerradas con fecha. Proponer como ítems nuevos (ID nuevo, nunca reutilizado) las colas que quedaron solo en la narrativa.
+5. Preparar actualización de `brain/index.md` si se crearon nuevos `ADR`, `INT`, `NOC`, etc.
+6. **Presentar el resumen al humano antes de escribir en disco.**
+7. **Chequeo mecánico de `SPEC.md` antes del commit:** `bash .gemini/scripts/check_spec.sh SPEC.md`. Si sale con código ≠ 0, condensar y mover a su destino y repetir — no commitear un `SPEC.md` que falla. Las advertencias (`WARN`) se informan pero no bloquean.
+8. Ejecutar `git commit` descriptivo del período. **Sin `git push`** — el push lo hace `listeilor`.
 
-### 3. Cierre de Sesión (Obligatorio e Innegociable)
-Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar el procedimiento completo de Checkpoint sin necesidad de que se lo pidan explícitamente.
+### 3. Cierre de Sesión con `listeilor` (Obligatorio e Innegociable)
+Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar `listeilor` sin necesidad de que se lo pidan explícitamente:
 
-> **Guardrail de Cierre:** Si el `git push` falla por falta de red o remoto no configurado, notificar al humano. La sesión **NO** se considera cerrada exitosamente hasta que los cambios estén pusheados.
+1. Aviso de colisión (paso 0 de `ward`).
+2. **Verificar respaldo:** ¿commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear? ¿decisiones sin registro? ¿`brain/index.md` completo? ¿`SPEC.md` refleja el estado real?
+3. **Revisar pendientes:** colas de la narrativa, `TODO`/"pendiente" dicho en la conversación, `- [ ]` fuera de §3, ítems a medias. Proponer ítems nuevos (ID nuevo) e ítems a cerrar (con evidencia verificable).
+4. Mostrar el resumen de lo faltante y esperar el visto bueno del humano.
+5. Ejecutar el algoritmo de `ward` (pasos 1 a 7), sin duplicar sus reglas.
+6. `git commit` final (sin commit vacío) y `git push`.
+
+> **Guardrail de Cierre:** Si el `git push` falla por falta de red o remoto no configurado, notificar al humano y dejarlo señalado como pendiente. La sesión **NO** se considera cerrada exitosamente hasta que los cambios estén pusheados. (Un `ward` sin `listeilor` deja commits locales: ese registro tampoco está a salvo hasta el push.)
 
 ---
 
 ## ⚙️ Excepción de Sincronización Inmediata (`PLUGINS.md` / Runtime Config)
-Cualquier cambio de versión o estado en la configuración de plugins, herramientas o runtime de Gemini se actualiza de inmediato en `PLUGINS.md` o en las configuraciones del proyecto sin esperar al checkpoint, por tratarse de un metadato de infraestructura.
+Cualquier cambio de versión o estado en la configuración de plugins, herramientas o runtime de Gemini se actualiza de inmediato en `PLUGINS.md` o en las configuraciones del proyecto sin esperar al `ward`, por tratarse de un metadato de infraestructura.

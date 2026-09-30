@@ -8,7 +8,7 @@ Esta directiva gobierna el uso diario del sistema `brain/` (Brain KMS). Aplícal
 - Se retire/depreque una herramienta, patrón o plugin (`DEP`).
 - Se agregue material de referencia propio (`REF`) o descubierto en otro proyecto (`REFX`).
 - Se reporte un bug o propuesta de feature para un sistema externo (`trackers/`).
-- Se realice un cierre de sesión o checkpoint.
+- Se realice un cierre de sesión (`listeilor`) o un `ward`.
 
 ---
 
@@ -52,7 +52,7 @@ Cuando Gemini deba crear o proponer un nuevo registro dentro de `brain/`, **debe
 2. **Excepción `000`:** Asignar `000` únicamente si el registro es *conceptualmente anterior* a uno ya existente (ej. `INT-000` previo a `INT-001`). Usar con moderación.
 3. **Inmutabilidad de Decisiones:** Un `ADR` o `INT` **NUNCA** se edita para cambiar la decisión original. Si la decisión cambia, se crea uno nuevo y el anterior se marca como `Obsoleto — reemplazado por ADR-XXX` (o `INT-XXX`).
 4. **Mutabilidad de `NOC`:** Un `NOC` puede actualizarse in situ agregando secciones de seguimiento con fecha.
-5. **Sección `## Commit`:** Todo `ADR` e `INT` debe finalizar con la sección `## Commit` apuntando al commit/checkpoint en `brain/sesiones.md`. Si aún no existe el commit, marcar como *"Pendiente al próximo checkpoint/cierre"*.
+5. **Sección `## Commit`:** Todo `ADR` e `INT` debe finalizar con la sección `## Commit` apuntando al commit/`ward` en `brain/sesiones.md`. Si aún no existe el commit, marcar como *"Pendiente al próximo checkpoint/cierre"*.
 
 ---
 
@@ -138,9 +138,9 @@ Categorías: **A** = humano :) /administrador del proyecto · **D** = desarrolla
     Instancias creadas: Las instancias generadas de bugs/features se guardan obligatoriamente en brain/trackers/generated/.
 
 
-### 6. Procedimiento al Cierre de Sesión o Checkpoint
+### 6. Procedimiento al Cierre de Sesión o `ward`
 
-Al ejecutar un checkpoint o cierre de sesión, Gemini debe proponer la actualización sincronizada en este orden exacto:
+Al ejecutar un `ward` o cierre de sesión (`listeilor`), Gemini debe proponer la actualización sincronizada en este orden exacto:
 
 - brain/sesiones.md $\rightarrow$ Crear la nueva entrada en la parte superior con hitos, archivos modificados y próximo paso.
 
@@ -148,6 +148,6 @@ Al ejecutar un checkpoint o cierre de sesión, Gemini debe proponer la actualiza
 
 - brain/index.md $\rightarrow$ Agregar la fila a la tabla consolidada por cada registro nuevo.
 
-- SPEC.md $\rightarrow$ Reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia spec/completado.md. La narrativa de la sesión va en sesiones.md, nunca en SPEC.md (ver 11-spec-driven-development.md, sección 3b).
+- SPEC.md $\rightarrow$ Reemplazar, no acumular: "Última sesión" (§2) y footer se sobrescriben, y los ítems cerrados salen de la §3 hacia el archivo de cerrados (spec/cerrados.md: ID + fecha + evidencia). La narrativa de la sesión va en sesiones.md, nunca en SPEC.md (ver 11-spec-driven-development.md, sección 3b).
 
-- Completa la sección ## Commit de cualquier ADR/INT creado en la sesión con la referencia real del commit/checkpoint.
+- Completa la sección ## Commit de cualquier ADR/INT creado en la sesión con la referencia real del commit/`ward`.

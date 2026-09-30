@@ -39,9 +39,9 @@ Antes de comenzar una sesión, dile al agente:
 
 A partir de ese momento el desarrollo continúa normalmente.
 
-### Checkpoints
+### `ward`
 
-Durante el desarrollo puedes pedirle al agente que haga un **checkpoint** para que genere una actualización de los hitos logrados a `SPEC.md`, a los otros sistemas de control y registro, commit y push — útil si estás cerca de quedarte sin tokens.
+Durante el desarrollo puedes pedirle al agente que haga un **`ward`** para que guarde los hitos logrados en `SPEC.md` y en los otros sistemas de control y registro, y haga un commit **local** (sin push) — útil si estás cerca de quedarte sin tokens. Antes de escribir te muestra un resumen, y avisa si el proyecto tiene un comando local que tape al del plugin.
 
 ---
 
@@ -49,7 +49,7 @@ Durante el desarrollo puedes pedirle al agente que haga un **checkpoint** para q
 
 Antes de cerrar sesión, dile al agente:
 
-> [nombre que le hayas puesto], hagamos un **checkpoint** y cerremos sesión.
+> [nombre que le hayas puesto], **listeilor** (cerremos sesión).
 
 El agente hará lo siguiente:
 
@@ -57,7 +57,9 @@ El agente hará lo siguiente:
 - registrar nuevos ADR, INT, NOC, DEP o REF/REFX cuando corresponda
 - actualizar `sesiones.md`
 - limpiar `TOASK.md`
-- mover tareas resueltas a `spec/completado.md`
+- cerrar los ítems resueltos: salen de la §3 y pasan a `spec/cerrados.md` con ID, fecha y evidencia
+- revisar que no queden pendientes fuera de la lista de `SPEC.md`
+- verificar con `check_spec.sh` que `SPEC.md` no excede los topes
 - realizar `commit`
 - realizar `push`
 

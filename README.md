@@ -62,7 +62,7 @@ Este README es intencionalmente breve. El detalle vive en `docs/`:
 | [`docs/principles.md`](docs/principles.md) | Principios concretos: KISS, DRY, TDD, SDD, diseño previo, modo secuencial |
 | [`docs/decisions.md`](docs/decisions.md) | Cómo se registran y mantienen las decisiones dentro de Brain KMS |
 | [`docs/conventions.md`](docs/conventions.md) | Convenciones de nombres, estructura, documentación, versionado y commits |
-| [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, checkpoint, SHAME…) |
+| [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, ward, listeilor, SHAME…) |
 | [`CHANGELOG.md`](CHANGELOG.md) | Historial de hitos, todas las capas (Core + runtimes) |
 
 ---

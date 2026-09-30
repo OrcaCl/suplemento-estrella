@@ -13,7 +13,7 @@ Agregar `brain/` a mitad de proyecto, cuando el historial ya creció demasiado, 
 
 Esta skill no pregunta el tamaño del proyecto para decidir si vale la pena `brain/` — se asume que sí, siempre. Quien instala esta metodología ya está aceptando el costo de mantener documentación estructurada de decisiones; no tiene sentido ofrecerle después una versión liviana sin ella.
 
-También evita un problema más básico: proponer una estructura de documentación con la convención de registro por checkpoint (`documentation-convention`) cuando todavía no hay ni git instalado ni un remoto configurado. Sin eso, esa convención es imposible de cumplir desde el primer día.
+También evita un problema más básico: proponer una estructura de documentación con la convención de registro por `ward`/`listeilor` (`documentation-convention`) cuando todavía no hay ni git instalado ni un remoto configurado. Sin eso, esa convención es imposible de cumplir desde el primer día.
 
 ## Paso 0 — Detectar estado existente antes de asumir que es un proyecto nuevo
 
@@ -122,9 +122,11 @@ git remote -v
 ├── TOASK.md                # preguntas/ideas tangenciales, categorizadas por audiencia — en la raíz, no dentro de brain/
 ├── .gitignore
 ├── .claudeignore
+├── scripts/
+│   └── check_spec.sh       # copia de plugins/suplemento-core/scripts/check_spec.sh — sale ≠ 0 si SPEC.md excede los topes
 ├── spec/
 │   ├── api.md
-│   ├── completado.md
+│   ├── cerrados.md         # archivo único de ítems cerrados: ID + fecha + evidencia
 │   ├── historial.md        # deprecated — se mantiene sin uso activo, ver nota
 │   ├── datos.md
 │   └── objetivos.md
@@ -144,7 +146,9 @@ git remote -v
         └── secure/         # material para enseñarle algo puntual al modelo y luego retirarlo — nunca se commitea, nunca se lee en contexto de forma persistente
 ```
 
-Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un checkpoint o cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
+Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un `ward` o cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
+
+**Nota sobre `scripts/check_spec.sh`:** copiarlo desde el plugin (`${CLAUDE_PLUGIN_ROOT}/scripts/check_spec.sh`) al crear el proyecto y avisar al humano que existe un hook `pre-commit` opcional que lo hace cumplir (ver `spec-driven-development/references/migracion-0.12.md`). El bloque "Configuración de SPEC" de `CLAUDE.md` (plantilla `claude-md-template.md`) fija sus topes.
 
 Nota sobre `objetivos.md`: el nombre debe adaptarse al dominio del proyecto (ej. `features.md`, `roadmap.md`) — la función es siempre la misma, backlog vivo entre lo que el usuario necesita y lo que el agente sugiere.
 
@@ -172,7 +176,7 @@ Todo proyecto nuevo lleva un `CLAUDE.md` con estas secciones mínimas (ver `refe
 4. Regla(s) crítica(s) no negociable(s) — puede quedar vacío al inicio
 5. Estrategia de testing por niveles, con alcance de test **quirúrgico por defecto** — ampliar solo con confirmación explícita del humano (ver skill `tdd-workflow`)
 6. Modo de trabajo: **cero subagentes por defecto, sin excepción autónoma** — cualquier paralelismo requiere que Code se lo pida al humano y este lo apruebe para esa tarea puntual (ver skill `sequential-mode`)
-7. Convención de documentación: commits de código con normalidad; registro de `brain/`/`SPEC.md` diferido a checkpoint explícito o cierre de sesión obligatorio — nunca inmediato ni automático (ver skill `documentation-convention`)
+7. Convención de documentación: commits de código con normalidad; registro de `brain/`/`SPEC.md` diferido a `ward` explícito (sin push) o a `listeilor` al cierre de sesión (obligatorio, con push) — nunca automático; el modo `registro:` se declara en `CLAUDE.md` (ver skill `documentation-convention`)
 8. Nombre humano de la instancia, registrado en `## Contexto del proyecto` (ver Paso 3a)
 
 ## Paso 3a — Asignar un nombre humano a la instancia

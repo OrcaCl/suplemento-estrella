@@ -10,9 +10,11 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Brain KMS** — *Brain Knowledge Management System.* El sistema `brain/`: la memoria persistente compartida entre el desarrollador y su agente, que vive dentro del repositorio. Ver [brain.md](brain.md).
 
-**Checkpoint** — Momento explícito en que el humano pide registrar lo pendiente: actualiza `brain/`, `SPEC.md`, hace commit y push. Solo lo dispara el humano; el agente nunca decide por su cuenta que "amerita" uno. Ver [workflow.md](workflow.md).
+**`ward`** — Comando (del lore de internet: guardar algo para volver a revisarlo sin perder lo que se va agregando). Registra lo pendiente en `brain/` y `SPEC.md` y hace commit **local, sin push**. Solo lo dispara el humano; el agente nunca decide por su cuenta que "amerita" uno. Ver [workflow.md](workflow.md).
 
-**Cierre de sesión** — Como un checkpoint, pero obligatorio: siempre se registra, commitea y pushea antes de dar la sesión por terminada.
+**`listeilor`** — Comando de cierre de sesión: verifica que no falte nada por respaldar en `brain/` y `SPEC.md`, revisa que no queden pendientes fuera de la lista, ejecuta `ward`, y hace el commit y push finales. Es obligatorio antes de dar la sesión por terminada.
+
+**Checkpoint** — Nombre anterior (≤ 0.11) de `ward`; deprecado en 0.12.0. Hacía lo mismo que `ward` pero con push.
 
 **`CLAUDE.md` / `GEMINI.md`** — Reglas que el agente carga al iniciar una sesión (Claude Code y Gemini respectivamente): confirmación de contexto, stack, reglas críticas, modo de trabajo.
 
@@ -32,7 +34,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **NOC** — *Nota de Cuidado.* Riesgo o cuidado mixto a monitorear, todavía no una decisión. Puede actualizarse en el lugar con seguimientos fechados.
 
-**`PLUGINS.md`** — Archivo del proyecto que registra qué plugins están instalados y en qué versión. Es el único registro que se actualiza de inmediato, sin esperar un checkpoint.
+**`PLUGINS.md`** — Archivo del proyecto que registra qué plugins están instalados y en qué versión. Es el único registro que se actualiza de inmediato, sin esperar un `ward`.
 
 **`project-init`** — Skill que inicializa un proyecto: crea `SPEC.md`, `spec/`, `brain/` y el archivo de reglas del agente.
 
@@ -50,9 +52,9 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Skill** — Unidad de la metodología: un archivo con las reglas de una disciplina concreta (por ejemplo `tdd-workflow`). Se activa cuando el contexto lo pide.
 
-**`SPEC.md`** — Panel de control del proyecto: estado, pendientes, reglas críticas y decisiones permanentes. Corto por diseño (~15 KB) y se reemplaza, no se acumula. Ver [spec.md](spec.md).
+**`SPEC.md`** — Panel de control del proyecto: estado, pendientes, reglas críticas y decisiones permanentes. Corto por diseño (≤ 1000 líneas) y se reemplaza, no se acumula. Ver [spec.md](spec.md).
 
-**`spec/`** — Carpeta con el detalle que `SPEC.md` no debe cargar: `api.md`, `datos.md`, `completado.md`, el backlog, etc.
+**`spec/`** — Carpeta con el detalle que `SPEC.md` no debe cargar: `api.md`, `datos.md`, `cerrados.md`, el backlog, etc.
 
 **Test quirúrgico** — Regla de `tdd-workflow`: después de un cambio se corre únicamente el test directamente relacionado; ampliar el alcance requiere preguntar al humano.
 
