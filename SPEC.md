@@ -54,6 +54,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **2** — Migrar el proyecto "paciente cero" a 0.12.0 (renombrar `catastro-historico.md` a `cerrados.md`, agregar configuración) y comprobar con `ward`/`listeilor` reales los criterios de INT-001 §4
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`listeilor`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
+- [ ] **8** — Actualizar el plugin instalado localmente (0.12.0 → 0.13.0) y reiniciar Claude Code, para tener `code-comment-convention` y el paso 0a de `ward`/`listeilor` disponibles en este repo
 
 **Baja / Externo**
 
