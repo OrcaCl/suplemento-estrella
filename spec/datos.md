@@ -13,7 +13,7 @@
 | `brain/` | Sistema de memoria persistente compartida entre desarrollador y agente — decisiones, riesgos, referencias |
 | `SPEC.md` | Panel de control corto y vivo del proyecto |
 | Uso meta | Cuando este mismo repo (constructor del plugin) usa su propia metodología para documentarse a sí mismo |
-| `ward` | Registro diferido en `brain/`/`SPEC.md` + commit local (sin push), invocado explícitamente por el humano — no automático. Reemplaza a `checkpoint` (deprecado en 0.12.0) |
+| `ward` | Registro diferido en `brain/`/`SPEC.md` + commit local (sin push), invocado explícitamente por el humano — no automático. Reemplaza a `checkpoint` (deprecado en 0.12.0, retirado en 0.15.0) |
 | `keepit` | Cierre de sesión: verifica respaldo, revisa pendientes faltantes, ejecuta `ward`, commit y push. Obligatorio |
 
 ## Anexos

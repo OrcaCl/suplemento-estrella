@@ -16,7 +16,7 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
 | **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el procedimiento de `ward`, commit y push finales | Sí |
 
-`checkpoint` (0.11 y anteriores) queda **deprecado**: al recibir esa palabra, Code avisa del cambio, ejecuta `ward` y ofrece `keepit`. `listeilor` (0.12 y 0.13) es el nombre anterior de `keepit`: queda como alias deprecado que avisa y ejecuta `keepit`.
+`checkpoint` (0.11 y anteriores) y `listeilor` (0.12 y 0.13, nombre anterior de `keepit`) fueron **retirados** en 0.15.0 y ya no existen como comandos. Si el humano usa una de esas palabras, Code avisa del cambio y ejecuta el comando vigente: `checkpoint` → `ward` (y ofrece `keepit`); `listeilor` → `keepit`.
 
 ## La regla — tres momentos, no más
 
@@ -31,7 +31,7 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 
 ## Aviso de colisión con comandos locales
 
-Antes de ejecutar `ward` o `keepit` (o al recibir "checkpoint"), buscar en el proyecto `.claude/commands/{ward,keepit,listeilor,checkpoint}.md` y `.claude/skills/{ward,keepit,listeilor,checkpoint}/`. Un comando local con el mismo nombre **tapa** al del plugin, y uno heredado de versiones anteriores suele seguir el modelo viejo que acumula en `SPEC.md`. Si existe:
+Antes de ejecutar `ward` o `keepit` (o al recibir las palabras retiradas "checkpoint" o "listeilor"), buscar en el proyecto `.claude/commands/{ward,keepit,listeilor,checkpoint}.md` y `.claude/skills/{ward,keepit,listeilor,checkpoint}/`. Un comando local con el mismo nombre **tapa** al del plugin, y uno heredado de versiones anteriores suele seguir el modelo viejo que acumula en `SPEC.md`. Si existe:
 
 1. Avisar al humano qué archivo es y **mostrar la diferencia de pasos** frente al comando del plugin.
 2. No sobrescribirlo ni borrarlo sin confirmación.

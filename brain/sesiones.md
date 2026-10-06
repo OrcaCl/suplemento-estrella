@@ -3,6 +3,26 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-10-06 — retiro de `checkpoint` y `listeilor` (0.15.0)
+
+**Contexto:** el autor decidió retirar ambos aliases de inmediato en vez de esperar 4 a 6 semanas: no hay forma de saber si alguien más usa el repo, y los proyectos afectados son los suyos.
+
+- **Archivos borrados:** `commands/checkpoint.md` y `commands/listeilor.md`.
+- **Degradación suave:** `documentation-convention` (y `06` en Gemini) indican el comando vigente si el humano dice una palabra retirada. El aviso de colisión se conserva.
+- **Versiones:** `suplemento-core` 0.15.0 (cambio incompatible); runtime Gemini 0.1.6. `README`, `CHANGELOG` y glosario actualizados.
+- **DEP-001 (nuevo)** e ADR-010 anotado con el retiro del alias.
+
+### Archivos modificados
+- plugins/suplemento-core/{.claude-plugin/plugin.json, commands/{checkpoint,listeilor}.md (borrados), skills/{documentation-convention,spec-driven-development}/...}
+- runtimes/gemini-antigravity/{runtime.json, skills/06-documentation-convention.md, skills/references/spec-migracion-0.12.md}
+- README.md, CHANGELOG.md, docs/glossary.md, spec/datos.md, brain/{DEP-001,ADR-010,index,sesiones}, SPEC.md
+
+### Próximo
+- Actualizar el plugin a 0.15.0, reiniciar Claude Code y pasar los proyectos del autor a `ward`/`keepit`.
+- Ítems 3, 5, 6 y 7 de `SPEC.md`.
+
+---
+
 ## Sesión — 2026-10-06 — `keepit` reemplaza a `listeilor` (0.14.0)
 
 **Contexto:** tras una semana de uso, el autor encontró incómodo "listeilor" para pedir el cierre de sesión (largo, difícil de recordar, chilenismo). Escribió `commands/keepit.md` y pidió reemplazar el nombre en todo el repo.

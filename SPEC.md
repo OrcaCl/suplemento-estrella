@@ -6,7 +6,7 @@
      Narrativa → brain/sesiones.md · cerrados → spec/cerrados.md (ID original, ordenado por ID) · header = solo fecha · "Última sesión" = 1 fila ≤ 400 car. · footer = 1 línea ≤ 300 car.
      Pendientes: SOLO en §3. Antes de commitear: revisar líneas (≤ 1000) y que ninguna supere 600 caracteres (lista en la skill spec-driven-development). -->
 
-**Versión:** 0.14.0
+**Versión:** 0.15.0
 **Última actualización:** 2026-10-06
 
 ---
@@ -35,9 +35,9 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Skills en `suplemento-core` (Claude Code) | Ver `plugins/suplemento-core/skills/` |
 | Runtimes adicionales | `runtimes/gemini-antigravity/` — 14 skills traducidas para Google Gemini (Antigravity) |
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
-| Versión del plugin `suplemento-core` (Claude Code) | `0.14.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
-| Versión del runtime Gemini | `0.1.5` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.14.0`) |
-| Última sesión | 2026-10-06 — **v0.14.0: `listeilor` pasa a `keepit` (comando de cierre de sesión) en plugin, runtime Gemini y docs; `listeilor` queda como alias deprecado (ADR-010).** Runtime Gemini 0.1.5 en paridad. Ítems 2 y 8 cerrados |
+| Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
+| Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
+| Última sesión | 2026-10-06 — **v0.15.0: `listeilor` pasa a `keepit` (ADR-010) y se retiran los comandos `checkpoint` y `listeilor` sin período de transición (DEP-001; cambio incompatible).** Runtime Gemini 0.1.6 en paridad. Ítems 2 y 8 cerrados |
 
 ---
 
@@ -82,7 +82,7 @@ Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 | `plugins/suplemento-core/` es el runtime de referencia (Claude Code); otros agentes van en `runtimes/` | Decisión explícita: no se reorganizó Claude Code por simetría — evita romper la instalación activa y la ruta que espera `marketplace.json` |
 | Sistema `brain/` se llama formalmente **Brain KMS** (Brain Knowledge Management System) | Adoptado en ambos runtimes: `01-brain-kms.md` (Gemini) y skill `brain-kms` (Claude Code, desde v0.11.0). Ver ADR-001 |
 | `SPEC.md` se reemplaza, no se acumula; tope 1000 líneas | Narrativa → `brain/sesiones.md`, cerrados → `spec/cerrados.md`, "Última sesión" = 1 fila que se sobrescribe. Se controla al leer y antes de cada commit; el plugin no incluye scripts. Ver ADR-006 y ADR-008 |
-| `ward` guarda (commit local, sin push); `keepit` cierra sesión (commit + push) | Reemplazan a `checkpoint` (deprecado en 0.12.0). `keepit` se llamó `listeilor` hasta 0.13 (renombrado en 0.14.0, alias deprecado; ver ADR-010). Un comando local con el mismo nombre tapa al del plugin: revisar `.claude/commands/`. Ver ADR-008 |
+| `ward` guarda (commit local, sin push); `keepit` cierra sesión (commit + push) | Reemplazan a `checkpoint` (deprecado en 0.12.0). `keepit` se llamó `listeilor` hasta 0.13 (ADR-010); `checkpoint` y `listeilor` fueron retirados en 0.15.0 (DEP-001). Un comando local con el mismo nombre tapa al del plugin: revisar `.claude/commands/`. Ver ADR-008 |
 | `spec/cerrados.md`: ID original del pendiente, ordenado por ID | Nombre fijo; reemplaza a `spec/completado.md` (deprecado, se conserva). Cerrar por "ya estaba hecho" exige evidencia verificable. Ver ADR-008 |
 | `TOASK.md` vive en la raíz del proyecto, no en `brain/` | Archivo operativo junto a `SPEC.md` y `SHAME.md`; `project-init` lo crea ahí en ambos runtimes. Proyectos anteriores con `brain/TOASK.md` siguen válidos. Ver ADR-007 |
 | `code-comment-convention`: el código fuente es la tercera capa de conocimiento | Brain KMS (desarrollador) · `SPEC.md` (agente) · código fuente (ambos). Una limpieza nunca elimina comentarios de decisión, regla de negocio, workaround o seguridad solo porque el código "parece claro". Los proyectos instalados la reciben por oferta única de `ward`/`keepit`, no por migración automática. El ejemplo ExtJS + Supabase de la skill es el origen del problema: no quitarlo. Ver ADR-009 |
@@ -105,7 +105,7 @@ Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 | Componente | Módulo | Estado |
 |---|---|---|
 | Marketplace | `.claude-plugin/marketplace.json` | Registrado |
-| Plugin core (Claude Code) | `plugins/suplemento-core/` | Publicado v0.14.0 (instalado localmente en 0.13.0: actualizar) |
+| Plugin core (Claude Code) | `plugins/suplemento-core/` | Publicado v0.15.0 (instalado localmente en 0.13.0: actualizar) |
 | Skill project-init | `plugins/suplemento-core/skills/project-init/` | Vigente — usada para inicializar este mismo repo |
 | Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Vigente — 14 skills traducidas, incluye `01-brain-kms.md` y `14-code-comment-convention.md` |
 
@@ -122,4 +122,4 @@ Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 
 ---
 
-_SPEC.md — v0.14.0. Última actualización: 2026-10-06._
+_SPEC.md — v0.15.0. Última actualización: 2026-10-06._

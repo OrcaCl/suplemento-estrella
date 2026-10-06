@@ -33,6 +33,7 @@ Se adopta la opción 2:
 - `suplemento-core` sube a `0.14.0` y el runtime Gemini a `0.1.5` (`core_version` 0.14.0).
 - Proyectos ya instalados: sin migración de archivos; conviene cambiar `listeilor` por `keepit` en su `CLAUDE.md`/`GEMINI.md`. El alias cubre el intervalo.
 - Mientras exista el alias hay dos palabras que disparan el cierre. Retirar `listeilor.md` es una decisión futura, pendiente de que los proyectos del autor migren.
+- **Actualización (2026-10-06):** el alias se retiró ese mismo día, junto con `checkpoint`, en 0.15.0 (ver DEP-001).
 - El ítem 7 de `SPEC.md` (desfase "pasos 1 a 7" en Gemini) sigue abierto y ahora se refiere a `keepit`.
 
 ## Commit

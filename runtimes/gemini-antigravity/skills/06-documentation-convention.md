@@ -4,7 +4,7 @@
 Gobierna **CUÁNDO** se sincroniza la documentación del proyecto (`SPEC.md` y `brain/`).
 Aplica cuando:
 - Se realicen commits de código de trabajo continuo.
-- El humano diga *"ward"*, *"keepit"*, *"listeilor"* (deprecado, nombre anterior de keepit) o *"checkpoint"* (deprecado).
+- El humano diga *"ward"*, *"keepit"*, *"listeilor"* (retirado, nombre anterior de keepit) o *"checkpoint"* (retirado).
 - Se finalice o cierre la sesión de trabajo.
 - Se modifiquen dependencias de plugins o runtime del agente.
 
@@ -19,7 +19,7 @@ Aplica cuando:
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
 | **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el algoritmo de `ward`, commit y push finales | Sí |
 
-`checkpoint` (versiones anteriores) queda **deprecado**: ante esa palabra, avisar del cambio, ejecutar `ward` y ofrecer `keepit`. `listeilor` (nombre anterior de `keepit`) también queda deprecado: ante esa palabra, avisar del cambio y ejecutar `keepit`.
+`checkpoint` (versiones anteriores) y `listeilor` (nombre anterior de `keepit`) fueron **retirados** en 0.15.0: ante esas palabras, avisar del cambio y ejecutar el comando vigente (`checkpoint` → `ward`, y ofrecer `keepit`; `listeilor` → `keepit`).
 
 ---
 

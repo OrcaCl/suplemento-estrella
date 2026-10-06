@@ -6,6 +6,10 @@ Versionado semántico (semver) desde 2026-09-11 — antes cada componente versio
 
 ## 2026-10-06
 
+### Removed
+- **[Runtime Claude Code v0.15.0]** Se retiran los comandos `checkpoint` (deprecado desde 0.12.0) y `listeilor` (renombrado a `keepit` en 0.14.0). Ya no existen `commands/checkpoint.md` ni `commands/listeilor.md`. Si el humano dice una de esas palabras, `documentation-convention` indica el comando vigente (`checkpoint` → `ward`, `listeilor` → `keepit`) y lo ejecuta. **Cambio incompatible:** los proyectos que aún usan esas palabras deben pasar a `ward`/`keepit` antes de actualizar. El aviso de colisión sigue buscando `checkpoint.md` y `listeilor.md` locales, porque un `checkpoint` heredado puede seguir acumulando en `SPEC.md`. Decisión en DEP-001.
+- **[Runtime Gemini v0.1.6]** Paridad con core 0.15.0 (`core_version` = 0.15.0): `06-documentation-convention` y `spec-migracion-0.12` marcan `checkpoint` y `listeilor` como retirados. Para actualizar, volver a correr el instalador.
+
 ### Changed
 - **[Runtime Claude Code v0.14.0]** `listeilor` se renombra a **`keepit`**: una palabra corta, fácil de recordar y sin chilenismo para pedir el cierre de sesión (verifica respaldo en `brain/` y `SPEC.md`, revisa pendientes, commit + push). El procedimiento no cambia; solo la palabra. Decisión en ADR-010.
   - Nuevo `commands/keepit.md`. `commands/listeilor.md` queda como **alias deprecado**: avisa del cambio y ejecuta `keepit`, igual que `checkpoint` desde 0.12.0; se retirará en una versión futura.

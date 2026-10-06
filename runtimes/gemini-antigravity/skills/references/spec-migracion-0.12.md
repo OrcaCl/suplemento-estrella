@@ -6,7 +6,7 @@ Para proyectos que venían de core 0.11 o anterior. **No se borra nada del conte
 
 | Antes | Ahora |
 |---|---|
-| Comando `checkpoint` (registra + commit + push) | `ward` (registra + commit, **sin push**) y `keepit` (llamado `listeilor` en 0.12 y 0.13; cierre de sesión: verifica, revisa pendientes, commit + push). `checkpoint` queda deprecado |
+| Comando `checkpoint` (registra + commit + push) | `ward` (registra + commit, **sin push**) y `keepit` (llamado `listeilor` en 0.12 y 0.13; cierre de sesión: verifica, revisa pendientes, commit + push). `checkpoint` fue retirado en 0.15.0 |
 | `SPEC.md` ≤ ~15 KB | `SPEC.md` ≤ 1000 líneas (configurable), controlado al leerlo y en `ward`/`keepit` |
 | Cerrados → `spec/completado.md` (1 línea con fecha) | `spec/cerrados.md`: ID original + fecha + evidencia, **ordenado por ID** |
 | Sin filas "Sesión anterior" | Configurable: `sesiones_anteriores_en_spec: N` (defecto 0) |
