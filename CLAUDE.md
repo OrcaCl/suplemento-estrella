@@ -55,6 +55,12 @@ Commits de código con normalidad según avanza el trabajo. El registro de `brai
 
 ---
 
+## Comentarios en el código
+
+El código explica QUÉ y CÓMO; los comentarios explican POR QUÉ. Documentar contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings) y usar comentarios inline solo para decisiones no obvias, reglas de negocio, workarounds y restricciones de seguridad o rendimiento. **Nunca eliminar un comentario solo porque el código parece suficientemente claro:** antes de una limpieza o refactorización, clasificarlo (ver skill `code-comment-convention`).
+
+---
+
 ## Plugins
 
 Este repo instala y usa su propio plugin (`suplemento-core`) además de Superpowers y claude-mem. Ver `docs/getting-started.md` para el ecosistema recomendado.

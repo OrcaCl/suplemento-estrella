@@ -6,8 +6,8 @@
      Narrativa → brain/sesiones.md · cerrados → spec/cerrados.md (ID original, ordenado por ID) · header = solo fecha · "Última sesión" = 1 fila ≤ 400 car. · footer = 1 línea ≤ 300 car.
      Pendientes: SOLO en §3. Antes de commitear: revisar líneas (≤ 1000) y que ninguna supere 600 caracteres (lista en la skill spec-driven-development). -->
 
-**Versión:** 0.12.0
-**Última actualización:** 2026-09-30
+**Versión:** 0.13.0
+**Última actualización:** 2026-10-06
 
 ---
 
@@ -33,11 +33,11 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Métrica | Valor |
 |---|---|
 | Skills en `suplemento-core` (Claude Code) | Ver `plugins/suplemento-core/skills/` |
-| Runtimes adicionales | `runtimes/gemini-antigravity/` — 13 skills traducidas para Google Gemini (Antigravity) |
+| Runtimes adicionales | `runtimes/gemini-antigravity/` — 14 skills traducidas para Google Gemini (Antigravity) |
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
-| Versión del plugin `suplemento-core` (Claude Code) | `0.12.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
-| Versión del runtime Gemini | `0.1.3` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.12.0`) |
-| Última sesión | 2026-09-30 — **v0.12.0: `ward`/`listeilor` reemplazan a `checkpoint`; tope de 1000 líneas controlado al leer (sin script); `spec/cerrados.md` con ID original ordenado por ID (INT-001, ADR-008).** Runtime Gemini 0.1.3 en paridad; README con guía de actualización |
+| Versión del plugin `suplemento-core` (Claude Code) | `0.13.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
+| Versión del runtime Gemini | `0.1.4` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.13.0`) |
+| Última sesión | 2026-10-06 — **v0.13.0: nueva skill `code-comment-convention` (el código explica QUÉ/CÓMO, los comentarios el POR QUÉ; regla de no destrucción), incluida en `project-init` y ofrecida una vez por `ward`/`listeilor` a proyectos ya instalados (ADR-009).** Runtime Gemini 0.1.4 en paridad. Ítem 4 cerrado |
 
 ---
 
@@ -53,13 +53,14 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 - [ ] **2** — Migrar el proyecto "paciente cero" a 0.12.0 (renombrar `catastro-historico.md` a `cerrados.md`, agregar configuración) y comprobar con `ward`/`listeilor` reales los criterios de INT-001 §4
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
-- [ ] **4** — Actualizar el plugin instalado localmente (0.11.0 → 0.12.0) y reiniciar Claude Code, para tener `ward`/`listeilor` disponibles en este repo
+- [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`listeilor`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
 
 **Baja / Externo**
 
 - [ ] **5** — `docs/getting-started.md` dice que `project-init` prepara "una estructura simple o una completa según el tamaño", pero hoy crea siempre la estructura completa: corregir el texto
+- [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `listeilor` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
 
-Cerrados: 1 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 4 _(detalle en `spec/cerrados.md`)_
 
 ---
 
@@ -85,6 +86,7 @@ Cerrados: 1 _(detalle en `spec/cerrados.md`)_
 | `ward` guarda (commit local, sin push); `listeilor` cierra sesión (commit + push) | Reemplazan a `checkpoint` (deprecado en 0.12.0). Un comando local con el mismo nombre tapa al del plugin: revisar `.claude/commands/`. Ver ADR-008 |
 | `spec/cerrados.md`: ID original del pendiente, ordenado por ID | Nombre fijo; reemplaza a `spec/completado.md` (deprecado, se conserva). Cerrar por "ya estaba hecho" exige evidencia verificable. Ver ADR-008 |
 | `TOASK.md` vive en la raíz del proyecto, no en `brain/` | Archivo operativo junto a `SPEC.md` y `SHAME.md`; `project-init` lo crea ahí en ambos runtimes. Proyectos anteriores con `brain/TOASK.md` siguen válidos. Ver ADR-007 |
+| `code-comment-convention`: el código fuente es la tercera capa de conocimiento | Brain KMS (desarrollador) · `SPEC.md` (agente) · código fuente (ambos). Una limpieza nunca elimina comentarios de decisión, regla de negocio, workaround o seguridad solo porque el código "parece claro". Los proyectos instalados la reciben por oferta única de `ward`/`listeilor`, no por migración automática. El ejemplo ExtJS + Supabase de la skill es el origen del problema: no quitarlo. Ver ADR-009 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---
@@ -104,9 +106,9 @@ Cerrados: 1 _(detalle en `spec/cerrados.md`)_
 | Componente | Módulo | Estado |
 |---|---|---|
 | Marketplace | `.claude-plugin/marketplace.json` | Registrado |
-| Plugin core (Claude Code) | `plugins/suplemento-core/` | Publicado v0.12.0 (instalado localmente: actualizar) |
+| Plugin core (Claude Code) | `plugins/suplemento-core/` | Publicado v0.13.0 (instalado localmente en 0.12.0: actualizar) |
 | Skill project-init | `plugins/suplemento-core/skills/project-init/` | Vigente — usada para inicializar este mismo repo |
-| Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Vigente — 13 skills traducidas, incluye `01-brain-kms.md` |
+| Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Vigente — 14 skills traducidas, incluye `01-brain-kms.md` y `14-code-comment-convention.md` |
 
 ---
 
@@ -121,4 +123,4 @@ Cerrados: 1 _(detalle en `spec/cerrados.md`)_
 
 ---
 
-_SPEC.md — v0.12.0. Última actualización: 2026-09-30._
+_SPEC.md — v0.13.0. Última actualización: 2026-10-06._

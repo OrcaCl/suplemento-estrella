@@ -18,6 +18,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-006](ADR-006-spec-md-se-reemplaza-no-se-acumula.md) | SPEC.md se reemplaza, no se acumula: árbitro de destino y tope de tamaño | ADR | Vigente |
 | [ADR-007](ADR-007-toask-en-la-raiz-del-proyecto.md) | TOASK.md vive en la raíz del proyecto, no dentro de brain/ | ADR | Vigente |
 | [ADR-008](ADR-008-ward-listeilor-y-spec-con-tope-por-lineas.md) | ward y listeilor reemplazan a checkpoint; SPEC.md con tope por líneas y cerrados ordenados por ID | ADR | Vigente |
+| [ADR-009](ADR-009-code-comment-convention-tercera-capa.md) | `code-comment-convention`: el código fuente como tercera capa de conocimiento | ADR | Vigente |
 
 ---
 

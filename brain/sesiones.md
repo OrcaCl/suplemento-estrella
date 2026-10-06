@@ -3,6 +3,32 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-10-06 — `code-comment-convention`: el código como tercera capa (0.13.0)
+
+**Contexto:** el autor había borrado todos los comentarios de un proyecto ExtJS + Supabase y el código quedó difícil de leer en ajustes rápidos: recuperar un "por qué" exigía ir a Brain KMS o pedirle a Code que leyera el SPEC. Escribió la skill `code-comment-convention` y pidió sumarla al plugin, a `project-init` y ofrecerla a proyectos ya instalados.
+
+- **Ítem 4 cerrado ("ya estaba hecho"):** `installed_plugins.json` ya registraba `suplemento-core` 0.12.0 (SHA `f72c699`, 2026-09-30) y `ward`/`listeilor` estaban disponibles; evidencia en `spec/cerrados.md`.
+- **Skill incorporada (`cefb21c`):** `suplemento-core` 0.13.0. Se normalizó su frontmatter (tenía líneas en blanco que las otras skills no tienen). El ejemplo ExtJS/Supabase se conserva: es el origen del problema.
+- **`project-init`:** `CLAUDE.md` de los proyectos nuevos incluye `## Comentarios en el código` (plantilla y Paso 3, ítem 9).
+- **Proyectos ya instalados:** actualizar el plugin no toca su `CLAUDE.md`, así que `ward` y `listeilor` (paso 0a) ofrecen la convención **una sola vez**; si se rechaza queda constancia en `CLAUDE.md`. Guía en `skills/code-comment-convention/references/migracion-0.13.md`. Este repo la aceptó en su propio `CLAUDE.md`.
+- **Runtime Gemini 0.1.4** en paridad: `14-code-comment-convention.md` (condensada, con sección de adopción), `06`, `02`, `gemini-template`, `install-gemini.sh` (14 skills), `GEMINI-RUNTIME.md` (árbol y tabla de enrutamiento).
+- **Error propio corregido:** la sección nueva de la plantilla de `CLAUDE.md` se insertó primero en medio de "Convención de documentación"; se movió al final del bloque.
+- **ADR-009 (nuevo):** el código fuente como tercera capa — Brain KMS (desarrollador), `SPEC.md` (agente), código (ambos).
+- **Hallazgo:** en Gemini, `listeilor` manda ejecutar "los pasos 1 a 7" de `ward`, que tiene los pasos 0 a 8; queda como ítem 7 de `SPEC.md`.
+
+### Archivos modificados
+- plugins/suplemento-core/{.claude-plugin/plugin.json, commands/{ward,listeilor}.md, skills/code-comment-convention/{SKILL.md,references/migracion-0.13.md}, skills/project-init/{SKILL.md,references/claude-md-template.md}}
+- runtimes/gemini-antigravity/{GEMINI-RUNTIME.md, runtime.json, skills/{02,06,14}, skills/references/gemini-template.md}, install-gemini.sh
+- .claude-plugin/marketplace.json, README.md, CHANGELOG.md, CLAUDE.md
+- brain/{ADR-009,index,sesiones}, spec/cerrados.md, SPEC.md
+
+### Próximo
+- Ítem 2 de `SPEC.md` (migrar "paciente cero"); ahí mismo, ítem 6: probar la oferta 0a en un proyecto real.
+- Actualizar el plugin instalado a 0.13.0 y reiniciar Claude Code (el instalado es 0.12.0).
+- Sin pendientes de alta prioridad.
+
+---
+
 ## Sesión — 2026-09-30 — ward/listeilor, SPEC por líneas y cerrados por ID (0.12.0)
 
 **Contexto:** otra instancia de Code (la del proyecto "paciente cero") envió INT-004 (renumerado aquí como INT-001): su `SPEC.md` llegó a 134 KB pese al fix de 0.10.1. Pidió actualizar `suplemento-core` a 0.12.0. Antes de implementar se revisaron las propuestas y el autor corrigió varias (ver ADR-008).
