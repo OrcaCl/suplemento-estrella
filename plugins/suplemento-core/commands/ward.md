@@ -1,12 +1,12 @@
 ---
-description: Guarda en brain/ y SPEC.md todo lo pendiente desde el último ward o cierre de sesión, y hace commit local (sin push). No usar para commits de código intermedios; para cerrar sesión usar listeilor.
+description: Guarda en brain/ y SPEC.md todo lo pendiente desde el último ward o cierre de sesión, y hace commit local (sin push). No usar para commits de código intermedios; para cerrar sesión usar keepit.
 ---
 
 ## Instrucciones
 
 Al recibir la palabra "ward" del humano, ejecutar en orden:
 
-0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto comandos o skills locales que respondan a los mismos nombres: `.claude/commands/{ward,listeilor,checkpoint}.md` y `.claude/skills/{ward,listeilor,checkpoint}/`. Si existe alguno, avisar al humano qué archivo es, mostrar en qué se diferencia de este comando (qué pasos hace y cuáles no) y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint.md` local heredado de 0.11 o anterior sigue respondiendo a "checkpoint" y suele seguir el modelo antiguo que acumula en `SPEC.md` — ver `skills/spec-driven-development/references/migracion-0.12.md`.
+0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto comandos o skills locales que respondan a los mismos nombres: `.claude/commands/{ward,keepit,listeilor,checkpoint}.md` y `.claude/skills/{ward,keepit,listeilor,checkpoint}/`. Si existe alguno, avisar al humano qué archivo es, mostrar en qué se diferencia de este comando (qué pasos hace y cuáles no) y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint.md` local heredado de 0.11 o anterior sigue respondiendo a "checkpoint" y suele seguir el modelo antiguo que acumula en `SPEC.md` — ver `skills/spec-driven-development/references/migracion-0.12.md`.
 0a. **Oferta de la convención de comentarios — una sola vez.** Si el `CLAUDE.md` del proyecto no menciona `code-comment-convention` ni tiene la sección `## Comentarios en el código`, avisar al humano que existe la skill `code-comment-convention` (el código explica QUÉ y CÓMO, los comentarios el POR QUÉ; una limpieza no elimina comentarios de decisión, regla de negocio, workaround o seguridad) y **ofrecer** agregar la sección a `CLAUDE.md`. Si acepta, agregarla (texto en `skills/code-comment-convention/references/migracion-0.13.md`). Si rechaza, dejar en `CLAUDE.md` la línea `Comentarios en el código: convención no adoptada (decisión del humano, AAAA-MM-DD)` para no volver a ofrecerla. No modificar `CLAUDE.md` sin su respuesta.
 1. Revisar qué se hizo desde el último ward o cierre de sesión: commits de código sin documentar, cambios relevantes, decisiones tomadas en la conversación.
 2. **`brain/sesiones.md`** — agregar entrada con hitos, archivos clave y resultados medibles.
@@ -27,7 +27,7 @@ Al recibir la palabra "ward" del humano, ejecutar en orden:
 7. Mostrar al humano un resumen breve de lo que se va a registrar **antes** de escribir los archivos — no asumir silenciosamente qué contó como hito, ni qué categoría corresponde si hay ambigüedad entre dos.
 8. Completar la sección `## Commit` de cualquier `ADR`/`INT`/`NOC`/`DEP` creado en esta sesión, apuntando a la entrada de `sesiones.md` recién agregada.
 9. **Chequeo de `SPEC.md` — obligatorio, antes del commit:** revisar la lista de topes de la skill `spec-driven-development` ("Tope de tamaño"): líneas ≤ `spec_tope_lineas` (1000 por defecto) y ninguna > 600 caracteres, filas "Sesión anterior" = `sesiones_anteriores_en_spec`, footer de una línea con la misma versión que la cabecera, ningún `- [ ]` fuera de §3 ni `[x]` dentro de ella, IDs sin duplicar. Si algo excede, condensar y mover el contenido a su destino — **no commitear un `SPEC.md` excedido**. Si está al 80 % del tope, avisar al humano.
-10. `git commit` con mensaje descriptivo del período cubierto. **Sin `git push`:** ward guarda localmente; el push lo hace `listeilor` al cerrar la sesión. Informar al humano que quedó commit local sin pushear.
+10. `git commit` con mensaje descriptivo del período cubierto. **Sin `git push`:** ward guarda localmente; el push lo hace `keepit` al cerrar la sesión. Informar al humano que quedó commit local sin pushear.
 
 No usar este comando para commits de código intermedios — es exclusivamente para el registro de documentación (`brain/`, `SPEC.md`) diferido según la skill `documentation-convention`.
 

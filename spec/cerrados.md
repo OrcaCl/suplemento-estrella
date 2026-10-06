@@ -8,4 +8,8 @@ Los cerrados anteriores a 0.12.0 no tenían ID: están en [`completado.md`](comp
 
 **1 — ✅ CERRADO (2026-09-30).** Validar bajo presión las 3 skills propias (`disenar-antes-de-implementar`, `planificacion-por-fases`, `depuracion-sistematica`). Las skills se usaron en el proyecto "paciente cero" y en otros proyectos en desarrollo, y funcionan bien. Evidencia: validación del autor en uso real (proyectos privados), 2026-09-30.
 
+**2 — ✅ CERRADO (2026-10-06).** Migrar el proyecto "paciente cero" a 0.12.0 y comprobar `ward`/`listeilor` reales contra los criterios de INT-001 §4. La migración quedó lista y el autor probó `ward` y `listeilor` en ese proyecto: ambos funcionan. Evidencia: confirmación del autor en sesión, 2026-10-06 (proyecto privado, sin verificación directa desde este repo).
+
 **4 — ✅ CERRADO (2026-10-06), ya estaba hecho.** Actualizar el plugin instalado localmente (0.11.0 → 0.12.0). La actualización se hizo el 2026-09-30, antes de agregar el ítem al SPEC. Evidencia: `~/.claude/plugins/installed_plugins.json` registra `suplemento-core` 0.12.0 (`lastUpdated` 2026-09-30, SHA `f72c699`, igual al último commit del repo); `ward` y `listeilor` aparecen como skills disponibles en la sesión; no existe `.claude/commands/` que los tape.
+
+**8 — ✅ CERRADO (2026-10-06).** Actualizar el plugin instalado localmente (0.12.0 → 0.13.0). El `marketplace update` no veía la versión nueva porque los commits seguían solo locales; tras el push (`c497098`) la actualización se completó. Evidencia: `~/.claude/plugins/installed_plugins.json` registra `suplemento-core` 0.13.0 (`lastUpdated` 2026-10-06, SHA `c497098`) y existe `cache/suplemento-estrella/suplemento-core/0.13.0/skills/code-comment-convention`.

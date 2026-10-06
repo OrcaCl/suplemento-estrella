@@ -1,6 +1,6 @@
 ---
 name: brain-kms
-description: Disciplina de trabajo con el sistema brain/ (Brain KMS, Brain Knowledge Management System; registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión (`listeilor`) o hacer un `ward` en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
+description: Disciplina de trabajo con el sistema brain/ (Brain KMS, Brain Knowledge Management System; registros de decisión — ADR, INT, NOC, DEP, REF/REFX) para proyectos que usan la estructura completa. Úsala siempre que se vaya a tomar una decisión de arquitectura, una decisión sobre cómo el humano y Code trabajan juntos, documentar un hallazgo de riesgo mixto, retirar una herramienta o patrón, o registrar material de referencia (propio o de otro proyecto); al cerrar una sesión (`keepit`) o hacer un `ward` en un proyecto con brain/; o cuando un proyecto con estructura simple muestre señales de necesitar escalar a brain/. También aplica al crear un bug report o feature proposal hacia un sistema externo.
 ---
 
 # Brain KMS
@@ -68,7 +68,7 @@ Ver `references/adr-template.md`, `references/int-template.md`, `references/noc-
 
 ## Registro al cierre de sesión o `ward`
 
-Al ejecutar un `ward` o cerrar sesión con `listeilor` (ver skill `documentation-convention` y los comandos `ward`/`listeilor`), proponer:
+Al ejecutar un `ward` o cerrar sesión con `keepit` (ver skill `documentation-convention` y los comandos `ward`/`keepit`), proponer:
 
 1. `brain/sesiones.md` — nueva entrada con hitos, archivos modificados, próximo paso
 2. El registro que corresponda según la tabla de decisión (`ADR`, `INT`, `NOC`, `DEP`, `REF`, o `REFX`) — puede ser más de uno

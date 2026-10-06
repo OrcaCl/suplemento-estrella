@@ -6,6 +6,15 @@ Versionado semántico (semver) desde 2026-09-11 — antes cada componente versio
 
 ## 2026-10-06
 
+### Changed
+- **[Runtime Claude Code v0.14.0]** `listeilor` se renombra a **`keepit`**: una palabra corta, fácil de recordar y sin chilenismo para pedir el cierre de sesión (verifica respaldo en `brain/` y `SPEC.md`, revisa pendientes, commit + push). El procedimiento no cambia; solo la palabra. Decisión en ADR-010.
+  - Nuevo `commands/keepit.md`. `commands/listeilor.md` queda como **alias deprecado**: avisa del cambio y ejecuta `keepit`, igual que `checkpoint` desde 0.12.0; se retirará en una versión futura.
+  - `ward`, `documentation-convention`, `spec-driven-development`, `brain-kms`, `tdd-workflow`, `project-init` (incluida la plantilla de `CLAUDE.md`) y las guías de migración usan `keepit`. El aviso de colisión también busca `listeilor` entre los comandos y skills locales.
+  - **Proyectos ya instalados:** actualizar el plugin no modifica su `CLAUDE.md`. Si menciona `listeilor`, cambiarlo por `keepit` a mano; mientras tanto la palabra anterior sigue funcionando. Sin migración de archivos.
+  - Las entradas históricas de este changelog, `brain/` y `spec/cerrados.md` conservan "listeilor": documentan el nombre vigente en su momento.
+- **[Runtime Gemini v0.1.5]** Paridad con core 0.14.0 (`core_version` = 0.14.0): `listeilor` pasa a `keepit` en `06-documentation-convention` (con `listeilor` como nombre deprecado), `01-brain-kms`, `11-spec-driven-development`, `14-code-comment-convention`, `GEMINI-RUNTIME`, `gemini-template` y `spec-migracion-0.12`. Para actualizar, volver a correr el instalador.
+- **[Core]** `README.md`, `docs/`, `spec/datos.md` y el `CLAUDE.md` de este repo usan `keepit`.
+
 ### Added
 - **[Runtime Claude Code v0.13.0]** Nueva skill `code-comment-convention`: dirección para los comentarios "in-code", que hasta ahora no tenían ninguna. El código explica QUÉ y CÓMO, los comentarios explican POR QUÉ; contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings); `TODO`/`FIXME`/`HACK`/`NOTE` con significados distintos; y una **regla de no destrucción** — una limpieza o refactorización no elimina comentarios de decisión, regla de negocio, workaround, seguridad o rendimiento solo porque el código parece claro. Complementa a `documentation-convention`, `spec-driven-development` y `brain-kms`.
   - `project-init`: el `CLAUDE.md` de los proyectos nuevos incluye la sección `## Comentarios en el código` (plantilla y Paso 3, ítem 9).

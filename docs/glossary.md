@@ -12,7 +12,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **`ward`** — Comando (del lore de internet: guardar algo para volver a revisarlo sin perder lo que se va agregando). Registra lo pendiente en `brain/` y `SPEC.md` y hace commit **local, sin push**. Solo lo dispara el humano; el agente nunca decide por su cuenta que "amerita" uno. Ver [workflow.md](workflow.md).
 
-**`listeilor`** — Comando de cierre de sesión: verifica que no falte nada por respaldar en `brain/` y `SPEC.md`, revisa que no queden pendientes fuera de la lista, ejecuta `ward`, y hace el commit y push finales. Es obligatorio antes de dar la sesión por terminada.
+**`keepit`** — Comando de cierre de sesión: verifica que no falte nada por respaldar en `brain/` y `SPEC.md`, revisa que no queden pendientes fuera de la lista, ejecuta `ward`, y hace el commit y push finales. Es obligatorio antes de dar la sesión por terminada.
 
 **Checkpoint** — Nombre anterior (≤ 0.11) de `ward`; deprecado en 0.12.0. Hacía lo mismo que `ward` pero con push.
 

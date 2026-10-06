@@ -14,7 +14,7 @@
 | `SPEC.md` | Panel de control corto y vivo del proyecto |
 | Uso meta | Cuando este mismo repo (constructor del plugin) usa su propia metodología para documentarse a sí mismo |
 | `ward` | Registro diferido en `brain/`/`SPEC.md` + commit local (sin push), invocado explícitamente por el humano — no automático. Reemplaza a `checkpoint` (deprecado en 0.12.0) |
-| `listeilor` | Cierre de sesión: verifica respaldo, revisa pendientes faltantes, ejecuta `ward`, commit y push. Obligatorio |
+| `keepit` | Cierre de sesión: verifica respaldo, revisa pendientes faltantes, ejecuta `ward`, commit y push. Obligatorio |
 
 ## Anexos
 

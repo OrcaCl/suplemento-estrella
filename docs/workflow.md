@@ -49,7 +49,7 @@ Durante el desarrollo puedes pedirle al agente que haga un **`ward`** para que g
 
 Antes de cerrar sesión, dile al agente:
 
-> [nombre que le hayas puesto], **listeilor** (cerremos sesión).
+> [nombre que le hayas puesto], **keepit** (cerremos sesión).
 
 El agente hará lo siguiente:
 

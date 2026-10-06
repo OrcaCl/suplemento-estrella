@@ -1,14 +1,14 @@
-# SKILL: Documentation Convention — ward / listeilor (When to Document)
+# SKILL: Documentation Convention — ward / keepit (When to Document)
 
 ## Propósito y Disparadores
 Gobierna **CUÁNDO** se sincroniza la documentación del proyecto (`SPEC.md` y `brain/`).
 Aplica cuando:
 - Se realicen commits de código de trabajo continuo.
-- El humano diga *"ward"*, *"listeilor"* o *"checkpoint"* (deprecado).
+- El humano diga *"ward"*, *"keepit"*, *"listeilor"* (deprecado, nombre anterior de keepit) o *"checkpoint"* (deprecado).
 - Se finalice o cierre la sesión de trabajo.
 - Se modifiquen dependencias de plugins o runtime del agente.
 
-**Modo de registro.** Lo descrito aquí es `registro: diferido`, el **por defecto**. Un proyecto puede declarar `registro: inmediato` en su `GEMINI.md` (ver `11-spec-driven-development.md`, sección 0); en ese caso se registra tras cada breakthrough, pero el cierre de sesión (`listeilor`) sigue siendo obligatorio.
+**Modo de registro.** Lo descrito aquí es `registro: diferido`, el **por defecto**. Un proyecto puede declarar `registro: inmediato` en su `GEMINI.md` (ver `11-spec-driven-development.md`, sección 0); en ese caso se registra tras cada breakthrough, pero el cierre de sesión (`keepit`) sigue siendo obligatorio.
 
 ---
 
@@ -17,9 +17,9 @@ Aplica cuando:
 | Comando | Cuándo | Qué hace | Push |
 |---|---|---|---|
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
-| **`listeilor`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el algoritmo de `ward`, commit y push finales | Sí |
+| **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el algoritmo de `ward`, commit y push finales | Sí |
 
-`checkpoint` (versiones anteriores) queda **deprecado**: ante esa palabra, avisar del cambio, ejecutar `ward` y ofrecer `listeilor`.
+`checkpoint` (versiones anteriores) queda **deprecado**: ante esa palabra, avisar del cambio, ejecutar `ward` y ofrecer `keepit`. `listeilor` (nombre anterior de `keepit`) también queda deprecado: ante esa palabra, avisar del cambio y ejecutar `keepit`.
 
 ---
 
@@ -33,7 +33,7 @@ Aplica cuando:
 Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar el avance. Gemini **nunca** decide por su cuenta ejecutar un `ward`.
 
 **Algoritmo de `ward`:**
-0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward`, `listeilor` o `checkpoint`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint` local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
+0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward`, `keepit`, `listeilor` o `checkpoint`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint` local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
 0a. **Oferta de la convención de comentarios — una sola vez.** Si el `GEMINI.md` del proyecto no menciona `14-code-comment-convention` ni tiene la sección `## Comentarios en el código`, avisar al humano que existe esa skill y **ofrecer** agregar la sección a `GEMINI.md` (texto en `14-code-comment-convention.md`, sección 9). Si rechaza, dejar en `GEMINI.md` la línea `Comentarios en el código: convención no adoptada (decisión del humano, AAAA-MM-DD)` para no volver a ofrecerla. No modificar `GEMINI.md` sin su respuesta.
 1. Revisar los avances desde el último `ward` o cierre de sesión.
 2. Preparar borrador de actualización para `brain/sesiones.md` (resumen cronológico).
@@ -42,10 +42,10 @@ Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar e
 5. Preparar actualización de `brain/index.md` si se crearon nuevos `ADR`, `INT`, `NOC`, etc.
 6. **Presentar el resumen al humano antes de escribir en disco.**
 7. **Chequeo de `SPEC.md` antes del commit:** revisar la lista de topes de `11-spec-driven-development.md` (sección 3b): líneas ≤ `spec_tope_lineas` (1000 por defecto) y ninguna > 600 caracteres, filas "Sesión anterior" = `sesiones_anteriores_en_spec`, footer de una línea con la misma versión que la cabecera, ningún `- [ ]` fuera de §3 ni `[x]` dentro de ella, IDs sin duplicar. Si algo excede, condensar y mover a su destino — no commitear un `SPEC.md` excedido. Si está al 80 % del tope, avisar al humano.
-8. Ejecutar `git commit` descriptivo del período. **Sin `git push`** — el push lo hace `listeilor`.
+8. Ejecutar `git commit` descriptivo del período. **Sin `git push`** — el push lo hace `keepit`.
 
-### 3. Cierre de Sesión con `listeilor` (Obligatorio e Innegociable)
-Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar `listeilor` sin necesidad de que se lo pidan explícitamente:
+### 3. Cierre de Sesión con `keepit` (Obligatorio e Innegociable)
+Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar `keepit` sin necesidad de que se lo pidan explícitamente:
 
 1. Aviso de colisión (paso 0 de `ward`) y oferta de la convención de comentarios (paso 0a de `ward`; no repetirla si ya se ofreció).
 2. **Verificar respaldo:** ¿commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear? ¿decisiones sin registro? ¿`brain/index.md` completo? ¿`SPEC.md` refleja el estado real?
@@ -54,7 +54,7 @@ Al finalizar la sesión de trabajo (indicado por el humano o por contexto de des
 5. Ejecutar el algoritmo de `ward` (pasos 1 a 7), sin duplicar sus reglas.
 6. `git commit` final (sin commit vacío) y `git push`.
 
-> **Guardrail de Cierre:** Si el `git push` falla por falta de red o remoto no configurado, notificar al humano y dejarlo señalado como pendiente. La sesión **NO** se considera cerrada exitosamente hasta que los cambios estén pusheados. (Un `ward` sin `listeilor` deja commits locales: ese registro tampoco está a salvo hasta el push.)
+> **Guardrail de Cierre:** Si el `git push` falla por falta de red o remoto no configurado, notificar al humano y dejarlo señalado como pendiente. La sesión **NO** se considera cerrada exitosamente hasta que los cambios estén pusheados. (Un `ward` sin `keepit` deja commits locales: ese registro tampoco está a salvo hasta el push.)
 
 ---
 

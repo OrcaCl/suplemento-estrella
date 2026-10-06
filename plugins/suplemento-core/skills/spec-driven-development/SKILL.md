@@ -13,7 +13,7 @@ Los proyectos ajustan esta skill con líneas `clave: valor` en su `CLAUDE.md` (s
 
 | Clave | Por defecto | Qué controla |
 |---|---|---|
-| `registro` | `diferido` | Cuándo se registra en `SPEC.md`/`spec/`/`brain/`: `diferido` (en `ward` o `listeilor`) o `inmediato` (tras cada breakthrough) |
+| `registro` | `diferido` | Cuándo se registra en `SPEC.md`/`spec/`/`brain/`: `diferido` (en `ward` o `keepit`) o `inmediato` (tras cada breakthrough) |
 | `spec_tope_lineas` | `1000` | Tope de líneas de `SPEC.md`. Al superarlo hay que condensar; al llegar al 80 % se avisa |
 | `sesiones_anteriores_en_spec` | `0` | Cuántas filas "Sesión anterior" (≤ 2 líneas, ≤ 600 caracteres cada una) se conservan en la §2 |
 
@@ -45,10 +45,10 @@ Qué se actualiza en cada registro (igual en ambos modos):
 
 Cuándo ocurre:
 
-- **`registro: diferido` (por defecto, y siempre que el proyecto use `ward`/`listeilor`):** se registra solo al ejecutar `ward` o al cerrar sesión con `listeilor` — nunca por iniciativa de Code a mitad del trabajo. Ver skill `documentation-convention`.
-- **`registro: inmediato`:** tras cada breakthrough (feature completada, bug crítico resuelto, migración ejecutada), antes de seguir con la siguiente tarea. Aun así, el cierre de sesión (`listeilor`) sigue siendo obligatorio.
+- **`registro: diferido` (por defecto, y siempre que el proyecto use `ward`/`keepit`):** se registra solo al ejecutar `ward` o al cerrar sesión con `keepit` — nunca por iniciativa de Code a mitad del trabajo. Ver skill `documentation-convention`.
+- **`registro: inmediato`:** tras cada breakthrough (feature completada, bug crítico resuelto, migración ejecutada), antes de seguir con la siguiente tarea. Aun así, el cierre de sesión (`keepit`) sigue siendo obligatorio.
 
-Si el proyecto usa `ward`/`listeilor` y no declara `registro`, es `diferido`. **No mezclar modos:** una regla de "no esperar al cierre" solo aplica si el proyecto declaró `registro: inmediato`.
+Si el proyecto usa `ward`/`keepit` y no declara `registro`, es `diferido`. **No mezclar modos:** una regla de "no esperar al cierre" solo aplica si el proyecto declaró `registro: inmediato`.
 
 ## Dónde va cada cosa — tabla de decisión
 
@@ -115,7 +115,7 @@ Cerrar un ítem son tres movimientos, siempre juntos:
 `SPEC.md` no debe pasar de `spec_tope_lineas` líneas (por defecto **1000**) ni tener ninguna línea de más de 600 caracteres. No hay script: el control ocurre en dos momentos.
 
 1. **Al abrir la sesión:** la lectura informa cuántas líneas tiene el archivo (ver "Regla de apertura de sesión").
-2. **En `ward` y `listeilor`, antes del commit:** Code revisa esta lista sobre el `SPEC.md` ya actualizado (puede apoyarse en `wc -l` o `awk` puntuales):
+2. **En `ward` y `keepit`, antes del commit:** Code revisa esta lista sobre el `SPEC.md` ya actualizado (puede apoyarse en `wc -l` o `awk` puntuales):
    - líneas ≤ `spec_tope_lineas`; ninguna línea > 600 caracteres
    - filas "Sesión anterior" = exactamente `sesiones_anteriores_en_spec`
    - footer de una sola línea (≤ ~300 caracteres) y con la misma versión que la cabecera
@@ -130,7 +130,7 @@ Si algo excede, condensar y mover el contenido a su destino según la tabla de a
 
 Cuando se detecta una inconsistencia de este tipo:
 1. No asumir silenciosamente cuál versión es la correcta — confirmar con el usuario.
-2. Una vez confirmado, corregir `SPEC.md` en el registro (de inmediato si `registro: inmediato`; en el próximo `ward` o `listeilor` si es `diferido`), verificando el ítem contra código o datos reales antes de dejarlo abierto o cerrado.
+2. Una vez confirmado, corregir `SPEC.md` en el registro (de inmediato si `registro: inmediato`; en el próximo `ward` o `keepit` si es `diferido`), verificando el ítem contra código o datos reales antes de dejarlo abierto o cerrado.
 3. Si la sección quedó inconsistente por haber evolucionado en varios pasos (ADR tras ADR, por ejemplo), documentar en `brain/sesiones.md` o en el ADR correspondiente que hubo una corrección de documentación, con fecha — para que quede trazable que el código iba bien y era la documentación la que estaba atrás, no al revés.
 
 Para un `SPEC.md` ya degradado (cientos de KB, decenas de filas de sesión, pendientes dispersos), seguir `references/normalizacion-spec.md`.

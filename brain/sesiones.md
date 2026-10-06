@@ -3,6 +3,30 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-10-06 — `keepit` reemplaza a `listeilor` (0.14.0)
+
+**Contexto:** tras una semana de uso, el autor encontró incómodo "listeilor" para pedir el cierre de sesión (largo, difícil de recordar, chilenismo). Escribió `commands/keepit.md` y pidió reemplazar el nombre en todo el repo.
+
+- **Estado previo:** se cerró el ítem 2 (migración de "paciente cero" probada por el autor con `ward` y `listeilor`; evidencia: su confirmación, proyecto privado). El ítem 8 ya estaba cerrado.
+- **Reemplazo en 25 archivos:** comandos, skills, plantilla de `CLAUDE.md`, runtime Gemini, `README`, `docs/`, `spec/datos.md` y el `CLAUDE.md` del repo. Historial (`brain/`, `spec/cerrados.md`, `CHANGELOG` anterior) intacto.
+- **`listeilor.md` → alias deprecado** que avisa y ejecuta `keepit`; el aviso de colisión también busca `listeilor`. `keepit.md` se normalizó (el encabezado venía como `**## Instrucciones**` y el frontmatter con líneas en blanco).
+- **Versiones:** `suplemento-core` 0.14.0; runtime Gemini 0.1.5 (`core_version` 0.14.0). `README` y `CHANGELOG` actualizados; el `README` decía v0.12.0 en "Estado del proyecto".
+- **Error propio corregido:** el `sed` masivo falló la primera vez (zsh no separa palabras en `$files`) y los dos `cat >` fallaron por `noclobber`; se rehicieron con `xargs` y `>|`. La fecha del `CHANGELOG` se puso primero como 2026-10-07 y se corrigió a 2026-10-06.
+- **ADR-010 (nuevo):** `keepit` reemplaza a `listeilor`, con alias deprecado.
+- **Pendiente heredado:** el ítem 7 (desfase "pasos 1 a 7" en Gemini) sigue abierto; `keepit.md` además dice "pasos 1 a 9" de `ward`, que llega al 10.
+
+### Archivos modificados
+- plugins/suplemento-core/{.claude-plugin/plugin.json, commands/{keepit,listeilor,ward,checkpoint}.md, skills/{documentation-convention,spec-driven-development,brain-kms,tdd-workflow,project-init,code-comment-convention}/...}
+- runtimes/gemini-antigravity/{GEMINI-RUNTIME.md, runtime.json, skills/{01,06,11,14}, skills/references/{gemini-template,spec-migracion-0.12}.md}
+- README.md, CHANGELOG.md, CLAUDE.md, docs/*, spec/{datos,cerrados}.md, brain/{ADR-010,index,sesiones}, SPEC.md
+
+### Próximo
+- Reiniciar Claude Code tras actualizar el plugin a 0.14.0; actualizar `listeilor` → `keepit` en los `CLAUDE.md` de los proyectos del autor.
+- Ítem 6 (probar la oferta 0a en un proyecto real) e ítems 5 y 7.
+- Decidir cuándo retirar el alias `listeilor.md`.
+
+---
+
 ## Sesión — 2026-10-06 — `code-comment-convention`: el código como tercera capa (0.13.0)
 
 **Contexto:** el autor había borrado todos los comentarios de un proyecto ExtJS + Supabase y el código quedó difícil de leer en ajustes rápidos: recuperar un "por qué" exigía ir a Brain KMS o pedirle a Code que leyera el SPEC. Escribió la skill `code-comment-convention` y pidió sumarla al plugin, a `project-init` y ofrecerla a proyectos ya instalados.

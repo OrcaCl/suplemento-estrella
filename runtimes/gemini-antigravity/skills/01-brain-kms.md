@@ -8,7 +8,7 @@ Esta directiva gobierna el uso diario del sistema `brain/` (Brain KMS). Aplícal
 - Se retire/depreque una herramienta, patrón o plugin (`DEP`).
 - Se agregue material de referencia propio (`REF`) o descubierto en otro proyecto (`REFX`).
 - Se reporte un bug o propuesta de feature para un sistema externo (`trackers/`).
-- Se realice un cierre de sesión (`listeilor`) o un `ward`.
+- Se realice un cierre de sesión (`keepit`) o un `ward`.
 
 ---
 
@@ -140,7 +140,7 @@ Categorías: **A** = humano :) /administrador del proyecto · **D** = desarrolla
 
 ### 6. Procedimiento al Cierre de Sesión o `ward`
 
-Al ejecutar un `ward` o cierre de sesión (`listeilor`), Gemini debe proponer la actualización sincronizada en este orden exacto:
+Al ejecutar un `ward` o cierre de sesión (`keepit`), Gemini debe proponer la actualización sincronizada en este orden exacto:
 
 - brain/sesiones.md $\rightarrow$ Crear la nueva entrada en la parte superior con hitos, archivos modificados y próximo paso.
 

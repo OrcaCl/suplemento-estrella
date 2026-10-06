@@ -39,7 +39,7 @@ Code no decide por su cuenta escalar el alcance de los tests — ofrece la opci�
 
 ### Cuándo sí correr la suite completa sin preguntar
 
-Solo cuando el humano lo pide explícitamente, o como parte del `ward`/`listeilor` si el humano lo solicita en ese momento (ver `documentation-convention`) — nunca como paso automático "antes de un commit importante", que era el comportamiento de la estrategia de niveles anterior.
+Solo cuando el humano lo pide explícitamente, o como parte del `ward`/`keepit` si el humano lo solicita en ese momento (ver `documentation-convention`) — nunca como paso automático "antes de un commit importante", que era el comportamiento de la estrategia de niveles anterior.
 
 ## Verificación antes de declarar trabajo completo
 

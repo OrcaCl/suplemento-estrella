@@ -1,22 +1,22 @@
 ---
 name: documentation-convention
-description: Convención de registro de cambios en la documentación del proyecto — commits de código frecuentes según avanza el trabajo, pero registro de brain/ y SPEC.md diferido hasta un ward explícito (invocado por el humano, sin push) o hasta el cierre de sesión con listeilor (obligatorio, con push). Úsala siempre que estés por hacer un commit, cuando el humano diga "ward", "listeilor", "checkpoint" o pida cerrar la sesión, o cuando cambie la versión de cualquier plugin de Claude Code instalado en el proyecto.
+description: Convención de registro de cambios en la documentación del proyecto — commits de código frecuentes según avanza el trabajo, pero registro de brain/ y SPEC.md diferido hasta un ward explícito (invocado por el humano, sin push) o hasta el cierre de sesión con keepit (obligatorio, con push). Úsala siempre que estés por hacer un commit, cuando el humano diga "ward", "keepit", "checkpoint" o pida cerrar la sesión, o cuando cambie la versión de cualquier plugin de Claude Code instalado en el proyecto.
 ---
 
 # Documentation Convention
 
 Regla de cuándo se actualiza la documentación del proyecto — complementa a `spec-driven-development` y `brain-kms` (que dicen *dónde* va cada cosa) definiendo *cuándo* debe pasar. Esta versión reemplaza la regla anterior de "registro inmediato post-breakthrough" tras observar que, en la práctica, generaba commits demasiado frecuentes y granulares — el registro de documentación ahora se difiere a momentos explícitos, no a cada avance.
 
-**Modo de registro.** Lo descrito aquí es el modo `registro: diferido`, que es el **por defecto** de `suplemento-core`. Un proyecto puede declarar `registro: inmediato` en su `CLAUDE.md` (ver `spec-driven-development`, "Configuración del proyecto"); en ese caso el registro ocurre tras cada breakthrough, pero el cierre de sesión con `listeilor` sigue siendo obligatorio.
+**Modo de registro.** Lo descrito aquí es el modo `registro: diferido`, que es el **por defecto** de `suplemento-core`. Un proyecto puede declarar `registro: inmediato` en su `CLAUDE.md` (ver `spec-driven-development`, "Configuración del proyecto"); en ese caso el registro ocurre tras cada breakthrough, pero el cierre de sesión con `keepit` sigue siendo obligatorio.
 
 ## Los dos comandos
 
 | Comando | Cuándo | Qué hace | Push |
 |---|---|---|---|
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
-| **`listeilor`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el procedimiento de `ward`, commit y push finales | Sí |
+| **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el procedimiento de `ward`, commit y push finales | Sí |
 
-`checkpoint` (0.11 y anteriores) queda **deprecado**: al recibir esa palabra, Code avisa del cambio, ejecuta `ward` y ofrece `listeilor`.
+`checkpoint` (0.11 y anteriores) queda **deprecado**: al recibir esa palabra, Code avisa del cambio, ejecuta `ward` y ofrece `keepit`. `listeilor` (0.12 y 0.13) es el nombre anterior de `keepit`: queda como alias deprecado que avisa y ejecuta `keepit`.
 
 ## La regla — tres momentos, no más
 
@@ -25,13 +25,13 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 **2. Registro de documentación (`brain/`, `SPEC.md`) — diferido hasta uno de estos dos disparadores, nunca automático:**
 
 - **`ward` explícito**, invocado por el humano. Code nunca decide por su cuenta que "esto amerita un ward" — siempre lo pide o lo ejecuta el humano.
-- **Cierre de sesión (`listeilor`) — obligatorio, sin excepción.** A diferencia de `ward` (a discreción del humano), el cierre de sesión **siempre** dispara el registro completo: `SPEC.md`, `brain/sesiones.md`, `brain/ADR-*.md` si corresponde, commit y push. No depende de que el humano lo pida con esa palabra — si la sesión está terminando (despedida, "cerremos", "hasta mañana"), esto pasa sí o sí.
+- **Cierre de sesión (`keepit`) — obligatorio, sin excepción.** A diferencia de `ward` (a discreción del humano), el cierre de sesión **siempre** dispara el registro completo: `SPEC.md`, `brain/sesiones.md`, `brain/ADR-*.md` si corresponde, commit y push. No depende de que el humano lo pida con esa palabra — si la sesión está terminando (despedida, "cerremos", "hasta mañana"), esto pasa sí o sí.
 
-**Regla explícita, para que quede sin ambigüedad:** Code **no** escribe en `brain/` ni actualiza `SPEC.md` en medio de la codificación activa, ni "porque completó algo que parece importante". La decisión de cuándo registrar es del humano (`ward`) o está atada al cierre de sesión (`listeilor`), nunca al juicio de Code sobre qué tan importante fue un cambio.
+**Regla explícita, para que quede sin ambigüedad:** Code **no** escribe en `brain/` ni actualiza `SPEC.md` en medio de la codificación activa, ni "porque completó algo que parece importante". La decisión de cuándo registrar es del humano (`ward`) o está atada al cierre de sesión (`keepit`), nunca al juicio de Code sobre qué tan importante fue un cambio.
 
 ## Aviso de colisión con comandos locales
 
-Antes de ejecutar `ward` o `listeilor` (o al recibir "checkpoint"), buscar en el proyecto `.claude/commands/{ward,listeilor,checkpoint}.md` y `.claude/skills/{ward,listeilor,checkpoint}/`. Un comando local con el mismo nombre **tapa** al del plugin, y uno heredado de versiones anteriores suele seguir el modelo viejo que acumula en `SPEC.md`. Si existe:
+Antes de ejecutar `ward` o `keepit` (o al recibir "checkpoint"), buscar en el proyecto `.claude/commands/{ward,keepit,listeilor,checkpoint}.md` y `.claude/skills/{ward,keepit,listeilor,checkpoint}/`. Un comando local con el mismo nombre **tapa** al del plugin, y uno heredado de versiones anteriores suele seguir el modelo viejo que acumula en `SPEC.md`. Si existe:
 
 1. Avisar al humano qué archivo es y **mostrar la diferencia de pasos** frente al comando del plugin.
 2. No sobrescribirlo ni borrarlo sin confirmación.
@@ -53,9 +53,9 @@ En orden (detalle completo en `commands/ward.md` — esta skill no lo duplica):
 
 ## Cierre de sesión — el disparador que nunca se salta
 
-`listeilor` agrega dos cosas a `ward`: **verificar** que no quede nada sin respaldar (commits sin entrada en `sesiones.md`, decisiones sin registro, `SPEC.md` desactualizado) y **revisar los pendientes** (colas de la narrativa que no están en §3), y termina con commit + push.
+`keepit` agrega dos cosas a `ward`: **verificar** que no quede nada sin respaldar (commits sin entrada en `sesiones.md`, decisiones sin registro, `SPEC.md` desactualizado) y **revisar los pendientes** (colas de la narrativa que no están en §3), y termina con commit + push.
 
-Si por algún motivo no se puede completar el push (sin conexión, remoto no configurado, etc.), dejarlo señalado explícitamente como pendiente para la próxima sesión — no reportar la sesión como "cerrada correctamente" si el push no se completó, porque el registro no existe hasta que está pusheado. (Un `ward` sin `listeilor` deja commits locales: ese registro tampoco está a salvo hasta el push.)
+Si por algún motivo no se puede completar el push (sin conexión, remoto no configurado, etc.), dejarlo señalado explícitamente como pendiente para la próxima sesión — no reportar la sesión como "cerrada correctamente" si el push no se completó, porque el registro no existe hasta que está pusheado. (Un `ward` sin `keepit` deja commits locales: ese registro tampoco está a salvo hasta el push.)
 
 ## PLUGINS.md — mantenerlo sincronizado con la realidad instalada
 

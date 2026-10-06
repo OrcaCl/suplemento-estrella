@@ -109,7 +109,7 @@ Un comentario incorrecto es peor que ninguno. Cuando el código cambia, verifica
 
 ### 9. Adopción en un proyecto existente
 
-Un proyecto que ya existía y solo actualizó el runtime no adopta la convención automáticamente: su `GEMINI.md` debe declararla. `ward` y `listeilor` la ofrecen **una sola vez** (paso 0a de `06-documentation-convention.md`). Si el humano acepta, agregar a `GEMINI.md` la sección `## Comentarios en el código`:
+Un proyecto que ya existía y solo actualizó el runtime no adopta la convención automáticamente: su `GEMINI.md` debe declararla. `ward` y `keepit` la ofrecen **una sola vez** (paso 0a de `06-documentation-convention.md`). Si el humano acepta, agregar a `GEMINI.md` la sección `## Comentarios en el código`:
 
 ```markdown
 ## Comentarios en el código

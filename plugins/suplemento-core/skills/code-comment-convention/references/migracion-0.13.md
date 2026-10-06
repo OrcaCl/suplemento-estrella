@@ -21,9 +21,9 @@ Para proyectos que ya estaban en funcionamiento y solo actualizan el plugin. **E
    ```
 3. **No hace falta tocar el código existente.** La convención rige hacia adelante: se aplica al código que se cree o modifique. No hay una pasada masiva de comentarios.
 
-## La oferta en `ward` y `listeilor`
+## La oferta en `ward` y `keepit`
 
-Si el `CLAUDE.md` del proyecto no menciona `code-comment-convention` ni tiene la sección `## Comentarios en el código`, `ward` y `listeilor` lo avisan **una sola vez** y ofrecen agregarla (paso 0a de `ward`). El humano decide:
+Si el `CLAUDE.md` del proyecto no menciona `code-comment-convention` ni tiene la sección `## Comentarios en el código`, `ward` y `keepit` lo avisan **una sola vez** y ofrecen agregarla (paso 0a de `ward`). El humano decide:
 
 - **Acepta:** se agrega la sección de arriba a `CLAUDE.md`.
 - **Rechaza:** se deja constancia en `CLAUDE.md` con una línea (`Comentarios en el código: convención no adoptada (decisión del humano, AAAA-MM-DD)`) y no se vuelve a ofrecer. Si cambia de opinión, basta con reemplazarla por la sección.

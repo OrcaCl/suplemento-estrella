@@ -6,8 +6,8 @@ Para proyectos que venían de core 0.11 o anterior. **No se borra nada del conte
 
 | Antes | Ahora |
 |---|---|
-| Comando `checkpoint` (registra + commit + push) | `ward` (registra + commit, **sin push**) y `listeilor` (cierre de sesión: verifica, revisa pendientes, commit + push). `checkpoint` queda deprecado |
-| `SPEC.md` ≤ ~15 KB | `SPEC.md` ≤ 1000 líneas (configurable), controlado al leerlo y en `ward`/`listeilor` |
+| Comando `checkpoint` (registra + commit + push) | `ward` (registra + commit, **sin push**) y `keepit` (llamado `listeilor` en 0.12 y 0.13; cierre de sesión: verifica, revisa pendientes, commit + push). `checkpoint` queda deprecado |
+| `SPEC.md` ≤ ~15 KB | `SPEC.md` ≤ 1000 líneas (configurable), controlado al leerlo y en `ward`/`keepit` |
 | Cerrados → `spec/completado.md` (1 línea con fecha) | `spec/cerrados.md`: ID original + fecha + evidencia, **ordenado por ID** |
 | Sin filas "Sesión anterior" | Configurable: `sesiones_anteriores_en_spec: N` (defecto 0) |
 | Pendientes podían repartirse en varias secciones | §3 es la **lista única**, con ID en cada ítem; `- [ ]` fuera de §3 prohibido |
@@ -17,7 +17,7 @@ Para proyectos que venían de core 0.11 o anterior. **No se borra nada del conte
 ## Pasos de migración
 
 1. **Actualizar el runtime:** volver a correr el instalador (`curl -fsSL https://raw.githubusercontent.com/OrcaCl/suplemento-estrella/main/install-gemini.sh | bash`). Sobrescribe `.gemini/` con la versión 0.1.3; no toca `SPEC.md`, `brain/` ni `spec/`.
-2. **Buscar un `checkpoint` local que tape al runtime:** reglas, workflows o comandos propios del proyecto con nombre `checkpoint`, `ward` o `listeilor`. Comparar sus pasos con `06-documentation-convention.md`; retirarlo cuando el runtime los cubra (lo decide el humano).
+2. **Buscar un `checkpoint` local que tape al runtime:** reglas, workflows o comandos propios del proyecto con nombre `checkpoint`, `ward` o `keepit`. Comparar sus pasos con `06-documentation-convention.md`; retirarlo cuando el runtime los cubra (lo decide el humano).
 3. **Revisar `GEMINI.md` (y `CLAUDE.md` si existe):** si su checklist pide "2–4 líneas por sesión en Estado actual" o "marcar `[x]`", contradice 0.12. Cerrar un ítem = borrar de §3 + insertar en `spec/cerrados.md` con su ID + fecha + evidencia.
 4. **Agregar la configuración** en `GEMINI.md` (solo lo que quieras cambiar): `registro: diferido`, `spec_tope_lineas: 1000`, `sesiones_anteriores_en_spec: 0`.
 5. **Archivo de cerrados — el nombre es siempre `spec/cerrados.md`:** si ya tienes uno con otro nombre (p. ej. `spec/catastro-historico.md`), renómbralo (`git mv`), corrige los enlaces que lo citen y verifica que quede ordenado por ID. Si tienes `spec/completado.md`, no lo borres: agrega al inicio `> ⚠️ DEPRECATED desde core 0.12.0. Los ítems cerrados viven en spec/cerrados.md, con ID, fecha y evidencia.` y crea `spec/cerrados.md`.

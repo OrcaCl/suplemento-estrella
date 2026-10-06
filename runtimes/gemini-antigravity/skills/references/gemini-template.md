@@ -87,13 +87,13 @@ Al finalizar cada sesión de trabajo, proponer actualizaciones a:
 
 - {{brain/ADR-*.md — si se tomó una decisión de arquitectura relevante (solo Brain KMS)}}
 
-No esperar instrucción explícita — al cerrar sesión (listeilor), proponer qué registrar. A mitad de sesión, el humano guarda con ward (commit local, sin push).
+No esperar instrucción explícita — al cerrar sesión (keepit), proponer qué registrar. A mitad de sesión, el humano guarda con ward (commit local, sin push).
 
 ## Configuración de SPEC
 
 Valores por defecto del runtime; borrar la línea que no se quiera cambiar (ver skill 11-spec-driven-development).
 
-- registro: diferido            # diferido = en ward/listeilor · inmediato = tras cada breakthrough
+- registro: diferido            # diferido = en ward/keepit · inmediato = tras cada breakthrough
 - spec_tope_lineas: 1000        # error al superarlo, advertencia al 80 %
 - sesiones_anteriores_en_spec: 0
 

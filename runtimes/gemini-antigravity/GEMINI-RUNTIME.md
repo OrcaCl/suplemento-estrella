@@ -21,7 +21,7 @@ Principios Fundamentales Inviolables
 
    4. TDD Quirúrgico: Ciclo Rojo-Verde-Refactor obligatorio, ejecutando únicamente el archivo de test afectado directamente por el cambio (skills/12-tdd-workflow.md).
 
-   5. Persistencia y Gobernanza: Sincronización estricta con SPEC.md y la bóveda brain/ mediante los comandos `ward` (guarda, sin push) y `listeilor` (cierre de sesión, con push) (skills/06-documentation-convention.md y skills/11-spec-driven-development.md).
+   5. Persistencia y Gobernanza: Sincronización estricta con SPEC.md y la bóveda brain/ mediante los comandos `ward` (guarda, sin push) y `keepit` (cierre de sesión, con push) (skills/06-documentation-convention.md y skills/11-spec-driven-development.md).
 
    6. Estrategia de Ramificación y Pull Requests: Toda feature o funcionalidad nueva se desarrolla en una rama aislada (feat/*) y requiere la creación de un PR para aprobación del humano antes de pegarse/integrarse a la rama principal. Los fixes y hotfixes quirúrgicos se aplican directamente en la rama actual.
 
@@ -38,7 +38,7 @@ runtimes/gemini-antigravity/
     ├── 03-code-simplicity.md         # KISS, DRY (3x) y YAGNI
     ├── 04-depuracion-sistematica.md  # Causa raíz, 4 fases y límite de 3 fixes
     ├── 05-disenar-antes-de-implementar.md # Compuerta dura, 3 caminos (Spike/Acotado/Arq)
-    ├── 06-documentation-convention.md     # Commits continuos vs registro diferido (ward / listeilor)
+    ├── 06-documentation-convention.md     # Commits continuos vs registro diferido (ward / keepit)
     ├── 07-frontend-conventions.md    # SSR, BEM, styles.css e interfaz data-*
     ├── 08-planificacion-por-fases.md # Planes de implementación, TDD atómico
     ├── 09-raw-data-audit-trail.md    # Campo raw_data JSON y ocultación en API
@@ -91,7 +91,7 @@ Cuando el usuario ingrese una instrucción, Gemini debe mapear el requerimiento 
 |Seleccionar herramientas o librerías en JS/TS, PHP o Python|	tooling-roles|	skills/13-tooling-roles.md|
 |Evaluar si paralelizar tareas o lanzar subagentes|	sequential-mode|	skills/10-sequential-mode.md|
 |Registrar acuerdos técnicos, lecciones aprendidas o bitácoras	|brain-kms + spec-driven-development|	skills/01-brain-kms.md + skills/11-spec-driven-development.md|
-|Ejecutar un commit, pedir "ward" / "listeilor" o cerrar sesión|	documentation-convention|	skills/06-documentation-convention.md|
+|Ejecutar un commit, pedir "ward" / "keepit" o cerrar sesión|	documentation-convention|	skills/06-documentation-convention.md|
 
 ## 5. Estrategia de Git y Mantenimiento del Runtime
 

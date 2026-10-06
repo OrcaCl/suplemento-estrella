@@ -16,7 +16,7 @@ Los proyectos ajustan esta skill con líneas `clave: valor` en su `GEMINI.md` (o
 
 | Clave | Por defecto | Qué controla |
 |---|---|---|
-| `registro` | `diferido` | `diferido` = se registra en `ward`/`listeilor`; `inmediato` = tras cada breakthrough (el cierre `listeilor` sigue siendo obligatorio) |
+| `registro` | `diferido` | `diferido` = se registra en `ward`/`keepit`; `inmediato` = tras cada breakthrough (el cierre `keepit` sigue siendo obligatorio) |
 | `spec_tope_lineas` | `1000` | Tope de líneas de `SPEC.md`. Al superarlo hay que condensar; al llegar al 80 % se avisa |
 | `sesiones_anteriores_en_spec` | `0` | Cuántas filas "Sesión anterior" (≤ 2 líneas, ≤ 600 caracteres) se conservan en la §2 |
 
@@ -60,7 +60,7 @@ Qué se actualiza en cada registro (igual en ambos modos):
 3. `brain/sesiones.md` → Registrar el contexto narrativo.
 4. Si la solución involucra un cambio de arquitectura o regla de proceso, proponer el correspondiente registro `ADR` o `INT`.
 
-**Cuándo:** con `registro: diferido` (defecto) solo al ejecutar `ward` o `listeilor` (ver `06-documentation-convention.md`); con `registro: inmediato`, tras cada breakthrough. No mezclar: la regla "no esperar al cierre" solo aplica si el proyecto declaró `inmediato`.
+**Cuándo:** con `registro: diferido` (defecto) solo al ejecutar `ward` o `keepit` (ver `06-documentation-convention.md`); con `registro: inmediato`, tras cada breakthrough. No mezclar: la regla "no esperar al cierre" solo aplica si el proyecto declaró `inmediato`.
 
 ### Regla de cierre de un ítem
 Son tres movimientos, siempre juntos:
@@ -96,7 +96,7 @@ Son tres movimientos, siempre juntos:
 - Filas "Sesión anterior": ninguna por defecto; si el proyecto declara `sesiones_anteriores_en_spec: N`, exactamente N (≤ 2 líneas, ≤ 600 caracteres cada una); la más antigua sale y queda solo en `brain/sesiones.md`.
 - Footer = **una línea** ≤ ~300 caracteres: versión + fecha + métricas clave del dominio. Su versión coincide con la de la cabecera.
 
-**Tope de tamaño — se controla al leer y antes del commit.** `SPEC.md` ≤ `spec_tope_lineas` líneas (defecto **1000**) y ninguna línea > 600 caracteres. No hay script. Al abrir la sesión la lectura informa el número de líneas; en `ward` y `listeilor`, antes del commit, Gemini revisa esta lista (puede apoyarse en `wc -l` o `awk` puntuales):
+**Tope de tamaño — se controla al leer y antes del commit.** `SPEC.md` ≤ `spec_tope_lineas` líneas (defecto **1000**) y ninguna línea > 600 caracteres. No hay script. Al abrir la sesión la lectura informa el número de líneas; en `ward` y `keepit`, antes del commit, Gemini revisa esta lista (puede apoyarse en `wc -l` o `awk` puntuales):
 - líneas ≤ `spec_tope_lineas`; ninguna línea > 600 caracteres
 - filas "Sesión anterior" = exactamente `sesiones_anteriores_en_spec`
 - footer de una sola línea (≤ ~300 caracteres) con la misma versión que la cabecera
@@ -111,7 +111,7 @@ Si algo excede, condensar y mover el contenido a su destino según la tabla **an
 
 Si Gemini detecta que el código real avanzó más allá de lo registrado en `SPEC.md`:
 1. Confirmar con el humano el estado real del requerimiento.
-2. Corregir `SPEC.md` en el registro (de inmediato con `registro: inmediato`; en el próximo `ward`/`listeilor` con `diferido`), verificando el ítem contra código o datos reales.
+2. Corregir `SPEC.md` en el registro (de inmediato con `registro: inmediato`; en el próximo `ward`/`keepit` con `diferido`), verificando el ítem contra código o datos reales.
 3. Registrar brevemente en `brain/sesiones.md` la corrección de documentación para conservar la trazabilidad.
 
 ---

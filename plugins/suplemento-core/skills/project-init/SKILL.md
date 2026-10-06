@@ -14,7 +14,7 @@ Agregar `brain/` a mitad de proyecto, cuando el historial ya creció demasiado, 
 
 Esta skill no pregunta el tamaño del proyecto para decidir si vale la pena `brain/` — se asume que sí, siempre. Quien instala esta metodología ya está aceptando el costo de mantener documentación estructurada de decisiones; no tiene sentido ofrecerle después una versión liviana sin ella.
 
-También evita un problema más básico: proponer una estructura de documentación con la convención de registro por `ward`/`listeilor` (`documentation-convention`) cuando todavía no hay ni git instalado ni un remoto configurado. Sin eso, esa convención es imposible de cumplir desde el primer día.
+También evita un problema más básico: proponer una estructura de documentación con la convención de registro por `ward`/`keepit` (`documentation-convention`) cuando todavía no hay ni git instalado ni un remoto configurado. Sin eso, esa convención es imposible de cumplir desde el primer día.
 
 ## Paso 0 — Detectar estado existente antes de asumir que es un proyecto nuevo
 
@@ -170,7 +170,7 @@ Todo proyecto nuevo lleva un `CLAUDE.md` con estas secciones mínimas (ver `refe
 4. Regla(s) crítica(s) no negociable(s) — puede quedar vacío al inicio
 5. Estrategia de testing por niveles, con alcance de test **quirúrgico por defecto** — ampliar solo con confirmación explícita del humano (ver skill `tdd-workflow`)
 6. Modo de trabajo: **cero subagentes por defecto, sin excepción autónoma** — cualquier paralelismo requiere que Code se lo pida al humano y este lo apruebe para esa tarea puntual (ver skill `sequential-mode`)
-7. Convención de documentación: commits de código con normalidad; registro de `brain/`/`SPEC.md` diferido a `ward` explícito (sin push) o a `listeilor` al cierre de sesión (obligatorio, con push) — nunca automático; el modo `registro:` se declara en `CLAUDE.md` (ver skill `documentation-convention`)
+7. Convención de documentación: commits de código con normalidad; registro de `brain/`/`SPEC.md` diferido a `ward` explícito (sin push) o a `keepit` al cierre de sesión (obligatorio, con push) — nunca automático; el modo `registro:` se declara en `CLAUDE.md` (ver skill `documentation-convention`)
 8. Nombre humano de la instancia, registrado en `## Contexto del proyecto` (ver Paso 3a)
 9. Convención de comentarios en el código: el código explica QUÉ y CÓMO, los comentarios explican POR QUÉ, y una limpieza o refactorización nunca elimina comentarios de decisión, regla de negocio, workaround o seguridad solo porque el código "parece claro" (ver skill `code-comment-convention`)
 

@@ -36,7 +36,7 @@ claude plugin update suplemento-core@suplemento-estrella
 
 Reinicia Claude Code para que cargue la versión nueva y confirma con `claude plugin list`.
 
-Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`. Para la 0.13.0 (convención de comentarios en el código, opcional), en `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md`; además, `ward` y `listeilor` te la ofrecen una vez si el `CLAUDE.md` del proyecto no la menciona.
+Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`. Para la 0.13.0 (convención de comentarios en el código, opcional), en `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md`; además, `ward` y `keepit` te la ofrecen una vez si el `CLAUDE.md` del proyecto no la menciona. Para la 0.14.0 (`listeilor` pasa a llamarse `keepit`), no hay migración de archivos: si tu `CLAUDE.md` o tus notas mencionan `listeilor`, cámbialo por `keepit` (la palabra anterior sigue funcionando como alias deprecado).
 
 ### 🟢 Gemini (Antigravity IDE)
 
@@ -65,9 +65,9 @@ Y sigue los pasos que te va preguntando para dejar todo listo.
 Durante el trabajo, dos comandos cuidan el registro de la sesión:
 
 - **`ward`** — guarda en `brain/` y `SPEC.md` lo pendiente y hace commit local, sin push. Úsalo a mitad de sesión.
-- **`listeilor`** — cierra la sesión: verifica que no falte nada por respaldar, revisa que no queden pendientes sin anotar, y hace el commit y push finales.
+- **`keepit`** — cierra la sesión: verifica que no falte nada por respaldar, revisa que no queden pendientes sin anotar, y hace el commit y push finales.
 
-(`checkpoint`, el nombre anterior, quedó deprecado en 0.12.0.)
+(`checkpoint` quedó deprecado en 0.12.0. `listeilor`, el nombre anterior de `keepit`, quedó deprecado en 0.14.0 y sigue funcionando como alias.)
 
 ---
 
@@ -86,14 +86,14 @@ Este README es intencionalmente breve. El detalle vive en `docs/`:
 | [`docs/principles.md`](docs/principles.md) | Principios concretos: KISS, DRY, TDD, SDD, diseño previo, modo secuencial |
 | [`docs/decisions.md`](docs/decisions.md) | Cómo se registran y mantienen las decisiones dentro de Brain KMS |
 | [`docs/conventions.md`](docs/conventions.md) | Convenciones de nombres, estructura, documentación, versionado y commits |
-| [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, ward, listeilor, SHAME…) |
+| [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, ward, keepit, SHAME…) |
 | [`CHANGELOG.md`](CHANGELOG.md) | Historial de hitos, todas las capas (Core + runtimes) |
 
 ---
 
 ## Estado del proyecto
 
-Suplemento Estrella se encuentra en **desarrollo activo** (v0.12.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
+Suplemento Estrella se encuentra en **desarrollo activo** (v0.14.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
 
 Los forks y contribuciones son bienvenidos.
 
