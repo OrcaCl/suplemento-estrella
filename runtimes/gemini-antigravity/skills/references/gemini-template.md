@@ -97,6 +97,10 @@ Valores por defecto del runtime; borrar la línea que no se quiera cambiar (ver 
 - spec_tope_lineas: 1000        # error al superarlo, advertencia al 80 %
 - sesiones_anteriores_en_spec: 0
 
+## Comentarios en el código
+
+El código explica QUÉ y CÓMO; los comentarios explican POR QUÉ. Documentar contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings) y usar comentarios inline solo para decisiones no obvias, reglas de negocio, workarounds y restricciones de seguridad o rendimiento. Nunca eliminar un comentario solo porque el código parece suficientemente claro: antes de una limpieza o refactorización, clasificarlo (ver skill 14-code-comment-convention).
+
 ---
 
 ## Notas de uso para la Skill de Inicialización (`project-init`)

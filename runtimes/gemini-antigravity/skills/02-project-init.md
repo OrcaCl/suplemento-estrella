@@ -56,7 +56,7 @@ Misma estructura que el runtime de Claude Code — ver `references/spec-folder-t
 
 ## Paso 3 — GEMINI.md base
 
-Ver `references/gemini-template.md` para las 7 secciones mínimas.
+Ver `references/gemini-template.md` para las secciones mínimas, incluida `## Comentarios en el código` (ver skill `14-code-comment-convention`).
 
 ## Paso 3a — Asignar un nombre humano a la instancia
 

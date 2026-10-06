@@ -39,8 +39,8 @@ echo "📦 Descargando orquestador del runtime..."
 download_file "GEMINI-RUNTIME.md"
 download_file "runtime.json"
 
-# 4. Descargar el Catálogo de 13 Skills Oficiales
-echo "🧠 Descargando catálogo de 13 skills..."
+# 4. Descargar el Catálogo de 14 Skills Oficiales
+echo "🧠 Descargando catálogo de 14 skills..."
 SKILLS=(
   "01-brain-kms.md"
   "02-project-init.md"
@@ -55,6 +55,7 @@ SKILLS=(
   "11-spec-driven-development.md"
   "12-tdd-workflow.md"
   "13-tooling-roles.md"
+  "14-code-comment-convention.md"
 )
 
 for skill in "${SKILLS[@]}"; do

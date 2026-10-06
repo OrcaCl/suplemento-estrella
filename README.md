@@ -36,7 +36,7 @@ claude plugin update suplemento-core@suplemento-estrella
 
 Reinicia Claude Code para que cargue la versión nueva y confirma con `claude plugin list`.
 
-Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`.
+Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`. Para la 0.13.0 (convención de comentarios en el código, opcional), en `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md`; además, `ward` y `listeilor` te la ofrecen una vez si el `CLAUDE.md` del proyecto no la menciona.
 
 ### 🟢 Gemini (Antigravity IDE)
 

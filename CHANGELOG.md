@@ -4,6 +4,14 @@ Registro único de hitos del harness Suplemento Estrella — Core y todos sus ru
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
+## 2026-10-06
+
+### Added
+- **[Runtime Claude Code v0.13.0]** Nueva skill `code-comment-convention`: dirección para los comentarios "in-code", que hasta ahora no tenían ninguna. El código explica QUÉ y CÓMO, los comentarios explican POR QUÉ; contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings); `TODO`/`FIXME`/`HACK`/`NOTE` con significados distintos; y una **regla de no destrucción** — una limpieza o refactorización no elimina comentarios de decisión, regla de negocio, workaround, seguridad o rendimiento solo porque el código parece claro. Complementa a `documentation-convention`, `spec-driven-development` y `brain-kms`.
+  - `project-init`: el `CLAUDE.md` de los proyectos nuevos incluye la sección `## Comentarios en el código` (plantilla y Paso 3, ítem 9).
+  - **Proyectos ya instalados:** actualizar el plugin no modifica su `CLAUDE.md`. `ward` y `listeilor` (paso 0a) ofrecen **una sola vez** agregar la sección si el proyecto no menciona la skill; si el humano la rechaza queda constancia en `CLAUDE.md` y no se vuelve a ofrecer. Guía en `skills/code-comment-convention/references/migracion-0.13.md`. Es opcional y no exige tocar código existente.
+- **[Runtime Gemini v0.1.4]** Paridad con core 0.13.0 (`core_version` = 0.13.0): nueva `14-code-comment-convention.md` (traducción condensada; incluye la sección de adopción), `06-documentation-convention` (paso 0a de `ward`, oferta única de la convención), `02-project-init` y `gemini-template` (sección `## Comentarios en el código`). `install-gemini.sh` descarga la skill nueva (14 skills). Para actualizar, volver a correr el instalador.
+
 ## 2026-09-30
 
 ### Changed

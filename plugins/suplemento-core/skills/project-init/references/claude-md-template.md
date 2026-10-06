@@ -1,6 +1,6 @@
 # Plantilla — CLAUDE.md
 
-`CLAUDE.md` auto-carga contexto de proyecto en cada sesión de Claude Code. Independiente de si el proyecto usa estructura simple o completa, lleva estas 7 secciones mínimas.
+`CLAUDE.md` auto-carga contexto de proyecto en cada sesión de Claude Code. Independiente de si el proyecto usa estructura simple o completa, lleva estas secciones mínimas.
 
 ---
 
@@ -104,6 +104,12 @@ Valores por defecto de `suplemento-core`; borrar la línea que no se quiera camb
 - registro: diferido            # diferido = en `ward`/`listeilor` · inmediato = tras cada breakthrough
 - spec_tope_lineas: 1000        # al superarlo hay que condensar; al 80 % se avisa
 - sesiones_anteriores_en_spec: 0
+
+---
+
+## Comentarios en el código
+
+El código explica QUÉ y CÓMO; los comentarios explican POR QUÉ. Documentar contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings) y usar comentarios inline solo para decisiones no obvias, reglas de negocio, workarounds y restricciones de seguridad o rendimiento. **Nunca eliminar un comentario solo porque el código parece suficientemente claro:** antes de una limpieza o refactorización, clasificarlo (ver skill `code-comment-convention`).
 ```
 
 ---

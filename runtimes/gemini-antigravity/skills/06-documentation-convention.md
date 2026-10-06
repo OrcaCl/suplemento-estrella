@@ -34,6 +34,7 @@ Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar e
 
 **Algoritmo de `ward`:**
 0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward`, `listeilor` o `checkpoint`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint` local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
+0a. **Oferta de la convención de comentarios — una sola vez.** Si el `GEMINI.md` del proyecto no menciona `14-code-comment-convention` ni tiene la sección `## Comentarios en el código`, avisar al humano que existe esa skill y **ofrecer** agregar la sección a `GEMINI.md` (texto en `14-code-comment-convention.md`, sección 9). Si rechaza, dejar en `GEMINI.md` la línea `Comentarios en el código: convención no adoptada (decisión del humano, AAAA-MM-DD)` para no volver a ofrecerla. No modificar `GEMINI.md` sin su respuesta.
 1. Revisar los avances desde el último `ward` o cierre de sesión.
 2. Preparar borrador de actualización para `brain/sesiones.md` (resumen cronológico).
 3. Preparar actualización de `SPEC.md` **reemplazando, no acumulando**: cerrar ítems con la regla de cierre (borrar fila de §3 → insertarla en `spec/cerrados.md` con su mismo ID + fecha + evidencia, en su posición por ID → agregar el ID a "Cerrados"); "Última sesión" (§2), header y footer se sobrescriben; la narrativa va a `brain/sesiones.md`, nunca a `SPEC.md`. Reglas completas en `11-spec-driven-development.md` (secciones 3 y 3b).
@@ -46,7 +47,7 @@ Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar e
 ### 3. Cierre de Sesión con `listeilor` (Obligatorio e Innegociable)
 Al finalizar la sesión de trabajo (indicado por el humano o por contexto de despedida), Gemini **DEBE** ejecutar `listeilor` sin necesidad de que se lo pidan explícitamente:
 
-1. Aviso de colisión (paso 0 de `ward`).
+1. Aviso de colisión (paso 0 de `ward`) y oferta de la convención de comentarios (paso 0a de `ward`; no repetirla si ya se ofreció).
 2. **Verificar respaldo:** ¿commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear? ¿decisiones sin registro? ¿`brain/index.md` completo? ¿`SPEC.md` refleja el estado real?
 3. **Revisar pendientes:** colas de la narrativa, `TODO`/"pendiente" dicho en la conversación, `- [ ]` fuera de §3, ítems a medias. Proponer ítems nuevos (ID nuevo) e ítems a cerrar (con evidencia verificable).
 4. Mostrar el resumen de lo faltante y esperar el visto bueno del humano.

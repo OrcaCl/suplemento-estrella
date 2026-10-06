@@ -7,6 +7,7 @@ description: Cierra la sesión — verifica que nada quede sin respaldar en brai
 Al recibir la palabra "listeilor" del humano (o cuando la sesión esté terminando: despedida, "cerremos", "hasta mañana"), ejecutar en orden. El cierre de sesión es **obligatorio**: no depende de que el humano lo pida con esta palabra exacta.
 
 0. **Aviso de colisión** — el mismo del paso 0 de `ward` (comandos o skills locales con nombre `ward`, `listeilor` o `checkpoint`). Avisar antes de escribir nada.
+0a. **Oferta de la convención de comentarios** — la misma del paso 0a de `ward` (una sola vez; si ya se ofreció en este cierre vía `ward`, no repetirla).
 1. **Verificación de respaldo — qué quedó sin registrar.** Sin modificar todavía:
    - `git status` y `git log` desde el último ward o cierre (busca la última entrada de `brain/sesiones.md`): ¿hay commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear?
    - ¿Hubo decisiones en la conversación sin registro (ADR/INT/NOC/DEP/REF/REFX)? ¿`brain/index.md` incluye todos los registros que existen en `brain/`?

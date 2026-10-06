@@ -31,7 +31,7 @@ Gemini no carga todas las reglas en la memoria activa del prompt inicial. Utiliz
 
 runtimes/gemini-antigravity/
 ├── GEMINI-RUNTIME.md                 # Este documento (Master Specification)
-├── runtime.json                      # Metadatos del Runtime (v0.1.3 | core_version: 0.12.0)
+├── runtime.json                      # Metadatos del Runtime (v0.1.4 | core_version: 0.13.0)
 └── skills/
     ├── 01-brain-kms.md               # Bóveda de conocimiento, ADRs y registros
     ├── 02-project-init.md            # Onboarding, gitignore/geminiignore e INT-000
@@ -46,6 +46,7 @@ runtimes/gemini-antigravity/
     ├── 11-spec-driven-development.md # Uso diario de SPEC.md y carpeta spec/
     ├── 12-tdd-workflow.md            # RED-GREEN estricto y testing quirúrgico
     ├── 13-tooling-roles.md           # Preset Python y matriz de stack agnóstico
+    ├── 14-code-comment-convention.md # Comentarios en el código: POR QUÉ, no destrucción
     └── references/                   # Plantillas estáticas bajo demanda
         ├── adr-template.md
         ├── int-template.md
@@ -82,7 +83,8 @@ Cuando el usuario ingrese una instrucción, Gemini debe mapear el requerimiento 
 |Iniciar un proyecto nuevo o configurar un repositorio existente|	project-init|	skills/02-project-init.md|
 |Proponer una nueva feature, refactor o cambio estructural|	disenar-antes-de-implementar	|skills/05-disenar-antes-de-implementar.md|
 |Crear el plan de trabajo para un diseño ya aprobado	|planificacion-por-fases|	skills/08-planificacion-por-fases.md|
-|Escribir código de producción o refactorizar	|tdd-workflow + code-simplicity|	skills/12-tdd-workflow.md + skills/03-code-simplicity.md|
+|Escribir código de producción o refactorizar	|tdd-workflow + code-simplicity + code-comment-convention|	skills/12-tdd-workflow.md + skills/03-code-simplicity.md + skills/14-code-comment-convention.md|
+|Comentar, documentar o limpiar comentarios del código fuente|	code-comment-convention|	skills/14-code-comment-convention.md|
 |Investigar un error, test que falla o build roto|	depuracion-sistematica|	skills/04-depuracion-sistematica.md|
 |Modificar componentes UI, archivos CSS o scripts JS (SSR)|	frontend-conventions|	skills/07-frontend-conventions.md|
 |Diseñar modelos ORM que importen datos de Excel, APIs o CSV|	raw-data-audit-trail|	skills/09-raw-data-audit-trail.md|
