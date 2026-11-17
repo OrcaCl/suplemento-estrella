@@ -3,6 +3,26 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — criterio orgánico de tamaño de `SPEC.md`
+
+**Contexto:** el autor pidió que el control de tamaño de `SPEC.md` fuera menos rígido (revisar siempre las 600 columnas por línea era demasiado) y que quedara como aviso, no como error duro: los avances, pendientes y cerrados ya tienen sus propios archivos. Hoy hubo además una sesión anterior que ya había retirado los avisos de comandos retirados y la consulta de tamaños de proyecto (commit `7ecc7e7`).
+
+**Hitos:**
+- **Ítems 11 a 17 registrados** a partir de lo pedido en la sesión anterior del día: criterio de `SPEC.md` (11), libertad de commits (12), comando `housekeeping` (13), revisión de docs y skills con las herramientas nuevas (14), revisión de skills externas (15), runtime Gemini en un `housekeeping` (16) y "boletín" como nombre genérico de los registros de `brain/` (17).
+- **Ítem 11 cerrado.** ADR-011 (reemplaza el tope duro de ADR-006/ADR-008): se elimina la regla de 600 caracteres; las 1000 líneas son una referencia que solo avisa; `ward`/`keepit` conservan solo la lista de consistencia (commit `105144c`). Sin cambio de versión: figura como "Sin publicar" en el `CHANGELOG`.
+- **Criterio de diseño:** la pregunta del árbitro de destino ("¿esto lo necesita el agente al abrir la sesión?") pasa a ser el criterio real de tamaño.
+
+### Archivos modificados
+- plugins/suplemento-core/{commands/{ward,keepit}.md, skills/spec-driven-development/{SKILL.md,references/normalizacion-spec.md}, skills/project-init/references/{claude-md-template,spec-md-template}.md}
+- docs/{spec,conventions,principles,glossary}.md, CLAUDE.md, CHANGELOG.md
+- brain/{ADR-011,index,sesiones}, spec/cerrados.md, SPEC.md
+
+### Próximo
+- Ítem 12 (libertad de commits; cambia `documentation-convention`), luego 13, 14 y 17. El runtime Gemini y las skills externas quedan para un `housekeeping` (16 y 15).
+
+---
+
+
 ## Sesión — 2026-11-17 — claude-mem: telemetría apagada y dos pendientes nuevos
 
 **Contexto:** el autor actualizó claude-mem (15.19.0) y se molestó por la insistencia hacia el plan Pro (ya había elegido dos veces memoria local) y por la UI que muestra todos sus proyectos juntos. Sesión sin cambios en el repo; todo el trabajo fue diagnóstico y decisiones.
