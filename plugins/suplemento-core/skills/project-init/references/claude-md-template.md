@@ -1,6 +1,6 @@
 # Plantilla — CLAUDE.md
 
-`CLAUDE.md` auto-carga contexto de proyecto en cada sesión de Claude Code. Independiente de si el proyecto usa estructura simple o completa, lleva estas secciones mínimas.
+`CLAUDE.md` auto-carga contexto de proyecto en cada sesión de Claude Code. Lleva estas secciones mínimas.
 
 ---
 

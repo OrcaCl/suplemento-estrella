@@ -1,6 +1,6 @@
 ---
 name: project-init
-description: Skill de onboarding para inicializar un proyecto nuevo bajo la metodología Suplemento Estrella. Úsala siempre que el usuario esté arrancando un repositorio nuevo, pida "inicializar el proyecto", "arrancar con la metodología", "crear la estructura base", o cuando detectes que un repo no tiene todavía SPEC.md ni carpeta spec/. Verifica primero que git esté instalado localmente y que el repo esté conectado a un remoto en GitHub, y luego crea siempre la estructura completa (spec/ + brain/ desde el inicio, con las seis categorías de registro: ADR, INT, NOC, DEP, REF, REFX) — no pregunta el tamaño del proyecto.
+description: Skill de onboarding para inicializar un proyecto nuevo bajo la metodología Suplemento Estrella. Úsala siempre que el usuario esté arrancando un repositorio nuevo, pida "inicializar el proyecto", "arrancar con la metodología", "crear la estructura base", o cuando detectes que un repo no tiene todavía SPEC.md ni carpeta spec/. Verifica primero que git esté instalado localmente y que el repo esté conectado a un remoto en GitHub, y luego crea siempre la estructura completa (spec/ + brain/ desde el inicio, con las seis categorías de registro: ADR, INT, NOC, DEP, REF, REFX).
 
 ---
 
@@ -12,7 +12,7 @@ Punto de entrada de todo proyecto nuevo bajo metodología Suplemento Estrella. V
 
 Agregar `brain/` a mitad de proyecto, cuando el historial ya creció demasiado, es un retrofit costoso: hay que decidir retroactivamente qué contenido se convierte en qué categoría de registro, sin la claridad que sí existe al planificar desde el principio.
 
-Esta skill no pregunta el tamaño del proyecto para decidir si vale la pena `brain/` — se asume que sí, siempre. Quien instala esta metodología ya está aceptando el costo de mantener documentación estructurada de decisiones; no tiene sentido ofrecerle después una versión liviana sin ella.
+Por eso la estructura completa (`spec/` + `brain/`) se crea siempre, desde el inicio.
 
 También evita un problema más básico: proponer una estructura de documentación con la convención de registro por `ward`/`keepit` (`documentation-convention`) cuando todavía no hay ni git instalado ni un remoto configurado. Sin eso, esa convención es imposible de cumplir desde el primer día.
 

@@ -52,7 +52,7 @@ Cuando Gemini deba crear o proponer un nuevo registro dentro de `brain/`, **debe
 2. **Excepción `000`:** Asignar `000` únicamente si el registro es *conceptualmente anterior* a uno ya existente (ej. `INT-000` previo a `INT-001`). Usar con moderación.
 3. **Inmutabilidad de Decisiones:** Un `ADR` o `INT` **NUNCA** se edita para cambiar la decisión original. Si la decisión cambia, se crea uno nuevo y el anterior se marca como `Obsoleto — reemplazado por ADR-XXX` (o `INT-XXX`).
 4. **Mutabilidad de `NOC`:** Un `NOC` puede actualizarse in situ agregando secciones de seguimiento con fecha.
-5. **Sección `## Commit`:** Todo `ADR` e `INT` debe finalizar con la sección `## Commit` apuntando al commit/`ward` en `brain/sesiones.md`. Si aún no existe el commit, marcar como *"Pendiente al próximo checkpoint/cierre"*.
+5. **Sección `## Commit`:** Todo `ADR` e `INT` debe finalizar con la sección `## Commit` apuntando al commit/`ward` en `brain/sesiones.md`. Si aún no existe el commit, marcar como *"Pendiente al próximo ward/cierre"*.
 
 ---
 

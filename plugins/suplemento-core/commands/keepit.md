@@ -4,9 +4,8 @@ description: Cierra la sesión — verifica que nada quede sin respaldar en brai
 
 ## Instrucciones
 
-Al recibir la palabra "keepit" del humano (o cuando la sesión esté terminando: despedida, "cerremos", "hasta mañana"), ejecutar en orden. El cierre de sesión es **obligatorio**: no depende de que el humano lo pida con esta palabra exacta. (`keepit` se llamaba `listeilor` hasta 0.13.)
-
-0. **Aviso de colisión** — el mismo del paso 0 de `ward` (comandos o skills locales con nombre `ward`, `keepit`, `listeilor` o `checkpoint`). Avisar antes de escribir nada.
+Al recibir la palabra "keepit" del humano (o cuando la sesión esté terminando: despedida, "cerremos", "hasta mañana"), ejecutar en orden. El cierre de sesión es **obligatorio**: no depende de que el humano lo pida con esta palabra exacta.
+0. **Aviso de colisión** — el mismo del paso 0 de `ward` (comandos o skills locales con nombre `ward` o `keepit`). Avisar antes de escribir nada.
 0a. **Oferta de la convención de comentarios** — la misma del paso 0a de `ward` (una sola vez; si ya se ofreció en este cierre vía `ward`, no repetirla).
 1. **Verificación de respaldo — qué quedó sin registrar.** Sin modificar todavía:
    - `git status` y `git log` desde el último ward o cierre (busca la última entrada de `brain/sesiones.md`): ¿hay commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear?

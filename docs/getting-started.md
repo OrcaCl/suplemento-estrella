@@ -54,7 +54,7 @@ Una vez instalado el runtime que corresponda, inicia un proyecto ejecutando la s
 
 Durante la inicialización el agente irá haciendo preguntas para construir el contexto inicial del proyecto.
 
-Dependiendo del tamaño esperado, preparará automáticamente una estructura simple o una estructura completa.
+Siempre prepara la estructura completa (`SPEC.md`, `spec/` y `brain/`), sin preguntar por el tamaño del proyecto: agregar `brain/` más tarde es un retrofit costoso, y empezar con ella no cuesta casi nada.
 
 ---
 

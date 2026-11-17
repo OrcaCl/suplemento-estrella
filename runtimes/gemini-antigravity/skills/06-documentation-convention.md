@@ -4,7 +4,7 @@
 Gobierna **CUÁNDO** se sincroniza la documentación del proyecto (`SPEC.md` y `brain/`).
 Aplica cuando:
 - Se realicen commits de código de trabajo continuo.
-- El humano diga *"ward"*, *"keepit"*, *"listeilor"* (retirado, nombre anterior de keepit) o *"checkpoint"* (retirado).
+- El humano diga *"ward"* o *"keepit"*.
 - Se finalice o cierre la sesión de trabajo.
 - Se modifiquen dependencias de plugins o runtime del agente.
 
@@ -19,7 +19,6 @@ Aplica cuando:
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
 | **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el algoritmo de `ward`, commit y push finales | Sí |
 
-`checkpoint` (versiones anteriores) y `listeilor` (nombre anterior de `keepit`) fueron **retirados** en 0.15.0: ante esas palabras, avisar del cambio y ejecutar el comando vigente (`checkpoint` → `ward`, y ofrecer `keepit`; `listeilor` → `keepit`).
 
 ---
 
@@ -33,7 +32,7 @@ Aplica cuando:
 Se ejecuta **ÚNICAMENTE** cuando el humano dice *"ward"* o solicita registrar el avance. Gemini **nunca** decide por su cuenta ejecutar un `ward`.
 
 **Algoritmo de `ward`:**
-0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward`, `keepit`, `listeilor` o `checkpoint`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un `checkpoint` local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
+0. **Aviso de colisión — antes de escribir nada.** Buscar en el proyecto reglas, workflows o comandos locales con los nombres `ward` o `keepit`. Si existe alguno, avisar al humano cuál es, mostrar la diferencia de pasos frente a este algoritmo y **no sobrescribirlo ni borrarlo sin confirmación**. Un comando local heredado suele seguir el modelo antiguo que acumula en `SPEC.md` (ver `references/spec-migracion-0.12.md`).
 0a. **Oferta de la convención de comentarios — una sola vez.** Si el `GEMINI.md` del proyecto no menciona `14-code-comment-convention` ni tiene la sección `## Comentarios en el código`, avisar al humano que existe esa skill y **ofrecer** agregar la sección a `GEMINI.md` (texto en `14-code-comment-convention.md`, sección 9). Si rechaza, dejar en `GEMINI.md` la línea `Comentarios en el código: convención no adoptada (decisión del humano, AAAA-MM-DD)` para no volver a ofrecerla. No modificar `GEMINI.md` sin su respuesta.
 1. Revisar los avances desde el último `ward` o cierre de sesión.
 2. Preparar borrador de actualización para `brain/sesiones.md` (resumen cronológico).

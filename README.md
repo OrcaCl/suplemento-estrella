@@ -67,8 +67,6 @@ Durante el trabajo, dos comandos cuidan el registro de la sesión:
 - **`ward`** — guarda en `brain/` y `SPEC.md` lo pendiente y hace commit local, sin push. Úsalo a mitad de sesión.
 - **`keepit`** — cierra la sesión: verifica que no falte nada por respaldar, revisa que no queden pendientes sin anotar, y hace el commit y push finales.
 
-(`checkpoint` y `listeilor`, el nombre anterior de `keepit`, fueron retirados en 0.15.0 y ya no existen como comandos.)
-
 ---
 
 ## Documentación

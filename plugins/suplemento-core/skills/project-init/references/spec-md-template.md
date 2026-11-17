@@ -128,4 +128,4 @@ _Documento de trabajo interno — v0.1. {{footer ≤ 300 caracteres: versión + 
 - **Sección 4 (Reglas críticas)** debe mantenerse corta — si crece a más de 3-4 reglas, es señal de que el proyecto probablemente necesitaba la estructura completa (`brain/`) desde el principio, no la simple.
 - **El footer de la última línea** es una foto rápida del estado (versión, fecha, métricas clave), no una bitácora: se **reemplaza** en cada sesión, nunca se le agrega texto encima del anterior, y no pasa de ~300 caracteres.
 - **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md`, los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID) y `SPEC.md` completo se mantiene bajo `spec_tope_lineas` (1000 por defecto), revisado al leerlo y antes de cada commit. Ver skill `spec-driven-development`.
-- Si el proyecto usa la estructura simple (sin `brain/`), la Sección 5 hace las veces de lo que en la estructura completa sería el catálogo de ADRs — mantenerla como tabla, no como narrativa.
+- La Sección 5 se mantiene como tabla, no como narrativa: el detalle de cada decisión vive en `brain/`.

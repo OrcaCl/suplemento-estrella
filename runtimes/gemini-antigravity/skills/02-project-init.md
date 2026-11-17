@@ -4,7 +4,7 @@ Punto de entrada de todo proyecto bajo la metodología Suplemento Estrella cuand
 
 ## Por qué existe esta skill
 
-Agregar `brain/` (Brain KMS) a mitad de proyecto, cuando el historial ya creció demasiado, es un retrofit costoso. Esta skill no pregunta el tamaño del proyecto para decidir si vale la pena `brain/` — se asume que sí, siempre.
+Agregar `brain/` (Brain KMS) a mitad de proyecto, cuando el historial ya creció demasiado, es un retrofit costoso. Por eso la estructura completa (`spec/` + `brain/`) se crea siempre, desde el inicio.
 
 ## Paso 0 — Detectar estado existente antes de asumir que es un proyecto nuevo
 

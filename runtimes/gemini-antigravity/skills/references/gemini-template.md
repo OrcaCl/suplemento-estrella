@@ -1,6 +1,6 @@
 # Plantilla — GEMINI.md
 
-`GEMINI.md` auto-carga el contexto del proyecto en cada sesión de Gemini en Antigravity IDE / VS Code. Independiente de si el proyecto usa estructura simple o completa (Brain KMS), lleva estas 7 secciones mínimas.
+`GEMINI.md` auto-carga el contexto del proyecto en cada sesión de Gemini en Antigravity IDE / VS Code. Lleva estas 7 secciones mínimas.
 
 ---
 
