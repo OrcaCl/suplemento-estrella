@@ -10,8 +10,8 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 **Decisiones:**
 - **Apagar la telemetría y mantener el plugin.** `~/.claude-mem/telemetry.json` pasó a `enabled: false` (respaldo `telemetry.json.bak`). Se sugirió además `DO_NOT_TRACK=1` en `~/.zshrc`; queda a criterio del autor.
 - **Graphify no reemplaza a claude-mem.** Es un grafo de conocimiento por proyecto para navegar código, no una memoria de sesiones; aporta poco a este repo (solo Markdown/JSON). Tiene un plan de pago ("Graphify Cloud"). Información tomada de fuentes secundarias; no se leyó el repo oficial.
-- **Inventar una memoria propia** (ítem 9 de `SPEC.md`): por proyecto, local, con respaldo en un NVMe de 500 GB que el autor podrá montar más adelante y/o un respaldo externo.
-- **Skill de seguridad** (ítem 10, a continuación del 9): OWASP y una metodología moderna, para que el código creado con el harness salga con medidas acordes a producción actual. Motivación: ola de ataques informáticos de esta semana.
+- **Inventar una memoria propia** (ítem 9 de `SPEC.md`, prioridad Baja mientras claude-mem no sea un impedimento): por proyecto, local, con respaldo en un NVMe de 500 GB que el autor podrá montar más adelante y/o un respaldo externo.
+- **Skill de seguridad** (ítem 10, prioridad Media-alta: no se conoce una skill externa con este contenido): OWASP y una metodología moderna, para que el código creado con el harness salga con medidas acordes a producción actual. Motivación: ola de ataques informáticos de esta semana.
 - **NOC-001** abierto para vigilar a claude-mem (presión comercial, captura global, telemetría por defecto).
 
 **Verificado:** `setup-state.json` marca el setup como completo y sin plan Pro; el hook insiste igual. Sin sincronización a la nube (`CLOUD_SYNC_*` vacío); worker solo en `127.0.0.1:37700`. El plugin `suplemento-core` está instalado en 0.15.0 (`claude plugin list`), por lo que la nota de la §7 de `SPEC.md` ("instalado en 0.13.0") estaba desactualizada.
@@ -21,7 +21,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 - Fuera del repo: `~/.claude-mem/telemetry.json` (+ `.bak`)
 
 ### Próximo
-- Ítem 9 (memoria propia) y luego ítem 10 (skill de seguridad): ambos requieren diseño antes de implementar (`disenar-antes-de-implementar`); el 10 conviene partir revisando las fuentes vigentes de OWASP.
+- Ítem 10 (skill de seguridad, Media-alta) e ítem 9 (memoria propia, Baja): ambos requieren diseño antes de implementar (`disenar-antes-de-implementar`); el 10 conviene partir revisando las fuentes vigentes de OWASP.
 - Ítems 3, 5, 6 y 7 de `SPEC.md`.
 
 ---

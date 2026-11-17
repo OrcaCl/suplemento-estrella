@@ -13,8 +13,8 @@ _Nada en curso._
 
 ## Backlog
 
-- Memoria propia local por proyecto, con respaldo local y/o externo (ítem 9 de `SPEC.md`; origen en NOC-001) — 2026-11-17
-- Skill de seguridad: OWASP Top 10 y ASVS más una metodología moderna, en ambos runtimes (ítem 10 de `SPEC.md`; va después del 9) — 2026-11-17
+- Skill de seguridad: OWASP Top 10 y ASVS más una metodología moderna, en ambos runtimes (ítem 10 de `SPEC.md`; prioridad Media-alta) — 2026-11-17
+- Memoria propia local por proyecto, con respaldo local y/o externo (ítem 9 de `SPEC.md`; prioridad Baja mientras claude-mem no sea un impedimento; origen en NOC-001) — 2026-11-17
 
 ## Descartado
 

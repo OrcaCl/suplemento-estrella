@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Sin cambios al plugin (sigue 0.15.0).** Telemetría de claude-mem apagada (NOC-001 abierto); Graphify descartado como reemplazo. Ítems nuevos: 9 (memoria propia local) y 10 (skill de seguridad OWASP), en ese orden |
+| Última sesión | 2026-11-17 — **Sin cambios al plugin (sigue 0.15.0).** Telemetría de claude-mem apagada (NOC-001 abierto); Graphify descartado como reemplazo. Ítems nuevos: 10 (skill de seguridad OWASP, Media-alta) y 9 (memoria propia local, Baja) |
 
 ---
 
@@ -51,15 +51,15 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 **Media**
 
+- [ ] **10** — Agregar una skill de seguridad (OWASP Top 10 y ASVS, más una metodología moderna de seguridad en el ciclo de desarrollo) a ambos runtimes, para que el código creado con el harness salga con medidas acordes a producción actual. Decidir si es skill nueva o se integra a las existentes. Prioridad Media-alta: no hay una skill externa conocida que cubra esto. Partir revisando las fuentes vigentes de OWASP
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
-- [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
-- [ ] **10** — Agregar una skill de seguridad (OWASP Top 10 y ASVS, más una metodología moderna de seguridad en el ciclo de desarrollo) a ambos runtimes, para que el código creado con el harness salga con medidas acordes a producción actual. Decidir si es skill nueva o se integra a las existentes. Va después del 9 en el orden de trabajo; partir revisando las fuentes vigentes de OWASP
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
 
 **Baja / Externo**
 
 - [ ] **5** — `docs/getting-started.md` dice que `project-init` prepara "una estructura simple o una completa según el tamaño", pero hoy crea siempre la estructura completa: corregir el texto
 - [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `keepit` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
+- [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 
 Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 
