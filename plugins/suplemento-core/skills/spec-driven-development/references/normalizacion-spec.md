@@ -2,7 +2,7 @@
 
 Procedimiento para un `SPEC.md` que dejó de ser un índice ágil: cientos de KB, decenas de filas "Sesión anterior", footer atrasado, ítems "fantasma" (cerrados sin marcar), checkboxes repartidos por varias secciones. Se siguió a mano en un proyecto real (133 KB → 56 KB) y puede repetirse tal cual. Ejecutarlo con el humano, no en silencio.
 
-Punto de partida: revisar el `SPEC.md` contra la lista de `spec-driven-development` ("Tope de tamaño"): líneas, líneas > 600 caracteres, filas de sesión, footer, `- [ ]` fuera de §3, `[x]` en §3, IDs duplicados. Esa lista es lo que hay que arreglar y, al final, la prueba de que quedó bien.
+Punto de partida: revisar el `SPEC.md` contra la lista de `spec-driven-development` ("Tamaño de `SPEC.md`"): líneas (referencia), filas de sesión, footer, `- [ ]` fuera de §3, `[x]` en §3, IDs duplicados. Esa lista es lo que hay que arreglar y, al final, la prueba de que quedó bien.
 
 ## Pasos
 
@@ -12,8 +12,8 @@ Punto de partida: revisar el `SPEC.md` contra la lista de `spec-driven-developme
 4. **Antes de borrar filas de sesión o párrafos de footer, comprobar que cada una exista en `brain/sesiones.md`** (por fecha o por contenido). Lo que falte se agrega ahí primero; el `SPEC.md` nunca es el único lugar donde vive una sesión.
 5. **Convertir cada `- [ ]` suelto** en "→ ítem N" (consolidado en §3) o en ✅ con fecha (ya cerrado).
 6. **Reducir el footer a una línea** y el header a versión + fecha; hacer que ambas versiones coincidan.
-7. **Aplicar el límite de sesiones:** dejar exactamente las `sesiones_anteriores_en_spec` filas declaradas (0 por defecto), cada una ≤ 600 caracteres.
-8. **Repasar la lista de topes** sobre el resultado: todo debe cumplirse. Ajustar `spec_tope_lineas` solo si el tope por defecto no calza con el proyecto — no para "hacer pasar" un archivo que sigue degradado.
+7. **Aplicar el límite de sesiones:** dejar exactamente las `sesiones_anteriores_en_spec` filas declaradas (0 por defecto), cada una de ≤ 2 líneas.
+8. **Repasar la lista de consistencia** sobre el resultado: todo debe cumplirse. Ajustar `spec_tope_lineas` solo si la referencia por defecto no calza con el proyecto — no para "hacer pasar" un archivo que sigue degradado.
 
 ## Regla de oro
 

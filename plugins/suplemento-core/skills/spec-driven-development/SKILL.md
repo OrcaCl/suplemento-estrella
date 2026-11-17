@@ -14,10 +14,10 @@ Los proyectos ajustan esta skill con líneas `clave: valor` en su `CLAUDE.md` (s
 | Clave | Por defecto | Qué controla |
 |---|---|---|
 | `registro` | `diferido` | Cuándo se registra en `SPEC.md`/`spec/`/`brain/`: `diferido` (en `ward` o `keepit`) o `inmediato` (tras cada breakthrough) |
-| `spec_tope_lineas` | `1000` | Tope de líneas de `SPEC.md`. Al superarlo hay que condensar; al llegar al 80 % se avisa |
-| `sesiones_anteriores_en_spec` | `0` | Cuántas filas "Sesión anterior" (≤ 2 líneas, ≤ 600 caracteres cada una) se conservan en la §2 |
+| `spec_tope_lineas` | `1000` | Referencia de líneas de `SPEC.md`. Al llegar al 80 % o superarla **solo se avisa** y se propone condensar; nunca bloquea un commit |
+| `sesiones_anteriores_en_spec` | `0` | Cuántas filas "Sesión anterior" (≤ 2 líneas cada una) se conservan en la §2 |
 
-Un tope irreal se ignora: si no calza con el proyecto, se **ajusta** la clave — no se deja crecer el archivo sin límite.
+Si la referencia no calza con el proyecto, se **ajusta** la clave en vez de ignorar el aviso.
 
 ## Regla de apertura de sesión
 
@@ -30,7 +30,7 @@ Antes de cualquier acción, leer `SPEC.md` completo y confirmar contexto con el 
 
 Si el proyecto tiene tests, se agrega el segmento `[N] tests |` antes de `Próximo paso`; si no los tiene, se omite.
 
-**Control de tamaño al leer:** la lectura informa cuántas líneas tiene `SPEC.md`. Si supera `spec_tope_lineas` (1000 por defecto), avisar al humano antes de seguir y proponer condensarlo (ver `references/normalizacion-spec.md`); si está al 80 % o más, mencionarlo. Es el único control de tamaño: no hay script.
+**Control de tamaño al leer:** la lectura informa cuántas líneas tiene `SPEC.md`. Si supera `spec_tope_lineas` (1000 por defecto), avisar al humano y proponer condensarlo (ver `references/normalizacion-spec.md`); si está al 80 % o más, mencionarlo. Es un aviso, no un freno: el trabajo sigue. No hay script.
 
 No empezar a trabajar sin esta confirmación — es la forma de detectar temprano si `SPEC.md` está desactualizado respecto al estado real del código (ver "Detección de inconsistencias" más abajo).
 
@@ -82,7 +82,7 @@ Si algo no encaja claramente en una fila, es señal de que puede necesitar su pr
 
 - **"Última actualización"** (header) = solo la fecha.
 - **"Última sesión"** (§2) = 1 fila de ≤ ~400 caracteres que **sobrescribe** la anterior.
-- **Filas "Sesión anterior"** (§2): por defecto ninguna (`sesiones_anteriores_en_spec: 0`). Si el proyecto declara N, se conservan **exactamente N**, cada una ≤ 2 líneas y ≤ 600 caracteres; al entrar una nueva, la más antigua sale y queda solo en `brain/sesiones.md`. Prohibidos los bloques "Antes (fecha) — …".
+- **Filas "Sesión anterior"** (§2): por defecto ninguna (`sesiones_anteriores_en_spec: 0`). Si el proyecto declara N, se conservan **exactamente N**, cada una ≤ 2 líneas; al entrar una nueva, la más antigua sale y queda solo en `brain/sesiones.md`. Prohibidos los bloques "Antes (fecha) — …".
 - **Footer** = **una línea** ≤ ~300 caracteres: versión + fecha + métricas clave del dominio (p. ej. conteo de tests **si** el proyecto tiene tests). No es una bitácora. La versión del footer coincide con la de la cabecera.
 
 ## Lista única de pendientes
@@ -110,19 +110,20 @@ Cerrar un ítem son tres movimientos, siempre juntos:
 
 `spec/completado.md` (proyectos de 0.11 o anteriores) queda **deprecado**: se marca con un aviso apuntando a `spec/cerrados.md` y no se borra su contenido. Ver `references/migracion-0.12.md`.
 
-## Tope de tamaño — se controla al leer
+## Tamaño de `SPEC.md` — criterio orgánico, solo avisos
 
-`SPEC.md` no debe pasar de `spec_tope_lineas` líneas (por defecto **1000**) ni tener ninguna línea de más de 600 caracteres. No hay script: el control ocurre en dos momentos.
+`SPEC.md` no tiene un tope duro. El criterio es la pregunta del "Árbitro de destino": **¿esto lo necesita el agente al abrir la sesión?** Si no, va a `brain/sesiones.md`, `spec/cerrados.md` o `brain/`. Una línea o una sección larga es una señal para hacerse esa pregunta, no una infracción: no hay límite de caracteres por línea.
 
-1. **Al abrir la sesión:** la lectura informa cuántas líneas tiene el archivo (ver "Regla de apertura de sesión").
-2. **En `ward` y `keepit`, antes del commit:** Code revisa esta lista sobre el `SPEC.md` ya actualizado (puede apoyarse en `wc -l` o `awk` puntuales):
-   - líneas ≤ `spec_tope_lineas`; ninguna línea > 600 caracteres
+Dos momentos, ambos con avisos y sin bloquear nada:
+
+1. **Al abrir la sesión:** la lectura informa cuántas líneas tiene el archivo (ver "Regla de apertura de sesión"). Si pasa de `spec_tope_lineas` (referencia, 1000 por defecto) o está al 80 %, se avisa y se propone condensar.
+2. **En `ward` y `keepit`, antes del commit:** Code revisa la consistencia del `SPEC.md` ya actualizado (puede apoyarse en `wc -l` o `grep` puntuales):
    - filas "Sesión anterior" = exactamente `sesiones_anteriores_en_spec`
    - footer de una sola línea (≤ ~300 caracteres) y con la misma versión que la cabecera
    - ningún `- [ ]` ni sección de pendientes fuera de la §3; ningún `[x]` dentro de la §3
    - IDs de la §3 sin duplicados
 
-Si algo excede, condensar y mover el contenido a su destino según la tabla de arriba **antes** del commit. No commitear un `SPEC.md` excedido.
+Si algo de esa lista falla, se corrige antes del commit porque es un error de contenido, no de tamaño. Si solo hay un aviso de tamaño, se informa al humano y el commit sigue; `housekeeping` o una normalización posterior es el lugar para condensar con calma.
 
 ## Detección de inconsistencias entre SPEC.md y el código real
 

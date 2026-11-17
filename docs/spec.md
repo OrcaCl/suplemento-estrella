@@ -8,7 +8,7 @@ Cuando el proyecto crece, la información se distribuye dentro de la carpeta `sp
 
 ## Por qué no dejar que crezca sin límite
 
-`SPEC.md` no debería pasar de **1000 líneas** (configurable con `spec_tope_lineas`), ni tener ninguna línea de más de 600 caracteres — pasado ese punto, tanto el humano como el agente empiezan a "marearse" con las directrices y la dirección del proyecto, y el archivo se carga completo al inicio de cada sesión.
+`SPEC.md` se mantiene corto: la referencia son **1000 líneas** (configurable con `spec_tope_lineas`) y solo avisa, no bloquea. El criterio real es si el agente necesita eso al abrir la sesión; no hay límite por línea. Pasado cierto punto, tanto el humano como el agente empiezan a "marearse" con las directrices y la dirección del proyecto, y el archivo se carga completo al inicio de cada sesión.
 
 La causa habitual de que crezca no es el proyecto, sino **acumular en vez de reemplazar**: en un proyecto real pasó de 5 KB a 134 KB en cuatro meses porque cada checkpoint agregaba un bloque nuevo sin borrar el anterior (ver ADR-006 en `brain/`). Por eso:
 
@@ -16,7 +16,7 @@ La causa habitual de que crezca no es el proyecto, sino **acumular en vez de ree
 - Los ítems cerrados salen de la §3 y pasan al archivo único `spec/cerrados.md`, con **el mismo ID que tenían + fecha + evidencia**, ordenados por ID (no por orden de llegada). La §3 es la **lista única** de pendientes: no hay `- [ ]` ni secciones "Próxima sesión" fuera de ella.
 - Se pueden conservar N filas "Sesión anterior" si el proyecto lo declara (`sesiones_anteriores_en_spec`); por defecto ninguna.
 - La narrativa de la sesión va a `brain/sesiones.md`, nunca a `SPEC.md`.
-- El tope se controla al leer el archivo (la lectura informa el número de líneas) y antes de cada commit de `SPEC.md`: líneas, líneas largas, filas de sesión, footer y pendientes fuera de §3. No hay script. Un tope se **ajusta**, no se ignora.
+- El tamaño se revisa al leer el archivo (la lectura informa el número de líneas) y antes de cada commit de `SPEC.md`, siempre como **aviso**. Lo que sí se corrige antes del commit es la consistencia: filas de sesión, footer y pendientes fuera de §3. No hay script. Si la referencia no calza con el proyecto, se **ajusta**.
 
 Si `SPEC.md` crece demasiado, la recomendación es **mover** (no borrar) el detalle hacia archivos específicos dentro de `spec/`.
 

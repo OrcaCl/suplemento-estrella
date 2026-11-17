@@ -2,17 +2,17 @@
 
 Copiar esta estructura como `SPEC.md` en la raíz del proyecto. Reemplazar los placeholders entre `{{ }}`. Mantener las 8 secciones en este orden — es la convención fija de Suplemento Estrella, independiente del dominio del proyecto.
 
-`SPEC.md` es el panel de control: corto (≤ 1000 líneas por defecto, configurable con `spec_tope_lineas`), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `brain/`.
+`SPEC.md` es el panel de control: corto (referencia de 1000 líneas, configurable con `spec_tope_lineas`; solo avisa), vivo, se reemplaza —no se acumula— en cada sesión. No es el lugar para narrativa extensa — eso vive en `brain/`.
 
 ---
 
 ```markdown
-<!-- LÍMITES DE ESTE ARCHIVO: ≤ 1000 líneas (spec_tope_lineas), ninguna línea > 600 caracteres.
+<!-- TAMAÑO: referencia de 1000 líneas (spec_tope_lineas), solo avisa. Criterio: ¿esto lo necesita el agente al abrir la sesión?
      Al actualizar: REEMPLAZAR, no acumular. Narrativa → brain/sesiones.md · ítems cerrados → spec/cerrados.md (ID + fecha + evidencia) ·
      detalle técnico de componentes → spec/features.md · schemas de API → spec/api.md.
      Header = solo fecha · §2 "Última sesión" = 1 fila ≤ 400 car. que sobrescribe la anterior · footer = 1 línea ≤ 300 car.
      Pendientes: SOLO en §3 (sin "Próxima sesión"/"Prioridad N" ni `- [ ]` en otras secciones).
-     Antes de commitear: revisar que no pase del tope de líneas ni tenga líneas > 600 caracteres. Si excede, condensar primero. -->
+     Antes de commitear: revisar consistencia (versión de cabecera y footer, sin pendientes fuera de §3, IDs únicos). Si el tamaño da aviso, informar; no frena el commit. -->
 
 # {{Nombre del Proyecto}}
 
@@ -127,5 +127,5 @@ _Documento de trabajo interno — v0.1. {{footer ≤ 300 caracteres: versión + 
 
 - **Sección 4 (Reglas críticas)** debe mantenerse corta — si crece a más de 3-4 reglas, es señal de que el proyecto probablemente necesitaba la estructura completa (`brain/`) desde el principio, no la simple.
 - **El footer de la última línea** es una foto rápida del estado (versión, fecha, métricas clave), no una bitácora: se **reemplaza** en cada sesión, nunca se le agrega texto encima del anterior, y no pasa de ~300 caracteres.
-- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md`, los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID) y `SPEC.md` completo se mantiene bajo `spec_tope_lineas` (1000 por defecto), revisado al leerlo y antes de cada commit. Ver skill `spec-driven-development`.
+- **Reemplazar, no acumular:** la narrativa de sesiones va a `brain/sesiones.md`, los ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID) y `SPEC.md` completo se mantiene en un tamaño razonable (referencia `spec_tope_lineas`, 1000 por defecto; solo avisa), revisado al leerlo y antes de cada commit. Ver skill `spec-driven-development`.
 - La Sección 5 se mantiene como tabla, no como narrativa: el detalle de cada decisión vive en `brain/`.

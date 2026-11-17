@@ -4,6 +4,11 @@ Registro único de hitos del harness Suplemento Estrella — Core y todos sus ru
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
+## Sin publicar (2026-11-17)
+
+### Changed
+- **[Core]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit. `ward` y `keepit` conservan la lista de consistencia. Cambia `spec-driven-development`, `ward`, `keepit`, las plantillas de `project-init`, `normalizacion-spec` y `docs/`. Sin cambio de versión todavía; el runtime Gemini se actualiza en el ítem 16 de `SPEC.md`.
+
 ## 2026-10-06
 
 ### Removed

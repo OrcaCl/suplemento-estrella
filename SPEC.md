@@ -2,9 +2,9 @@
 
 ## Documento de contexto y descubrimientos
 
-<!-- LÍMITES DE ESTE ARCHIVO (ADR-006, ADR-008): ≤ 1000 líneas, ninguna línea > 600 caracteres. REEMPLAZAR, no acumular.
+<!-- TAMAÑO (ADR-011, reemplaza el tope duro de ADR-006/ADR-008): referencia de 1000 líneas, solo avisa; sin límite por línea. Criterio: ¿lo necesita el agente al abrir la sesión? REEMPLAZAR, no acumular.
      Narrativa → brain/sesiones.md · cerrados → spec/cerrados.md (ID original, ordenado por ID) · header = solo fecha · "Última sesión" = 1 fila ≤ 400 car. · footer = 1 línea ≤ 300 car.
-     Pendientes: SOLO en §3. Antes de commitear: revisar líneas (≤ 1000) y que ninguna supere 600 caracteres (lista en la skill spec-driven-development). -->
+     Pendientes: SOLO en §3. Antes de commitear: revisar consistencia (lista en la skill spec-driven-development); el tamaño solo avisa. -->
 
 **Versión:** 0.15.0
 **Última actualización:** 2026-11-17
@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Sin cambios al plugin (sigue 0.15.0).** Telemetría de claude-mem apagada (NOC-001 abierto); Graphify descartado como reemplazo. Ítems nuevos: 10 (skill de seguridad OWASP, Media-alta) y 9 (memoria propia local, Baja) |
+| Última sesión | 2026-11-17 — **Sin cambios al plugin (sigue 0.15.0).** Telemetría de claude-mem apagada (NOC-001 abierto); Graphify descartado como reemplazo. Ítems nuevos: 9 a 17 (seguridad OWASP, memoria propia, criterio de SPEC, commits, housekeeping, boletín) |
 
 ---
 
@@ -54,12 +54,19 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **10** — Agregar una skill de seguridad (OWASP Top 10 y ASVS, más una metodología moderna de seguridad en el ciclo de desarrollo) a ambos runtimes, para que el código creado con el harness salga con medidas acordes a producción actual. Decidir si es skill nueva o se integra a las existentes. Prioridad Media-alta: no hay una skill externa conocida que cubra esto. Partir revisando las fuentes vigentes de OWASP
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
+- [ ] **11** — Hacer más orgánico el control de tamaño de `SPEC.md`: hoy se revisan siempre el tope de 1000 líneas y las 600 columnas por línea; el criterio debería medir la necesidad real de escribir tanto en `SPEC.md` (hay otros archivos para avances, pendientes y cerrados) y quedar como aviso, no como error duro. Toca la skill `spec-driven-development`, `ward`/`keepit`, `CLAUDE.md` y su equivalente en el runtime Gemini (ADR-006, ADR-008)
+- [ ] **12** — Flexibilizar el registro diferido: que Code pueda commitear `SPEC.md` y `brain/` al terminar una tarea grande, según el tamaño del conocimiento nuevo, sin esperar un `ward` explícito. `ward` sigue disponible a mano (salir a una reunión, respaldo por si acaso). Cambia `documentation-convention`
+- [ ] **13** — Evaluar un comando `housekeeping`: limpieza, orden y lint de `SPEC.md`, `brain/` y memoria con calma, después de una sesión intensa, para no acumular más datos de los útiles. Es también el lugar donde caben los ítems 15 y 16
+- [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
+- [ ] **17** — Adoptar "boletín" como nombre genérico de los registros de `brain/` (ADR, INT, NOC, DEP, REF/REFX), porque ya no hay solo ADR; integrarlo al glosario y a la documentación de ambos runtimes
 
 **Baja / Externo**
 
 - [ ] **5** — `docs/getting-started.md` dice que `project-init` prepara "una estructura simple o una completa según el tamaño", pero hoy crea siempre la estructura completa: corregir el texto
 - [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `keepit` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
+- [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
+- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 11, 12 y 17, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
 
 Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 
@@ -83,7 +90,7 @@ Cerrados: 1, 2, 4, 8 _(detalle en `spec/cerrados.md`)_
 | Licencia del repo: MIT | `LICENSE` en la raíz, declarada en `plugin.json` y `runtime.json` (Gemini) por igual. Ver ADR-003 |
 | `plugins/suplemento-core/` es el runtime de referencia (Claude Code); otros agentes van en `runtimes/` | Decisión explícita: no se reorganizó Claude Code por simetría — evita romper la instalación activa y la ruta que espera `marketplace.json` |
 | Sistema `brain/` se llama formalmente **Brain KMS** (Brain Knowledge Management System) | Adoptado en ambos runtimes: `01-brain-kms.md` (Gemini) y skill `brain-kms` (Claude Code, desde v0.11.0). Ver ADR-001 |
-| `SPEC.md` se reemplaza, no se acumula; tope 1000 líneas | Narrativa → `brain/sesiones.md`, cerrados → `spec/cerrados.md`, "Última sesión" = 1 fila que se sobrescribe. Se controla al leer y antes de cada commit; el plugin no incluye scripts. Ver ADR-006 y ADR-008 |
+| `SPEC.md` se reemplaza, no se acumula; tamaño orgánico | Narrativa → `brain/sesiones.md`, cerrados → `spec/cerrados.md`, "Última sesión" = 1 fila que se sobrescribe. Referencia de 1000 líneas que solo avisa, sin límite por línea; el plugin no incluye scripts. Ver ADR-006, ADR-008 y ADR-011 |
 | `ward` guarda (commit local, sin push); `keepit` cierra sesión (commit + push) | Reemplazan a `checkpoint` (deprecado en 0.12.0). `keepit` se llamó `listeilor` hasta 0.13 (ADR-010); `checkpoint` y `listeilor` fueron retirados en 0.15.0 (DEP-001). Un comando local con el mismo nombre tapa al del plugin: revisar `.claude/commands/`. Ver ADR-008 |
 | `spec/cerrados.md`: ID original del pendiente, ordenado por ID | Nombre fijo; reemplaza a `spec/completado.md` (deprecado, se conserva). Cerrar por "ya estaba hecho" exige evidencia verificable. Ver ADR-008 |
 | `TOASK.md` vive en la raíz del proyecto, no en `brain/` | Archivo operativo junto a `SPEC.md` y `SHAME.md`; `project-init` lo crea ahí en ambos runtimes. Proyectos anteriores con `brain/TOASK.md` siguen válidos. Ver ADR-007 |

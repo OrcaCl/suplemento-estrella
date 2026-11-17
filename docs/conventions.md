@@ -36,7 +36,7 @@ Detalle en [decisions.md](decisions.md).
 
 - **Idioma:** español.
 - **Fechas:** formato ISO, `AAAA-MM-DD`.
-- **`SPEC.md`:** máximo 1000 líneas (configurable) y ninguna línea de más de 600 caracteres; "Última actualización" es solo la fecha; se reemplaza, no se acumula (ADR-006).
+- **`SPEC.md`:** referencia de 1000 líneas (configurable; solo avisa) y sin límite por línea; "Última actualización" es solo la fecha; se reemplaza, no se acumula (ADR-006).
 - **Cuándo:** el registro en `brain/` y `SPEC.md` ocurre en un `ward` o al cierre de sesión (`keepit`), no a mitad del trabajo.
 - **`CHANGELOG.md`:** uno solo, en la raíz. Cada entrada cita la versión de la capa que cambió (`[Core vX.Y.Z]`, `[Runtime Gemini vX.Y.Z]`…). Registra hitos, no cada commit (ADR-002).
 - **`docs/`:** cada archivo explica un tema y enlaza al resto en vez de repetirlo.
@@ -62,7 +62,7 @@ Alcances usados: `core`, `runtime-gemini`, `brain`, `meta`. Si un cambio afecta 
 
 - Los commits de código son continuos; un commit de código no implica tocar `brain/` ni `SPEC.md`.
 - El commit de un `ward` cubre el período completo y es local (sin push); `keepit` hace el commit final y el push (el registro no existe hasta que está pusheado).
-- Antes de commitear un cambio a `SPEC.md`: revisar que no pase de 1000 líneas ni tenga líneas de más de 600 caracteres (ver `spec-driven-development`).
+- Antes de commitear un cambio a `SPEC.md`: revisar la consistencia (versión de cabecera y footer, pendientes solo en §3, IDs únicos); si el tamaño pasa de la referencia de 1000 líneas, avisar sin frenar el commit (ver `spec-driven-development`).
 
 ## Skills
 

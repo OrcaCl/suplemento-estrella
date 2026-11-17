@@ -42,7 +42,7 @@ Trabajar siempre en modo secuencial — una tarea a la vez, **cero subagentes po
 Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` queda diferido hasta un `ward` explícito (invocado por el humano; commit local sin push) o hasta el cierre de sesión con `keepit`, que es obligatorio (commit + push) (ver skill `documentation-convention`).
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
-- `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben. Tope de 1000 líneas — se revisa al leerlo y antes de cada commit (ver skill `spec-driven-development`)
+- `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben. Referencia de 1000 líneas que solo avisa (sin límite por línea) — se revisa al leerlo y antes de cada commit (ver skill `spec-driven-development`)
 - `brain/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` / `REF*-*.md` — si se tomó una decisión de ese tipo
 
 **No esperar instrucción explícita al cerrar sesión** — proponer qué registrar.

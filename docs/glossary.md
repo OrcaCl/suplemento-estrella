@@ -52,7 +52,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Skill** — Unidad de la metodología: un archivo con las reglas de una disciplina concreta (por ejemplo `tdd-workflow`). Se activa cuando el contexto lo pide.
 
-**`SPEC.md`** — Panel de control del proyecto: estado, pendientes, reglas críticas y decisiones permanentes. Corto por diseño (≤ 1000 líneas) y se reemplaza, no se acumula. Ver [spec.md](spec.md).
+**`SPEC.md`** — Panel de control del proyecto: estado, pendientes, reglas críticas y decisiones permanentes. Corto por diseño (referencia de 1000 líneas, solo avisa) y se reemplaza, no se acumula. Ver [spec.md](spec.md).
 
 **`spec/`** — Carpeta con el detalle que `SPEC.md` no debe cargar: `api.md`, `datos.md`, `cerrados.md`, el backlog, etc.
 

@@ -20,6 +20,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-008](ADR-008-ward-listeilor-y-spec-con-tope-por-lineas.md) | ward y listeilor reemplazan a checkpoint; SPEC.md con tope por líneas y cerrados ordenados por ID | ADR | Vigente |
 | [ADR-009](ADR-009-code-comment-convention-tercera-capa.md) | `code-comment-convention`: el código fuente como tercera capa de conocimiento | ADR | Vigente |
 | [ADR-010](ADR-010-keepit-reemplaza-a-listeilor.md) | `keepit` reemplaza a `listeilor` como comando de cierre de sesión (alias deprecado) | ADR | Vigente |
+| [ADR-011](ADR-011-tamano-de-spec-organico-solo-avisos.md) | Tamaño de `SPEC.md`: criterio orgánico, solo avisos (reemplaza el tope duro de ADR-006/008) | ADR | Vigente |
 | [DEP-001](DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [NOC-001](NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |
 
