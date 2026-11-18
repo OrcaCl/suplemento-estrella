@@ -3,6 +3,15 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — comando `ketchup` (nombre acordado)
+
+**Contexto:** el autor pidió un comando para revisar las versiones de las skills externas, los plugins y las dependencias, y buscaba nombre. Entre `checkup`, `upkeep`, `stocktake` y `vitals`, prefirió `ketchup`: juego de palabras con *catch up* (ponerse al día), una palabra que no aparece sola al programar, y la imagen de que, si no se hace seguido, las dependencias se "desangran" y manchan el funcionamiento.
+
+- **Ítem 18 registrado** (Media): diseñar `ketchup`, solo lectura con informe y aprobación como `housekeeping`. Quedan abiertas dos decisiones: si consulta internet o solo lo local, y su relación con la skill de seguridad (ítem 10).
+- Sin cambios al plugin.
+
+---
+
 ## Sesión — 2026-11-17 — "registro" y "boletín" son sinónimos
 
 **Contexto:** al revisar el ítem 17, el autor notó que el proyecto ya usa "registro" y aclaró que "registro" y "boletín" se refieren a lo mismo: una entrada nueva de cualquiera de las plantillas de Brain KMS.
