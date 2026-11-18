@@ -70,7 +70,7 @@ Cuando se adapta material de otra persona u organización (guías, listas, texto
 1. **Leer la licencia de origen** y anotar cuál es (en su repositorio o en la portada del documento). Si no se puede verificar, no se copia: se cita por nombre.
 2. **Escribir con redacción propia** (traducir, resumir, reorganizar); no pegar párrafos completos.
 3. **Encabezado en cada archivo adaptado:** fuente con enlace, licencia, y qué cambios se hicieron. Si la licencia lo exige (por ejemplo Apache-2.0), incluir una copia junto al archivo.
-4. **Registrar la fuente en `NOTICE.md`**: obra, titular, licencia, archivo derivado y cambios.
+4. **Registrar la fuente en `NOTICE.md`** (y en su copia dentro del plugin, `plugins/suplemento-core/NOTICE.md`, que viaja con la instalación): obra, titular, licencia, archivo derivado y cambios.
 5. **Respetar la licencia del resultado:** el material CC BY-SA 4.0 se redistribuye bajo la misma licencia, aunque el resto del repo sea MIT.
 6. **No sugerir respaldo** de los autores originales.
 7. **Dejar constancia de la decisión** en un boletín (qué se leyó y qué no, y por qué) y fechar la información que envejece.

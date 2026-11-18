@@ -18,6 +18,7 @@ Actualización grande. **Lee primero la nota de seguridad sobre `.claudeignore`*
 - **[Core v0.16.0]** Comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push.
 - **[Core v0.16.0]** `NOTICE.md` en la raíz y `references/fuentes-y-licencias.md` declaran el material de OWASP adaptado, que se distribuye bajo CC BY-SA 4.0 (el resto del repo sigue en MIT).
 - **[Core v0.16.0]** Guía de migración `migracion-0.16.md` en `project-init/references/`.
+- **[Core v0.16.0]** El plugin ahora incluye su propio `NOTICE.md` (copia del de la raíz, con rutas relativas al plugin) y el `LICENSE` MIT, porque la instalación solo trae `plugins/suplemento-core/` y los encabezados de las referencias remiten a esos archivos.
 
 ### Changed
 - **[Core v0.16.0]** Nuevo modo `registro: umbral`, **por defecto** (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `registro: diferido` (estricto) e `inmediato` siguen disponibles. **Cambio de comportamiento por defecto.**

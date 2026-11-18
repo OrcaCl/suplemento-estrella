@@ -1,5 +1,7 @@
 # Avisos de terceros
 
+> Hay una copia de este archivo dentro del plugin (`plugins/suplemento-core/NOTICE.md`), con las rutas relativas al plugin, porque el plugin instalado solo trae esa carpeta. Al cambiar uno, actualizar el otro.
+
 Este repositorio se distribuye bajo la licencia MIT (ver `LICENSE`), **excepto** el material derivado de trabajos de OWASP, que se distribuye bajo **Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)**, https://creativecommons.org/licenses/by-sa/4.0/legalcode.
 
 ## Material bajo CC BY-SA 4.0
