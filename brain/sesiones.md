@@ -3,6 +3,26 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — revisión de seguridad de las skills propias
+
+**Contexto:** ítem 22. Tras leer los documentos de OWASP, el autor pidió revisar las propias skills en busca de huecos y corregirlos.
+
+**Alcance real de la revisión:** `project-init` (completa), los tres comandos, las plantillas de ignore, `CLAUDE.md`, bug report y `api.md` se leyeron enteros. Las demás skills se revisaron con búsquedas dirigidas y lectura de las partes con superficie de seguridad; **no se leyeron línea por línea** (`planificacion-por-fases`, `disenar-antes-de-implementar`, `sequential-mode`, `tdd-workflow`, `code-simplicity` y la mayor parte de `code-comment-convention` y `spec-driven-development` solo por búsqueda). El plugin no contiene credenciales.
+
+**Hallazgo principal (ADR-018):** `.claudeignore` **no tiene efecto** en Claude Code; la documentación oficial de permisos lo dice textualmente y manda trasladar sus entradas a reglas `Read` deny. `project-init` lo generaba desde agosto de 2026 como "doble protección" de `brain/files/secure/`. Yo mismo lo había repetido en la skill de seguridad esa misma semana; corregido. `Read` deny cubre las herramientas de archivos y comandos de Bash reconocidos (`cat`…), no scripts que abren archivos; para eso, el sandbox.
+
+**Otros huecos corregidos:**
+- `project-init` Paso 5: `git add .` y `git push` sin revisar qué se agregaba (podía publicar un `.env` de un directorio con contenido previo). Ahora revisa estado, busca secretos, agrega por ruta y confirma el destino.
+- `ward`, `keepit` y `housekeeping` no decían qué agregar al commit; ahora agregan por ruta. `keepit` nunca empuja con `--force`.
+- `project-init` podía sobrescribir un `CLAUDE.md`, `.gitignore` o `settings.json` existentes y no tenía en cuenta que el `CLAUDE.md` de un repo ajeno es configuración no confiable.
+- `.gitignore` ampliado; `frontend-conventions` (XSS en `data-*`), `raw-data-audit-trail` (datos personales en `raw_data`), `depuracion-sistematica` (instrumentación sin secretos), bug report y `api.md` (sin datos reales), `CLAUDE.md` (sección Seguridad con `asvs_nivel`) y `tooling-roles` (fila de análisis estático).
+- Referencia rota a `project-init-changelog-patch.md` eliminada.
+- Este repo: se eliminó su `.claudeignore` y se agregó `.claude/settings.json`. No había nada expuesto (`secure/` vacía, sin secretos versionados).
+
+**Pendiente urgente (ítem 23):** los proyectos del autor ya inicializados tienen la protección sin efecto.
+
+---
+
 ## Sesión — 2026-11-18 — runtime Gemini congelado
 
 **Contexto:** el autor pidió ignorar el runtime Gemini por ahora y dijo que incluso dejaría de mantenerlo, porque prefiere trabajar con Claude Code.

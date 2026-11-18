@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-18 — **Runtime Gemini congelado, sin mantenimiento (ADR-017); ítems 7 y 16 cancelados.** El 17-nov: cinco cambios al núcleo sin publicar (plugin sigue en 0.15.0): `SPEC.md` orgánico, registro por umbral, `housekeeping`, skill `seguridad-por-diseno` ampliada con OWASP, y ADR-016 (sin AutoUpdate). Abiertos 14, 18 a 22 |
+| Última sesión | 2026-11-18 — **Revisión de seguridad de las skills (ítem 22 cerrado): `.claudeignore` no tiene efecto en Claude Code; `project-init` pasa a reglas `deny` y a commits por ruta (ADR-018).** Gemini congelado (ADR-017). Seis cambios al núcleo sin publicar (plugin sigue en 0.15.0). Urgente: ítem 23 (migrar proyectos). Abiertos 14, 18 a 21, 23 |
 
 ---
 
@@ -56,8 +56,8 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **19** — Probar `seguridad-por-diseno` en un proyecto real que maneje login o datos personales y ajustar la tabla de controles (ADR-014). Pendiente menor: revisar el proyecto OWASP Agentic Skills Top 10 (repo `OWASP/www-project-agentic-skills-top-10`), que no se leyó. La lista ASI ya se verificó contra el PDF original; los hallazgos de la lectura de los 4 documentos OWASP están en `brain/sesiones.md` (entrada "lectura de documentos OWASP") y esperan decisión del autor
 - [ ] **18** — Diseñar el comando **`ketchup`**: revisa en solo lectura las versiones de plugins, skills externas y dependencias (compara `PLUGINS.md` con `claude plugin list` y lo que haya de proyecto), informa lo desactualizado o en riesgo y actualiza solo lo que el humano apruebe, igual que `housekeeping`; es también el mecanismo de actualización de plugins de terceros (ADR-016): informa qué cambió y pide aprobación. El nombre juega con *catch up* (ponerse al día). Decidir si consulta internet o solo lo local, y cómo se relaciona con la skill de seguridad del ítem 10 (dependencias comprometidas) y con NOC-001
 - [ ] **20** — Integrar **Modern Web Guidance** (GoogleChrome/modern-web-guidance; Apache-2.0, mantenido por los equipos de Chrome, Edge, Firefox y MDN) al ecosistema recomendado como **plugin de Claude Code, no vendorizado** (ADR-015): (a) mencionarlo en `docs/getting-started.md` con los comandos del marketplace `googlechrome`, la advertencia de que no se use la copia de `claude-plugins-official` (sin actualizar desde el 12-oct) y la telemetría (`DISABLE_TELEMETRY=1`); (b) en `frontend-conventions`, consultarlo antes de escribir HTML/CSS/JS modernos si está instalado; (c) documentar el `.mwgrc` opcional; (d) instalarlo con AutoUpdate desactivado (ADR-016) y anotar la versión en `PLUGINS.md`; (e) Gemini ya no se mantiene (ADR-017). Instalarlo lo decide el humano
+- [ ] **23** — **Migrar los proyectos ya inicializados** con el harness: tienen un `.claudeignore` sin efecto, así que `brain/files/secure/` y cualquier secreto dependen solo de `.gitignore` y el agente puede leerlos. En cada proyecto: crear `.claude/settings.json` con las reglas `deny` de la plantilla (fusionando si ya existe), eliminar `.claudeignore`, agregar `.claude/settings.local.json` al `.gitignore`, y revisar con `gitleaks` o a mano que no haya secretos versionados (ADR-018). Es la acción más urgente de la revisión
 - [ ] **21** — Evaluar una receta opcional de hooks de Claude Code para bloquear de forma determinista lo destructivo (`rm -rf`, `git push --force`, `reset --hard`, escritura de `.env`), con falla cerrada. Según OWASP una guía sin control es "documentación, no defensa". El plugin no incluye scripts (ADR-008): sería una receta documentada que el humano instala con la skill `update-config`; decidir si va en `seguridad-por-diseno` o en `docs/`
-- [ ] **22** — Revisión de seguridad de las skills propias de `suplemento-core` y de los comandos (`ward`, `keepit`, `housekeeping`) con la lista de la skill `seguridad-por-diseno`: buscar instrucciones que lean contenido no confiable como orden, comandos peligrosos sin confirmación, secretos en plantillas, `.gitignore` y `.claudeignore` incompletos en `project-init`, y el modo adopción de `project-init` frente a repos ajenos
 - [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
 
 **Baja / Externo**
@@ -66,7 +66,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
 
-Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17, 22 _(detalle en `spec/cerrados.md`)_
 
 ---
 
@@ -97,6 +97,7 @@ Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17 _(detalle en `spec/cerrados.md`)
 | `housekeeping` limpia con calma, con informe y aprobación | Lo dispara solo el humano; revisa en solo lectura `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes, y aplica solo lo aprobado (commit local, sin push). Ver ADR-013 |
 | `seguridad-por-diseno` es una guía, no una puerta | Aplica controles por tipo de cambio (OWASP Top 10:2025, ASVS 5.0, ASI 2026, STRIDE, SSDF) y avisa al terminar lo que no pudo cumplir; no bloquea commits. Nivel `asvs_nivel` en `CLAUDE.md` (1 por defecto). La lista ASI se contrastó con tres fuentes secundarias; falta el PDF original (ítem 19). Ver ADR-014 |
 | Runtime Gemini congelado (2026-11-18) | No se mantiene ni se mantiene en paridad con el núcleo; sigue en el repo en 0.1.6. El retiro formal (`DEP`) queda por confirmar. Ver ADR-017 |
+| `.claudeignore` no sirve; se usan reglas `deny` | Claude Code ignora `.claudeignore` (documentación oficial de permisos). Los secretos se protegen con `.gitignore` y con `permissions.deny` de `Read` en `.claude/settings.json`, que cubre las herramientas de archivos y comandos como `cat`, pero no scripts (para eso, el sandbox). Ver ADR-018 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---
