@@ -4,13 +4,18 @@ Registro único de hitos del harness Suplemento Estrella — Core y todos sus ru
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
+## Sin publicar (2026-11-18)
+
+### Changed
+- **[Runtime Gemini]** Congelado, sin mantenimiento (ADR-017): queda en 0.1.6 con `core_version` 0.15.0 y no recibe los cambios del núcleo de esta tanda. El README lo avisa.
+
 ## Sin publicar (2026-11-17)
 
 ### Changed
-- **[Core]** Nueva skill **`seguridad-por-diseno`** (ADR-014): guía de seguridad por tipo de cambio basada en OWASP Top 10:2025, ASVS 5.0, OWASP Top 10 para agentes (ASI) 2026, STRIDE y NIST SSDF, con un archivo de referencia por marco. Nivel de ASVS configurable con `asvs_nivel` (1 por defecto). Es una guía que avisa lo no cumplido, no bloquea commits. La lista ASI queda marcada como pendiente de verificar contra el documento original. Gemini pendiente (ítem 16).
-- **[Core]** Nuevo comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push. Nuevo `commands/housekeeping.md`; `README`, `docs/` y `documentation-convention` lo mencionan. Gemini pendiente (ítem 16).
-- **[Core]** Nuevo modo `registro: umbral`, por defecto (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `diferido` (estricto) e `inmediato` siguen disponibles. Cambia `documentation-convention`, `ward`, `spec-driven-development`, `project-init` y `docs/`. Gemini pendiente (ítem 16).
-- **[Core]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit. `ward` y `keepit` conservan la lista de consistencia. Cambia `spec-driven-development`, `ward`, `keepit`, las plantillas de `project-init`, `normalizacion-spec` y `docs/`. Sin cambio de versión todavía; el runtime Gemini se actualiza en el ítem 16 de `SPEC.md`.
+- **[Core]** Nueva skill **`seguridad-por-diseno`** (ADR-014): guía de seguridad por tipo de cambio basada en OWASP Top 10:2025, ASVS 5.0, OWASP Top 10 para agentes (ASI) 2026, STRIDE y NIST SSDF, con un archivo de referencia por marco. Nivel de ASVS configurable con `asvs_nivel` (1 por defecto). Es una guía que avisa lo no cumplido, no bloquea commits. La lista ASI queda marcada como pendiente de verificar contra el documento original. Gemini congelado, sin esta mejora (ADR-017).
+- **[Core]** Nuevo comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push. Nuevo `commands/housekeeping.md`; `README`, `docs/` y `documentation-convention` lo mencionan. Gemini congelado, sin esta mejora (ADR-017).
+- **[Core]** Nuevo modo `registro: umbral`, por defecto (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `diferido` (estricto) e `inmediato` siguen disponibles. Cambia `documentation-convention`, `ward`, `spec-driven-development`, `project-init` y `docs/`. Gemini congelado, sin esta mejora (ADR-017).
+- **[Core]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit. `ward` y `keepit` conservan la lista de consistencia. Cambia `spec-driven-development`, `ward`, `keepit`, las plantillas de `project-init`, `normalizacion-spec` y `docs/`. Sin cambio de versión todavía; el runtime Gemini no se actualiza (ADR-017).
 
 ## 2026-10-06
 

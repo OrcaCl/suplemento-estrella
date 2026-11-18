@@ -3,6 +3,16 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — runtime Gemini congelado
+
+**Contexto:** el autor pidió ignorar el runtime Gemini por ahora y dijo que incluso dejaría de mantenerlo, porque prefiere trabajar con Claude Code.
+
+- **ADR-017:** el runtime queda congelado (0.1.6, `core_version` 0.15.0), sin mantenimiento ni paridad. Se mantiene en el repo y el README avisa que puede estar desactualizado.
+- **Ítems 7 y 16 cancelados** (a `spec/cerrados.md` como descartados) y el punto de Gemini del ítem 20 retirado. `CHANGELOG` y `SPEC.md` actualizados.
+- **Queda por confirmar:** el retiro formal (borrar el runtime y registrar un `DEP`); el autor habló en condicional, así que se eligió la medida reversible.
+
+---
+
 ## Sesión — 2026-11-17 — correcciones tras leer los documentos OWASP
 
 **Contexto:** el autor aprobó las cuatro propuestas de la lectura de OWASP y preguntó si las referencias `amenazas-y-ssdf` y `asvs-5` estaban incluidas en el análisis, y si convenía converger las referencias.

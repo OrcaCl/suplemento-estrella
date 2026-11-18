@@ -38,7 +38,9 @@ Reinicia Claude Code para que cargue la versión nueva y confirma con `claude pl
 
 Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`. Para la 0.13.0 (convención de comentarios en el código, opcional), en `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md`; además, `ward` y `keepit` te la ofrecen una vez si el `CLAUDE.md` del proyecto no la menciona. Para la 0.14.0 (`listeilor` pasa a llamarse `keepit`), no hay migración de archivos: si tu `CLAUDE.md` o tus notas mencionan `listeilor`, cámbialo por `keepit`. En la 0.15.0 se retiraron los comandos `listeilor` y `checkpoint`: si tu proyecto aún los usa, cambia a `keepit` y `ward` antes de actualizar.
 
-### 🟢 Gemini (Antigravity IDE)
+### 🟢 Gemini (Antigravity IDE) — congelado
+
+> **Sin mantenimiento desde 2026-11-18** (ver ADR-017): el runtime queda en la versión 0.1.6 y no incluye los cambios recientes del núcleo (`housekeeping`, registro por umbral, skill de seguridad). Puede estar desactualizado.
 
 Desde la terminal integrada de tu espacio de trabajo:
 

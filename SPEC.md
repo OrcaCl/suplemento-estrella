@@ -33,11 +33,11 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Métrica | Valor |
 |---|---|
 | Skills en `suplemento-core` (Claude Code) | Ver `plugins/suplemento-core/skills/` |
-| Runtimes adicionales | `runtimes/gemini-antigravity/` — 14 skills traducidas para Google Gemini (Antigravity) |
+| Runtimes adicionales | `runtimes/gemini-antigravity/` — 14 skills traducidas para Google Gemini (Antigravity); **congelado desde 2026-11-18, sin mantenimiento (ADR-017)** |
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Cuatro cambios al núcleo, sin publicar (plugin sigue en 0.15.0): `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012), `housekeeping` (ADR-013) y skill `seguridad-por-diseno` (ADR-014); ítems 10 a 13 y 17 cerrados.** Nuevos: 18 (`ketchup`), 19 (verificar la skill de seguridad) y 20 (Modern Web Guidance, ADR-015). Telemetría de claude-mem apagada (NOC-001) |
+| Última sesión | 2026-11-18 — **Runtime Gemini congelado, sin mantenimiento (ADR-017); ítems 7 y 16 cancelados.** El 17-nov: cinco cambios al núcleo sin publicar (plugin sigue en 0.15.0): `SPEC.md` orgánico, registro por umbral, `housekeeping`, skill `seguridad-por-diseno` ampliada con OWASP, y ADR-016 (sin AutoUpdate). Abiertos 14, 18 a 22 |
 
 ---
 
@@ -55,7 +55,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
 - [ ] **19** — Probar `seguridad-por-diseno` en un proyecto real que maneje login o datos personales y ajustar la tabla de controles (ADR-014). Pendiente menor: revisar el proyecto OWASP Agentic Skills Top 10 (repo `OWASP/www-project-agentic-skills-top-10`), que no se leyó. La lista ASI ya se verificó contra el PDF original; los hallazgos de la lectura de los 4 documentos OWASP están en `brain/sesiones.md` (entrada "lectura de documentos OWASP") y esperan decisión del autor
 - [ ] **18** — Diseñar el comando **`ketchup`**: revisa en solo lectura las versiones de plugins, skills externas y dependencias (compara `PLUGINS.md` con `claude plugin list` y lo que haya de proyecto), informa lo desactualizado o en riesgo y actualiza solo lo que el humano apruebe, igual que `housekeeping`; es también el mecanismo de actualización de plugins de terceros (ADR-016): informa qué cambió y pide aprobación. El nombre juega con *catch up* (ponerse al día). Decidir si consulta internet o solo lo local, y cómo se relaciona con la skill de seguridad del ítem 10 (dependencias comprometidas) y con NOC-001
-- [ ] **20** — Integrar **Modern Web Guidance** (GoogleChrome/modern-web-guidance; Apache-2.0, mantenido por los equipos de Chrome, Edge, Firefox y MDN) al ecosistema recomendado como **plugin de Claude Code, no vendorizado** (ADR-015): (a) mencionarlo en `docs/getting-started.md` con los comandos del marketplace `googlechrome`, la advertencia de que no se use la copia de `claude-plugins-official` (sin actualizar desde el 12-oct) y la telemetría (`DISABLE_TELEMETRY=1`); (b) en `frontend-conventions`, consultarlo antes de escribir HTML/CSS/JS modernos si está instalado; (c) documentar el `.mwgrc` opcional; (d) instalarlo con AutoUpdate desactivado (ADR-016) y anotar la versión en `PLUGINS.md`; (e) revisar el equivalente para Gemini (`agy plugin install`) en el ítem 16. Instalarlo lo decide el humano
+- [ ] **20** — Integrar **Modern Web Guidance** (GoogleChrome/modern-web-guidance; Apache-2.0, mantenido por los equipos de Chrome, Edge, Firefox y MDN) al ecosistema recomendado como **plugin de Claude Code, no vendorizado** (ADR-015): (a) mencionarlo en `docs/getting-started.md` con los comandos del marketplace `googlechrome`, la advertencia de que no se use la copia de `claude-plugins-official` (sin actualizar desde el 12-oct) y la telemetría (`DISABLE_TELEMETRY=1`); (b) en `frontend-conventions`, consultarlo antes de escribir HTML/CSS/JS modernos si está instalado; (c) documentar el `.mwgrc` opcional; (d) instalarlo con AutoUpdate desactivado (ADR-016) y anotar la versión en `PLUGINS.md`; (e) Gemini ya no se mantiene (ADR-017). Instalarlo lo decide el humano
 - [ ] **21** — Evaluar una receta opcional de hooks de Claude Code para bloquear de forma determinista lo destructivo (`rm -rf`, `git push --force`, `reset --hard`, escritura de `.env`), con falla cerrada. Según OWASP una guía sin control es "documentación, no defensa". El plugin no incluye scripts (ADR-008): sería una receta documentada que el humano instala con la skill `update-config`; decidir si va en `seguridad-por-diseno` o en `docs/`
 - [ ] **22** — Revisión de seguridad de las skills propias de `suplemento-core` y de los comandos (`ward`, `keepit`, `housekeeping`) con la lista de la skill `seguridad-por-diseno`: buscar instrucciones que lean contenido no confiable como orden, comandos peligrosos sin confirmación, secretos en plantillas, `.gitignore` y `.claudeignore` incompletos en `project-init`, y el modo adopción de `project-init` frente a repos ajenos
 - [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
@@ -63,12 +63,10 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 **Baja / Externo**
 
 - [ ] **5** — `docs/getting-started.md` dice que `project-init` prepara "una estructura simple o una completa según el tamaño", pero hoy crea siempre la estructura completa: corregir el texto
-- [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `keepit` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
-- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 10, 11, 12 y 13, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
 
-Cerrados: 1, 2, 4, 8, 10, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17 _(detalle en `spec/cerrados.md`)_
 
 ---
 
@@ -98,6 +96,7 @@ Cerrados: 1, 2, 4, 8, 10, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
 | Registro por umbral (`registro: umbral`, por defecto) | Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `keepit` sigue obligatorio y es el único que hace push. Ver ADR-012 |
 | `housekeeping` limpia con calma, con informe y aprobación | Lo dispara solo el humano; revisa en solo lectura `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes, y aplica solo lo aprobado (commit local, sin push). Ver ADR-013 |
 | `seguridad-por-diseno` es una guía, no una puerta | Aplica controles por tipo de cambio (OWASP Top 10:2025, ASVS 5.0, ASI 2026, STRIDE, SSDF) y avisa al terminar lo que no pudo cumplir; no bloquea commits. Nivel `asvs_nivel` en `CLAUDE.md` (1 por defecto). La lista ASI se contrastó con tres fuentes secundarias; falta el PDF original (ítem 19). Ver ADR-014 |
+| Runtime Gemini congelado (2026-11-18) | No se mantiene ni se mantiene en paridad con el núcleo; sigue en el repo en 0.1.6. El retiro formal (`DEP`) queda por confirmar. Ver ADR-017 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---
@@ -119,7 +118,7 @@ Cerrados: 1, 2, 4, 8, 10, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
 | Marketplace | `.claude-plugin/marketplace.json` | Registrado |
 | Plugin core (Claude Code) | `plugins/suplemento-core/` | Publicado v0.15.0 (instalado localmente en 0.15.0) |
 | Skill project-init | `plugins/suplemento-core/skills/project-init/` | Vigente — usada para inicializar este mismo repo |
-| Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Vigente — 14 skills traducidas, incluye `01-brain-kms.md` y `14-code-comment-convention.md` |
+| Runtime Gemini (Antigravity) | `runtimes/gemini-antigravity/` | Congelado (ADR-017) — 14 skills traducidas, incluye `01-brain-kms.md` y `14-code-comment-convention.md` |
 
 ---
 
