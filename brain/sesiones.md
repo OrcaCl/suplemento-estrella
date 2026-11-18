@@ -12,7 +12,8 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 - **Ítem 5 cerrado** (el texto de "estructura simple" ya no existía; evidencia por `grep`).
 - **Punto de retorno:** etiqueta `v0.15.0` en `065f698`, el último commit publicado antes de esta versión.
 - **Riesgos conocidos al publicar:** no se probó una instalación real desde GitHub (solo es posible después del push) y hay cambios de comportamiento para quien venga de la 0.15.0 (documentados en `migracion-0.16.md`). Por eso la prueba de humo en una carpeta vacía va antes de migrar proyectos.
-- **Publicación:** push de `main` (35 commits) y de las etiquetas `v0.15.0`, `v0.16.0` y `runtime-gemini-0.1.6`, sin `--force`. Quedan el ítem 24 (actualizar el plugin local y la prueba de humo) y el 23 (migrar proyectos, a cargo del autor).
+- **Publicación (hecha):** el primer `git push` fue **rechazado**: GitHub tenía un commit del autor que no estaba en local (`90df944`, 12-nov, "Revise plugin and runtime update instructions", solo `README.md`: quitó el párrafo largo de guías por versión, la actualización del runtime Gemini y la nota de comandos retirados, y puso v0.15.0). No se forzó nada: se integró con un **merge** (`56246dd`), quedándose con el README nuevo y **respetando su simplificación** (la tabla de migraciones de versiones antiguas se reemplazó por un enlace a la guía de la 0.16.0 y al CHANGELOG). Luego push de `main` (37 commits, avance limpio) y de las etiquetas `v0.15.0`, `v0.16.0` y `runtime-gemini-0.1.6`; verificado en el remoto. Quedan el ítem 24 (actualizar el plugin local y la prueba de humo) y el 23 (migrar proyectos, a cargo del autor).
+- **Lección:** antes de publicar conviene un `git fetch` para ver si el remoto avanzó (aquí, por una edición hecha en GitHub).
 
 ---
 
