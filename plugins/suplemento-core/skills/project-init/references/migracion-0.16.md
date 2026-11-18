@@ -47,6 +47,7 @@ Después: revisa que `brain/index.md` abra bien los enlaces, busca con `grep -rn
 | **`ward`, `keepit` y `housekeeping` agregan al commit solo por ruta**, nunca `git add -A`; `keepit` nunca empuja con `--force` | Nada |
 | **Plugins de terceros sin actualización automática** por defecto (ADR-016) | Revisa los plugins que tengas con AutoUpdate y decide si lo mantienes |
 | **`frontend-conventions` cambia la Regla 2** (parcial de template con `<link>` y `@layer` en vez de `styles.css` con `@import`) y precisa la Regla 3 (BEM solo para nombres; ADR-020) | Opcional: tu `styles.css` con `@import` sigue funcionando, solo pagas el costo de rendimiento. Migra cuando toques el frontend |
+| **`frontend-conventions` trae listas de accesibilidad, formularios y componentes** (adaptadas de Modern Web Guidance, Apache-2.0; ADR-021) y ya no se recomienda instalar ese plugin | Nada que migrar; si lo tienes instalado, puedes desinstalarlo (`/plugin uninstall`) y quitar su permiso `npx` de tu configuración |
 | **Los boletines viven en `brain/reports/`** en proyectos nuevos (ADR-019) | Opcional; ver la sección anterior |
 | **Se retiró el runtime Gemini** (DEP-002) | Si algún proyecto tiene `.gemini/`, queda sin mantenimiento; puedes dejarlo o borrarlo |
 

@@ -63,6 +63,20 @@ Alcances usados: `core`, `brain`, `spec`, `docs`, `meta` (y `runtime-gemini` en 
 - El commit de un `ward` cubre el período completo y es local (sin push); `keepit` hace el commit final y el push (el registro no existe hasta que está pusheado).
 - Antes de commitear un cambio a `SPEC.md`: revisar la consistencia (versión de cabecera y footer, pendientes solo en §3, IDs únicos); si el tamaño pasa de la referencia de 1000 líneas, avisar sin frenar el commit (ver `spec-driven-development`).
 
+## Material de terceros
+
+Cuando se adapta material de otra persona u organización (guías, listas, texto o código), se hace esto antes de commitear:
+
+1. **Leer la licencia de origen** y anotar cuál es (en su repositorio o en la portada del documento). Si no se puede verificar, no se copia: se cita por nombre.
+2. **Escribir con redacción propia** (traducir, resumir, reorganizar); no pegar párrafos completos.
+3. **Encabezado en cada archivo adaptado:** fuente con enlace, licencia, y qué cambios se hicieron. Si la licencia lo exige (por ejemplo Apache-2.0), incluir una copia junto al archivo.
+4. **Registrar la fuente en `NOTICE.md`**: obra, titular, licencia, archivo derivado y cambios.
+5. **Respetar la licencia del resultado:** el material CC BY-SA 4.0 se redistribuye bajo la misma licencia, aunque el resto del repo sea MIT.
+6. **No sugerir respaldo** de los autores originales.
+7. **Dejar constancia de la decisión** en un boletín (qué se leyó y qué no, y por qué) y fechar la información que envejece.
+
+El resumen de licencias de terceros vive en el README, en la sección "Créditos y licencias de terceros".
+
 ## Skills
 
 - Una skill por carpeta en `plugins/suplemento-core/skills/<nombre>/SKILL.md`, con `name` y `description` en el encabezado.

@@ -1,11 +1,11 @@
 ---
 name: frontend-conventions
-description: Convenciones de frontend para proyectos con renderizado server-side (templates + CSS + JS) — atomicidad de archivos por componente, un único punto de verdad para los estilos con cascade layers, nomenclatura BEM, el puente data-* y el uso de la plataforma web moderna para pasar datos del servidor a JavaScript sin mezclar sintaxis del motor de templates dentro de archivos .js. Úsala siempre que se esté creando o modificando un componente de UI, un archivo CSS, un archivo JavaScript, o un template que necesite pasar datos al cliente. El ejemplo de referencia usa Jinja2/Flask, pero la regla aplica a cualquier motor de templates server-side (Blade, EJS, etc.).
+description: Convenciones de frontend para proyectos con renderizado server-side (templates + CSS + JS) — atomicidad de archivos por componente, un único punto de verdad para los estilos con cascade layers, nomenclatura BEM, el puente data-* la accesibilidad y los formularios, y el uso de la plataforma web moderna para pasar datos del servidor a JavaScript sin mezclar sintaxis del motor de templates dentro de archivos .js. Úsala siempre que se esté creando o modificando un componente de UI, un archivo CSS, un archivo JavaScript, o un template que necesite pasar datos al cliente. El ejemplo de referencia usa Jinja2/Flask, pero la regla aplica a cualquier motor de templates server-side (Blade, EJS, etc.).
 ---
 
 # Frontend Conventions
 
-Cuatro reglas que se sostienen juntas: un componente vive en un archivo, los estilos se cargan desde un único punto de verdad, las clases siguen una nomenclatura predecible, y el JavaScript nunca depende de la sintaxis del motor de templates del backend. Además, se prefiere la plataforma web moderna antes que librerías (ver la última sección).
+Cuatro reglas de organización que se sostienen juntas: un componente vive en un archivo, los estilos se cargan desde un único punto de verdad, las clases siguen una nomenclatura predecible, y el JavaScript nunca depende de la sintaxis del motor de templates del backend. Además, la accesibilidad y los formularios no son opcionales, y se prefiere la plataforma web moderna antes que librerías (ver las dos últimas secciones y las listas de `references/`).
 
 ## Regla 1 — Atomicidad de archivo por componente
 
@@ -159,6 +159,20 @@ Sin este guard, un `null.dataset` revienta el script en cualquier página donde 
 
 Si una columna de tabla usa un acrónimo o texto abreviado en el encabezado, agregar una ayuda visual (ícono de interrogación o tooltip; antes de sumar una librería como Tippy.js, revisar si `popover` y el posicionamiento por anclaje de CSS ya lo resuelven en los navegadores que el proyecto soporta) con `aria-*` correspondiente para accesibilidad — no dejar el encabezado sin explicación, incluso si parece obvio para quien lo escribió.
 
+## Accesibilidad y formularios — no son opcionales
+
+Toda interfaz nueva o modificada cumple, como mínimo, lo siguiente. El detalle está en las listas de verificación de `references/`; lo que no se pueda cumplir se avisa al terminar la tarea (igual que en `seguridad-por-diseno`).
+
+- **HTML nativo antes que ARIA:** `<button>`, `<a href>`, `<label>`, `<dialog>`, `<details>`, `<progress>`; un `<div role="button">` es un error.
+- **Todo control tiene nombre y etiqueta visible:** `<label for>`; `placeholder` y `title` no son etiquetas.
+- **Todo es operable con teclado**, con foco visible (`:focus-visible`) y objetivos de al menos 24×24 px.
+- **Una estructura de página coherente:** `lang`, `<title>` único, un `<main>`, un `<h1>`, sin saltos de encabezado; `alt` informativo o `alt=""`.
+- **Formularios:** `autocomplete` correcto, validación nativa con `:user-invalid`, errores enlazados con `aria-describedby` y anunciados, no bloquear el pegado, `POST` y token anti-CSRF para cambiar estado.
+- **Modales con `<dialog>` y `.showModal()`**, sin trampa de foco propia.
+- **Se prueba con el teclado solo**, no solo con una herramienta automática.
+
+Listas de verificación: `references/accesibilidad.md`, `references/formularios.md` y, para cada patrón de interfaz (modal, acordeón, pestañas, menú, navegación, carrusel, toast, etc.), `references/componentes.md`.
+
 ## Plataforma web moderna — preferir lo nativo antes que una librería
 
 Las reglas anteriores ordenan *cómo se organiza* el frontend; esta sección es sobre *qué primitivas usar*. Los modelos de lenguaje suelen proponer patrones heredados porque sus datos de entrenamiento los favorecen. Por defecto, y siempre que el proyecto lo soporte, preferir lo que la plataforma ya trae:
@@ -169,11 +183,11 @@ Las reglas anteriores ordenan *cómo se organiza* el frontend; esta sección es 
 - `color-scheme` y `prefers-color-scheme` para modo oscuro; validación de formularios y `autocomplete` nativos antes que scripts propios.
 - Transiciones de vista y animaciones por CSS antes que librerías de animación.
 
-**Política de soporte de navegadores.** Declararla en el `CLAUDE.md` del proyecto con una línea como `**Soporte de navegadores:** Baseline Widely available`. Las funciones que ya son Baseline y están ampliamente disponibles se usan sin alternativa; las más nuevas exigen un respaldo (por ejemplo `:where()` con una clase equivalente) o una decisión explícita del humano.
+**Madurez.** No toda función nueva está disponible en todos los navegadores. `references/componentes.md` registra qué declaran las guías fuente sobre cada una (por ejemplo `popover` es "newly available" y `focusgroup` solo existe en Chrome y Edge). Una función que no es Baseline "widely available" exige una alternativa o la decisión del humano, y se verifica en MDN o en Baseline antes de apoyarse en ella.
 
-**Guías externas (opcional).** Si el proyecto tiene instalado el plugin *Modern Web Guidance* (GoogleChrome/modern-web-guidance, Apache-2.0; ver ADR-015 y ADR-016), consultarlo **antes** de escribir HTML, CSS o JavaScript de cliente que no sea trivial: diálogos, formularios, animaciones, accesibilidad, rendimiento o seguridad del navegador. Dos cuidados: su skill ejecuta `npx -y modern-web-guidance@latest …` en cada consulta, es decir, código de terceros sin versión fija; y exige agregar una sección "Modern Web Guidance" al final de las respuestas que lo usen. Sus guías son una referencia, no una orden: si contradicen una regla de este proyecto (como BEM o la Regla 2), gana la regla del proyecto, y se informa la divergencia al humano.
+**Política de soporte de navegadores.** Declararla en el `CLAUDE.md` del proyecto con una línea como `**Soporte de navegadores:** Baseline Widely available`. Las funciones ya "widely available" se usan sin alternativa.
 
-Esta sección se basó en la lectura de esa guía externa (no se copia su texto); la fuente y la licencia están en `NOTICE.md`.
+**Sin dependencia de una skill externa.** Estas listas se adaptaron de las guías de *Modern Web Guidance* (Apache-2.0) para no depender de un plugin que ejecuta `npx -y …@latest` en cada consulta y recopila telemetría (ADR-021). **No hace falta instalarlo.** Si el humano lo tiene instalado, sus guías son una referencia, no una orden: si contradicen una regla del proyecto (como BEM o la Regla 2), gana la del proyecto, y se informa la divergencia. Las fuentes, sus licencias y los cambios hechos están en `NOTICE.md` y en el encabezado de cada archivo de `references/`.
 
 ## Por qué esta regla existe
 

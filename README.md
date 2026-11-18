@@ -111,6 +111,19 @@ Los forks y contribuciones son bienvenidos.
 
 ---
 
+## Créditos y licencias de terceros
+
+Este proyecto se apoya en trabajo abierto de otras personas y organizaciones, y lo declara:
+
+| Fuente | Licencia | Dónde se usa |
+|---|---|---|
+| OWASP (Top 10:2025, ASVS 5.0, riesgos de agentes, seguridad de datos) | CC BY-SA 4.0 | `skills/seguridad-por-diseno/references/` |
+| Modern Web Guidance (GoogleChrome) — accesibilidad, formularios y componentes de interfaz | Apache-2.0 | `skills/frontend-conventions/references/` |
+
+Lo adaptado se traduce, resume y reorganiza con redacción propia, conserva la atribución y la licencia de origen, e indica los cambios; no implica respaldo de los autores originales. El detalle de cada fuente, versión y cambio está en [`NOTICE.md`](NOTICE.md), y la regla para sumar material de terceros, en [`docs/conventions.md`](docs/conventions.md#material-de-terceros).
+
+---
+
 ## Licencia
 
 MIT — ver [`LICENSE`](LICENSE). Los archivos de `plugins/suplemento-core/skills/seguridad-por-diseno/references/` que adaptan material de OWASP se distribuyen bajo CC BY-SA 4.0 — ver [`NOTICE.md`](NOTICE.md).

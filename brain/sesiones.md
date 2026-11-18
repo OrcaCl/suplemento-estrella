@@ -3,6 +3,22 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — guías propias de frontend y atribución
+
+**Contexto:** el autor pidió revisar las guías de accesibilidad, formularios y componentes de interfaz de Modern Web Guidance para actualizar `frontend-conventions` y no depender de un plugin que ejecuta `npx` constantemente y pide telemetría; y dejar por escrito en el proyecto que se referencian terceros para copyright y licencias.
+
+**Lectura:** las 4 guías de accesibilidad (la general en detalle), la general de formularios en detalle y las descripciones de las demás, y las 22 guías de componentes de interfaz (descripción, reglas clave y madurez declarada de cada una). Son 45 archivos, 600 KB; no se leyó todo línea por línea. **No** se leyeron las otras categorías (visual-design, performance, ui-behaviors, ui-atoms, css, html, js, security, etc.).
+
+**Hallazgos y decisiones (ADR-021):**
+- **Tres referencias propias** en `frontend-conventions/references/`: `accesibilidad.md`, `formularios.md` y `componentes.md` (con una tabla de madurez fechada: `popover` "newly available", `focusgroup` solo Chrome/Edge, etc.).
+- **El plugin ya no se recomienda** (reemplaza la ADR-015 en ese punto): ejecuta `npx -y …@latest` en cada consulta, recopila telemetría, se declara obligatorio y exige una sección en las respuestas. Ítem 20 cerrado como descartado.
+- **`seguridad-por-diseno` tenía un hueco:** no mencionaba CSRF, `POST` para cambiar estado ni JavaScript en línea con CSP. Agregado desde la guía de formularios.
+- **Honestidad sobre lo adaptado:** donde agregué criterios WCAG que la fuente no cita (2.5.3, 2.5.8, contraste 4.5:1) quedó señalado; `ariaNotify()` figura sin soporte verificado; dos celdas de la tabla de madurez que decían "Estable" sin que las guías lo declararan se corrigieron.
+- **Copyright y licencias:** Apache-2.0 exige copia de la licencia, atribución e indicar los cambios. Hecho: encabezado en cada archivo, `references/LICENSE-Apache-2.0.txt`, `NOTICE.md` (tabla archivo, guías originales y cambios), sección "Créditos y licencias de terceros" en el README y la convención "Material de terceros" en `docs/conventions.md`.
+- **Ítem 25:** adaptar otras categorías y definir cómo revisar la madurez de lo ya adaptado.
+
+---
+
 ## Sesión — 2026-11-18 — `frontend-conventions` frente a Modern Web Guidance
 
 **Contexto:** el autor preguntó si `frontend-conventions` estaba desactualizada frente a Modern Web Guidance y si convenía actualizarla con lo que ofrece.

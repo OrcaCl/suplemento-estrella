@@ -24,12 +24,13 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-012](reports/ADR-012-registro-por-umbral.md) | Registro de `brain/` y `SPEC.md` por umbral: Code registra al terminar una tarea con conocimiento nuevo (reemplaza "Code nunca decide") | ADR | Vigente |
 | [ADR-013](reports/ADR-013-comando-housekeeping.md) | Comando `housekeeping`: lint de documentación con informe y aprobación | ADR | Vigente |
 | [ADR-014](reports/ADR-014-skill-seguridad-por-diseno.md) | Skill `seguridad-por-diseno`: guía de seguridad por tipo de cambio (OWASP, ASVS, ASI, STRIDE, SSDF) | ADR | Vigente |
-| [ADR-015](reports/ADR-015-modern-web-guidance-como-plugin-no-vendorizado.md) | Modern Web Guidance: plugin del ecosistema, no vendorizado | ADR | Vigente |
+| [ADR-015](reports/ADR-015-modern-web-guidance-como-plugin-no-vendorizado.md) | Modern Web Guidance: plugin del ecosistema, no vendorizado | ADR | Reemplazada por ADR-021 |
 | [ADR-016](reports/ADR-016-plugins-de-terceros-sin-actualizacion-automatica.md) | Plugins de terceros sin actualización automática por defecto; `ketchup` revisa | ADR | Vigente |
 | [ADR-017](reports/ADR-017-runtime-gemini-congelado.md) | Runtime Gemini congelado: sin mantenimiento ni paridad con el núcleo | ADR | Reemplazado por DEP-002 |
 | [ADR-018](reports/ADR-018-reglas-deny-en-vez-de-claudeignore.md) | Reglas `deny` en `.claude/settings.json` en vez de `.claudeignore` (que no tiene efecto) | ADR | Vigente |
 | [ADR-019](reports/ADR-019-boletines-en-brain-reports.md) | Los boletines viven en `brain/reports/`; la raíz de `brain/` solo conserva `index.md` y `sesiones.md` | ADR | Vigente |
 | [ADR-020](reports/ADR-020-frontend-conventions-capas-y-plataforma-moderna.md) | `frontend-conventions`: estilos con parcial y `@layer`, BEM solo para nombres, plataforma web moderna | ADR | Vigente |
+| [ADR-021](reports/ADR-021-guias-de-frontend-propias-sin-plugin-externo.md) | Guías de frontend propias, sin depender del plugin Modern Web Guidance; atribución Apache-2.0 | ADR | Vigente |
 | [DEP-001](reports/DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [DEP-002](reports/DEP-002-retiro-del-runtime-gemini.md) | Retiro del runtime Gemini (0.16.0), con respaldo y etiqueta | DEP | Vigente |
 | [NOC-001](reports/NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |
