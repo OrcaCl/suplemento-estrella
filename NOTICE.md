@@ -19,15 +19,20 @@ Quien reutilice esos archivos debe conservar la atribución y compartir lo adapt
 
 ## Otras referencias
 
-**Modern Web Guidance** (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance; mantenido por los equipos de Chrome, Edge, Firefox y MDN con la comunidad): licencia **Apache-2.0**. `frontend-conventions` incluye listas de verificación **adaptadas** de tres de sus categorías de guías (ADR-021): `accessibility`, `forms` y `ui-components`.
+**Modern Web Guidance** (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance; mantenido por los equipos de Chrome, Edge, Firefox y MDN con la comunidad): licencia **Apache-2.0**. Se leyeron **todas las categorías de sus guías** (ver ADR-021 y ADR-022) y se adaptaron las útiles para este trabajo, en dos skills:
 
 | Archivo | Guías originales | Cambios |
 |---|---|---|
-| `plugins/suplemento-core/skills/frontend-conventions/references/accesibilidad.md` | `accessibility` | Traducida al español, resumida y reorganizada como lista de verificación; complementada con criterios WCAG señalados como propios |
-| `plugins/suplemento-core/skills/frontend-conventions/references/formularios.md` | `forms` (general) | Traducida, resumida y reorganizada; cruzada con las reglas de seguridad del proyecto |
-| `plugins/suplemento-core/skills/frontend-conventions/references/componentes.md` | las 22 de `ui-components` | Traducida y muy resumida (sin ejemplos de código ni estilos); la madurez es la declarada por las guías en noviembre de 2026 |
+| `skills/frontend-conventions/references/accesibilidad.md` | `accessibility` | Traducida, resumida y reorganizada como lista de verificación; complementada con criterios WCAG señalados como propios |
+| `skills/frontend-conventions/references/formularios.md` | `forms` (general y las 18 específicas, estas últimas por descripción y reglas destacadas) | Traducida, resumida y reorganizada; cruzada con las reglas de seguridad del proyecto |
+| `skills/frontend-conventions/references/componentes.md` | las 22 de `ui-components` | Traducida y muy resumida (sin ejemplos de código ni estilos); la madurez es la declarada por las guías en noviembre de 2026 |
+| `skills/frontend-conventions/references/css-y-diseno.md` | `css`, `color`, `typography`, `dark-mode`, `browser-ui-theming`, `visual-effects`, `responsive-design` | Traducida, resumida y reorganizada; sin ejemplos de código |
+| `skills/frontend-conventions/references/html-y-js.md` | `html`, `js`, `web-components` y guías de componentes web | Traducida, resumida y reorganizada; `Temporal` resumido en una regla |
+| `skills/frontend-conventions/references/rendimiento.md` | `performance` (general) | Traducida, resumida y reorganizada |
+| `skills/frontend-conventions/references/comportamientos.md` | `motion`, `ui-behaviors`, `ui-atoms` | Traducida y muy resumida; se leyó completa solo `motion` |
+| `skills/frontend-conventions/references/madurez-funciones.md` | declaraciones de compatibilidad de todas las guías | Datos agrupados por estado, encabezados traducidos y navegadores resumidos a su versión mínima |
+| `skills/seguridad-por-diseno/references/seguridad-web-navegador.md` | `security` (general y específicas) y `privacy` | Traducida, resumida y reorganizada; sin ejemplos de código |
+
+(Las rutas son relativas a `plugins/suplemento-core/`.) **Categorías leídas y no adaptadas:** inteligencia artificial integrada en el navegador, WebMCP, WebAssembly, instalación de aplicaciones web (PWA) y los efectos visuales de nicho (WebGL, canvas, texturas); no corresponden al trabajo habitual de este proyecto.
 
 Cumplimiento de la licencia: se conserva la atribución en el encabezado de cada archivo, se indican los cambios y se incluye una copia de la licencia en `plugins/suplemento-core/skills/frontend-conventions/references/LICENSE-Apache-2.0.txt`. La fuente no publica un archivo `NOTICE` propio. Esto no implica respaldo de los autores originales. El plugin *Modern Web Guidance* en sí **no** es parte de este repositorio ni se distribuye con él.
-
-
-NIST SP 800-218 (SSDF) y el concepto STRIDE se citan por nombre; no se copia su texto. No se verificaron sus términos de uso.

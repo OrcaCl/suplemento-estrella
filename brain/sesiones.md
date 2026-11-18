@@ -3,6 +3,21 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — guías propias de frontend ampliadas a todas las categorías
+
+**Contexto:** el autor pidió revisar todas las demás categorías de Modern Web Guidance ("tenemos tokens, espacio de disco…"). La conexión con la API se cortó en medio del trabajo; el autor hizo un commit de emergencia (`bdb4342`) que conservó tres archivos ya escritos, y la sesión se retomó sin pérdidas.
+
+**Lectura (unos 1,5 MB, 184 guías más las 45 de la ronda anterior):** por capas: las guías maestras de cada categoría leídas completas en sus reglas (`css`, `security`, `performance`, `html`, `js`, `privacy`, `color`, `typography`, `motion`, `forms`), y las específicas por descripción y reglas destacadas. No línea por línea. Categorías no adaptadas: IA integrada, WebMCP, WebAssembly, PWA y efectos de nicho.
+
+**Resultado (ADR-022):**
+- `frontend-conventions/references/`: `css-y-diseno.md`, `rendimiento.md`, `html-y-js.md`, `comportamientos.md`, `madurez-funciones.md` (159 funciones: 36 widely, 48 newly, 75 limitadas, generadas de las declaraciones de las guías), y `formularios.md` ampliado.
+- `seguridad-por-diseno/references/seguridad-web-navegador.md`: cabeceras HTTP (HSTS, `nosniff`, `Referrer-Policy`, `Permissions-Policy`, `frame-ancestors`, COOP/CORP, `Sec-Fetch-*`, CORS, `Clear-Site-Data`), cookies (`__Host-`), XSS en el DOM (Sanitizer API, Trusted Types, CSP en modo solo informe), `postMessage`, SRI, passkeys y privacidad. Cubre un vacío real de la skill de seguridad.
+- **Hallazgos que corrigen mi trabajo anterior:** el posicionamiento por anclaje de CSS es de disponibilidad limitada (lo había recomendado sin reservas); `<dialog>` y `<details>` son "widely" (la tabla de componentes decía "sin limitaciones declaradas").
+- **Lección de proceso:** commitear por tandas durante un trabajo largo; así el corte de conexión no perdió nada.
+- **Ítems:** 25 cerrado; 26 nuevo (mantener al día lo adaptado).
+
+---
+
 ## Sesión — 2026-11-18 — guías propias de frontend y atribución
 
 **Contexto:** el autor pidió revisar las guías de accesibilidad, formularios y componentes de interfaz de Modern Web Guidance para actualizar `frontend-conventions` y no depender de un plugin que ejecuta `npx` constantemente y pide telemetría; y dejar por escrito en el proyecto que se referencian terceros para copyright y licencias.
