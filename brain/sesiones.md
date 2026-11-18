@@ -3,6 +3,27 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — skill `seguridad-por-diseno`
+
+**Contexto:** tras una semana de ataques informáticos, el autor quería que el código creado con el harness saliera con medidas de seguridad acordes a producción actual, y no conocía una skill externa con ese contenido. Antes de diseñar se revisaron las fuentes vigentes.
+
+**Hitos:**
+- **Fuentes verificadas:** OWASP Top 10:2025 (lista de diez categorías confirmada en la página oficial), ASVS 5.0.0 (17 capítulos confirmados en el repositorio oficial). **No verificado contra el original:** la lista ASI 2026 (PDF no accesible; se usó un resumen de Cycode) y NIST SSDF 1.2 (borrador de diciembre de 2025, sin confirmar si es final).
+- **Decisiones del autor:** incluir los cuatro marcos (Top 10, ASVS, ASI y STRIDE/SSDF); activación como guía por tipo de cambio, sin bloquear; una sola skill con referencias.
+- **ADR-014 y skill `seguridad-por-diseno`:** `SKILL.md` con tabla de controles por tipo de cambio, cinco preguntas de amenaza, reglas para Code como agente y nivel `asvs_nivel`; cuatro referencias (Top 10, ASVS, ASI, STRIDE y SSDF). Ítem 10 cerrado (commit `79bf52b`).
+- **Ítem 19 creado:** verificar fuentes y probar la skill en un proyecto real.
+
+### Archivos modificados
+- plugins/suplemento-core/skills/seguridad-por-diseno/ (nueva, con `references/`)
+- docs/principles.md, CHANGELOG.md
+- brain/{ADR-014,index,sesiones}, spec/cerrados.md, SPEC.md
+
+### Próximo
+- Ítem 19, y decidir si se sube a 0.16.0 y se publica (ítems 10 a 13 sin publicar).
+- Ítems 14 y 18; Gemini en el 16.
+
+---
+
 ## Sesión — 2026-11-17 — comando `ketchup` (nombre acordado)
 
 **Contexto:** el autor pidió un comando para revisar las versiones de las skills externas, los plugins y las dependencias, y buscaba nombre. Entre `checkup`, `upkeep`, `stocktake` y `vitals`, prefirió `ketchup`: juego de palabras con *catch up* (ponerse al día), una palabra que no aparece sola al programar, y la imagen de que, si no se hace seguido, las dependencias se "desangran" y manchan el funcionamiento.

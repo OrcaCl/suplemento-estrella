@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Tres cambios al núcleo, sin publicar (plugin sigue en 0.15.0): tamaño de `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012) y comando `housekeeping` (ADR-013); ítems 11, 12 y 13 cerrados.** Telemetría de claude-mem apagada (NOC-001). Siguen el 14 y, de fondo, el 10 (seguridad OWASP) |
+| Última sesión | 2026-11-17 — **Cuatro cambios al núcleo, sin publicar (plugin sigue en 0.15.0): `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012), `housekeeping` (ADR-013) y skill `seguridad-por-diseno` (ADR-014); ítems 10 a 13 y 17 cerrados.** Nuevos: 18 (`ketchup`) y 19 (verificar la skill de seguridad). Telemetría de claude-mem apagada (NOC-001) |
 
 ---
 
@@ -51,9 +51,9 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 **Media**
 
-- [ ] **10** — Agregar una skill de seguridad (OWASP Top 10 y ASVS, más una metodología moderna de seguridad en el ciclo de desarrollo) a ambos runtimes, para que el código creado con el harness salga con medidas acordes a producción actual. Decidir si es skill nueva o se integra a las existentes. Prioridad Media-alta: no hay una skill externa conocida que cubra esto. Partir revisando las fuentes vigentes de OWASP
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
+- [ ] **19** — Verificar y probar `seguridad-por-diseno`: (a) leer el documento original de OWASP Top 10 para aplicaciones con agentes 2026 y contrastar la lista ASI, que se tomó de un resumen de terceros; (b) confirmar en el repositorio oficial de ASVS el número de requisitos y los niveles; (c) revisar si NIST SSDF 1.2 ya es final; (d) probar la skill en un proyecto real que maneje login o datos personales y ajustar la tabla (ADR-014)
 - [ ] **18** — Diseñar el comando **`ketchup`**: revisa en solo lectura las versiones de plugins, skills externas y dependencias (compara `PLUGINS.md` con `claude plugin list` y lo que haya de proyecto), informa lo desactualizado o en riesgo y actualiza solo lo que el humano apruebe, igual que `housekeeping`. El nombre juega con *catch up* (ponerse al día). Decidir si consulta internet o solo lo local, y cómo se relaciona con la skill de seguridad del ítem 10 (dependencias comprometidas) y con NOC-001
 - [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
 
@@ -63,9 +63,9 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `keepit` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
-- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 11, 12 y 13, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
+- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 10, 11, 12 y 13, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
 
-Cerrados: 1, 2, 4, 8, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 8, 10, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
 
 ---
 
@@ -94,6 +94,7 @@ Cerrados: 1, 2, 4, 8, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
 | `code-comment-convention`: el código fuente es la tercera capa de conocimiento | Brain KMS (desarrollador) · `SPEC.md` (agente) · código fuente (ambos). Una limpieza nunca elimina comentarios de decisión, regla de negocio, workaround o seguridad solo porque el código "parece claro". Los proyectos instalados la reciben por oferta única de `ward`/`keepit`, no por migración automática. El ejemplo ExtJS + Supabase de la skill es el origen del problema: no quitarlo. Ver ADR-009 |
 | Registro por umbral (`registro: umbral`, por defecto) | Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `keepit` sigue obligatorio y es el único que hace push. Ver ADR-012 |
 | `housekeeping` limpia con calma, con informe y aprobación | Lo dispara solo el humano; revisa en solo lectura `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes, y aplica solo lo aprobado (commit local, sin push). Ver ADR-013 |
+| `seguridad-por-diseno` es una guía, no una puerta | Aplica controles por tipo de cambio (OWASP Top 10:2025, ASVS 5.0, ASI 2026, STRIDE, SSDF) y avisa al terminar lo que no pudo cumplir; no bloquea commits. Nivel `asvs_nivel` en `CLAUDE.md` (1 por defecto). La lista ASI está pendiente de verificar (ítem 19). Ver ADR-014 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---
