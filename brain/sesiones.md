@@ -3,6 +3,16 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — "registro" y "boletín" son sinónimos
+
+**Contexto:** al revisar el ítem 17, el autor notó que el proyecto ya usa "registro" y aclaró que "registro" y "boletín" se refieren a lo mismo: una entrada nueva de cualquiera de las plantillas de Brain KMS.
+
+- **Ítem 17 cerrado sin renombrar nada.** El glosario recoge "Registro (o boletín)" como sinónimos. No hay término oficial nuevo ni cambios en skills, runtimes o plantillas.
+- **Ítem 16** (Gemini) ajustado: ya no depende del 17.
+- Archivos: docs/glossary.md, spec/cerrados.md, SPEC.md, brain/sesiones.md.
+
+---
+
 ## Sesión — 2026-11-17 — comando `housekeeping`
 
 **Contexto:** el autor pidió un lugar para hacer limpieza y lint con calma después de una sesión intensa, ya que el tamaño de `SPEC.md` pasó a aviso (ADR-011) y el registro a umbral (ADR-012). Eligió "informe y apruebas" y tres áreas de revisión; dejó fuera las herramientas externas.

@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Tres cambios al núcleo, sin publicar (plugin sigue en 0.15.0): tamaño de `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012) y comando `housekeeping` (ADR-013); ítems 11, 12 y 13 cerrados.** Telemetría de claude-mem apagada (NOC-001). Siguen 14, 17 y, de fondo, el 10 (seguridad OWASP) |
+| Última sesión | 2026-11-17 — **Tres cambios al núcleo, sin publicar (plugin sigue en 0.15.0): tamaño de `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012) y comando `housekeeping` (ADR-013); ítems 11, 12 y 13 cerrados.** Telemetría de claude-mem apagada (NOC-001). Siguen el 14 y, de fondo, el 10 (seguridad OWASP) |
 
 ---
 
@@ -55,7 +55,6 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
 - [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
-- [ ] **17** — Adoptar "boletín" como nombre genérico de los registros de `brain/` (ADR, INT, NOC, DEP, REF/REFX), porque ya no hay solo ADR; integrarlo al glosario y a la documentación de ambos runtimes
 
 **Baja / Externo**
 
@@ -63,9 +62,9 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **7** — Runtime Gemini: `06-documentation-convention.md` manda a `keepit` a ejecutar "los pasos 1 a 7" de `ward`, que ahora tiene los pasos 0 a 8 y un paso 0a nuevo; revisar si el desfase es intencional
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
-- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 11, 12 y 17, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
+- [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 11, 12 y 13, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
 
-Cerrados: 1, 2, 4, 8, 11, 12, 13 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 8, 11, 12, 13, 17 _(detalle en `spec/cerrados.md`)_
 
 ---
 

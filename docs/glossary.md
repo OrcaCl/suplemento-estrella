@@ -48,6 +48,8 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **SDD** — *Spec-Driven Development.* Trabajar con `SPEC.md` y `spec/` como fuente de verdad del proyecto.
 
+**Registro (o boletín)** — Una entrada nueva en `brain/`, de cualquiera de las plantillas de Brain KMS (ADR, INT, NOC, DEP, REF, REFX). "Registro" y "boletín" significan lo mismo y se usan indistintamente; no hay un término oficial distinto. Ver [brain.md](brain.md).
+
 **`sesiones.md`** — Registro de las sesiones de trabajo en `brain/`: qué se hizo, qué se descubrió, qué decisiones aparecieron y qué quedó pendiente. Las entradas más recientes van arriba.
 
 **`SHAME.md`** — Archivo de emergencia, en la raíz. Si la sesión está por quedarse sin tokens (o ya se cortó), se guarda ahí el estado exacto del trabajo para que la siguiente sesión continúe donde quedó.
