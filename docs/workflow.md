@@ -13,7 +13,7 @@ El agente irá guiando al desarrollador para completar la información inicial y
 El contexto inicial del proyecto se registra principalmente en:
 
 - `SPEC.md`
-- `CLAUDE.md` (Claude Code) / `GEMINI.md` (Gemini)
+- `CLAUDE.md`
 - `brain/` — Brain KMS (cuando corresponda)
 
 El objetivo es que el agente comprenda el proyecto antes de comenzar a escribir código.
@@ -23,7 +23,7 @@ El objetivo es que el agente comprenda el proyecto antes de comenzar a escribir 
 Completar los textos que están dentro de las plantillas de contexto:
 
 - `SPEC.md` para la guía central del proyecto.
-- `CLAUDE.md` / `GEMINI.md` para las reglas que deban aplicarse al iniciar una sesión.
+- `CLAUDE.md` para las reglas que deban aplicarse al iniciar una sesión.
 - `PLUGINS.md` se llena solo — si decides instalar algo nuevo, el agente lo va a guardar ahí y si clonas tu repo en otro equipo, sabrá qué tenías instalado.
 
 Esto se hace solo una vez, de forma manual o híbrida (le dices al agente que te guarde las cosas donde corresponde). Después se va llenando solo según las reglas ya preestablecidas (revisa las plantillas por más detalles).

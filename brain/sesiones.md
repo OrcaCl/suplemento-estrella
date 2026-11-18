@@ -3,6 +3,18 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — cierre de la 0.16.0
+
+**Contexto:** el autor decidió que la 0.16.0 será una actualización grande y pidió dejar el repo limpio: retirar el runtime Gemini conservando un respaldo, avisar en cada actualización de proyecto el hallazgo sobre `.claudeignore`, y dejar al día los `.md` de la raíz.
+
+- **Runtime Gemini retirado (DEP-002):** `runtimes/` e `install-gemini.sh` borrados. Respaldo en `brain/files/secure/runtime-gemini-antigravity-0.1.6.tar.gz` (31 archivos, comparado byte a byte con la etiqueta; no se versiona) y etiqueta local `runtime-gemini-0.1.6`. Durante la sesión el autor sospechó que `install-gemini.sh` había quedado fuera del tarball; se comprobó que sí está (4198 bytes, idéntico al de la etiqueta). Reemplaza el congelamiento de ADR-017.
+- **Nota sobre `.claudeignore`:** guía `project-init/references/migracion-0.16.md`, aviso destacado en el README ("si vienes de una versión anterior a la 0.16.0") y entrada de seguridad en el CHANGELOG. El texto aclara que no es una puerta trasera: el fallo es que el agente sí podía leer archivos que se creían protegidos; incluye comprobar la regla, buscar secretos versionados y rotar credenciales al alcance del agente.
+- **`.md` de la raíz al día:** README (instalación solo de Claude Code, tabla de migraciones por versión, novedades 0.16.0, estado v0.16.0, licencias), CHANGELOG (las dos secciones "Sin publicar" fusionadas en "2026-11-18 — Core v0.16.0" con Security, Added, Changed, Removed), SPEC (versión 0.16.0, sin Gemini), CLAUDE.md (plugins vigentes), NOTICE.md (ya vigente), TOASK.md y SHAME.md sin cambios necesarios. `docs/`, `plugin.json` y `marketplace.json` sin referencias al runtime Gemini; `plugin.json` en 0.16.0.
+- **Ítem 24:** publicar (keepit, empujar la etiqueta, actualizar el plugin local) y luego migrar los proyectos uno a uno (ítem 23).
+- **No se publicó nada:** sin push ni etiqueta de versión.
+
+---
+
 ## Sesión — 2026-11-18 — revisión de seguridad de las skills propias
 
 **Contexto:** ítem 22. Tras leer los documentos de OWASP, el autor pidió revisar las propias skills en busca de huecos y corregirlos.

@@ -14,12 +14,9 @@ Suplemento Estrella existe precisamente para eso.
 
 # ¿Qué necesitas?
 
-Suplemento Estrella es un harness multi-runtime — funciona con más de un agente de código. Elige tu runtime:
+Suplemento Estrella es un harness para **Claude Code**, que es su único runtime mantenido. (Existió un runtime para Google Gemini; se retiró en la 0.16.0, ver DEP-002.)
 
-- **Claude Code** — runtime de referencia, con el historial más largo de uso real.
-- **Google Gemini (Antigravity IDE)** — runtime adicional, ver `runtimes/gemini-antigravity/`.
-
-Ver [Instalación](../README.md#instalación) en el README para el comando exacto de cada runtime.
+Ver [Instalación](../README.md#instalación) en el README para los comandos.
 
 ---
 
@@ -42,15 +39,9 @@ Opcionalmente instala también **Claude Mem** (memoria operativa del agente) —
 
 ---
 
-# Instalación — Google Gemini (Antigravity)
-
-Ver el comando de instalación de una línea en el [README](../README.md#instalación).
-
----
-
 # Crear un proyecto nuevo
 
-Una vez instalado el runtime que corresponda, inicia un proyecto ejecutando la skill/comando **project-init**.
+Una vez instalado el plugin, inicia un proyecto ejecutando la skill/comando **project-init**.
 
 Durante la inicialización el agente irá haciendo preguntas para construir el contexto inicial del proyecto.
 
@@ -68,7 +59,7 @@ Para ello se generan distintos documentos base, entre ellos:
 
 ```text
 SPEC.md
-CLAUDE.md (o GEMINI.md, según el runtime)
+CLAUDE.md
 PLUGINS.md
 TOASK.md
 ```

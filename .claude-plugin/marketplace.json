@@ -1,6 +1,6 @@
 {
   "name": "suplemento-estrella",
-  "description": "Suplemento Estrella — harness de desarrollo asistido por agentes de código, con esteroides IA. Marketplace de metodología reutilizable para proyectos con Claude Code, con adaptaciones a otros agentes (Google Gemini) en runtimes/.",
+  "description": "Suplemento Estrella — harness de desarrollo asistido por agentes de código, con esteroides IA. Marketplace de metodología reutilizable para proyectos con Claude Code.",
   "owner": {
     "name": "OrcaCl"
   },
@@ -8,7 +8,7 @@
     {
       "name": "suplemento-core",
       "source": "./plugins/suplemento-core",
-      "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ Knowledge Management System (Brain KMS), TDD por niveles, convenciones de frontend, disciplina de simplicidad de código, y convención de comentarios en el código.",
+      "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ (Brain KMS), diseño y planificación antes de implementar, depuración sistemática, TDD quirúrgico, modo secuencial, seguridad por diseño (OWASP), convenciones de frontend, simplicidad de código y convención de comentarios.",
       "author": {
         "name": "Orlando (OrcaCl)"
       }

@@ -18,7 +18,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Checkpoint** — Nombre anterior (≤ 0.11) de `ward`; deprecado en 0.12.0 y retirado en 0.15.0. Hacía lo mismo que `ward` pero con push. `listeilor` (0.12–0.13) fue el nombre anterior de `keepit`, también retirado en 0.15.0.
 
-**`CLAUDE.md` / `GEMINI.md`** — Reglas que el agente carga al iniciar una sesión (Claude Code y Gemini respectivamente): confirmación de contexto, stack, reglas críticas, modo de trabajo.
+**`CLAUDE.md`** — Reglas que el agente carga al iniciar una sesión: confirmación de contexto, stack, reglas críticas, modo de trabajo, seguridad.
 
 **Core** — La capa de referencia del harness: metodología, skills y convenciones. Versiona por su cuenta (`SPEC.md`).
 
@@ -44,7 +44,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **REFX** — *Referencia cruzada.* Material traído manualmente desde otro proyecto, con su procedencia explícita. El agente nunca navega el proyecto de origen por su cuenta.
 
-**Runtime** — Adaptación del harness a un agente concreto. Claude Code es el runtime de referencia (`plugins/suplemento-core/`); los demás viven en `runtimes/` (hoy, Gemini/Antigravity). Cada uno versiona de forma independiente.
+**Runtime** — Adaptación del harness a un agente concreto. Claude Code es el runtime de referencia y el único mantenido (`plugins/suplemento-core/`). El runtime de Gemini/Antigravity se retiró en la 0.16.0 (DEP-002).
 
 **SDD** — *Spec-Driven Development.* Trabajar con `SPEC.md` y `spec/` como fuente de verdad del proyecto.
 

@@ -11,7 +11,6 @@ Las convenciones de nombres, estructura y documentación de Suplemento Estrella.
 | Ruta | Contenido |
 |---|---|
 | `plugins/suplemento-core/` | Runtime de referencia (Claude Code): `skills/`, `commands/`, `.claude-plugin/plugin.json` |
-| `runtimes/` | Adaptaciones a otros agentes, una carpeta por agente (hoy `gemini-antigravity/`) |
 | `.claude-plugin/marketplace.json` | Definición del marketplace instalable |
 | `docs/` | Documentación conceptual, dirigida a quien instala y usa el harness |
 | `brain/` | Brain KMS del propio repo: decisiones y sesiones |
@@ -38,7 +37,7 @@ Detalle en [decisions.md](decisions.md).
 - **Fechas:** formato ISO, `AAAA-MM-DD`.
 - **`SPEC.md`:** referencia de 1000 líneas (configurable; solo avisa) y sin límite por línea; "Última actualización" es solo la fecha; se reemplaza, no se acumula (ADR-006).
 - **Cuándo:** el registro en `brain/` y `SPEC.md` ocurre al terminar una tarea que cruce el umbral (`registro: umbral`, ADR-012), en un `ward` o al cierre de sesión (`keepit`), no a mitad del trabajo.
-- **`CHANGELOG.md`:** uno solo, en la raíz. Cada entrada cita la versión de la capa que cambió (`[Core vX.Y.Z]`, `[Runtime Gemini vX.Y.Z]`…). Registra hitos, no cada commit (ADR-002).
+- **`CHANGELOG.md`:** uno solo, en la raíz. Cada entrada cita la versión de la capa que cambió (`[Core vX.Y.Z]`…). Registra hitos, no cada commit (ADR-002).
 - **`docs/`:** cada archivo explica un tema y enlaza al resto en vez de repetirlo.
 
 ## Versionado
@@ -58,7 +57,7 @@ Formato `tipo(alcance): descripción`, en español.
 | `fix` | Corrección |
 | `docs` | Documentación y registro en `brain/` |
 
-Alcances usados: `core`, `runtime-gemini`, `brain`, `meta`. Si un cambio afecta a varias capas, se listan separadas por coma (`core,runtime-gemini`).
+Alcances usados: `core`, `brain`, `spec`, `docs`, `meta` (y `runtime-gemini` en el historial anterior a la 0.16.0). Si un cambio afecta a varias capas, se listan separadas por coma (`core,docs`).
 
 - Los commits de código son continuos; un commit de código no implica tocar `brain/` ni `SPEC.md`.
 - El commit de un `ward` cubre el período completo y es local (sin push); `keepit` hace el commit final y el push (el registro no existe hasta que está pusheado).
@@ -68,5 +67,4 @@ Alcances usados: `core`, `runtime-gemini`, `brain`, `meta`. Si un cambio afecta 
 
 - Una skill por carpeta en `plugins/suplemento-core/skills/<nombre>/SKILL.md`, con `name` y `description` en el encabezado.
 - El nombre va en minúsculas y con guiones. Las plantillas de `project-init` viven en su subcarpeta `references/`.
-- Toda skill de Claude Code tiene su equivalente en `runtimes/gemini-antigravity/skills/` (numeradas `NN-nombre.md`): un cambio en una debe reflejarse en la otra.
 - La regla completa vive en un solo lugar; el resto de los archivos la resumen y enlazan a ella, en vez de duplicarla.

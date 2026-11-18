@@ -16,9 +16,9 @@ Suplemento Estrella evita duplicar funcionalidades que ya resuelven correctament
 
 ---
 
-## Multi-runtime
+## Runtimes
 
-Desde v0.10.0, Suplemento Estrella dejó de ser exclusivo de Claude Code. Cada runtime adicional vive en `runtimes/` con su propia adaptación de la misma metodología — ver [Instalación](../README.md#instalación) en el README para el detalle de cada uno.
+Claude Code es el runtime de referencia y el único mantenido. Entre la v0.10.0 y la v0.15.0 existió además una adaptación para Google Gemini (Antigravity); se retiró en la v0.16.0 (DEP-002). El harness sigue diseñado para poder adaptarse a otro agente si hiciera falta.
 
 ---
 

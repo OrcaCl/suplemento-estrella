@@ -1,25 +1,33 @@
 # Changelog
 
-Registro único de hitos del harness Suplemento Estrella — Core y todos sus runtimes (Claude Code, Google Gemini, y los que vengan). Formato inspirado en [Keep a Changelog](https://keepachangelog.com/), adaptado: **no hay una versión única de proyecto** — cada entrada cita explícitamente la versión del componente que cambió (`[Core vX.Y.Z]`, `[Runtime Claude Code vX.Y.Z]`, `[Runtime Gemini vX.Y.Z]`), porque cada capa versiona de forma independiente (ver ADR-002 en `brain/`). Este archivo registra hitos relevantes, no cada commit individual.
+Registro único de hitos del harness Suplemento Estrella — Core y los runtimes que haya tenido (Claude Code, y Google Gemini hasta la 0.15.0). Formato inspirado en [Keep a Changelog](https://keepachangelog.com/), adaptado: **no hay una versión única de proyecto** — cada entrada cita explícitamente la versión del componente que cambió (`[Core vX.Y.Z]`, `[Runtime Claude Code vX.Y.Z]`, `[Runtime Gemini vX.Y.Z]`), porque cada capa versiona de forma independiente (ver ADR-002 en `brain/`). Este archivo registra hitos relevantes, no cada commit individual.
 
 Versionado semántico (semver) desde 2026-09-11 — antes cada componente versionaba solo por hash de commit git, sin relación con semver. El punto de partida `0.10.0` para Claude Code no es un cálculo retroactivo estricto: es una estimación de madurez relativa (pre-1.0, desarrollo activo) al momento de adoptar semver — ver ADR-001 en `brain/`.
 
-## Sin publicar (2026-11-18)
+## 2026-11-18 — Core v0.16.0
 
-### Fixed
-- **[Core]** `project-init` generaba un `.claudeignore` presentado como protección de secretos, pero Claude Code lo ignora (documentación oficial de permisos). Ahora genera `.claude/settings.json` con reglas `deny` de `Read` y un `.gitignore` ampliado; el primer commit revisa estado y secretos y agrega por ruta, nunca `git add .` (ADR-018). `ward`, `keepit` y `housekeeping` también agregan por ruta y `keepit` nunca empuja con `--force`.
-- **[Core]** `frontend-conventions` (riesgo de XSS en el puente `data-*`), `raw-data-audit-trail` (datos personales dentro de `raw_data`), `depuracion-sistematica` (la instrumentación no imprime secretos), plantillas de bug report, `api.md` y `CLAUDE.md` (sección de seguridad) y `tooling-roles` (fila de análisis estático) corregidos con los hallazgos de la revisión de seguridad (ítem 22).
+Actualización grande. **Lee primero la nota de seguridad sobre `.claudeignore`** y la guía [`migracion-0.16.md`](plugins/suplemento-core/skills/project-init/references/migracion-0.16.md): cada proyecto ya inicializado necesita revisión manual.
+
+### Security
+- **[Core v0.16.0]** `.claudeignore` nunca fue un mecanismo reconocido por Claude Code (la documentación oficial de permisos dice que "no tiene efecto"). `project-init` lo generaba desde agosto de 2026 y las skills lo presentaban como protección de secretos y de `brain/files/secure/`; **el agente sí podía leer esos archivos**. No es una puerta trasera ni da acceso a terceros, pero un secreto al alcance del agente pudo haber viajado al proveedor del modelo y quedar en historiales locales. `project-init` ahora genera `.claude/settings.json` con reglas `deny` de `Read` y un `.gitignore` ampliado (ADR-018). Los proyectos ya inicializados deben migrarse a mano (ver la guía). Alcance de las reglas `deny`: herramientas de archivos y comandos de Bash reconocidos como `cat`; no scripts que abren archivos por su cuenta (para eso, el sandbox de Claude Code).
+- **[Core v0.16.0]** El primer commit de `project-init` ya no hace `git add .` y `git push` a ciegas: revisa el estado, busca secretos, agrega por ruta y confirma el destino. `ward`, `keepit` y `housekeeping` agregan al commit solo por ruta y `keepit` nunca empuja con `--force`. `project-init` no sobrescribe un `CLAUDE.md`, `.gitignore` o `settings.json` existentes, y trata la configuración de un repo ajeno como no confiable.
+- **[Core v0.16.0]** Correcciones de la revisión de seguridad de las skills (ítem 22): `frontend-conventions` (XSS en el puente `data-*`), `raw-data-audit-trail` (datos personales dentro de `raw_data`), `depuracion-sistematica` (la instrumentación no imprime secretos), plantillas de bug report, `api.md` y `CLAUDE.md` (sección de seguridad) y `tooling-roles` (fila de análisis estático).
+
+### Added
+- **[Core v0.16.0]** Skill **`seguridad-por-diseno`** (ADR-014): guía de seguridad por tipo de cambio basada en OWASP Top 10:2025, ASVS 5.0, OWASP Top 10 para aplicaciones con agentes 2026 (verificado contra el original), STRIDE y NIST SSDF, con una referencia por marco. Nivel de ASVS configurable con `asvs_nivel` (1 por defecto). Es una guía que avisa lo que no pudo cumplir; no bloquea commits. Incluye reglas para Code como agente: configuración de repos ajenos no confiable, no combinar datos sensibles, contenido no confiable y comunicación externa, y revisión del código generado.
+- **[Core v0.16.0]** Comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push.
+- **[Core v0.16.0]** `NOTICE.md` en la raíz y `references/fuentes-y-licencias.md` declaran el material de OWASP adaptado, que se distribuye bajo CC BY-SA 4.0 (el resto del repo sigue en MIT).
+- **[Core v0.16.0]** Guía de migración `migracion-0.16.md` en `project-init/references/`.
 
 ### Changed
-- **[Runtime Gemini]** Congelado, sin mantenimiento (ADR-017): queda en 0.1.6 con `core_version` 0.15.0 y no recibe los cambios del núcleo de esta tanda. El README lo avisa.
+- **[Core v0.16.0]** Nuevo modo `registro: umbral`, **por defecto** (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `registro: diferido` (estricto) e `inmediato` siguen disponibles. **Cambio de comportamiento por defecto.**
+- **[Core v0.16.0]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit; `ward` y `keepit` conservan la lista de consistencia.
+- **[Core v0.16.0]** Los plugins de terceros que recomienda el ecosistema no se actualizan solos por defecto; `ketchup` (pendiente) revisará las versiones (ADR-016).
+- **[Core v0.16.0]** README, `docs/`, plantillas y `plugin.json`/`marketplace.json` actualizados a la versión 0.16.0 y sin referencias al runtime Gemini.
 
-## Sin publicar (2026-11-17)
-
-### Changed
-- **[Core]** Nueva skill **`seguridad-por-diseno`** (ADR-014): guía de seguridad por tipo de cambio basada en OWASP Top 10:2025, ASVS 5.0, OWASP Top 10 para agentes (ASI) 2026, STRIDE y NIST SSDF, con un archivo de referencia por marco. Nivel de ASVS configurable con `asvs_nivel` (1 por defecto). Es una guía que avisa lo no cumplido, no bloquea commits. La lista ASI queda marcada como pendiente de verificar contra el documento original. Gemini congelado, sin esta mejora (ADR-017).
-- **[Core]** Nuevo comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push. Nuevo `commands/housekeeping.md`; `README`, `docs/` y `documentation-convention` lo mencionan. Gemini congelado, sin esta mejora (ADR-017).
-- **[Core]** Nuevo modo `registro: umbral`, por defecto (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `diferido` (estricto) e `inmediato` siguen disponibles. Cambia `documentation-convention`, `ward`, `spec-driven-development`, `project-init` y `docs/`. Gemini congelado, sin esta mejora (ADR-017).
-- **[Core]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit. `ward` y `keepit` conservan la lista de consistencia. Cambia `spec-driven-development`, `ward`, `keepit`, las plantillas de `project-init`, `normalizacion-spec` y `docs/`. Sin cambio de versión todavía; el runtime Gemini no se actualiza (ADR-017).
+### Removed
+- **[Runtime Gemini]** Se retira `runtimes/gemini-antigravity/` y `install-gemini.sh` (DEP-002). Última versión: 0.1.6, con `core_version` 0.15.0. Se conserva en el historial de git con la etiqueta `runtime-gemini-0.1.6`. Los proyectos que instalaron `.gemini/` quedan sin mantenimiento.
+- **[Core v0.16.0]** `project-init` deja de generar `.claudeignore` (ver Security).
 
 ## 2026-10-06
 

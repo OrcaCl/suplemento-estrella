@@ -1,7 +1,7 @@
 {
   "name": "suplemento-core",
-  "version": "0.15.0",
-  "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ Knowledge Management System (Brain KMS), diseño antes de implementar, planificación por fases, depuración sistemática, TDD quirúrgico, desarrollo secuencial, convenciones de frontend, disciplina de simplicidad de código, y convención de comentarios en el código. Harness de referencia para Claude Code; ver runtimes/ en el repo raíz para adaptaciones a otros agentes (Google Gemini).",
+  "version": "0.16.0",
+  "description": "Metodología, convenciones y personalidad de agente — spec-driven development, sistema brain/ Knowledge Management System (Brain KMS), diseño antes de implementar, planificación por fases, depuración sistemática, TDD quirúrgico, desarrollo secuencial, seguridad por diseño (OWASP), convenciones de frontend, disciplina de simplicidad de código, y convención de comentarios en el código. Harness de referencia para Claude Code.",
   "author": {
     "name": "Orlando (OrcaCl)"
   },

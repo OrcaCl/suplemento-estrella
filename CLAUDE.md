@@ -63,4 +63,4 @@ El código explica QUÉ y CÓMO; los comentarios explican POR QUÉ. Documentar c
 
 ## Plugins
 
-Este repo instala y usa su propio plugin (`suplemento-core`) además de Superpowers y claude-mem. Ver `docs/getting-started.md` para el ecosistema recomendado.
+Este repo instala y usa su propio plugin (`suplemento-core`) además de claude-mem, que está bajo vigilancia (NOC-001: telemetría apagada, sin plan Pro). Superpowers se retiró en septiembre de 2026. Los plugins de terceros no se actualizan solos (ADR-016). Ver `docs/getting-started.md` para el ecosistema recomendado.

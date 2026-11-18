@@ -20,7 +20,6 @@ Al recibir la palabra "housekeeping" del humano, ejecutar en orden. Es un **lint
      - Versiones: `plugin.json`, `runtime.json` (`core_version`), `CHANGELOG.md`, `README.md` y `SPEC.md` coherentes entre sí.
      - Menciones a comandos o prácticas retiradas (`checkpoint`, `listeilor`, reglas ya reemplazadas por un ADR posterior) fuera de los lugares que las citan a propósito (CHANGELOG, DEP, guías de migración).
      - Enlaces y rutas rotas en `docs/`, `README.md` y `skills/`.
-     - Desfase entre el núcleo y el runtime Gemini: skills o reglas del núcleo que su equivalente no recoge todavía.
 2. **Mostrar el informe** agrupado por área, con cada hallazgo numerado (`A1`, `B2`, `C3`…), su evidencia, la propuesta, y una marca: **mecánico** (corrección sin ambigüedad) o **requiere criterio** (condensar, mover o borrar contenido). Cerrar con el conteo por área. Si no hay hallazgos en un área, decirlo.
 3. **Esperar la aprobación del humano.** Él elige por número, "todos los mecánicos" o ninguno. No aplicar nada sin esa respuesta.
 4. **Aplicar solo lo aprobado**, respetando "reemplazar, no acumular" (`spec-driven-development`). Mover antes de borrar: el contenido condensado va a su destino (`brain/sesiones.md`, `spec/cerrados.md`, `brain/`). No tocar `CLAUDE.md` ni comentarios del código sin aprobación expresa.

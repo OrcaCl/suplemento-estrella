@@ -6,7 +6,7 @@ Permite orientar y definir **cómo colaboran un desarrollador humano y su agente
 
 **No es un framework. No es un boilerplate. No es una plantilla de proyecto.**
 
-Claude Code es el runtime de referencia, pero el harness es multi-runtime desde v0.10.0 — ver [Instalación](#instalación) para Google Gemini (Antigravity).
+Está construido para **Claude Code**. Ver [Instalación](#instalación).
 
 ---
 
@@ -36,25 +36,34 @@ claude plugin update suplemento-core@suplemento-estrella
 
 Reinicia Claude Code para que cargue la versión nueva y confirma con `claude plugin list`.
 
-Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva. Para la 0.12.0, la guía está en `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md`. Para la 0.13.0 (convención de comentarios en el código, opcional), en `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md`; además, `ward` y `keepit` te la ofrecen una vez si el `CLAUDE.md` del proyecto no la menciona. Para la 0.14.0 (`listeilor` pasa a llamarse `keepit`), no hay migración de archivos: si tu `CLAUDE.md` o tus notas mencionan `listeilor`, cámbialo por `keepit`. En la 0.15.0 se retiraron los comandos `listeilor` y `checkpoint`: si tu proyecto aún los usa, cambia a `keepit` y `ward` antes de actualizar.
+Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `brain/`, `spec/`, `CLAUDE.md`). Si la versión trae cambios de convención, cada proyecto necesita una migración manual: revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva.
 
-### 🟢 Gemini (Antigravity IDE) — congelado
+> ### ⚠️ Si vienes de una versión anterior a la 0.16.0: revisa `.claudeignore`
+>
+> Hasta la 0.15.0, `project-init` generaba un archivo **`.claudeignore`** y las skills lo presentaban como protección para que el agente no leyera secretos (`brain/files/secure/`, `.env`…). **Claude Code no reconoce ese archivo**: su documentación oficial dice que "no tiene efecto". Es un patrón difundido en tutoriales que parece oficial, y este plugin lo adoptó.
+>
+> No es una puerta trasera ni da acceso a terceros, pero **el agente sí podía leer** esos archivos. En cada proyecto ya inicializado: crea `.claude/settings.json` con reglas `deny`, borra el `.claudeignore`, revisa que no haya secretos versionados y rota cualquier credencial que haya estado al alcance del agente. La guía paso a paso está en [`migracion-0.16.md`](plugins/suplemento-core/skills/project-init/references/migracion-0.16.md).
 
-> **Sin mantenimiento desde 2026-11-18** (ver ADR-017): el runtime queda en la versión 0.1.6 y no incluye los cambios recientes del núcleo (`housekeeping`, registro por umbral, skill de seguridad). Puede estar desactualizado.
+Guías de migración por versión:
 
-Desde la terminal integrada de tu espacio de trabajo:
+| Versión | Qué cambia | Guía |
+|---|---|---|
+| **0.16.0** | Protección de secretos con reglas `deny` (no `.claudeignore`), registro por umbral, skill de seguridad, `housekeeping`, runtime Gemini retirado | `plugins/suplemento-core/skills/project-init/references/migracion-0.16.md` |
+| 0.15.0 | Se retiran `listeilor` y `checkpoint`: cambia a `keepit` y `ward` antes de actualizar | — |
+| 0.14.0 | `listeilor` pasa a llamarse `keepit` | Si tu `CLAUDE.md` o tus notas lo mencionan, cámbialo |
+| 0.13.0 | Convención de comentarios en el código (opcional); `ward` y `keepit` te la ofrecen una vez | `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md` |
+| 0.12.0 | `ward`, `SPEC.md` que se reemplaza y no se acumula | `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md` |
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/OrcaCl/suplemento-estrella/main/install-gemini.sh | bash
-```
+### Novedades de la 0.16.0
 
-Instala el runtime en `.gemini/` dentro de tu proyecto, sin necesidad de clonar el repo completo. Ver `runtimes/gemini-antigravity/` para el detalle del runtime.
+- **Seguridad por diseño:** nueva skill `seguridad-por-diseno`, una guía por tipo de cambio basada en OWASP Top 10:2025, ASVS 5.0, los riesgos de agentes de OWASP (ASI 2026), STRIDE y NIST SSDF. Avisa lo que no pudo cumplir; no bloquea commits.
+- **Secretos protegidos de verdad:** reglas `deny` en `.claude/settings.json` y un `.gitignore` ampliado; el primer commit revisa el estado y busca secretos antes de empujar.
+- **`housekeeping`:** limpieza y lint con calma, con informe y aprobación.
+- **Registro por umbral:** Code registra en `brain/` y `SPEC.md` al terminar una tarea con conocimiento nuevo, sin esperar un `ward`. `registro: diferido` conserva el comportamiento anterior.
+- **`SPEC.md` con criterio orgánico:** el tamaño solo avisa.
+- **Retirado:** el runtime de Gemini (ver [`DEP-002`](brain/DEP-002-retiro-del-runtime-gemini.md)).
 
-#### Actualizar el runtime en un proyecto que ya está funcionando
-
-El runtime vive dentro de cada proyecto, así que se actualiza proyecto por proyecto: vuelve a correr el mismo comando de instalación desde la raíz del proyecto. Sobrescribe el contenido de `.gemini/` con la versión nueva; no toca `SPEC.md`, `brain/`, `spec/` ni tu `GEMINI.md`. Como con Claude Code, si la versión trae cambios de convención, revisa el [`CHANGELOG.md`](CHANGELOG.md); para la 0.12.0, la guía está en `.gemini/skills/references/spec-migracion-0.12.md`.
-
-### Después de instalar (cualquier runtime)
+### Después de instalar
 
 Dile al agente que inicie el proyecto:
 
@@ -83,18 +92,19 @@ Este README es intencionalmente breve. El detalle vive en `docs/`:
 | [`docs/philosophy.md`](docs/philosophy.md) | Filosofía, qué se reutiliza y qué nunca, principio de integración |
 | [`docs/brain.md`](docs/brain.md) | Brain KMS — sistema de memoria persistente del proyecto (ADR, INT, NOC, DEP, REF/REFX) |
 | [`docs/spec.md`](docs/spec.md) | `SPEC.md` como panel de control, cuándo escalar a `spec/` |
-| [`docs/plugins.md`](docs/plugins.md) | Ecosistema recomendado, qué incluye la metodología, multi-runtime |
+| [`docs/plugins.md`](docs/plugins.md) | Ecosistema recomendado y qué incluye la metodología |
 | [`docs/principles.md`](docs/principles.md) | Principios concretos: KISS, DRY, TDD, SDD, diseño previo, modo secuencial |
 | [`docs/decisions.md`](docs/decisions.md) | Cómo se registran y mantienen las decisiones dentro de Brain KMS |
 | [`docs/conventions.md`](docs/conventions.md) | Convenciones de nombres, estructura, documentación, versionado y commits |
 | [`docs/glossary.md`](docs/glossary.md) | Diccionario de los conceptos propios (ADR, INT, NOC, ward, keepit, SHAME…) |
-| [`CHANGELOG.md`](CHANGELOG.md) | Historial de hitos, todas las capas (Core + runtimes) |
+| [`CHANGELOG.md`](CHANGELOG.md) | Historial de hitos y versiones |
+| [`NOTICE.md`](NOTICE.md) | Avisos de terceros: material de OWASP bajo CC BY-SA 4.0 |
 
 ---
 
 ## Estado del proyecto
 
-Suplemento Estrella se encuentra en **desarrollo activo** (v0.14.0 — pre-1.0). La implementación de referencia está orientada a Claude Code; el harness fue diseñado para poder adaptarse a otros agentes, y Google Gemini ya es el primer runtime adicional.
+Suplemento Estrella se encuentra en **desarrollo activo** (v0.16.0 — pre-1.0) y está orientado a Claude Code. Existió un runtime para Google Gemini; se retiró en la 0.16.0.
 
 Los forks y contribuciones son bienvenidos.
 
@@ -102,7 +112,7 @@ Los forks y contribuciones son bienvenidos.
 
 ## Licencia
 
-MIT — ver [`LICENSE`](LICENSE).
+MIT — ver [`LICENSE`](LICENSE). Los archivos de `plugins/suplemento-core/skills/seguridad-por-diseno/references/` que adaptan material de OWASP se distribuyen bajo CC BY-SA 4.0 — ver [`NOTICE.md`](NOTICE.md).
 
 **Comparte metodología. No deuda técnica.**
 
