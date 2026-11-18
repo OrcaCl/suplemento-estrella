@@ -46,6 +46,7 @@ Aplicar los de la fila que corresponda; abrir la referencia solo si hace falta e
 | **Errores y registros** | Fallar cerrado (ante un error, denegar); no mostrar trazas ni detalles internos al usuario; registrar eventos de seguridad (login fallido, cambio de permisos) sin datos sensibles | A09, A10 · V16 |
 | **Frontend y formularios** | No insertar datos no confiables con `innerHTML` ni equivalentes; política de contenido (CSP) y sin JavaScript en línea (`onclick="…"`); cookies con `HttpOnly`, `Secure` y `SameSite`; **tokens anti-CSRF en toda acción que cambie estado**, con `POST`/`PUT`/`DELETE` y nunca un `GET` que modifique datos; HTTPS en todas las páginas (ver `frontend-conventions/references/formularios.md`) | V3, V4 |
 | **APIs, tokens, OAuth** | Autenticar y autorizar cada endpoint; límites de tasa; validar firma, audiencia y expiración de tokens; no exponer más campos de los necesarios | V4, V9, V10 |
+| **Cabeceras y seguridad del navegador** | HTTPS y HSTS; `nosniff`; `Referrer-Policy`; `Permissions-Policy`; antiframing con `frame-ancestors`; cookies con prefijo `__Host-`, `HttpOnly` y `SameSite`; CORS con orígenes específicos (nunca `*` con credenciales); `textContent` antes que `innerHTML`; Sanitizer API o Trusted Types si hay que insertar HTML; CSP primero en modo solo informe; SRI en recursos externos inmutables; validar `event.origin` en `postMessage` | A02, A05 · V3, V12, V13 (ver `references/seguridad-web-navegador.md`) |
 | **Datos personales** | Recolectar lo mínimo; clasificar qué es sensible; no copiarlo a logs, tests ni ejemplos; ver también `raw-data-audit-trail` | V14 |
 
 ## Reglas para Code como agente (OWASP ASI 2026)
@@ -79,4 +80,5 @@ Una línea al cierre cuando la tarea tocó alguna fila de la tabla: qué control
 - `references/asvs-5.md` — capítulos y niveles
 - `references/agentes-y-datos-owasp.md` — riesgos de agentes (ASI), ideas de seguridad para agentes de código y de datos, y reglas para Code
 - `references/amenazas-y-ssdf.md` — STRIDE, las cinco preguntas y NIST SSDF
+- `references/seguridad-web-navegador.md` — cabeceras, cookies, XSS en el DOM, passkeys y privacidad del lado del navegador (adaptado de Modern Web Guidance, Apache-2.0)
 - `references/fuentes-y-licencias.md` — fuentes, licencias (CC BY-SA 4.0 en lo derivado de OWASP) y cómo citar

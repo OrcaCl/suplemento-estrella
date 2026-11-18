@@ -157,7 +157,7 @@ Sin este guard, un `null.dataset` revienta el script en cualquier página donde 
 
 ## Ayuda para columnas/encabezados con acrónimos o texto truncado
 
-Si una columna de tabla usa un acrónimo o texto abreviado en el encabezado, agregar una ayuda visual (ícono de interrogación o tooltip; antes de sumar una librería como Tippy.js, revisar si `popover` y el posicionamiento por anclaje de CSS ya lo resuelven en los navegadores que el proyecto soporta) con `aria-*` correspondiente para accesibilidad — no dejar el encabezado sin explicación, incluso si parece obvio para quien lo escribió.
+Si una columna de tabla usa un acrónimo o texto abreviado en el encabezado, agregar una ayuda visual (ícono de interrogación o tooltip; antes de sumar una librería como Tippy.js, revisar si `popover` ya lo resuelve en los navegadores que el proyecto soporta (el posicionamiento por anclaje de CSS todavía es de disponibilidad limitada: ver `references/madurez-funciones.md`)) con `aria-*` correspondiente para accesibilidad — no dejar el encabezado sin explicación, incluso si parece obvio para quien lo escribió.
 
 ## Accesibilidad y formularios — no son opcionales
 
@@ -171,7 +171,20 @@ Toda interfaz nueva o modificada cumple, como mínimo, lo siguiente. El detalle 
 - **Modales con `<dialog>` y `.showModal()`**, sin trampa de foco propia.
 - **Se prueba con el teclado solo**, no solo con una herramienta automática.
 
-Listas de verificación: `references/accesibilidad.md`, `references/formularios.md` y, para cada patrón de interfaz (modal, acordeón, pestañas, menú, navegación, carrusel, toast, etc.), `references/componentes.md`.
+Listas de verificación en `references/` (todas adaptadas de Modern Web Guidance, Apache-2.0; ADR-021 y ADR-022):
+
+| Archivo | Qué cubre |
+|---|---|
+| `accesibilidad.md` | Estructura, ARIA, nombres, teclado y foco, medios, regiones en vivo, pruebas |
+| `formularios.md` | Estructura, etiquetas, autocompletado, validación, seguridad, direcciones, varios pasos y guías específicas |
+| `componentes.md` | Patrones de modal, acordeón, pestañas, menús, navegación, carrusel, toast, etc. |
+| `css-y-diseno.md` | CSS moderno, tokens, tipografía, color y contraste, modo oscuro, interfaz del navegador |
+| `html-y-js.md` | HTML semántico, componentes web y JavaScript moderno |
+| `rendimiento.md` | Ruta crítica, imagen principal, INP, terceros, imágenes, fuentes, caché |
+| `comportamientos.md` | Movimiento reducido, transiciones, reordenar, gestos, tablas |
+| `madurez-funciones.md` | Estado de 159 funciones web (instantánea de noviembre de 2026) |
+
+Para la seguridad del navegador (cabeceras, cookies, CSP, passkeys, privacidad) ver `seguridad-por-diseno/references/seguridad-web-navegador.md`.
 
 ## Plataforma web moderna — preferir lo nativo antes que una librería
 
@@ -183,11 +196,11 @@ Las reglas anteriores ordenan *cómo se organiza* el frontend; esta sección es 
 - `color-scheme` y `prefers-color-scheme` para modo oscuro; validación de formularios y `autocomplete` nativos antes que scripts propios.
 - Transiciones de vista y animaciones por CSS antes que librerías de animación.
 
-**Madurez.** No toda función nueva está disponible en todos los navegadores. `references/componentes.md` registra qué declaran las guías fuente sobre cada una (por ejemplo `popover` es "newly available" y `focusgroup` solo existe en Chrome y Edge). Una función que no es Baseline "widely available" exige una alternativa o la decisión del humano, y se verifica en MDN o en Baseline antes de apoyarse en ella.
+**Madurez.** No toda función nueva está disponible en todos los navegadores. `references/madurez-funciones.md` registra qué declaran las guías fuente sobre 159 funciones (por ejemplo `:has()` y las consultas de contenedor son "widely", `popover` es "newly", y el posicionamiento por anclaje y `focusgroup` son de disponibilidad limitada). Una función que no es Baseline "widely available" exige una alternativa o la decisión del humano, y se verifica en MDN o en Baseline antes de apoyarse en ella.
 
 **Política de soporte de navegadores.** Declararla en el `CLAUDE.md` del proyecto con una línea como `**Soporte de navegadores:** Baseline Widely available`. Las funciones ya "widely available" se usan sin alternativa.
 
-**Sin dependencia de una skill externa.** Estas listas se adaptaron de las guías de *Modern Web Guidance* (Apache-2.0) para no depender de un plugin que ejecuta `npx -y …@latest` en cada consulta y recopila telemetría (ADR-021). **No hace falta instalarlo.** Si el humano lo tiene instalado, sus guías son una referencia, no una orden: si contradicen una regla del proyecto (como BEM o la Regla 2), gana la del proyecto, y se informa la divergencia. Las fuentes, sus licencias y los cambios hechos están en `NOTICE.md` y en el encabezado de cada archivo de `references/`.
+**Sin dependencia de una skill externa.** Estas listas se adaptaron de las guías de *Modern Web Guidance* (Apache-2.0; se leyeron todas sus categorías, ver ADR-022) para no depender de un plugin que ejecuta `npx -y …@latest` en cada consulta y recopila telemetría (ADR-021). **No hace falta instalarlo.** Si el humano lo tiene instalado, sus guías son una referencia, no una orden: si contradicen una regla del proyecto (como BEM o la Regla 2), gana la del proyecto, y se informa la divergencia. Las fuentes, sus licencias y los cambios hechos están en `NOTICE.md` y en el encabezado de cada archivo de `references/`.
 
 ## Por qué esta regla existe
 

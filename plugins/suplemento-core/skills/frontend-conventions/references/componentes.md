@@ -1,14 +1,15 @@
 # Componentes de interfaz — patrones y madurez
 
-> **Fuente y licencia:** adaptado de las 22 guías `ui-components` de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, muy resumido (se omiten los ejemplos de código y los detalles de estilo) y reorganizado en una sola tabla de decisiones. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. La madurez de cada función es **la que declaran esas guías en noviembre de 2026**: cambia con el tiempo y debe verificarse en MDN o en Baseline antes de apoyarse en ella.
+> **Fuente y licencia:** adaptado de las 22 guías `ui-components` de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, muy resumido (se omiten los ejemplos de código y los detalles de estilo) y reorganizado en una sola tabla de decisiones. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. La madurez de cada función es **la que declaran esas guías en noviembre de 2026**: cambia con el tiempo y debe verificarse en MDN o en Baseline antes de apoyarse en ella. La tabla completa de 159 funciones está en `madurez-funciones.md`.
 
 ## Madurez de las primitivas (según las guías fuente)
 
 | Primitiva | Estado declarado | Qué hacer |
 |---|---|---|
-| `<dialog>` con `.showModal()` | Sin limitaciones declaradas (la guía no pide alternativa) | Usarla |
-| `<details>` (acordeón) | Sin limitaciones declaradas; `name` exclusivo: Baseline "newly" desde 2024-09-03 | Usarla; el modo exclusivo, con reservas |
+| `<dialog>` con `.showModal()` | Baseline "widely" desde 2022-03-14 | Usarla |
+| `<details>` (acordeón) | Baseline "widely" desde 2020-01-15; `name` exclusivo: "newly" desde 2024-09-03 | Usarla; el modo exclusivo, con reservas |
 | `popover` | Baseline "newly available" desde 2025-01-27 (Chrome 116, Firefox 125, Safari 17) | Para navegadores más antiguos, polyfill `@oddbird/popover-polyfill` cargado solo si falta la función |
+| Posicionamiento por anclaje de CSS (tooltips, tours, menús) | **Limitada** (Chrome y Edge 157, Safari 27) | Mejora progresiva o polyfill; no depender de él |
 | Comandos invocadores (`command`, `commandfor`) | Baseline "newly" desde 2025-12-12 | Con un `click` que llame la misma función como alternativa |
 | `Clipboard.writeText`, scroll snap, `IntersectionObserver`, `scroll-behavior` | Baseline "widely available" | Usarlas sin alternativa |
 | `<dialog closedby>` | Limitada (Chrome/Edge 134, Firefox 141; no Safari) | Mejora progresiva: sin ella el modal igual cierra con Esc |

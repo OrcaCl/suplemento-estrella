@@ -4,7 +4,7 @@ Esta skill se apoya en trabajo de terceros. Aquí se declara qué se usó, de d�
 
 ## Licencia de los archivos derivados
 
-Los archivos de esta carpeta `references/` que adaptan material de OWASP (`owasp-top10-2025.md`, `asvs-5.md`, `agentes-y-datos-owasp.md`, y `amenazas-y-ssdf.md`) se distribuyen bajo **Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)**, https://creativecommons.org/licenses/by-sa/4.0/legalcode, porque esa licencia exige que lo adaptado se comparta bajo la misma. El resto del plugin mantiene la licencia MIT del repositorio. Si copias estos archivos a otro proyecto, conserva la atribución y esta licencia.
+El archivo `seguridad-web-navegador.md` adapta material de *Modern Web Guidance* y se distribuye bajo **Apache-2.0** (copia de la licencia en `../../frontend-conventions/references/LICENSE-Apache-2.0.txt`). Los archivos de esta carpeta `references/` que adaptan material de OWASP (`owasp-top10-2025.md`, `asvs-5.md`, `agentes-y-datos-owasp.md`, y `amenazas-y-ssdf.md`) se distribuyen bajo **Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)**, https://creativecommons.org/licenses/by-sa/4.0/legalcode, porque esa licencia exige que lo adaptado se comparta bajo la misma. El resto del plugin mantiene la licencia MIT del repositorio. Si copias estos archivos a otro proyecto, conserva la atribución y esta licencia.
 
 ## Fuentes
 
@@ -15,6 +15,7 @@ Los archivos de esta carpeta `references/` que adaptan material de OWASP (`owasp
 | OWASP Top 10 for Agentic Applications 2026 | OWASP GenAI Security Project, Agentic Security Initiative | Versión 2026, diciembre de 2025 | CC BY-SA 4.0 | Nombres de ASI01 a ASI10 y las medidas de prevención, resumidas con redacción propia |
 | Securing Agentic Applications V2: A Builder & Defender's Guide | OWASP GenAI Security Project | Versión 2.0, octubre de 2026 | CC BY-SA 4.0 | Ideas de las secciones 2.7.3, 3.1.3, 3.3.7, 5.2, 5.5.1, 6.1 y 6.4, resumidas con redacción propia |
 | GenAI Data Security Best Practices v2, Parte 1 y Parte 2 | OWASP GenAI Security Project | Versión 2.0, octubre y noviembre de 2026 | CC BY-SA 4.0 | Principios de minimización, aislamiento, ciclo de vida y cero confianza en el modelo, resumidos con redacción propia |
+| Modern Web Guidance — guías `security` y `privacy` — https://github.com/GoogleChrome/modern-web-guidance | Equipos de Chrome, Edge, Firefox y MDN con la comunidad | Leída en noviembre de 2026 | Apache-2.0 | `seguridad-web-navegador.md`: cabeceras, cookies, XSS en el DOM, passkeys y privacidad, resumidos con redacción propia |
 | NIST SP 800-218 (SSDF) y SP 800-218A | NIST | 1.1 vigente; 1.2 sin confirmar como final | No verificada: confirmar los términos de uso antes de copiar texto literal | Solo los nombres de los cuatro grupos de prácticas |
 | STRIDE | Concepto de modelado de amenazas ampliamente difundido | — | No verificada | Solo los nombres de las seis amenazas |
 
