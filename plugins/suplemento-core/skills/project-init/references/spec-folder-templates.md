@@ -16,7 +16,7 @@ Todo lo necesario para que el agente pueda comunicarse con sistemas **externos**
 **Método confirmado:** {{ej. HTTP Basic Auth, Bearer token, API key en header}}
 
 ```{{lenguaje}}
-{{snippet de código mínimo mostrando cómo autenticar}}
+{{snippet de código mínimo mostrando cómo autenticar — con placeholders (`<TOKEN>`); nunca credenciales reales}}
 ```
 
 Métodos descartados (y por qué): {{si aplica}}

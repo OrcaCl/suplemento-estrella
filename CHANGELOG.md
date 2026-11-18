@@ -6,6 +6,10 @@ Versionado semántico (semver) desde 2026-09-11 — antes cada componente versio
 
 ## Sin publicar (2026-11-18)
 
+### Fixed
+- **[Core]** `project-init` generaba un `.claudeignore` presentado como protección de secretos, pero Claude Code lo ignora (documentación oficial de permisos). Ahora genera `.claude/settings.json` con reglas `deny` de `Read` y un `.gitignore` ampliado; el primer commit revisa estado y secretos y agrega por ruta, nunca `git add .` (ADR-018). `ward`, `keepit` y `housekeeping` también agregan por ruta y `keepit` nunca empuja con `--force`.
+- **[Core]** `frontend-conventions` (riesgo de XSS en el puente `data-*`), `raw-data-audit-trail` (datos personales dentro de `raw_data`), `depuracion-sistematica` (la instrumentación no imprime secretos), plantillas de bug report, `api.md` y `CLAUDE.md` (sección de seguridad) y `tooling-roles` (fila de análisis estático) corregidos con los hallazgos de la revisión de seguridad (ítem 22).
+
 ### Changed
 - **[Runtime Gemini]** Congelado, sin mantenimiento (ADR-017): queda en 0.1.6 con `core_version` 0.15.0 y no recibe los cambios del núcleo de esta tanda. El README lo avisa.
 

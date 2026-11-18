@@ -19,6 +19,7 @@ La mayoría del stack de Suplemento Estrella no es "dependencias de Python" en s
 | Framework web + servidor | `Flask` + `Gunicorn` | `Express`/`Fastify` + `pm2`/Node nativo | `Laravel`/`Slim` + `php-fpm` |
 | Testing + cobertura + paralelo | `pytest` + `pytest-cov` + `pytest-xdist` | `vitest`/`jest` | `Pest`/`PHPUnit` |
 | Auditoría de vulnerabilidades en dependencias | `pip-audit` | `npm audit` | `composer audit` |
+| Análisis estático de seguridad (SAST) | `bandit` (o `semgrep`) | `semgrep` (agnóstico) | `semgrep` (agnóstico) |
 | Detección de secretos antes de commit | `gitleaks` | `gitleaks` (agnóstico) | `gitleaks` (agnóstico) |
 | Proceso/infraestructura | `nginx` + `pm2` | `nginx` + `pm2` (agnóstico) | `nginx` + `pm2` (agnóstico) |
 | Explorador de BD en desarrollo | `datasette` + `datasette-mask-columns` | Sin equivalente directo — evaluar `Adminer` con vistas filtradas, o endpoint interno de solo lectura | Igual que JS/TS |

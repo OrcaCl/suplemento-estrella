@@ -56,6 +56,14 @@ El dato real sigue accesible vía consulta SQL directa contra la columna, para d
 - Solo Regla 1 (captura sin exposición controlada): cualquier consumidor de la API o cualquiera que abra el explorador de BD ve el JSON crudo de la fuente externa en cada fila — ruido visual, y potencial filtración de estructura/formato interno de una fuente que no debería ser pública.
 - Solo Regla 2 (exposición controlada sin captura): no hay nada que ocultar, porque nunca se guardó el dato crudo — se pierde la capacidad de auditoría cuando el parser falla o el formato de la fuente cambia.
 
+## Datos personales dentro de `raw_data`
+
+`raw_data` guarda el dato **tal como llegó**, así que puede contener datos personales o sensibles que las columnas procesadas ya enmascaran o no incluyen. Trátalo con la misma clasificación que la fuente:
+
+- **Retención y borrado:** si se borra o anonimiza a una persona, `raw_data` es un derivado más y debe borrarse con el resto (los derivados que quedan sin borrar son el error típico).
+- **Acceso:** el acceso directo por SQL queda para depuración puntual; no copiar `raw_data` a logs, tests, ejemplos ni respaldos sin protección.
+- **Minimización:** si una fuente trae campos sensibles que el sistema nunca usará, descartarlos antes de guardar el raw (decisión consciente, anotada).
+
 ## Deuda técnica aceptable
 
 Si un modelo existente no tiene `raw_data` y se decide agregarlo, es aceptable que los registros históricos queden con `raw_data = NULL` — no hace falta backfill retroactivo si el dato original ya no está disponible. Documentar esto como deuda conocida en `brain/sesiones.md` o el ADR correspondiente, no como bloqueante.

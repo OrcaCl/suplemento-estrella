@@ -1,11 +1,11 @@
-# Plantillas — .gitignore y .claudeignore (siempre como par)
+# Plantillas — .gitignore y reglas `deny` de Claude Code
 
-Dos archivos con propósitos distintos, generados juntos, nunca uno sin el otro:
+Dos mecanismos con propósitos distintos, generados juntos:
 
 - **`.gitignore`** responde: "¿esto se versiona?"
-- **`.claudeignore`** responde: "¿esto vale la pena que el agente lo lea en su contexto?"
+- **`.claude/settings.json` → `permissions.deny`** responde: "¿puede el agente leer esto?"
 
-Un archivo puede necesitar estar en git (reproducibilidad del entorno) pero no tener ningún valor si el agente lo carga en contexto — ejemplo canónico: un lockfile de dependencias (`uv.lock`, `package-lock.json`) se commitea siempre, pero nunca aporta contexto útil y solo quema tokens si el agente lo lee.
+> **`.claudeignore` no funciona.** La documentación oficial de permisos de Claude Code dice: *"If your project has a `.claudeignore` file, it has no effect, so move its entries into `Read` deny rules."* Hasta la versión 0.15 este plugin generaba un `.claudeignore` y lo presentaba como protección de secretos: era una protección que no existía. Si un proyecto tiene uno, trasladar sus entradas a reglas `deny` y eliminarlo.
 
 ---
 
@@ -23,11 +23,14 @@ node_modules/
 
 # Variables de entorno y secretos
 .env
-.env.local
-.env.prod
-.env.test
-.env.internal
+.env.*
 *.env
+!.env.example
+*.pem
+*.key
+id_rsa*
+credentials*.json
+secrets/
 
 # Base de datos local
 *.db
@@ -45,6 +48,7 @@ logs/
 
 # Claude Code
 .claude/cache/
+.claude/settings.local.json
 
 # Build artifacts
 *.egg-info/
@@ -64,55 +68,41 @@ brain/files/secure/*
 brain/files/secure/backup/*
 ```
 
+`.claude/settings.local.json` se ignora aunque Claude Code lo agregue a la exclusión global de git al escribirlo: si el archivo se crea a mano, nadie más lo ignora por ti.
+
 ---
 
-## .claudeignore
+## .claude/settings.json — impedir que el agente lea secretos
 
+Archivo compartido del proyecto (se versiona). Las reglas `deny` se aplican de inmediato, sin esperar a que el equipo confíe en la carpeta.
+
+```json
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./brain/files/secure/**)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/id_rsa*)"
+    ]
+  }
+}
 ```
-# Entorno virtual / dependencias
-.venv/
-venv/
-env/
-node_modules/
 
-# Bytecode / compilados
-__pycache__/
-*.pyc
-*.pyo
-
-# Artefactos de test y cobertura
-.pytest_cache/
-.coverage
-
-# Base de datos local (binaria, sin valor como texto)
-*.db
-*.sqlite3
-
-# Lockfile de dependencias — se versiona pero no aporta contexto
-uv.lock
-package-lock.json
-poetry.lock
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
-
-# Git
-.git/
-
-# Logs
-*.log
-logs/
-
-# Archivos seguros / sensibles (doble protección junto con .gitignore)
-brain/files/secure/
-```
+Notas:
+- Un `Read(./.env.*)` también bloquea `.env.example`; si el agente lo necesita, ajustar la regla.
+- **Alcance real de `Read` deny** (según la documentación oficial): aplica a las herramientas de archivos del agente y a comandos de Bash que reconoce (`cat`, `head`, `tail`, `sed`…). **No** aplica a un script que abre archivos por su cuenta ni a `grep -r` sin nombrar el archivo. Para bloquear a todos los procesos, activar el sandbox de Claude Code.
+- Si el proyecto ya tiene `.claude/settings.json`, **fusionar** las reglas; nunca sobrescribirlo.
+- Para reducir tokens (lockfiles, `node_modules/`), preferir no leerlos por instrucción en `CLAUDE.md`; no hace falta una regla `deny`, que además impediría leerlos cuando sí hacen falta.
 
 ---
 
 ## Regla de generación
 
-Al ejecutar `project-init`, generar ambos archivos en el mismo paso. Si el proyecto no usa la estructura completa (sin `brain/`), omitir las líneas de `brain/files/secure/` de ambos. Si el stack no es Python, ajustar las líneas de entorno/dependencias según el lenguaje elegido (ver skill `tooling-roles` para el mapeo de equivalentes).
+Al ejecutar `project-init`, generar `.gitignore` y `.claude/settings.json` en el mismo paso, **sin sobrescribir** ninguno de los dos si ya existen (fusionar). Si el proyecto no usa la estructura completa (sin `brain/`), omitir las líneas de `brain/files/secure/`. Si el stack no es Python, ajustar las líneas de entorno/dependencias según el lenguaje elegido (ver skill `tooling-roles`).
 
-Cada exclusión nueva que se agregue en el futuro debe evaluarse contra las dos preguntas por separado — la respuesta puede ser distinta para cada archivo. El lockfile es el ejemplo de referencia: **no** va en `.gitignore` (sí se versiona, garantiza reproducibilidad del entorno) pero **sí** va en `.claudeignore` (no aporta contexto legible, solo consume tokens).
+Cada exclusión nueva se evalúa contra las dos preguntas por separado: "¿se versiona?" y "¿puede el agente leerlo?". El lockfile es el ejemplo: sí se versiona (reproducibilidad) y el agente puede leerlo cuando haga falta.

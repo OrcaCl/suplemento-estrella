@@ -39,7 +39,7 @@ ASI07, ASI08 y ASI10 aplican sobre todo a sistemas multiagente; este harness tra
 
 **Código generado y dependencias.** Pasar análisis estático al código que el agente escribe (por ejemplo Semgrep o Bandit si el proyecto los tiene); auditoría de dependencias (`npm audit`, `pip-audit`); revisar errores tipográficos de nombres de paquete, procedencia y licencia antes de instalar; ejecutar código desconocido en un entorno aislado y nunca como administrador.
 
-**Higiene de credenciales.** Mantener secretos fuera del contexto con las listas de exclusión (`.claudeignore`, `.gitignore`); desconfiar de la combinación "leer un archivo sensible y luego llamar a algo externo" en la misma sesión; validar rutas para evitar recorridos de directorio y enlaces simbólicos antes de escribir con privilegios.
+**Higiene de credenciales.** Mantener secretos fuera del contexto con `.gitignore` y con reglas `Read` deny en `.claude/settings.json` (la documentación oficial indica que `.claudeignore` no tiene efecto; `Read` deny no cubre scripts que abren archivos por su cuenta, para eso el sandbox); desconfiar de la combinación "leer un archivo sensible y luego llamar a algo externo" en la misma sesión; validar rutas para evitar recorridos de directorio y enlaces simbólicos antes de escribir con privilegios.
 
 **Git y operaciones destructivas.** Confirmar antes de `push --force`, `reset --hard`, `clean -fd`, borrado de ramas o `DROP TABLE`, y mostrar un resumen previo (simulación) de lo que cambiaría.
 

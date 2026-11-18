@@ -107,6 +107,14 @@ Valores por defecto de `suplemento-core`; borrar la línea que no se quiera camb
 
 ---
 
+## Seguridad
+
+El código se escribe con la skill `seguridad-por-diseno` (guía por tipo de cambio basada en OWASP). Los secretos nunca van al repo ni al contexto: `.gitignore` y las reglas `deny` de `.claude/settings.json` lo respaldan.
+
+- asvs_nivel: 1                # 1 base · 2 con login o datos personales · 3 sistemas críticos
+
+---
+
 ## Comentarios en el código
 
 El código explica QUÉ y CÓMO; los comentarios explican POR QUÉ. Documentar contratos con la convención del lenguaje (JSDoc, PHPDoc, docstrings) y usar comentarios inline solo para decisiones no obvias, reglas de negocio, workarounds y restricciones de seguridad o rendimiento. **Nunca eliminar un comentario solo porque el código parece suficientemente claro:** antes de una limpieza o refactorización, clasificarlo (ver skill `code-comment-convention`).

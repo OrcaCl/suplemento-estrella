@@ -91,6 +91,15 @@ Usar comillas simples en el atributo HTML para no chocar con las comillas dobles
 const ITEMS = _appData ? JSON.parse(_appData.dataset.items) : [];
 ```
 
+### Seguridad del puente `data-*` (XSS)
+
+El puente solo es seguro si el motor de templates **escapa el valor según su contexto**. Jinja2 con autoescape y `| tojson` lo hace (escapa `<`, `>`, `&` y `'`); no todos los motores ni todos los modos lo hacen:
+
+- Nunca usar la salida **sin escapar** en estos atributos: `| safe` (Jinja2), `<%- %>` (EJS), `{!! !!}` (Blade). Un dato con una comilla puede cerrar el atributo e inyectar HTML o JS.
+- Comprobar que el autoescape está activo (en Jinja2 fuera de Flask puede venir desactivado).
+- En JS, leer el valor con `dataset` y `JSON.parse`; no volver a escribirlo con `innerHTML`.
+- Un dato que viene del usuario o de una fuente externa se trata como no confiable en cualquier caso (ver `seguridad-por-diseno`, fila Frontend).
+
 ### Convención de nomenclatura
 
 - El contenedor lleva un `id` semántico (`<nombre-componente>-app-data`)

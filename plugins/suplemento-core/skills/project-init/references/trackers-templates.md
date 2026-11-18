@@ -46,7 +46,7 @@ Ver detalle de cada bug en `generated/`.
 
 ## Evidencia
 
-{{logs, capturas, requests/responses de ejemplo}}
+{{logs, capturas, requests/responses de ejemplo — redactar antes de pegar: sin tokens, claves ni datos personales; este archivo se versiona. La evidencia sensible va en `brain/files/secure/`, que no se commitea}}
 
 ## Impacto
 
