@@ -7,6 +7,7 @@ Versionado semántico (semver) desde 2026-09-11 — antes cada componente versio
 ## Sin publicar (2026-11-17)
 
 ### Changed
+- **[Core]** Nuevo comando **`housekeeping`** (ADR-013): limpieza y lint con calma de `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes; revisa en solo lectura, entrega un informe numerado y aplica solo lo aprobado, con commit local sin push. Nuevo `commands/housekeeping.md`; `README`, `docs/` y `documentation-convention` lo mencionan. Gemini pendiente (ítem 16).
 - **[Core]** Nuevo modo `registro: umbral`, por defecto (ADR-012): Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `diferido` (estricto) e `inmediato` siguen disponibles. Cambia `documentation-convention`, `ward`, `spec-driven-development`, `project-init` y `docs/`. Gemini pendiente (ítem 16).
 - **[Core]** El tamaño de `SPEC.md` pasa a un criterio orgánico que solo avisa (ADR-011): se elimina la regla de 600 caracteres por línea y las 1000 líneas dejan de bloquear el commit. `ward` y `keepit` conservan la lista de consistencia. Cambia `spec-driven-development`, `ward`, `keepit`, las plantillas de `project-init`, `normalizacion-spec` y `docs/`. Sin cambio de versión todavía; el runtime Gemini se actualiza en el ítem 16 de `SPEC.md`.
 

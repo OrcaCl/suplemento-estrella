@@ -9,12 +9,13 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 
 **Modo de registro.** Lo descrito aquí es el modo `registro: umbral`, que es el **por defecto** de `suplemento-core` (ADR-012). Un proyecto puede declarar en su `CLAUDE.md` (ver `spec-driven-development`, "Configuración del proyecto") `registro: diferido` (estricto: solo `ward` del humano o `keepit`) o `registro: inmediato` (tras cada breakthrough); en todos los modos el cierre de sesión con `keepit` sigue siendo obligatorio.
 
-## Los dos comandos
+## Los comandos
 
 | Comando | Cuándo | Qué hace | Push |
 |---|---|---|---|
 | **`ward`** | A discreción del humano, a mitad de sesión | Guarda en `brain/` y `SPEC.md` todo lo pendiente y hace commit local | No |
 | **`keepit`** | Cierre de sesión (obligatorio) | Verifica que no falte nada por respaldar, revisa la lista de pendientes, ejecuta el procedimiento de `ward`, commit y push finales | Sí |
+| **`housekeeping`** | A discreción del humano, con calma y fuera de una sesión intensa | Revisa `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes en solo lectura, entrega un informe y aplica solo lo aprobado (ADR-013) | No |
 
 ## La regla — tres momentos, no más
 

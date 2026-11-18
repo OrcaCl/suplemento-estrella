@@ -43,6 +43,10 @@ A partir de ese momento el desarrollo continúa normalmente.
 
 Durante el desarrollo puedes pedirle al agente que haga un **`ward`** para que guarde los hitos logrados en `SPEC.md` y en los otros sistemas de control y registro, y haga un commit **local** (sin push) — útil si estás cerca de quedarte sin tokens. Antes de escribir te muestra un resumen, y avisa si el proyecto tiene un comando local que tape al del plugin. Con el modo por defecto (`registro: umbral`, ADR-012) el agente también lo hace solo al terminar una tarea grande —cerró un ítem, tomó una decisión registrable o aprendió algo que el código no cuenta— y te avisa después en una línea; el push sigue siendo solo de `keepit`.
 
+### `housekeeping`
+
+Cuando termine una sesión intensa y tengas tiempo, pídele al agente un **`housekeeping`**: revisa en solo lectura `SPEC.md` y `spec/`, `brain/` y `sesiones.md`, y las versiones y docs del plugin; te muestra un informe con hallazgos numerados y aplica **solo lo que apruebes**. Deja un commit local, sin push. No reemplaza a `ward` ni a `keepit`.
+
 ---
 
 ## 4. Cerrar la sesión

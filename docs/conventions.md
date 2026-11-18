@@ -37,7 +37,7 @@ Detalle en [decisions.md](decisions.md).
 - **Idioma:** español.
 - **Fechas:** formato ISO, `AAAA-MM-DD`.
 - **`SPEC.md`:** referencia de 1000 líneas (configurable; solo avisa) y sin límite por línea; "Última actualización" es solo la fecha; se reemplaza, no se acumula (ADR-006).
-- **Cuándo:** el registro en `brain/` y `SPEC.md` ocurre en un `ward` o al cierre de sesión (`keepit`), no a mitad del trabajo.
+- **Cuándo:** el registro en `brain/` y `SPEC.md` ocurre al terminar una tarea que cruce el umbral (`registro: umbral`, ADR-012), en un `ward` o al cierre de sesión (`keepit`), no a mitad del trabajo.
 - **`CHANGELOG.md`:** uno solo, en la raíz. Cada entrada cita la versión de la capa que cambió (`[Core vX.Y.Z]`, `[Runtime Gemini vX.Y.Z]`…). Registra hitos, no cada commit (ADR-002).
 - **`docs/`:** cada archivo explica un tema y enlaza al resto en vez de repetirlo.
 

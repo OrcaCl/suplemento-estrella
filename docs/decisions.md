@@ -43,7 +43,7 @@ Todo ADR e INT termina con una sección `## Commit` que apunta a su entrada en `
 
 ## Cuándo se registran
 
-No a mitad de la codificación. Las decisiones se registran en el **`ward`** o el **cierre de sesión (`keepit`)** (ver [workflow.md](workflow.md)): el agente propone qué registrar y qué categoría corresponde, y muestra el resumen al humano **antes** de escribir. Si dos categorías compiten, pregunta.
+No a mitad de la codificación. Las decisiones se registran al terminar la tarea (modo `registro: umbral`, ADR-012), en un **`ward`** o en el **cierre de sesión (`keepit`)** (ver [workflow.md](workflow.md)): el agente elige qué registrar y qué categoría corresponde, y avisa justo después —o muestra el resumen **antes** de escribir en un `ward`. Si dos categorías compiten, pregunta.
 
 ## El índice
 

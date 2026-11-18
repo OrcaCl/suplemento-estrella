@@ -14,6 +14,8 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **`keepit`** — Comando de cierre de sesión: verifica que no falte nada por respaldar en `brain/` y `SPEC.md`, revisa que no queden pendientes fuera de la lista, ejecuta `ward`, y hace el commit y push finales. Es obligatorio antes de dar la sesión por terminada.
 
+**`housekeeping`** — Comando de limpieza y lint con calma, fuera de una sesión intensa. Revisa en solo lectura `SPEC.md` y `spec/`, `brain/` y `sesiones.md`, y plugin/docs/runtimes; entrega un informe con hallazgos numerados y aplica solo lo que el humano apruebe (commit local, sin push). Ver [workflow.md](workflow.md) y ADR-013.
+
 **Checkpoint** — Nombre anterior (≤ 0.11) de `ward`; deprecado en 0.12.0 y retirado en 0.15.0. Hacía lo mismo que `ward` pero con push. `listeilor` (0.12–0.13) fue el nombre anterior de `keepit`, también retirado en 0.15.0.
 
 **`CLAUDE.md` / `GEMINI.md`** — Reglas que el agente carga al iniciar una sesión (Claude Code y Gemini respectivamente): confirmación de contexto, stack, reglas críticas, modo de trabajo.

@@ -43,7 +43,7 @@ Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad de
 
 ## Documentar en momentos definidos
 
-Skill: `documentation-convention`. Los commits de código son continuos; el registro en `brain/` y `SPEC.md` se difiere a un **`ward`** (lo pide el humano; guarda sin push) o al **cierre de sesión con `keepit`** (obligatorio; verifica, revisa pendientes y hace push). El agente no decide por su cuenta que algo "amerita" registrarse. Ver [workflow.md](workflow.md).
+Skill: `documentation-convention`. Los commits de código son continuos; el registro en `brain/` y `SPEC.md` lo hace el agente al terminar una tarea que cruce el umbral de conocimiento nuevo (commit local, sin push), o se pide con un **`ward`**, o ocurre al **cierre de sesión con `keepit`** (obligatorio; verifica, revisa pendientes y hace push). Ver [workflow.md](workflow.md).
 
 ## Integración
 

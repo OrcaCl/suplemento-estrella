@@ -62,10 +62,11 @@ project-init
 
 Y sigue los pasos que te va preguntando para dejar todo listo.
 
-Durante el trabajo, dos comandos cuidan el registro de la sesión:
+Durante el trabajo, tres comandos cuidan el registro y el orden:
 
 - **`ward`** — guarda en `brain/` y `SPEC.md` lo pendiente y hace commit local, sin push. Úsalo a mitad de sesión.
 - **`keepit`** — cierra la sesión: verifica que no falte nada por respaldar, revisa que no queden pendientes sin anotar, y hace el commit y push finales.
+- **`housekeeping`** — limpieza con calma, fuera de una sesión intensa: revisa `SPEC.md`, `brain/` y el plugin en solo lectura, te muestra un informe y aplica solo lo que apruebes (commit local, sin push).
 
 ---
 
