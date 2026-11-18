@@ -37,7 +37,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 | Marketplace | Registrado y `suplemento-core` instalado en el propio Claude Code del autor |
 | Versión del plugin `suplemento-core` (Claude Code) | `0.15.0` (fijada en `plugin.json`; semver desde 0.10.0, antes solo hash de commit) |
 | Versión del runtime Gemini | `0.1.6` (`runtimes/gemini-antigravity/runtime.json` — versiona independiente del plugin, con campo `core_version` de referencia = `0.15.0`) |
-| Última sesión | 2026-11-17 — **Dos cambios al núcleo, sin publicar (plugin sigue en 0.15.0): tamaño de `SPEC.md` orgánico (ADR-011) y registro por umbral (ADR-012); ítems 11 y 12 cerrados.** Telemetría de claude-mem apagada (NOC-001). El 10 (seguridad OWASP, Media-alta) es el siguiente de fondo |
+| Última sesión | 2026-11-17 — **Tres cambios al núcleo, sin publicar (plugin sigue en 0.15.0): tamaño de `SPEC.md` orgánico (ADR-011), registro por umbral (ADR-012) y comando `housekeeping` (ADR-013); ítems 11, 12 y 13 cerrados.** Telemetría de claude-mem apagada (NOC-001). Siguen 14, 17 y, de fondo, el 10 (seguridad OWASP) |
 
 ---
 
@@ -54,7 +54,6 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **10** — Agregar una skill de seguridad (OWASP Top 10 y ASVS, más una metodología moderna de seguridad en el ciclo de desarrollo) a ambos runtimes, para que el código creado con el harness salga con medidas acordes a producción actual. Decidir si es skill nueva o se integra a las existentes. Prioridad Media-alta: no hay una skill externa conocida que cubra esto. Partir revisando las fuentes vigentes de OWASP
 - [ ] **3** — Observar si el control de tamaño sin script basta en uso real; si `SPEC.md` vuelve a degradarse, reabrir la decisión del script (ADR-008)
 - [ ] **6** — Probar la oferta de `code-comment-convention` (paso 0a de `ward`/`keepit`) en un proyecto real ya instalado: que se ofrezca una sola vez y que respete el rechazo (ADR-009); puede hacerse junto con el ítem 2
-- [ ] **13** — Evaluar un comando `housekeeping`: limpieza, orden y lint de `SPEC.md`, `brain/` y memoria con calma, después de una sesión intensa, para no acumular más datos de los útiles. Es también el lugar donde caben los ítems 15 y 16
 - [ ] **14** — Revisar docs y skills a la luz de los cambios recientes de Claude Code (por ejemplo la skill `doctor`): detectar pasos manuales o trabas que las herramientas nuevas hacen innecesarias
 - [ ] **17** — Adoptar "boletín" como nombre genérico de los registros de `brain/` (ADR, INT, NOC, DEP, REF/REFX), porque ya no hay solo ADR; integrarlo al glosario y a la documentación de ambos runtimes
 
@@ -66,7 +65,7 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
 - [ ] **16** — Runtime Gemini: aplicar los cambios de esta tanda (ítems 11, 12 y 17, y los avisos ya retirados en core) en un `housekeeping`, fuera de sesiones de uso crítico de tokens
 
-Cerrados: 1, 2, 4, 8, 11, 12 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 8, 11, 12, 13 _(detalle en `spec/cerrados.md`)_
 
 ---
 
@@ -94,6 +93,7 @@ Cerrados: 1, 2, 4, 8, 11, 12 _(detalle en `spec/cerrados.md`)_
 | `TOASK.md` vive en la raíz del proyecto, no en `brain/` | Archivo operativo junto a `SPEC.md` y `SHAME.md`; `project-init` lo crea ahí en ambos runtimes. Proyectos anteriores con `brain/TOASK.md` siguen válidos. Ver ADR-007 |
 | `code-comment-convention`: el código fuente es la tercera capa de conocimiento | Brain KMS (desarrollador) · `SPEC.md` (agente) · código fuente (ambos). Una limpieza nunca elimina comentarios de decisión, regla de negocio, workaround o seguridad solo porque el código "parece claro". Los proyectos instalados la reciben por oferta única de `ward`/`keepit`, no por migración automática. El ejemplo ExtJS + Supabase de la skill es el origen del problema: no quitarlo. Ver ADR-009 |
 | Registro por umbral (`registro: umbral`, por defecto) | Code registra en `brain/` y `SPEC.md` al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; commit local, sin push, avisando después. `keepit` sigue obligatorio y es el único que hace push. Ver ADR-012 |
+| `housekeeping` limpia con calma, con informe y aprobación | Lo dispara solo el humano; revisa en solo lectura `SPEC.md`/`spec/`, `brain/` y plugin/docs/runtimes, y aplica solo lo aprobado (commit local, sin push). Ver ADR-013 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---

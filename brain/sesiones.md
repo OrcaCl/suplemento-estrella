@@ -3,6 +3,27 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — comando `housekeeping`
+
+**Contexto:** el autor pidió un lugar para hacer limpieza y lint con calma después de una sesión intensa, ya que el tamaño de `SPEC.md` pasó a aviso (ADR-011) y el registro a umbral (ADR-012). Eligió "informe y apruebas" y tres áreas de revisión; dejó fuera las herramientas externas.
+
+**Hitos:**
+- **ADR-013 y `commands/housekeeping.md`:** revisión en solo lectura de `SPEC.md` y `spec/`, `brain/` y `sesiones.md`, y plugin/docs/runtimes; informe con hallazgos numerados (mecánico o requiere criterio); aplica solo lo aprobado; commit local sin push; no usa subagentes.
+- **Ítem 13 cerrado** (commit `3488526`). Los ítems 15 y 16 de `SPEC.md` quedan pensados para resolverse dentro de un `housekeeping`.
+- **Hallazgo:** `docs/decisions.md`, `docs/conventions.md` y `docs/principles.md` seguían diciendo que el registro era solo por `ward` o `keepit` tras el ADR-012; se corrigieron en el mismo commit. Es el tipo de desfase que `housekeeping` debe detectar.
+- **Pendiente real:** el comando todavía no se ha probado. La copia instalada del plugin es 0.15.0 y no lo trae; hay que actualizar y reiniciar Claude Code.
+
+### Archivos modificados
+- plugins/suplemento-core/{commands/housekeeping.md (nuevo), skills/documentation-convention/SKILL.md}
+- README.md, docs/{glossary,workflow,decisions,conventions,principles}.md, CHANGELOG.md
+- brain/{ADR-013,index,sesiones}, spec/cerrados.md, SPEC.md
+
+### Próximo
+- Decidir si se sube a 0.16.0 y se publica (ítems 11, 12 y 13 sin publicar), y probar `housekeeping` real tras actualizar.
+- Ítems 14, 17 y el 10 (seguridad OWASP).
+
+---
+
 ## Sesión — 2026-11-17 — registro por umbral
 
 **Contexto:** el autor pidió que Code pueda registrar en `SPEC.md` y `brain/` al terminar una tarea grande, con criterio según el conocimiento nuevo, sin esperar un `ward` explícito. `ward` sigue disponible a mano. Eligió el enfoque autónomo por umbral entre tres opciones (autónomo, proponer y aprobar, mixto por tipo).
