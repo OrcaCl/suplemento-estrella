@@ -1,6 +1,6 @@
 # HTML y JavaScript modernos — lista de verificación
 
-> **Fuente y licencia:** adaptado de las guías `html`, `js`, `web-components` y las de componentes web de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, resumido y reorganizado; se omiten ejemplos de código y las guías de `Temporal` se resumen en una regla. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. Se leyeron las guías generales de HTML y JavaScript y la descripción de las de componentes web; no cada una en detalle. La accesibilidad completa está en `accesibilidad.md`.
+> **Fuente y licencia:** adaptado de las guías `html`, `js`, `web-components` y las de componentes web de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, resumido y reorganizado; se omiten ejemplos de código y las guías de `Temporal` se resumen en una regla. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. Las APIs de JavaScript se contrastaron con `web-features`. Se leyeron las guías generales de HTML y JavaScript y la descripción de las de componentes web; no cada una en detalle. La accesibilidad completa está en `accesibilidad.md`.
 
 ## HTML
 
@@ -28,6 +28,8 @@
 
 ## JavaScript
 
+Estado de estas APIs verificado en `web-features` (noviembre de 2026): `structuredClone()`, los métodos de arreglos por copia (`toSorted()`, `toReversed()`, `toSpliced()`, `with()`), el agrupamiento (`Object.groupBy()`, `Map.groupBy()`), `Promise.withResolvers()`, `AbortSignal.any()` y `.timeout()`, `Error cause`, `URLSearchParams` y `TextEncoder`/`TextDecoder` son **Baseline "widely available"**.
+
 - **Copiar estado:** `structuredClone(valor)`, no `JSON.parse(JSON.stringify(valor))` ni `_.cloneDeep`. Conserva `Date`, `Map`, `Set`, referencias cíclicas y más; **no** conserva prototipos de clase, métodos ni campos `#privados`, y lanza error con nodos del DOM, funciones o `dataset`. No reemplazarlo si el código depende de la normalización a JSON.
 - **Arreglos sin mutar:** `toSorted()`, `toReversed()`, `toSpliced()`, `with()`, `findLast()` y `findLastIndex()` en vez de copiar y mutar. Cuidado con iterables que no son arreglos (conservar `Array.from`) y con arreglos dispersos.
 - **Agrupar:** `Object.groupBy()` o `Map.groupBy()` en vez de acumular con `reduce`; `Object.groupBy` devuelve un objeto sin prototipo (usar `Object.hasOwn`).
@@ -35,4 +37,4 @@
 - **Errores:** `new Error(mensaje, { cause: err })` en vez de concatenar mensajes. **No** devolver la cadena `cause` al cliente (puede traer consultas, rutas o credenciales): registrarla en el servidor.
 - **URL y texto:** `URLSearchParams` (con `new URL(...).searchParams` desde una URL completa; nunca sobre `location.hash` ni sobre cookies); `TextDecoder`/`TextEncoder` en vez de `decodeURIComponent(escape(...))`.
 - **DOM:** `contenedor.replaceChildren()` en vez de `innerHTML = ''` (que usa el analizador de HTML y falla con Trusted Types); `new CustomEvent(tipo, { detail, bubbles, cancelable, composed })`, no `createEvent`.
-- **Fechas y zonas horarias (`Temporal`):** `ZonedDateTime` para eventos atados a una ciudad, `PlainDate`/`PlainTime` para fechas y horas que no dependen de la ubicación (cumpleaños, vencimientos de tarjeta), `Instant` para ordenar marcas de tiempo; nunca asumir 12 meses por año. **`Temporal` tiene disponibilidad limitada** (Chrome y Edge 144, Firefox 139): ver `madurez-funciones.md`.
+- **Fechas y zonas horarias:** guardar en UTC (ISO 8601) y convertir al mostrar con `Intl.DateTimeFormat` y una `timeZone` explícita; no asumir 12 meses por año ni el calendario gregoriano para todos los usuarios. Las guías de la fuente proponen la API `Temporal`, pero hoy está en uno o dos motores y no se usa como base.

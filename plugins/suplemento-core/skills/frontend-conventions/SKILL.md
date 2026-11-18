@@ -130,7 +130,7 @@ El puente solo es seguro si el motor de templates **escapa el valor según su co
 - En JS, leer el valor con `dataset` y `JSON.parse`; no volver a escribirlo con `innerHTML`.
 - Un dato que viene del usuario o de una fuente externa se trata como no confiable en cualquier caso (ver `seguridad-por-diseno`, fila Frontend).
 - Para listas u objetos, una alternativa más robusta que el atributo es un bloque de datos: `<script type="application/json" id="componente-items">{{ items | tojson }}</script>`, leído con `JSON.parse(document.getElementById('componente-items').textContent)`. No depende de las comillas del atributo; `tojson` de Jinja2 escapa `<`, `>` y `&`, de modo que el dato no puede cerrar la etiqueta `<script>`.
-- Si hay que insertar HTML que viene de un usuario, no usar `innerHTML`: usar la Sanitizer API (`setHTML()`) y, si el proyecto exige defensa en profundidad, Trusted Types con una CSP (guías `sanitize-untrusted-html` y `trusted-types` de Modern Web Guidance).
+- Si hay que insertar HTML que viene de un usuario, no usar `innerHTML` a secas: sanearlo **en el servidor** y/o con una biblioteca revisada alojada en `vendor/` (Regla 1; la guía fuente usa DOMPurify), y para defensa en profundidad Trusted Types con una CSP (ver `seguridad-por-diseno/references/seguridad-web-navegador.md`).
 
 ### Convención de nomenclatura
 
@@ -196,7 +196,7 @@ Las reglas anteriores ordenan *cómo se organiza* el frontend; esta sección es 
 - `color-scheme` y `prefers-color-scheme` para modo oscuro; validación de formularios y `autocomplete` nativos antes que scripts propios.
 - Transiciones de vista y animaciones por CSS antes que librerías de animación.
 
-**Madurez.** No toda función nueva está disponible en todos los navegadores. `references/madurez-funciones.md` registra qué declaran las guías fuente sobre 159 funciones (por ejemplo `:has()` y las consultas de contenedor son "widely", `popover` es "newly", y el posicionamiento por anclaje y `focusgroup` son de disponibilidad limitada). Una función que no es Baseline "widely available" exige una alternativa o la decisión del humano, y se verifica en MDN o en Baseline antes de apoyarse en ella.
+**Madurez y regla de inclusión.** Se recomienda por defecto lo que es Baseline "widely available"; lo "newly" (tres motores) se usa con alternativa si el proyecto lo exige. **Las funciones de uno o dos motores no se usan como base**: se omitieron de estas listas, y `references/madurez-funciones.md` las resume junto con el estado de las demás, contrastado con los datos de Can I use.
 
 **Política de soporte de navegadores.** Declararla en el `CLAUDE.md` del proyecto con una línea como `**Soporte de navegadores:** Baseline Widely available`. Las funciones ya "widely available" se usan sin alternativa.
 

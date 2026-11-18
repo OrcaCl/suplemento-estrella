@@ -22,7 +22,7 @@
 
 - Propiedades personalizadas en `:root` para colores, fuentes y tamaños, con tantos niveles como el proyecto necesite (de valores primitivos a tokens de componente); un demo o una app pequeña pueden tener uno solo: no sobreingeniar. Revisar las convenciones de nombres existentes antes de inventar otras.
 - **No poner valores no triviales en línea:** `background: transparent` o `padding: 0` sí; `background: #f06` o `padding: .3em` no.
-- Las consultas de estilo sobre contenedor (`@container style()`) permiten variaciones contextuales de un componente sin acoplarlo a quien las produce. Su estado es "newly" desde 2026-05-19: ver `madurez-funciones.md`.
+- Las consultas de estilo sobre contenedor (`@container style()`) permiten variaciones contextuales de un componente sin acoplarlo a quien las produce. Su estado es "newly" desde 2026-05-19 y Can I use la da con soporte parcial en ~91 % del uso global: usar con alternativa (ver `madurez-funciones.md`).
 
 ## 4. Tipografía
 
@@ -30,7 +30,7 @@
 - **No fijar `height` ni `block-size` en elementos con texto** (botones, insignias, tarjetas): dejar que el contenido defina la altura, con `min-block-size` si hace falta.
 - Líneas de no más de 80 caracteres; evitar `text-align: justify` (o combinarlo con `hyphens: auto` y un `lang` declarado); no usar solo mayúsculas para enfatizar; limitar el énfasis.
 - Ampliación hasta 200 % sin perder contenido y reflujo a 320 px CSS sin scroll horizontal (WCAG 1.4.10); evitar `white-space: nowrap` y anchos fijos en texto corrido.
-- `text-wrap: balance` en titulares y `text-wrap: pretty` en párrafos largos; **no** aplicarlo a `*` (tiene costo) ni sobre elementos con caja visible.
+- `text-wrap: balance` en titulares y encabezados de tabla; **no** aplicarlo a `*` (tiene costo) ni sobre elementos con caja visible.
 - Tamaños responsivos con `clamp()` combinando unidades relativas al viewport y a la fuente (por ejemplo `clamp(2rem, 1rem + 5vw, 4rem)`); nunca `vw` solo.
 - Un `overflow-wrap: break-word` o `anywhere` para contener URL largas.
 
@@ -41,7 +41,7 @@
 - `@media (prefers-contrast: more)` solo cuando el diseño usa acentos de bajo contraste (bordes sutiles, texto secundario apagado) que haya que reforzar.
 - **Modo de colores forzados (alto contraste):** el navegador reemplaza los colores, quita `box-shadow`, `text-shadow` y fondos con degradado, y a veces `border-image`. **No** usar `background-image`, `box-shadow` ni `border-image` para señalar bordes, separadores o estado. `forced-color-adjust: none` solo donde el color es información (un selector de color, un resaltador de sintaxis), nunca "por estética".
 - **Generar tonos:** primero buscar un token que ya exista. Si hay que generarlos, **no** ajustar solo la luminosidad en `oklch`/`oklab` (el navegador aún no hace el mapeo de gama y el resultado es impredecible); usar `color-mix()` con blanco o negro, por defecto `in oklab`, no `in srgb` ni `in oklch` con neutros.
-- `contrast-color()` para el color del **texto** sobre un fondo dinámico, nunca para el fondo; referenciar las mismas variables de fondo. (Función de disponibilidad limitada: verificar.)
+- `contrast-color()` para el color del **texto** sobre un fondo dinámico, nunca para el fondo; referenciar las mismas variables de fondo (Baseline "newly"; con alternativa).
 
 ## 6. Modo claro y oscuro
 
@@ -55,13 +55,13 @@
 
 Antes de recrear controles, barras de desplazamiento, selecciones o mensajes de error del navegador, comprobar que **no** se pueden personalizar lo suficiente con CSS moderno y que el cambio justifica perder semántica accesible, teclado, IME y tecnología asistiva que lo nativo trae.
 
-- `::selection`, `accent-color`, `color-scheme`, `scrollbar-color` (con el pulgar visiblemente distinto de la pista, contraste ≥ 3:1).
+- `::selection`, `accent-color` (los tres motores; Safari desde 26.2), `color-scheme`, `scrollbar-color` (con el pulgar visiblemente distinto de la pista, contraste ≥ 3:1).
 - **No** `user-select: none` en texto de contenido (rompe copiar, traducir y la lectura desde un punto); limitarlo a elementos de la interfaz.
 - **No** `scrollbar-width` distinto de `auto` sin otra forma accesible de desplazarse (el pulgar fino es demasiado pequeño para algunas personas).
 - **No** `resize: none` en `<textarea>` sin una alternativa (`field-sizing: content` o botones propios).
 - **No** `<input type="button|submit|reset">`: usar `<button>`.
 - Estilo de validez con `:user-invalid` / `:user-valid`, **no** `:invalid` / `:valid`.
-- Checkbox, radio e interruptor: `appearance: none` más contenido generado, o `label:has(:checked)`. Un `<select>` personalizable (`appearance: base-select`) renuncia al selector nativo del sistema (por ejemplo, la rueda de iOS) y es de disponibilidad limitada.
+- Checkbox, radio e interruptor: `appearance: none` más contenido generado, o `label:has(:checked)`. Mantener el `<select>` nativo (selector del sistema, teclado y accesibilidad incluidos); no recrearlo con `<div>`s.
 
 ## 8. Diseño adaptable
 

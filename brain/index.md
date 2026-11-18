@@ -32,6 +32,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-020](reports/ADR-020-frontend-conventions-capas-y-plataforma-moderna.md) | `frontend-conventions`: estilos con parcial y `@layer`, BEM solo para nombres, plataforma web moderna | ADR | Vigente |
 | [ADR-021](reports/ADR-021-guias-de-frontend-propias-sin-plugin-externo.md) | Guías de frontend propias, sin depender del plugin Modern Web Guidance; atribución Apache-2.0 | ADR | Vigente |
 | [ADR-022](reports/ADR-022-guias-de-frontend-ampliadas-a-todas-las-categorias.md) | Guías de frontend ampliadas a todas las categorías de la fuente (CSS, rendimiento, HTML/JS, seguridad del navegador, madurez) | ADR | Vigente |
+| [ADR-023](reports/ADR-023-solo-funciones-de-tres-motores-y-datos-contrastados.md) | Solo funciones de los tres motores; tabla de madurez contrastada con web-features, BCD y Can I use | ADR | Vigente |
 | [DEP-001](reports/DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [DEP-002](reports/DEP-002-retiro-del-runtime-gemini.md) | Retiro del runtime Gemini (0.16.0), con respaldo y etiqueta | DEP | Vigente |
 | [NOC-001](reports/NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |

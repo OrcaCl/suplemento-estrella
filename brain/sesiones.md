@@ -3,6 +3,19 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — solo funciones de tres motores y datos contrastados
+
+**Contexto:** el autor pidió no dejar en la skill funciones limitadas a uno o dos motores, priorizar las "widely available", y contrastar con Can I use (`Fyrd/caniuse`, `data-2.0.json`); después indicó que esa base se alimenta de `mdn/browser-compat-data`.
+
+**Qué se hizo:** se bajaron Can I use (554 funciones, instantánea del 2026-11-11, CC BY 4.0), MDN BCD 8.1.9 (CC0) y web-features 3.46.0 (Apache-2.0). Se cruzaron las 159 funciones de las guías con web-features: coinciden las 146 con nombre propio; se contó los motores de cada una (Chromium, Gecko, WebKit).
+- **Hallazgos:** 74 funciones tienen uno o dos motores; solo `accent-color` es "limitada" con tres. Can I use no incluye muchas funciones recientes (`popover`, `inert`, `light-dark()`…): ahí BCD y web-features suplen.
+- **Correcciones a mi trabajo previo:** había descrito como limitadas `scroll-driven animations`, `ariaNotify()` y `contrast-color()`, que son "newly" con tres motores; y había recomendado sin verificar `Permissions-Policy`, `Sec-Fetch-*`, `Clear-Site-Data`, cookies particionadas, Sanitizer API, `Temporal`, `scheduler.yield()` y varias funciones de CSS, todas de uno o dos motores. Se retiraron o se reemplazaron por su alternativa.
+- **Verificadas "widely":** `structuredClone`, arreglos por copia, `Object.groupBy`, `Promise.withResolvers`, `AbortSignal.any/timeout`, `Error cause`, `Nesting`, `:focus-visible`, propiedades lógicas, carga diferida de imágenes, AVIF/WebP, CSP, SRI, HSTS, Referrer-Policy y WebAuthn.
+- **No verificables en las tres bases:** COOP, CORP, `X-Content-Type-Options` y los prefijos de cookies; quedan señalados.
+- **Tabla de madurez regenerada** (68 widely, 42 newly) y regla de inclusión escrita (ADR-023). Atribución de las tres bases en `NOTICE.md` y el README.
+
+---
+
 ## Sesión — 2026-11-18 — guías propias de frontend ampliadas a todas las categorías
 
 **Contexto:** el autor pidió revisar todas las demás categorías de Modern Web Guidance ("tenemos tokens, espacio de disco…"). La conexión con la API se cortó en medio del trabajo; el autor hizo un commit de emergencia (`bdb4342`) que conservó tres archivos ya escritos, y la sesión se retomó sin pérdidas.

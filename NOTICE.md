@@ -19,6 +19,14 @@ Quien reutilice esos archivos debe conservar la atribución y compartir lo adapt
 
 ## Otras referencias
 
+**Bases abiertas de compatibilidad de navegadores** usadas para contrastar y completar `madurez-funciones.md` (ADR-023); sus datos se consultaron, no se redistribuyen en bloque:
+
+| Base | Titular | Licencia | Uso |
+|---|---|---|---|
+| **Can I use** (caniuse.com; repositorio Fyrd/caniuse, `fulldata-json/data-2.0.json`, instantánea del 2026-11-11) | Alexis Deveria y colaboradores | CC BY 4.0 (atribución: "la fuente es caniuse.com") | Porcentaje de uso global con soporte de cada función, cuando figura en el archivo |
+| **MDN browser-compat-data** 8.1.9 (mdn/browser-compat-data) | MDN y colaboradores | CC0-1.0 | Versiones mínimas por navegador (vía `web-features`) |
+| **web-features** 3.46.0 (web-platform-dx/web-features) | WebDX Community Group | Apache-2.0 | Estado Baseline de cada función y sus fechas |
+
 **Modern Web Guidance** (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance; mantenido por los equipos de Chrome, Edge, Firefox y MDN con la comunidad): licencia **Apache-2.0**. Se leyeron **todas las categorías de sus guías** (ver ADR-021 y ADR-022) y se adaptaron las útiles para este trabajo, en dos skills:
 
 | Archivo | Guías originales | Cambios |
@@ -30,7 +38,7 @@ Quien reutilice esos archivos debe conservar la atribución y compartir lo adapt
 | `skills/frontend-conventions/references/html-y-js.md` | `html`, `js`, `web-components` y guías de componentes web | Traducida, resumida y reorganizada; `Temporal` resumido en una regla |
 | `skills/frontend-conventions/references/rendimiento.md` | `performance` (general) | Traducida, resumida y reorganizada |
 | `skills/frontend-conventions/references/comportamientos.md` | `motion`, `ui-behaviors`, `ui-atoms` | Traducida y muy resumida; se leyó completa solo `motion` |
-| `skills/frontend-conventions/references/madurez-funciones.md` | declaraciones de compatibilidad de todas las guías | Datos agrupados por estado, encabezados traducidos y navegadores resumidos a su versión mínima |
+| `skills/frontend-conventions/references/madurez-funciones.md` | declaraciones de compatibilidad de todas las guías, contrastadas con web-features, BCD y Can I use | Datos agrupados por estado, encabezados traducidos, navegadores resumidos a su versión mínima y solo funciones de los tres motores |
 | `skills/seguridad-por-diseno/references/seguridad-web-navegador.md` | `security` (general y específicas) y `privacy` | Traducida, resumida y reorganizada; sin ejemplos de código |
 
 (Las rutas son relativas a `plugins/suplemento-core/`.) **Categorías leídas y no adaptadas:** inteligencia artificial integrada en el navegador, WebMCP, WebAssembly, instalación de aplicaciones web (PWA) y los efectos visuales de nicho (WebGL, canvas, texturas); no corresponden al trabajo habitual de este proyecto.

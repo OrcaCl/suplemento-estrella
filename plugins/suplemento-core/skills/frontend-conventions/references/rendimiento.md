@@ -19,7 +19,7 @@
 
 ## 3. Respuesta a las interacciones (INP)
 
-- **Dividir tareas de JavaScript de más de 50 ms** y ceder el hilo con `scheduler.yield()` (con alternativa de `setTimeout` envuelto en una promesa; la API tiene disponibilidad limitada, ver `madurez-funciones.md`). Regla práctica: menos de 50 ms, síncrono; entre 50 y 250 ms, dividir y ceder; más de 250 ms, a un Web Worker.
+- **Dividir tareas de JavaScript de más de 50 ms** y ceder el hilo entre trozos (`await new Promise(r => setTimeout(r))`; ojo: la continuación queda al final de la cola, así que si hay mucha cola conviene trozos más pequeños). Regla práctica: menos de 50 ms, síncrono; entre 50 y 250 ms, dividir y ceder; más de 250 ms, a un Web Worker.
 - Limitar la frecuencia de manejadores de `scroll`, `resize` e `input` (debounce o throttle). Separar la actualización de la interfaz (síncrona) del cálculo pesado (en segundo plano).
 - No provocar *layout thrashing*: no intercalar lecturas (`offsetHeight`, `getBoundingClientRect`) y escrituras (`style.height`) en un bucle; agrupar lecturas y luego escrituras. No usar `setInterval` pesado.
 
@@ -38,7 +38,7 @@
 ## 6. Imágenes y video
 
 - `<picture>` con AVIF o JPEG XL, luego WebP, luego JPEG/PNG. **`width` y `height` en todo `<img>`** (evita el salto de diseño, CLS). `srcset` **con `sizes`**: sin `sizes` el navegador asume `100vw` y descarga la imagen más grande.
-- Video: `width` y `height`, imagen `poster`, `preload="none"` en lo no crítico, formatos modernos (WebM junto a MP4), `loading="lazy"` fuera de pantalla. No reproducir video grande automáticamente.
+- Video: `width` y `height`, imagen `poster`, `preload="none"` en lo no crítico, formatos modernos (WebM junto a MP4). No reproducir video grande automáticamente.
 
 ## 7. Fuentes web
 
