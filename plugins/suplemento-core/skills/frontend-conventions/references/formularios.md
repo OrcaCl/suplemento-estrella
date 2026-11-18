@@ -1,6 +1,6 @@
 # Formularios — lista de verificación
 
-> **Fuente y licencia:** adaptado de la guía `forms` de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, resumido y reorganizado; las reglas de seguridad se cruzan con `seguridad-por-diseno`. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. Se leyó la guía general; las 18 guías específicas de formularios (autocompletado, selects personalizados, OTP…) no.
+> **Fuente y licencia:** adaptado de la guía `forms` de *Modern Web Guidance* (GoogleChrome/modern-web-guidance, https://github.com/GoogleChrome/modern-web-guidance), licencia Apache-2.0 (copia en `LICENSE-Apache-2.0.txt`). **Cambios:** traducido al español, resumido y reorganizado; las reglas de seguridad se cruzan con `seguridad-por-diseno`. Detalle en `NOTICE.md`. Sin respaldo de los autores originales. Se leyó la guía general y, de las 18 guías específicas, la descripción y las reglas destacadas de cada una (sección 11); no su detalle.
 
 Un formulario accesible es también un formulario más fácil de completar y de proteger: las reglas de accesibilidad están en `accesibilidad.md`.
 
@@ -77,3 +77,17 @@ Un formulario accesible es también un formulario más fácil de completar y de 
 
 - Probar con teclado solo, varios dispositivos y navegadores, y con usuarios reales: una herramienta automática no basta.
 - Medir la tasa de finalización y los puntos de abandono con eventos discretos, **sin registrar datos personales** en las etiquetas de los eventos.
+
+## 11. Guías específicas (descripción y reglas destacadas)
+
+- **Campos obligatorios y validación tardía** (`required-field-feedback`, `validate-input-after-interaction`, `select-menu-interaction`): un campo obligatorio no debe verse inválido al cargar la página; recién cuando el usuario lo tocó y falló. Usar `:user-invalid`. **No** esconder la lista de reglas hasta que el valor sea válido: el usuario necesita saber qué escribir. Un `<select>` obligatorio cuya primera opción tiene valor vacío se marca como inválido de inmediato: mostrar el error solo tras la interacción.
+- **Inicio y registro de sesión, direcciones y pagos** (`autofill-sign-in-form`, `autofill-sign-up-form`, `autofill-address-form`, `autofill-payment-form`): siempre `<form>` (no `<div>` con envío solo por JavaScript); `type="email"` para correos y `type="tel"` para teléfonos; `placeholder` nunca como única pista de formato ni en lugar de `<label>`.
+- **Estilo del autocompletado** (`autofill-highlight-inputs`): `:autofill` para reemplazar el resaltado del navegador; no quitar el contorno de foco, no cambiar propiedades que afecten el layout (`border-width`, `padding`), y preferir conservar el fondo y el color del navegador: los usuarios asocian ese resaltado a "esto se autocompletó".
+- **Código de un solo uso por SMS** (`sms-otp-form`): un único `<input>` con `autocomplete="one-time-code"` (y la API WebOTP); **no** repartir los dígitos en varias cajas.
+- **Interruptor** (`switch`): `<input type="checkbox" switch>` con su `<label>`: conserva el envío del formulario, el teclado y la semántica.
+- **Deslizador** (`slider`): un `<input type="range">` con etiqueta, no `<div>`; foco visible con contraste de 3:1 aunque se quite la apariencia nativa; no combinar pseudoselectores de WebKit y Firefox en una lista separada por comas (el navegador descarta toda la regla).
+- **Marca en los controles** (`brand-consistent-forms`): `accent-color` junto con `color-scheme: light dark`; **no** confiar a ciegas en el contraste automático del navegador (errores conocidos en Safari): comprobarlo.
+- **Selects personalizados** (`branded-select-styling`, `custom-select-picker-layouts`, `rich-media-picker`, `animated-select-picker`): `appearance: base-select` y `::picker(select)`; renuncia al selector nativo del sistema y tiene disponibilidad limitada. Verificar contraste de 3:1; no poner `z-index` al selector (va en la capa superior); no usar bloqueo de scroll ad hoc.
+- **Campos que se ajustan al contenido** (`form-fields-automatically-fit-contents`): `field-sizing: content`.
+- **Intro en chats** (`ime-safe-enter-submit`): comprobar `isComposing` antes de enviar (ver sección 6).
+
