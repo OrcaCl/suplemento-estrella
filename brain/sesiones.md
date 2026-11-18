@@ -3,6 +3,18 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — reorganización de los ítems abiertos y versión objetivo
+
+**Contexto:** el autor ordenó los ítems restantes de la 0.16.0: el 23 (migrar proyectos) lo hará caso a caso, y el 24 (publicar) va al final.
+
+- **Ítem 26 fusionado en el 18:** `ketchup` se correrá de cuando en cuando y trabajará con las **versiones que funcionan bien por proyecto** (`PLUGINS.md` como registro de versiones buenas); revisar la antigüedad de las referencias de Modern Web Guidance es parte de `ketchup`.
+- **Ítems 14 y 21:** quedan como **sugeridos**; el autor verá cómo aplicarlos o los dejará solo recomendados.
+- **Ítem 19 reformulado:** la skill de seguridad se **consulta cuando se construya login, CRUD, acceso a datos sensibles o algo expuesto a internet**; ya no se busca un proyecto para probarla.
+- **Versión objetivo:** los cambios restrictivos (14, 18, 19, 21) se reservan para la **0.17.0**. El proyecto sigue en 0.x, así que un cambio de comportamiento es una versión menor (0.17.0) y no un parche (0.16.1); el autor escribió "1.17.0", que sería una versión mayor 1.x.
+- **Observación del autor sobre `brain/files/secure/`:** la regla `deny` cubre `Read(...)` y por eso un `ls` posterior fue rechazado, mientras que escribir el respaldo con `tar` había funcionado, porque la lectura y la escritura son reglas distintas (`Read` y `Edit`). Según la documentación oficial las reglas se evalúan en orden `deny` → `ask` → `allow`; un `ask` pide autorización al usuario y es el interruptor posible. Se anotó en el ítem 21; no se cambió ninguna regla.
+
+---
+
 ## Sesión — 2026-11-18 — solo funciones de tres motores y datos contrastados
 
 **Contexto:** el autor pidió no dejar en la skill funciones limitadas a uno o dos motores, priorizar las "widely available", y contrastar con Can I use (`Fyrd/caniuse`, `data-2.0.json`); después indicó que esa base se alimenta de `mdn/browser-compat-data`.
