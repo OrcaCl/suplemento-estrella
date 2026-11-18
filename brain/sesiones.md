@@ -3,6 +3,19 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — correcciones tras leer los documentos OWASP
+
+**Contexto:** el autor aprobó las cuatro propuestas de la lectura de OWASP y preguntó si las referencias `amenazas-y-ssdf` y `asvs-5` estaban incluidas en el análisis, y si convenía converger las referencias.
+
+- **Aclaración:** el análisis comparó los cuatro PDFs contra `SKILL.md`. `owasp-top10-2025.md` y `asvs-5.md` se habían verificado antes contra fuentes oficiales; `amenazas-y-ssdf.md` (STRIDE y SSDF) no aparece en los PDFs, que derivan el modelado de amenazas a otro documento no leído.
+- **Convergencia parcial:** solo lo del mismo proyecto. `agentes-asi-2026.md` pasó a `agentes-y-datos-owasp.md` (ASI, Securing Agentic y seguridad de datos, misma autoría y licencia). Top 10, ASVS y STRIDE/SSDF siguen separados por ser marcos y ediciones distintos. El punto de unión es la tabla por tipo de cambio de `SKILL.md`.
+- **`SKILL.md` ampliado** con los hallazgos 1, 2, 6, 7 y 8: configuración de repos ajenos no confiable, no combinar las tres patas, análisis estático y auditoría del código generado, higiene de credenciales, git destructivo y minimización de datos.
+- **ADR-016:** plugins de terceros sin actualización automática por defecto; `ketchup` revisa y pide aprobación (ajusta el ítem 20).
+- **Ítem 21:** receta opcional de hooks (hallazgo 3). **Ítem 22:** revisión de seguridad de las skills propias.
+- **`NOTICE.md`** en la raíz declara el material CC BY-SA 4.0 dentro de un repo MIT.
+
+---
+
 ## Sesión — 2026-11-17 — lectura de documentos OWASP
 
 **Contexto:** el autor descargó cuatro documentos del OWASP GenAI Security Project a `~/promaticmedia/owasp` (fuera del repo) y pidió compararlos con `seguridad-por-diseno` para saber si el harness estaba desprotegido y si la skill necesitaba más consideraciones. Pidió además transparentar fuente y licencia.
@@ -21,7 +34,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 7. **Higiene de credenciales y rutas** (SAA §5.5.1): `.claudeignore`, "combinaciones tóxicas" (leer archivo sensible y llamar a algo externo en la misma sesión), operaciones git destructivas.
 8. **Minimización y mínimo registro** (Data Security §2.4): enviar al modelo solo lo necesario; no volcar secretos ni datos personales al contexto.
 - **Bien alineado:** datos no instrucciones, no instalar en silencio, confirmar lo destructivo, mínimo alcance, no ocultar riesgos en resúmenes, y el modo secuencial sin subagentes (reduce ASI07, ASI08 y ASI10).
-- **Corregido:** `agentes-asi-2026.md` verificado contra el original; nombres exactos de ASI02 y ASI03; ítem 19 reducido.
+- **Corregido:** `agentes-asi-2026.md` (luego fusionado en `agentes-y-datos-owasp.md`) verificado contra el original; nombres exactos de ASI02 y ASI03; ítem 19 reducido.
 
 ---
 

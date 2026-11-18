@@ -4,7 +4,7 @@ Esta skill se apoya en trabajo de terceros. Aquí se declara qué se usó, de d�
 
 ## Licencia de los archivos derivados
 
-Los archivos de esta carpeta `references/` que adaptan material de OWASP (`owasp-top10-2025.md`, `asvs-5.md`, `agentes-asi-2026.md`, y `amenazas-y-ssdf.md`) se distribuyen bajo **Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)**, https://creativecommons.org/licenses/by-sa/4.0/legalcode, porque esa licencia exige que lo adaptado se comparta bajo la misma. El resto del plugin mantiene la licencia MIT del repositorio. Si copias estos archivos a otro proyecto, conserva la atribución y esta licencia.
+Los archivos de esta carpeta `references/` que adaptan material de OWASP (`owasp-top10-2025.md`, `asvs-5.md`, `agentes-y-datos-owasp.md`, y `amenazas-y-ssdf.md`) se distribuyen bajo **Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)**, https://creativecommons.org/licenses/by-sa/4.0/legalcode, porque esa licencia exige que lo adaptado se comparta bajo la misma. El resto del plugin mantiene la licencia MIT del repositorio. Si copias estos archivos a otro proyecto, conserva la atribución y esta licencia.
 
 ## Fuentes
 

@@ -25,6 +25,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-013](ADR-013-comando-housekeeping.md) | Comando `housekeeping`: lint de documentación con informe y aprobación | ADR | Vigente |
 | [ADR-014](ADR-014-skill-seguridad-por-diseno.md) | Skill `seguridad-por-diseno`: guía de seguridad por tipo de cambio (OWASP, ASVS, ASI, STRIDE, SSDF) | ADR | Vigente |
 | [ADR-015](ADR-015-modern-web-guidance-como-plugin-no-vendorizado.md) | Modern Web Guidance: plugin del ecosistema, no vendorizado | ADR | Vigente |
+| [ADR-016](ADR-016-plugins-de-terceros-sin-actualizacion-automatica.md) | Plugins de terceros sin actualización automática por defecto; `ketchup` revisa | ADR | Vigente |
 | [DEP-001](DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [NOC-001](NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |
 
