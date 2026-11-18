@@ -95,7 +95,7 @@ Archivo compartido del proyecto (se versiona). Las reglas `deny` se aplican de i
 
 Notas:
 - Un `Read(./.env.*)` también bloquea `.env.example`; si el agente lo necesita, ajustar la regla.
-- **Alcance real de `Read` deny** (según la documentación oficial): aplica a las herramientas de archivos del agente y a comandos de Bash que reconoce (`cat`, `head`, `tail`, `sed`…). **No** aplica a un script que abre archivos por su cuenta ni a `grep -r` sin nombrar el archivo. Para bloquear a todos los procesos, activar el sandbox de Claude Code.
+- **Alcance real de `Read` deny** (según la documentación oficial y una prueba): aplica a las herramientas de archivos del agente —incluidas las de edición y escritura en esa ruta— y a comandos de Bash que reconoce (`cat`, `head`, `tail`, `sed`…); además saca esos archivos del descubrimiento y de los resultados de búsqueda. **No** aplica a un subproceso cualquiera que lee o escribe por su cuenta (un script, `tar`) ni a `grep -r` sin nombrar el archivo. Para bloquear a todos los procesos, activar el sandbox de Claude Code.
 - Si el proyecto ya tiene `.claude/settings.json`, **fusionar** las reglas; nunca sobrescribirlo.
 - Para reducir tokens (lockfiles, `node_modules/`), preferir no leerlos por instrucción en `CLAUDE.md`; no hace falta una regla `deny`, que además impediría leerlos cuando sí hacen falta.
 

@@ -3,6 +3,17 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — acceso del agente a `brain/files/secure/`
+
+**Contexto:** el autor preguntó si el acceso podía ser `allow` cuando trabaja él y `deny` si es un externo, y luego cómo convertir en permisos lo que traía el antiguo `.claudeignore`.
+
+- **No es posible distinguir personas:** Claude Code solo carga los archivos de configuración de la máquina (usuario, proyecto compartido, proyecto local, gestionado). Las reglas se evalúan `deny` → `ask` → `allow` y un `allow` no anula un `deny`. Además `brain/files/secure/` está en el `.gitignore`: un externo que clone el repo no recibe esos archivos.
+- **Decisión del autor:** `ask` en el proyecto. `.claude/settings.json` de este repo: `Read` y `Edit` de `brain/files/secure/**` pasan de `deny` a `ask` (el agente pide autorización cada vez). Los secretos reales (`.env`, claves) siguen en `deny`. La plantilla de `project-init` no cambia todavía (ítem 21, 0.17.0).
+- **Mapa de lo que traía `.claudeignore`:** ver ítem 21 (c): secretos y ruido sin valor de lectura en `deny`, lo que a veces hace falta en `ask` o sin regla. La documentación dice que `deny` también excluye esos archivos del descubrimiento y de las búsquedas; no se midió el ahorro de tokens.
+- **Corrección propia:** se había dicho que `Read` no cubre la escritura; una prueba mostró que la regla bloquea también Edit y Write (ver la entrada siguiente).
+
+---
+
 ## Sesión — 2026-11-18 — reorganización de los ítems abiertos y versión objetivo
 
 **Contexto:** el autor ordenó los ítems restantes de la 0.16.0: el 23 (migrar proyectos) lo hará caso a caso, y el 24 (publicar) va al final.
@@ -11,7 +22,7 @@ Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 - **Ítems 14 y 21:** quedan como **sugeridos**; el autor verá cómo aplicarlos o los dejará solo recomendados.
 - **Ítem 19 reformulado:** la skill de seguridad se **consulta cuando se construya login, CRUD, acceso a datos sensibles o algo expuesto a internet**; ya no se busca un proyecto para probarla.
 - **Versión objetivo:** los cambios restrictivos (14, 18, 19, 21) se reservan para la **0.17.0**. El proyecto sigue en 0.x, así que un cambio de comportamiento es una versión menor (0.17.0) y no un parche (0.16.1); el autor escribió "1.17.0", que sería una versión mayor 1.x.
-- **Observación del autor sobre `brain/files/secure/`:** la regla `deny` cubre `Read(...)` y por eso un `ls` posterior fue rechazado, mientras que escribir el respaldo con `tar` había funcionado, porque la lectura y la escritura son reglas distintas (`Read` y `Edit`). Según la documentación oficial las reglas se evalúan en orden `deny` → `ask` → `allow`; un `ask` pide autorización al usuario y es el interruptor posible. Se anotó en el ítem 21; no se cambió ninguna regla.
+- **Observación del autor sobre `brain/files/secure/`:** la regla `deny` sobre esa carpeta rechazó un `ls` posterior, mientras que escribir el respaldo con `tar` había funcionado. **Corrección posterior (misma sesión):** inicialmente se explicó como "`Read` no cubre la escritura", y era incorrecto. Una prueba con la herramienta de escritura fue rechazada ("covered by a Read deny rule… cannot be written"): la regla bloquea también Edit y Write. El respaldo con `tar` funcionó porque las reglas no cubren subprocesos arbitrarios que escriben archivos. Según la documentación oficial las reglas se evalúan en orden `deny` → `ask` → `allow`; un `ask` pide autorización al usuario y es el interruptor posible. Se anotó en el ítem 21; no se cambió ninguna regla.
 
 ---
 

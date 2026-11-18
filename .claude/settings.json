@@ -5,10 +5,13 @@
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
-      "Read(./brain/files/secure/**)",
       "Read(**/*.pem)",
       "Read(**/*.key)",
       "Read(**/id_rsa*)"
+    ],
+    "ask": [
+      "Read(./brain/files/secure/**)",
+      "Edit(./brain/files/secure/**)"
     ]
   }
 }
