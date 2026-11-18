@@ -3,6 +3,26 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — registro por umbral
+
+**Contexto:** el autor pidió que Code pueda registrar en `SPEC.md` y `brain/` al terminar una tarea grande, con criterio según el conocimiento nuevo, sin esperar un `ward` explícito. `ward` sigue disponible a mano. Eligió el enfoque autónomo por umbral entre tres opciones (autónomo, proponer y aprobar, mixto por tipo).
+
+**Hitos:**
+- **ADR-012 (nuevo):** modo `registro: umbral`, por defecto. Umbral: cierra un ítem de la §3, toma una decisión registrable, o aprende algo no recuperable del código. Commit local sin push, aviso posterior con el hash y la reversión (`git reset --soft HEAD~1`); pregunta antes si hay duda de categoría o contenido sensible; respeta lo que el humano pide no registrar. `keepit` sigue obligatorio y es el único que hace push.
+- **Ítem 12 cerrado** (commit `35d73cf`). Sin cambio de versión; figura como "Sin publicar" en el `CHANGELOG`. Gemini queda en el ítem 16.
+- **Primera aplicación:** este registro se hizo por umbral, sin esperar un `ward`.
+
+### Archivos modificados
+- plugins/suplemento-core/{commands/ward.md, skills/{documentation-convention,spec-driven-development,project-init}/...}
+- docs/{glossary,workflow}.md, CLAUDE.md, CHANGELOG.md
+- brain/{ADR-012,index,sesiones}, spec/cerrados.md, SPEC.md
+
+### Próximo
+- Ítems 13 (`housekeeping`), 14 (revisión de docs y skills), 17 ("boletín") y, de fondo, el 10 (seguridad OWASP).
+- Decidir si se sube el plugin a 0.16.0 y se publica con los ítems 11 y 12.
+
+---
+
 ## Sesión — 2026-11-17 — criterio orgánico de tamaño de `SPEC.md`
 
 **Contexto:** el autor pidió que el control de tamaño de `SPEC.md` fuera menos rígido (revisar siempre las 600 columnas por línea era demasiado) y que quedara como aviso, no como error duro: los avances, pendientes y cerrados ya tienen sus propios archivos. Hoy hubo además una sesión anterior que ya había retirado los avisos de comandos retirados y la consulta de tamaños de proyecto (commit `7ecc7e7`).
