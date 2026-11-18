@@ -3,6 +3,19 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — verificación previa a publicar y cierre (`keepit`)
+
+**Contexto:** el autor preguntó si se podía hacer `keepit` y lanzar la 0.16.0 sin romper nada, y pidió empezar por el punto de retorno y el cierre.
+
+- **Verificado antes de publicar:** `claude plugin validate` pasó para el plugin y el marketplace (15 skills y 3 comandos reconocidos; aviso no bloqueante de ícono faltante, que solo afecta a un listado en el directorio oficial). Frontmatter de todas las skills correcto, descripciones de hasta 844 caracteres. Sin secretos en archivos versionados, sin la historia de la cuenta que el autor pidió no registrar, sin el respaldo del runtime Gemini (`secure/` ignorado). `brain/index.md` coincide con las 28 entradas de `brain/reports/`.
+- **Hallazgo y corrección:** los encabezados de las referencias remiten a `NOTICE.md`, pero el plugin instalado solo trae `plugins/suplemento-core/`. Se agregó `NOTICE.md` (copia con rutas relativas al plugin) y el `LICENSE` MIT dentro del plugin; `docs/conventions.md` y `housekeeping` piden mantener ambas copias coherentes.
+- **Ítem 5 cerrado** (el texto de "estructura simple" ya no existía; evidencia por `grep`).
+- **Punto de retorno:** etiqueta `v0.15.0` en `065f698`, el último commit publicado antes de esta versión.
+- **Riesgos conocidos al publicar:** no se probó una instalación real desde GitHub (solo es posible después del push) y hay cambios de comportamiento para quien venga de la 0.15.0 (documentados en `migracion-0.16.md`). Por eso la prueba de humo en una carpeta vacía va antes de migrar proyectos.
+- **Publicación:** push de `main` (35 commits) y de las etiquetas `v0.15.0`, `v0.16.0` y `runtime-gemini-0.1.6`, sin `--force`. Quedan el ítem 24 (actualizar el plugin local y la prueba de humo) y el 23 (migrar proyectos, a cargo del autor).
+
+---
+
 ## Sesión — 2026-11-18 — acceso del agente a `brain/files/secure/`
 
 **Contexto:** el autor preguntó si el acceso podía ser `allow` cuando trabaja él y `deny` si es un externo, y luego cómo convertir en permisos lo que traía el antiguo `.claudeignore`.
