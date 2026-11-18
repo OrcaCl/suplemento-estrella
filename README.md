@@ -44,15 +44,7 @@ Actualizar el plugin **no modifica los archivos de tus proyectos** (`SPEC.md`, `
 >
 > No es una puerta trasera ni da acceso a terceros, pero **el agente sí podía leer** esos archivos. En cada proyecto ya inicializado: crea `.claude/settings.json` con reglas `deny`, borra el `.claudeignore`, revisa que no haya secretos versionados y rota cualquier credencial que haya estado al alcance del agente. La guía paso a paso está en [`migracion-0.16.md`](plugins/suplemento-core/skills/project-init/references/migracion-0.16.md).
 
-Guías de migración por versión:
-
-| Versión | Qué cambia | Guía |
-|---|---|---|
-| **0.16.0** | Protección de secretos con reglas `deny` (no `.claudeignore`), boletines en `brain/reports/`, registro por umbral, skill de seguridad, `housekeeping`, runtime Gemini retirado | `plugins/suplemento-core/skills/project-init/references/migracion-0.16.md` |
-| 0.15.0 | Se retiran `listeilor` y `checkpoint`: cambia a `keepit` y `ward` antes de actualizar | — |
-| 0.14.0 | `listeilor` pasa a llamarse `keepit` | Si tu `CLAUDE.md` o tus notas lo mencionan, cámbialo |
-| 0.13.0 | Convención de comentarios en el código (opcional); `ward` y `keepit` te la ofrecen una vez | `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md` |
-| 0.12.0 | `ward`, `SPEC.md` que se reemplaza y no se acumula | `plugins/suplemento-core/skills/spec-driven-development/references/migracion-0.12.md` |
+**Guía de migración de la 0.16.0:** [`migracion-0.16.md`](plugins/suplemento-core/skills/project-init/references/migracion-0.16.md) — protección de secretos con reglas `deny` (no `.claudeignore`), boletines en `brain/reports/`, registro por umbral, skill de seguridad, `housekeeping` y runtime Gemini retirado. Para versiones anteriores, revisa las entradas del [`CHANGELOG.md`](CHANGELOG.md) entre tu versión y la nueva.
 
 ### Novedades de la 0.16.0
 
