@@ -1,5 +1,7 @@
 # Modelado de amenazas (STRIDE) y NIST SSDF
 
+> **Fuente y licencia:** adaptado de las preguntas de modelado de amenazas de Securing Agentic Applications V2 (OWASP GenAI Security Project) y NIST SP 800-218; STRIDE y SSDF se citan por nombre. Licencia CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/legalcode). Traducido, resumido y reorganizado con redacción propia. Detalle en `fuentes-y-licencias.md`. Sin respaldo de OWASP.
+
 ## STRIDE — qué revisar de una feature
 
 | Letra | Amenaza | Pregunta |

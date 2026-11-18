@@ -75,3 +75,4 @@ Una línea al cierre cuando la tarea tocó alguna fila de la tabla: qué control
 - `references/asvs-5.md` — capítulos y niveles
 - `references/agentes-asi-2026.md` — riesgos de agentes y reglas para Code
 - `references/amenazas-y-ssdf.md` — STRIDE, las cinco preguntas y NIST SSDF
+- `references/fuentes-y-licencias.md` — fuentes, licencias (CC BY-SA 4.0 en lo derivado de OWASP) y cómo citar

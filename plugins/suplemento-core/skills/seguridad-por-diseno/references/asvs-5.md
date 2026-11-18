@@ -1,5 +1,7 @@
 # OWASP ASVS 5.0
 
+> **Fuente y licencia:** adaptado de OWASP Application Security Verification Standard 5.0.0 (OWASP ASVS Project, https://github.com/OWASP/ASVS). Licencia CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/legalcode). Traducido, resumido y reorganizado con redacción propia. Detalle en `fuentes-y-licencias.md`. Sin respaldo de OWASP.
+
 Versión 5.0.0, publicada en mayo de 2025. Capítulos y cifras verificados el 2026-11-17 contra el repositorio oficial (OWASP/ASVS, etiqueta v5.0.0, archivo `5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.csv`): **345 requisitos** en 17 capítulos. Para el texto exacto de un requisito, leerlo ahí.
 
 ## Capítulos (17)

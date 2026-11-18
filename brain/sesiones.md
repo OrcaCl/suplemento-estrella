@@ -3,6 +3,28 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — lectura de documentos OWASP
+
+**Contexto:** el autor descargó cuatro documentos del OWASP GenAI Security Project a `~/promaticmedia/owasp` (fuera del repo) y pidió compararlos con `seguridad-por-diseno` para saber si el harness estaba desprotegido y si la skill necesitaba más consideraciones. Pidió además transparentar fuente y licencia.
+
+**Documentos leídos** (texto extraído con `pdftotext`; se leyeron índices, ASI completo en sus medidas de prevención, y de Securing Agentic Applications V2 las secciones 2.7.3, 3.1.3, 3.3.7, 5.2, 5.5.1, 6.1 y 6.4; de Data Security solo fundamentos y la estructura de la serie): Top 10 for Agentic Applications 2026; Securing Agentic Applications V2 (106 págs.); GenAI Data Security Best Practices v2 Parte 1 y Parte 2. **Todos CC BY-SA 4.0**, igual que ASVS y Top 10:2025.
+
+**Licencia:** CC BY-SA 4.0 exige atribución con nombre del proyecto y del documento, indicar cambios y compartir lo adaptado bajo la misma licencia. Se creó `references/fuentes-y-licencias.md`, cada referencia derivada lleva su encabezado de fuente y licencia, y se declaró que esos archivos son CC BY-SA 4.0 mientras el resto del plugin sigue en MIT. Queda abierto si se agrega un `NOTICE` en la raíz.
+
+**Hallazgos (propuestas pendientes de decisión, no implementadas):**
+1. **Lethal Trifecta / Regla de Dos** (SAA §2.7.3, §5.5.1): un agente de código reúne por definición datos sensibles, contenido no confiable y comunicación externa. La skill no lo nombra.
+2. **Archivos de configuración del repo como vector** (SAA §5.5.1): `CLAUDE.md`, `.claude/`, `mcp.json` de un repo clonado son no confiables; solo la configuración del usuario es confiable. Afecta al modo adopción de `project-init`.
+3. **Documentación vs. control** (SAA §3.3.7): "una barrera que no puede observar una llamada antes de ejecutarse es documentación, no defensa". La skill es solo guía; los hooks de Claude Code permitirían bloqueo determinista de lo destructivo. Tensión con ADR-008 (el plugin no incluye scripts): sería receta documentada, no código del plugin.
+4. **Integridad de herramientas y plugins** (SAA §6.4.3): fijar versión o hash y volver a aprobar ante cambios; "aprobar una vez y confiar siempre" es la vulnerabilidad. Contradice el AutoUpdate de la ADR-015 y alimenta `ketchup`.
+5. **Memoria y contexto envenenados** (ASI06; Data Security): no reingerir salidas propias como memoria de confianza, marcar el origen, retención con vencimiento y borrado de derivados. Aplica a `brain/`, a NOC-001 y al diseño del ítem 9.
+6. **Análisis estático y de dependencias del código generado** (SAA §5.2, §6.1): Semgrep o Bandit, `npm audit` o `pip-audit`, typosquats, licencias y procedencia. La skill solo dice "revisar paquete".
+7. **Higiene de credenciales y rutas** (SAA §5.5.1): `.claudeignore`, "combinaciones tóxicas" (leer archivo sensible y llamar a algo externo en la misma sesión), operaciones git destructivas.
+8. **Minimización y mínimo registro** (Data Security §2.4): enviar al modelo solo lo necesario; no volcar secretos ni datos personales al contexto.
+- **Bien alineado:** datos no instrucciones, no instalar en silencio, confirmar lo destructivo, mínimo alcance, no ocultar riesgos en resúmenes, y el modo secuencial sin subagentes (reduce ASI07, ASI08 y ASI10).
+- **Corregido:** `agentes-asi-2026.md` verificado contra el original; nombres exactos de ASI02 y ASI03; ítem 19 reducido.
+
+---
+
 ## Sesión — 2026-11-17 — verificación de fuentes de `seguridad-por-diseno`
 
 **Contexto:** ítem 19, verificar las fuentes que la skill tomó de resúmenes de terceros.

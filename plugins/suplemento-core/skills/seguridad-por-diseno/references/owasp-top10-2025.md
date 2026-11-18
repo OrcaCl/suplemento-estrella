@@ -1,5 +1,7 @@
 # OWASP Top 10:2025
 
+> **Fuente y licencia:** adaptado de OWASP Top 10:2025 (OWASP Top 10 Project, https://top10.owasp.org/2025/). Licencia CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/legalcode). Traducido, resumido y reorganizado con redacción propia. Detalle en `fuentes-y-licencias.md`. Sin respaldo de OWASP.
+
 Las diez categorías, confirmadas en la página oficial (top10.owasp.org/2025). Esa página no indica si la edición es final ni su fecha de publicación; verificarlo antes de citar la edición como definitiva. La lista no incluye riesgos específicos de IA: esos están en `agentes-asi-2026.md`.
 
 | ID | Categoría | Qué evitar al escribir código | Qué verificar |
