@@ -93,7 +93,7 @@ Al finalizar cada sesión de trabajo, proponer actualizaciones a:
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
 - `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben (footer de una línea, con métricas clave del dominio; conteo de tests solo si el proyecto tiene tests). Tope por líneas (1000 por defecto) — se revisa al leerlo y antes de cada commit de `SPEC.md` (ver skill `spec-driven-development`)
-- `brain/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` — si se tomó una decisión de ese tipo
+- `brain/reports/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` — si se tomó una decisión de ese tipo
 
 **No esperar instrucción explícita** — al cerrar sesión (`keepit`), proponer qué registrar. A mitad de sesión, el humano guarda con `ward` (commit local, sin push).
 

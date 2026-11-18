@@ -22,6 +22,20 @@ La 0.16.0 es una actualización grande. El plugin se actualiza una vez por usuar
 
 **Alcance de las reglas `deny`.** Cubren las herramientas de archivos del agente y comandos de Bash que Claude Code reconoce (`cat`, `head`, `tail`, `sed`…). **No** cubren un script que abre archivos por su cuenta ni `grep -r` sin nombrar el archivo. Para bloquear a todos los procesos existe el sandbox de Claude Code.
 
+## Los boletines pasan a `brain/reports/` (opcional)
+
+En proyectos grandes `brain/` se llenaba de decenas de boletines (ADR, INT, NOC, DEP, REF, REFX). Desde la 0.16.0 los proyectos nuevos los guardan en **`brain/reports/`**, y la raíz de `brain/` solo conserva `index.md` y `sesiones.md` (ADR-019).
+
+**No es obligatorio migrar.** El diseño plano sigue siendo válido; lo único que importa es no mezclar los dos en un mismo proyecto. Si quieres migrar un proyecto, de a uno y con el árbol limpio:
+
+```bash
+mkdir -p brain/reports
+git mv brain/ADR-*.md brain/INT-*.md brain/NOC-*.md brain/DEP-*.md brain/reports/   # y REF-*.md / REFX-*.md si existen
+sed -i -E 's#\]\(((ADR|INT|NOC|DEP|REFX?)-[0-9]+[^)]*)\)#](reports/\1)#' brain/index.md
+```
+
+Después: revisa que `brain/index.md` abra bien los enlaces, busca con `grep -rn "brain/ADR\|brain/INT\|brain/NOC\|brain/DEP" .` referencias a la ruta antigua en tu `README.md`, `SPEC.md` o `CLAUDE.md`, y actualízalas. Los textos antiguos de `brain/sesiones.md` que citan rutas viejas son historia: no hace falta tocarlos. `housekeeping` detecta los boletines sueltos y propone esta migración como hallazgo mecánico.
+
 ## Otros cambios que afectan a tus proyectos
 
 | Cambio | Qué hacer |
@@ -32,10 +46,11 @@ La 0.16.0 es una actualización grande. El plugin se actualiza una vez por usuar
 | **Comando nuevo `housekeeping`** (ADR-013) | Úsalo cuando quieras una limpieza con calma |
 | **`ward`, `keepit` y `housekeeping` agregan al commit solo por ruta**, nunca `git add -A`; `keepit` nunca empuja con `--force` | Nada |
 | **Plugins de terceros sin actualización automática** por defecto (ADR-016) | Revisa los plugins que tengas con AutoUpdate y decide si lo mantienes |
+| **Los boletines viven en `brain/reports/`** en proyectos nuevos (ADR-019) | Opcional; ver la sección anterior |
 | **Se retiró el runtime Gemini** (DEP-002) | Si algún proyecto tiene `.gemini/`, queda sin mantenimiento; puedes dejarlo o borrarlo |
 
 ## Referencias
 
-- `brain/ADR-018` — reglas `deny` en vez de `.claudeignore`.
+- `brain/reports/ADR-018` — reglas `deny` en vez de `.claudeignore`; `brain/reports/ADR-019` — boletines en `brain/reports/`.
 - `ignore-files-templates.md` — plantillas de `.gitignore` y `.claude/settings.json`.
 - Documentación oficial: <https://code.claude.com/docs/en/permissions> (sección sobre cómo bloquear la lectura de archivos).

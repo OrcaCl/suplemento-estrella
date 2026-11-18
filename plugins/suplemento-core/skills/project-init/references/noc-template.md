@@ -1,4 +1,4 @@
-# Plantilla — brain/NOC-NNN-{slug}.md
+# Plantilla — brain/reports/NOC-NNN-{slug}.md
 
 Documenta un hallazgo de **riesgo o cuidado mixto** — ni puramente arquitectura, ni puramente seguridad, algo que combina ambos y amerita vigilancia sin ser todavía una decisión tomada. Tono neutro y menos formal que un ADR — describe una preocupación, no una elección.
 

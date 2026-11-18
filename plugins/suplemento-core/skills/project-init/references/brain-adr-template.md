@@ -19,7 +19,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 
 | ID | Título | Estado |
 |---|---|---|
-| [ADR-001](ADR-001-{{slug}}.md) | {{título}} | Vigente |
+| [ADR-001](reports/ADR-001-{{slug}}.md) | {{título}} | Vigente |
 
 ---
 
@@ -36,7 +36,7 @@ Ver carpeta [files/](files/) para documentos de reuniones y referencias externas
 
 ---
 
-## brain/ADR-NNN-{slug}.md
+## brain/reports/ADR-NNN-{slug}.md
 
 Un archivo por decisión. Numeración secuencial, nunca se reutiliza un número aunque el ADR se marque como obsoleto.
 

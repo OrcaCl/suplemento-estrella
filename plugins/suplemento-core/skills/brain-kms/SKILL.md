@@ -49,6 +49,12 @@ Cada `ADR-*.md` e `INT-*.md` termina con una sección `## Commit` que apunta a l
 
 Ver `references/adr-template.md`, `references/int-template.md`, `references/noc-template.md`, `references/dep-template.md`, y `references/ref-template.md` en `project-init/references/` para el formato completo de cada uno.
 
+## Dónde viven los registros
+
+Los boletines (ADR, INT, NOC, DEP, REF, REFX) viven en **`brain/reports/`**, con el nombre de siempre (`ADR-NNN-slug.md`). La raíz de `brain/` solo conserva `index.md` y `sesiones.md`; `trackers/` y `files/` no cambian (ADR-019).
+
+Los proyectos anteriores a la 0.16.0 tienen los boletines sueltos en la raíz de `brain/`. Ese diseño sigue siendo válido y **no se migra solo**: en un mismo proyecto, los boletines van todos en un único lugar, sin mezclar. Si el proyecto usa el diseño plano, crear los nuevos ahí; `housekeeping` propone la migración cuando el humano quiera. Los enlaces de `index.md` llevan el prefijo `reports/` en el diseño nuevo.
+
 ## brain/index.md — una sola tabla con columna "Tipo"
 
 ```markdown
@@ -80,7 +86,7 @@ Al ejecutar un `ward` o cerrar sesión con `keepit` (ver skill `documentation-co
 
 - `bugs.md` + `bugs-report-template.md` → algo que un sistema externo hace mal
 - `features.md` + `features-proposal-template.md` → algo que se le pediría a un sistema externo
-- `deprecation-template.md` → plantilla de referencia para registros `DEP` (el registro en sí vive en `brain/DEP-NNN.md`, de primer nivel, igual que ADR/INT/NOC — la plantilla vive en `trackers/` por convención de ubicación de plantillas, no el registro)
+- `deprecation-template.md` → plantilla de referencia para registros `DEP` (el registro en sí vive en `brain/reports/DEP-NNN.md`, igual que ADR/INT/NOC — la plantilla vive en `trackers/` por convención de ubicación de plantillas, no el registro)
 
 Instancias completas de bugs y features siempre van en `trackers/generated/`.
 

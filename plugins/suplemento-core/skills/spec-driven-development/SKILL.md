@@ -61,7 +61,7 @@ Si el proyecto no declara `registro`, es `umbral`. **No mezclar modos:** el regi
 | Por qué se completó de esa forma, qué se descubrió en el camino | `brain/sesiones.md` |
 | Una convención, diccionario, o dato de referencia (nunca secretos) | `spec/datos.md` |
 | Un ítem de backlog, venga del usuario o sugerido por el agente | `spec/{{objetivos}}.md` |
-| Una decisión de arquitectura costosa de revertir | `brain/ADR-NNN.md` |
+| Una decisión de arquitectura costosa de revertir | `brain/reports/ADR-NNN.md` |
 | Una pregunta tangencial, no urgente, para otra audiencia | `TOASK.md` en la raíz del proyecto |
 
 Si algo no encaja claramente en una fila, es señal de que puede necesitar su propio archivo dentro de `spec/` — pero antes de crear uno nuevo, confirmar con el usuario. No expandir la estructura de archivos sin esa confirmación.
@@ -76,7 +76,7 @@ Si algo no encaja claramente en una fila, es señal de que puede necesitar su pr
 | Ítem cerrado | `spec/cerrados.md` (ID + fecha + evidencia) | Nada — sale de la §3 |
 | Detalle técnico de un componente | `spec/features.md` | 1 fila por componente en la §7, sin detalle |
 | Schema de API o hallazgo de integración | `spec/api.md` | Solo el puntero |
-| Decisión de arquitectura, proceso o riesgo | `brain/ADR\|INT\|NOC-*.md` + `brain/index.md` | Solo el puntero, en la §5 |
+| Decisión de arquitectura, proceso o riesgo | `brain/reports/ADR\|INT\|NOC-*.md` + `brain/index.md` | Solo el puntero, en la §5 |
 | Planes de sesiones pasadas | `spec/cerrados.md` o `brain/sesiones.md` | Nada |
 
 ## Reemplazar, no acumular

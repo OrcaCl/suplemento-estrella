@@ -1,4 +1,4 @@
-# Plantilla — brain/REF-NNN-{slug}.md y brain/REFX-NNN-{slug}.md
+# Plantilla — brain/reports/REF-NNN-{slug}.md y brain/reports/REFX-NNN-{slug}.md
 
 Documentan material de **contexto u observación**, no una decisión — por eso no llevan estructura de contexto/decisión/consecuencias como ADR/INT. `REF` es hallazgo propio de este proyecto; `REFX` es material que vino de **otro proyecto** y se mantiene deliberadamente separado, citando su procedencia, sin mezclarse como si fuera propio.
 

@@ -3,6 +3,16 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — boletines en `brain/reports/`
+
+**Contexto:** en proyectos grandes `brain/` se alarga con decenas de boletines. El autor pidió guardarlos en una subcarpeta llamada `reports/` y dejar solo `sesiones.md` e `index.md` en la raíz de `brain/`.
+
+- **ADR-019:** los boletines viven en `brain/reports/` con el mismo nombre de archivo. Los proyectos anteriores a la 0.16.0 no se migran solos (diseño plano válido; no mezclar); `housekeeping` propone la migración.
+- **Este repo:** los 23 boletines se movieron con `git mv` (historial conservado) y los enlaces de `brain/index.md` llevan el prefijo `reports/`. Los textos históricos que citan rutas antiguas no se editaron.
+- **Actualizados:** `project-init` (árbol y creación de `reports/`), `brain-kms` (nueva sección "Dónde viven los registros"), `ward`, `keepit`, `housekeeping`, `documentation-convention`, `spec-driven-development`, las plantillas, `docs/brain.md`, README, CHANGELOG, `CLAUDE.md` y la guía `migracion-0.16.md` (con los comandos de migración).
+
+---
+
 ## Sesión — 2026-11-18 — cierre de la 0.16.0
 
 **Contexto:** el autor decidió que la 0.16.0 será una actualización grande y pidió dejar el repo limpio: retirar el runtime Gemini conservando un respaldo, avisar en cada actualización de proyecto el hallazgo sobre `.claudeignore`, y dejar al día los `.md` de la raíz.

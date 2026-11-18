@@ -1,4 +1,4 @@
-# Plantilla — brain/INT-NNN-{slug}.md
+# Plantilla — brain/reports/INT-NNN-{slug}.md
 
 Documenta una decisión sobre **cómo el humano y Code trabajan juntos** — proceso, herramientas, o convenciones de comunicación — nunca sobre lo que el sistema construido hace o cómo se comporta (eso es `ADR`).
 

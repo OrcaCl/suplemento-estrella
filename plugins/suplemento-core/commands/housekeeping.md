@@ -13,7 +13,8 @@ Al recibir la palabra "housekeeping" del humano, ejecutar en orden. Es un **lint
      - Tamaño: líneas frente a la referencia `spec_tope_lineas` (solo aviso) y secciones que el agente no necesita al abrir la sesión (candidatas a `brain/` o `spec/`).
      - Pendientes de §3 que ya están hechos (verificar contra el repo, no suponer); cierres en `spec/cerrados.md` sin evidencia verificable o fuera de orden por ID; `spec/roadmap-skills.md` incoherente con la §3.
    - **B. `brain/` y `sesiones.md`:**
-     - `index.md` frente a los archivos reales: filas que faltan o sobran, estados desactualizados (por ejemplo un NOC cuyo riesgo ya se resolvió).
+     - `index.md` frente a los archivos reales (en `brain/reports/`): filas que faltan o sobran, estados desactualizados (por ejemplo un NOC cuyo riesgo ya se resolvió).
+     - Boletines sueltos en la raíz de `brain/` (diseño anterior a la 0.16.0): proponer moverlos a `brain/reports/` y prefijar `reports/` en los enlaces de `index.md` (hallazgo mecánico; ver `project-init/references/migracion-0.16.md`).
      - Registros cuya sección `## Commit` apunta a una entrada de `sesiones.md` que no existe.
      - Tamaño de `sesiones.md`: informar las líneas y, si cuesta leerlo, proponer partirlo por período.
    - **C. Plugin, docs y runtimes:**

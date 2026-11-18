@@ -135,6 +135,7 @@ git remote -v
 └── brain/
     ├── index.md            # SOLO tabla de registros (todas las categorías) + puntero a sesiones.md
     ├── sesiones.md         # registro cronológico, entrada por sesión, más reciente arriba
+    ├── reports/            # los boletines: ADR, INT, NOC, DEP, REF y REFX (ADR-019)
     ├── trackers/
     │   ├── bugs.md
     │   ├── bugs-report-template.md
@@ -148,7 +149,7 @@ git remote -v
         └── secure/         # material para enseñarle algo puntual al modelo y luego retirarlo — nunca se commitea, nunca se lee en contexto de forma persistente
 ```
 
-Los archivos sueltos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md`, `REFX-NNN.md` viven en la raíz de `brain/`, junto a `index.md` — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un `ward` o cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, y la estructura de `trackers/`/`files/`.
+Los archivos `ADR-NNN.md`, `INT-NNN.md`, `NOC-NNN.md`, `DEP-NNN.md`, `REF-NNN.md` y `REFX-NNN.md` viven en **`brain/reports/`**, no en la raíz de `brain/`, que solo conserva `index.md` y `sesiones.md` (ADR-019) — pero **no se crean vacíos al inicializar**. `brain/` arranca sin ningún registro; el primero de cada categoría se crea recién cuando ocurre la decisión real, en un registro por umbral, un `ward` o un cierre de sesión (ver skill `brain-kms`). Lo único que este paso crea desde el día 1 es `index.md` (con la tabla vacía), `sesiones.md`, `TOASK.md`, `reports/` (con un `.gitkeep`) y la estructura de `trackers/`/`files/`.
 
 Nota sobre `objetivos.md`: el nombre debe adaptarse al dominio del proyecto (ej. `features.md`, `roadmap.md`) — la función es siempre la misma, backlog vivo entre lo que el usuario necesita y lo que el agente sugiere.
 
@@ -183,7 +184,7 @@ Todo proyecto nuevo lleva un `CLAUDE.md` con estas secciones mínimas (ver `refe
 
 ## Paso 3a — Asignar un nombre humano a la instancia
 
-Antes de finalizar `CLAUDE.md`, ofrecer al usuario darle un nombre a la instancia de Code con la que va a trabajar en este proyecto. Un nombre propio baja la fricción de la conversación día a día y hace que la relación de trabajo se sienta continua entre sesiones, en vez de que cada una arranque con una entidad genérica y anónima. Es una convención de comunicación, no una regla técnica — no cambia el comportamiento de la instancia, que sigue aplicando todo lo que dice `CLAUDE.md` igual que antes. (Origen de la práctica: `brain/INT-000` del repo constructor de la metodología.)
+Antes de finalizar `CLAUDE.md`, ofrecer al usuario darle un nombre a la instancia de Code con la que va a trabajar en este proyecto. Un nombre propio baja la fricción de la conversación día a día y hace que la relación de trabajo se sienta continua entre sesiones, en vez de que cada una arranque con una entidad genérica y anónima. Es una convención de comunicación, no una regla técnica — no cambia el comportamiento de la instancia, que sigue aplicando todo lo que dice `CLAUDE.md` igual que antes. (Origen de la práctica: `brain/reports/INT-000` del repo constructor de la metodología.)
 
 Presentar exactamente estas 4 opciones:
 

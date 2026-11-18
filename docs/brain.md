@@ -70,16 +70,21 @@ brain/
 │   ├── features.md
 │   └── features-proposal-template.md
 │
-├── ADR-000.md
-├── REF-000.md
-├── NOC-000.md
-├── DEP-000.md
+├── reports/
+│   ├── ADR-001-....md
+│   ├── INT-001-....md
+│   ├── NOC-001-....md
+│   ├── DEP-001-....md
+│   ├── REF-001-....md
+│   └── REFX-001-....md
 │
 ├── index.md
 └── sesiones.md
 ```
 
 `TOASK.md` ya no vive dentro de `brain/`: está en la raíz del proyecto, junto a `SPEC.md` y `SHAME.md`, porque es un archivo operativo. Ver la sección `TOASK.md` más abajo.
+
+Los boletines (ADR, INT, NOC, DEP, REF y REFX) viven en `reports/` para que la raíz de `brain/` solo tenga `index.md` y `sesiones.md`, aunque el proyecto acumule decenas (ADR-019). Los proyectos anteriores a la 0.16.0 los tienen sueltos en la raíz de `brain/`; ese diseño sigue siendo válido y `housekeeping` propone la migración.
 
 Cada proyecto puede adaptar esta estructura según sus necesidades.
 

@@ -18,12 +18,12 @@ Al recibir la palabra "ward" del humano, ejecutar en orden:
 4. **Reconciliación de pendientes.** Buscar `- [ ]` y listas de pendientes **fuera de §3** (secciones "Próxima sesión", "Prioridad N", "Pendientes de X", checklists dentro de otras secciones): consolidar cada uno como ítem de §3 o marcarlo obsoleto/cerrado con fecha. Revisar también si la narrativa de esta sesión dejó colas sin ítem (algo "quedó pendiente" solo en prosa) y proponerlas como ítems nuevos — con ID nuevo, nunca reutilizando uno cerrado.
 5. **`brain/index.md`** — actualizar si hay registros nuevos de cualquier categoría (solo tabla + puntero a `sesiones.md`, nunca resumen de sesión — ver skill `brain-kms`).
 6. **Crear el registro que corresponda, según la categoría** (ver skill `brain-kms` para el criterio completo de cuál usar):
-   - **`brain/ADR-NNN.md`** — decisión que afecta lo que el sistema hace o cómo se comporta
-   - **`brain/INT-NNN.md`** — decisión que afecta solo cómo el humano y Code trabajan juntos (proceso, herramientas, o convenciones de comunicación)
-   - **`brain/NOC-NNN.md`** — hallazgo de riesgo o cuidado mixto, a monitorear, sin ser todavía una decisión
-   - **`brain/DEP-NNN.md`** — retiro de una herramienta, archivo, patrón o plugin
-   - **`brain/REF-NNN.md`** — hallazgo u observación propia de este proyecto
-   - **`brain/REFX-NNN.md`** — referencia traída manualmente desde otro proyecto (nunca consultada por Code por su cuenta — ver guardrail abajo)
+   - **`brain/reports/ADR-NNN.md`** — decisión que afecta lo que el sistema hace o cómo se comporta
+   - **`brain/reports/INT-NNN.md`** — decisión que afecta solo cómo el humano y Code trabajan juntos (proceso, herramientas, o convenciones de comunicación)
+   - **`brain/reports/NOC-NNN.md`** — hallazgo de riesgo o cuidado mixto, a monitorear, sin ser todavía una decisión
+   - **`brain/reports/DEP-NNN.md`** — retiro de una herramienta, archivo, patrón o plugin
+   - **`brain/reports/REF-NNN.md`** — hallazgo u observación propia de este proyecto
+   - **`brain/reports/REFX-NNN.md`** — referencia traída manualmente desde otro proyecto (nunca consultada por Code por su cuenta — ver guardrail abajo)
 7. Mostrar al humano un resumen breve de lo que se va a registrar **antes** de escribir los archivos — no asumir silenciosamente qué contó como hito, ni qué categoría corresponde si hay ambigüedad entre dos.
 8. Completar la sección `## Commit` de cualquier `ADR`/`INT`/`NOC`/`DEP` creado en esta sesión, apuntando a la entrada de `sesiones.md` recién agregada.
 9. **Chequeo de `SPEC.md` — antes del commit:** revisar la lista de consistencia de la skill `spec-driven-development` ("Tamaño de `SPEC.md`"): filas "Sesión anterior" = `sesiones_anteriores_en_spec`, footer de una línea con la misma versión que la cabecera, ningún `- [ ]` fuera de §3 ni `[x]` dentro de ella, IDs sin duplicar. Corregir lo que falle antes de commitear. El tamaño es solo un aviso: si el archivo pasa de `spec_tope_lineas` (1000 por defecto) o está al 80 %, informar al humano y proponer condensar, pero **no frenar el commit**.

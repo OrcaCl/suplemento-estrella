@@ -1,4 +1,4 @@
-# Plantilla — brain/DEP-NNN-{slug}.md
+# Plantilla — brain/reports/DEP-NNN-{slug}.md
 
 ```text
                o  o  O  O

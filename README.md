@@ -48,7 +48,7 @@ Guías de migración por versión:
 
 | Versión | Qué cambia | Guía |
 |---|---|---|
-| **0.16.0** | Protección de secretos con reglas `deny` (no `.claudeignore`), registro por umbral, skill de seguridad, `housekeeping`, runtime Gemini retirado | `plugins/suplemento-core/skills/project-init/references/migracion-0.16.md` |
+| **0.16.0** | Protección de secretos con reglas `deny` (no `.claudeignore`), boletines en `brain/reports/`, registro por umbral, skill de seguridad, `housekeeping`, runtime Gemini retirado | `plugins/suplemento-core/skills/project-init/references/migracion-0.16.md` |
 | 0.15.0 | Se retiran `listeilor` y `checkpoint`: cambia a `keepit` y `ward` antes de actualizar | — |
 | 0.14.0 | `listeilor` pasa a llamarse `keepit` | Si tu `CLAUDE.md` o tus notas lo mencionan, cámbialo |
 | 0.13.0 | Convención de comentarios en el código (opcional); `ward` y `keepit` te la ofrecen una vez | `plugins/suplemento-core/skills/code-comment-convention/references/migracion-0.13.md` |
@@ -61,7 +61,8 @@ Guías de migración por versión:
 - **`housekeeping`:** limpieza y lint con calma, con informe y aprobación.
 - **Registro por umbral:** Code registra en `brain/` y `SPEC.md` al terminar una tarea con conocimiento nuevo, sin esperar un `ward`. `registro: diferido` conserva el comportamiento anterior.
 - **`SPEC.md` con criterio orgánico:** el tamaño solo avisa.
-- **Retirado:** el runtime de Gemini (ver [`DEP-002`](brain/DEP-002-retiro-del-runtime-gemini.md)).
+- **`brain/` más ordenado:** los boletines (ADR, INT, NOC, DEP…) van en `brain/reports/`; la raíz de `brain/` solo guarda `index.md` y `sesiones.md`. Migrarlo en proyectos existentes es opcional.
+- **Retirado:** el runtime de Gemini (ver [`DEP-002`](brain/reports/DEP-002-retiro-del-runtime-gemini.md)).
 
 ### Después de instalar
 

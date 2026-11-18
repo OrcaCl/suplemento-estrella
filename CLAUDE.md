@@ -43,7 +43,7 @@ Commits de código con normalidad según avanza el trabajo. El registro de `brai
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
 - `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben. Referencia de 1000 líneas que solo avisa (sin límite por línea) — se revisa al leerlo y antes de cada commit (ver skill `spec-driven-development`)
-- `brain/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` / `REF*-*.md` — si se tomó una decisión de ese tipo
+- `brain/reports/ADR-*.md` / `INT-*.md` / `NOC-*.md` / `DEP-*.md` / `REF*-*.md` — si se tomó una decisión de ese tipo
 
 **No esperar instrucción explícita al cerrar sesión** — proponer qué registrar.
 

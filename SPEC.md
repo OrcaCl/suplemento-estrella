@@ -96,6 +96,7 @@ Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17, 22 _(detalle en `spec/cerrados.
 | `seguridad-por-diseno` es una guía, no una puerta | Aplica controles por tipo de cambio (OWASP Top 10:2025, ASVS 5.0, ASI 2026, STRIDE, SSDF) y avisa al terminar lo que no pudo cumplir; no bloquea commits. Nivel `asvs_nivel` en `CLAUDE.md` (1 por defecto). La lista ASI se contrastó con tres fuentes secundarias; falta el PDF original (ítem 19). Ver ADR-014 |
 | Runtime Gemini retirado (2026-11-18) | `runtimes/gemini-antigravity/` e `install-gemini.sh` se borraron del repo; respaldo local en `brain/files/secure/runtime-gemini-antigravity-0.1.6.tar.gz` (no se versiona) y etiqueta git `runtime-gemini-0.1.6`. Ver DEP-002 (reemplaza al congelamiento de ADR-017) |
 | `.claudeignore` no sirve; se usan reglas `deny` | Claude Code ignora `.claudeignore` (documentación oficial de permisos). Los secretos se protegen con `.gitignore` y con `permissions.deny` de `Read` en `.claude/settings.json`, que cubre las herramientas de archivos y comandos como `cat`, pero no scripts (para eso, el sandbox). Ver ADR-018 |
+| Los boletines viven en `brain/reports/` (2026-11-18) | La raíz de `brain/` solo guarda `index.md` y `sesiones.md`; los proyectos anteriores a la 0.16.0 pueden seguir con el diseño plano (no mezclar en un mismo proyecto). `housekeeping` propone la migración. Ver ADR-019 |
 | Terminología: "harness", no "brújula" | El eufemismo quedó corto para comunicar qué es la herramienta; se usa el término técnico en documentación de cara al usuario |
 
 ---

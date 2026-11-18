@@ -9,7 +9,7 @@ Al recibir la palabra "keepit" del humano (o cuando la sesión esté terminando:
 0a. **Oferta de la convención de comentarios** — la misma del paso 0a de `ward` (una sola vez; si ya se ofreció en este cierre vía `ward`, no repetirla).
 1. **Verificación de respaldo — qué quedó sin registrar.** Sin modificar todavía:
    - `git status` y `git log` desde el último ward o cierre (busca la última entrada de `brain/sesiones.md`): ¿hay commits de código sin entrada en `brain/sesiones.md`? ¿cambios sin commitear?
-   - ¿Hubo decisiones en la conversación sin registro (ADR/INT/NOC/DEP/REF/REFX)? ¿`brain/index.md` incluye todos los registros que existen en `brain/`?
+   - ¿Hubo decisiones en la conversación sin registro (ADR/INT/NOC/DEP/REF/REFX)? ¿`brain/index.md` incluye todos los registros que existen en `brain/reports/` (o en la raíz de `brain/`, si el proyecto usa el diseño anterior a la 0.16.0)?
    - ¿`SPEC.md` refleja el estado real (versión, "Última sesión", ítems ya cerrados fuera de §3)?
 2. **Revisión de pendientes.** ¿Quedaron cosas por hacer que no están en la lista de §3? Fuentes: colas de la narrativa de la sesión, `TODO`/"pendiente" dicho en la conversación, `- [ ]` fuera de §3 y ítems que la sesión dejó a medias. Proponer al humano los ítems nuevos (con ID nuevo) y los ítems a cerrar (con evidencia verificable, no solo "se implementó").
 3. Mostrar al humano un **resumen de lo faltante** (pasos 1 y 2) antes de escribir nada, y esperar su visto bueno — igual que `ward`.
