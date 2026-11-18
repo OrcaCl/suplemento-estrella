@@ -19,4 +19,6 @@ Quien reutilice esos archivos debe conservar la atribución y compartir lo adapt
 
 ## Otras referencias
 
+**Modern Web Guidance** (GoogleChrome/modern-web-guidance, licencia Apache-2.0; mantenido por los equipos de Chrome, Edge, Firefox y MDN con la comunidad): se leyeron sus guías de CSS, rendimiento y seguridad para actualizar `frontend-conventions` (ADR-020). **No se copió su texto**: las reglas están redactadas de nuevo y se cita la fuente en la skill. No es parte de este repositorio ni se distribuye con él; se recomienda instalarlo como plugin aparte (ADR-015).
+
 NIST SP 800-218 (SSDF) y el concepto STRIDE se citan por nombre; no se copia su texto. No se verificaron sus términos de uso.

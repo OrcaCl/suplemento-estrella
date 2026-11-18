@@ -3,6 +3,22 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-18 — `frontend-conventions` frente a Modern Web Guidance
+
+**Contexto:** el autor preguntó si `frontend-conventions` estaba desactualizada frente a Modern Web Guidance y si convenía actualizarla con lo que ofrece.
+
+**Lectura (repo GoogleChrome/modern-web-guidance, 210 guías en 17 categorías, Apache-2.0):** su `SKILL.md`, la guía maestra de CSS, la de rendimiento, `security/sanitize-untrusted-html`, `security/trusted-types`, `css/reduce-style-repetition`, `css/design-token-reactivity` y `html/styling-web-components`. No se leyeron las 210.
+
+**Hallazgos:**
+- **No estaba "desactualizada" en general, sino en dos reglas:** la Regla 2 (`styles.css` de `@import`) contradice su guía de rendimiento, y la Regla 3 (BEM) choca con su recomendación de no usar BEM para especificidad. Además la skill no decía qué primitivas web usar.
+- **Decisiones del autor (ADR-020):** parcial de template con `<link>` y `@layer`; BEM se conserva solo para nombres.
+- **Correcciones propias durante el trabajo:** mi primer ejemplo de CSS anidado (`&__header`) era sintaxis de Sass y no funciona en CSS nativo; también faltaba advertir que las reglas fuera de capas ganan a las que están en capas.
+- **Hallazgo sobre ADR-015:** la skill externa ejecuta `npx -y modern-web-guidance@latest` en cada consulta (código de terceros sin versión fija, contra el criterio de la ADR-016), se declara "obligatoria" para toda tarea web y exige una sección propia en las respuestas. Mi recomendación anterior de instalarlo como plugin con AutoUpdate desactivado no cubre eso: el CLI se descarga al ejecutarse. Queda en el ítem 20.
+- **Su categoría `security/` (17 guías)** incluye Sanitizer API, Trusted Types, restringir conexiones salientes y recursos externos seguros; se enlazaron dos desde `frontend-conventions`.
+- **Atribución:** `NOTICE.md` declara la lectura de esa fuente; no se copió texto.
+
+---
+
 ## Sesión — 2026-11-18 — boletines en `brain/reports/`
 
 **Contexto:** en proyectos grandes `brain/` se alarga con decenas de boletines. El autor pidió guardarlos en una subcarpeta llamada `reports/` y dejar solo `sesiones.md` e `index.md` en la raíz de `brain/`.

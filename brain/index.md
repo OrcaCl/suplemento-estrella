@@ -29,6 +29,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-017](reports/ADR-017-runtime-gemini-congelado.md) | Runtime Gemini congelado: sin mantenimiento ni paridad con el núcleo | ADR | Reemplazado por DEP-002 |
 | [ADR-018](reports/ADR-018-reglas-deny-en-vez-de-claudeignore.md) | Reglas `deny` en `.claude/settings.json` en vez de `.claudeignore` (que no tiene efecto) | ADR | Vigente |
 | [ADR-019](reports/ADR-019-boletines-en-brain-reports.md) | Los boletines viven en `brain/reports/`; la raíz de `brain/` solo conserva `index.md` y `sesiones.md` | ADR | Vigente |
+| [ADR-020](reports/ADR-020-frontend-conventions-capas-y-plataforma-moderna.md) | `frontend-conventions`: estilos con parcial y `@layer`, BEM solo para nombres, plataforma web moderna | ADR | Vigente |
 | [DEP-001](reports/DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [DEP-002](reports/DEP-002-retiro-del-runtime-gemini.md) | Retiro del runtime Gemini (0.16.0), con respaldo y etiqueta | DEP | Vigente |
 | [NOC-001](reports/NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |
