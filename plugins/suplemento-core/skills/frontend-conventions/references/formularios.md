@@ -28,7 +28,7 @@ Un formulario accesible es también un formulario más fácil de completar y de 
 
 - `autocomplete` con el valor correcto (`email`, `tel`, `current-password`, `new-password`, `cc-number`, `cc-exp`, `cc-csc`, `street-address`…).
 - `inputmode` para elegir el teclado (`numeric` para PIN) y `enterkeyhint` para la tecla Intro (`next`, `done`).
-- Quitar la corrección automática en identificadores, no en prosa: `autocorrect="off"`, `autocapitalize="none"`, `spellcheck="false"` en usuarios, correos, URL, códigos y búsquedas.
+- Quitar la corrección automática en identificadores, no en prosa: `autocorrect="off"` y `spellcheck="false"` en usuarios, correos, URL, códigos y búsquedas.
 - **No usar `type="number"`** para tarjetas, códigos postales ni códigos de un solo uso: elimina ceros iniciales y genera problemas de desplazamiento. Usar `type="text"` con `inputmode="numeric"`.
 - Un solo campo para números complejos (tarjeta, teléfono) y para el código de un solo uso (`autocomplete="one-time-code"`); **no** repartirlo en varias cajas que avanzan solas.
 - **No bloquear el pegado ni desactivar `autocomplete` en contraseñas y códigos de verificación.**
