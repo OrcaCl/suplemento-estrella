@@ -29,7 +29,7 @@ Al recibir la palabra "ward" del humano, ejecutar en orden:
 9. **Chequeo de `SPEC.md` — antes del commit:** revisar la lista de consistencia de la skill `spec-driven-development` ("Tamaño de `SPEC.md`"): filas "Sesión anterior" = `sesiones_anteriores_en_spec`, footer de una línea con la misma versión que la cabecera, ningún `- [ ]` fuera de §3 ni `[x]` dentro de ella, IDs sin duplicar. Corregir lo que falle antes de commitear. El tamaño es solo un aviso: si el archivo pasa de `spec_tope_lineas` (1000 por defecto) o está al 80 %, informar al humano y proponer condensar, pero **no frenar el commit**.
 10. `git commit` con mensaje descriptivo del período cubierto. **Sin `git push`:** ward guarda localmente; el push lo hace `keepit` al cerrar la sesión. Informar al humano que quedó commit local sin pushear.
 
-No usar este comando para commits de código intermedios — es exclusivamente para el registro de documentación (`brain/`, `SPEC.md`) diferido según la skill `documentation-convention`.
+No usar este comando para commits de código intermedios — es exclusivamente para el registro de documentación (`brain/`, `SPEC.md`) según la skill `documentation-convention`. Code puede ejecutar este mismo procedimiento por su cuenta al terminar una tarea que cruce el umbral de conocimiento nuevo (`registro: umbral`, ADR-012); en ese caso el paso 7 se cumple informando el resumen justo después del commit, y sigue sin haber `git push`.
 
 ## Guardrail — REFX nunca dispara navegación a otro proyecto
 

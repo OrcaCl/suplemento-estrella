@@ -41,7 +41,7 @@ A partir de ese momento el desarrollo continúa normalmente.
 
 ### `ward`
 
-Durante el desarrollo puedes pedirle al agente que haga un **`ward`** para que guarde los hitos logrados en `SPEC.md` y en los otros sistemas de control y registro, y haga un commit **local** (sin push) — útil si estás cerca de quedarte sin tokens. Antes de escribir te muestra un resumen, y avisa si el proyecto tiene un comando local que tape al del plugin.
+Durante el desarrollo puedes pedirle al agente que haga un **`ward`** para que guarde los hitos logrados en `SPEC.md` y en los otros sistemas de control y registro, y haga un commit **local** (sin push) — útil si estás cerca de quedarte sin tokens. Antes de escribir te muestra un resumen, y avisa si el proyecto tiene un comando local que tape al del plugin. Con el modo por defecto (`registro: umbral`, ADR-012) el agente también lo hace solo al terminar una tarea grande —cerró un ítem, tomó una decisión registrable o aprendió algo que el código no cuenta— y te avisa después en una línea; el push sigue siendo solo de `keepit`.
 
 ---
 

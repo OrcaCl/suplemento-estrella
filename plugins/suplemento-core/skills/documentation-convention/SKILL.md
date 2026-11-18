@@ -1,13 +1,13 @@
 ---
 name: documentation-convention
-description: Convención de registro de cambios en la documentación del proyecto — commits de código frecuentes según avanza el trabajo, pero registro de brain/ y SPEC.md diferido hasta un ward explícito (invocado por el humano, sin push) o hasta el cierre de sesión con keepit (obligatorio, con push). Úsala siempre que estés por hacer un commit, cuando el humano diga "ward", "keepit" o pida cerrar la sesión, o cuando cambie la versión de cualquier plugin de Claude Code instalado en el proyecto.
+description: Convención de registro de cambios en la documentación del proyecto — commits de código frecuentes según avanza el trabajo, pero registro de brain/ y SPEC.md al terminar una tarea que cruce un umbral de conocimiento nuevo (Code lo hace por su cuenta, commit local sin push), con un ward explícito del humano cuando quiera, o en el cierre de sesión con keepit (obligatorio, con push). Úsala siempre que estés por hacer un commit, cuando el humano diga "ward", "keepit" o pida cerrar la sesión, o cuando cambie la versión de cualquier plugin de Claude Code instalado en el proyecto.
 ---
 
 # Documentation Convention
 
 Regla de cuándo se actualiza la documentación del proyecto — complementa a `spec-driven-development` y `brain-kms` (que dicen *dónde* va cada cosa) definiendo *cuándo* debe pasar. Esta versión reemplaza la regla anterior de "registro inmediato post-breakthrough" tras observar que, en la práctica, generaba commits demasiado frecuentes y granulares — el registro de documentación ahora se difiere a momentos explícitos, no a cada avance.
 
-**Modo de registro.** Lo descrito aquí es el modo `registro: diferido`, que es el **por defecto** de `suplemento-core`. Un proyecto puede declarar `registro: inmediato` en su `CLAUDE.md` (ver `spec-driven-development`, "Configuración del proyecto"); en ese caso el registro ocurre tras cada breakthrough, pero el cierre de sesión con `keepit` sigue siendo obligatorio.
+**Modo de registro.** Lo descrito aquí es el modo `registro: umbral`, que es el **por defecto** de `suplemento-core` (ADR-012). Un proyecto puede declarar en su `CLAUDE.md` (ver `spec-driven-development`, "Configuración del proyecto") `registro: diferido` (estricto: solo `ward` del humano o `keepit`) o `registro: inmediato` (tras cada breakthrough); en todos los modos el cierre de sesión con `keepit` sigue siendo obligatorio.
 
 ## Los dos comandos
 
@@ -20,12 +20,18 @@ Regla de cuándo se actualiza la documentación del proyecto — complementa a `
 
 **1. Commits de código:** siguen ocurriendo con normalidad según avanza el trabajo. Un commit de código no implica automáticamente tocar `brain/` ni `SPEC.md`.
 
-**2. Registro de documentación (`brain/`, `SPEC.md`) — diferido hasta uno de estos dos disparadores, nunca automático:**
+**2. Registro de documentación (`brain/`, `SPEC.md`) — tres disparadores:**
 
-- **`ward` explícito**, invocado por el humano. Code nunca decide por su cuenta que "esto amerita un ward" — siempre lo pide o lo ejecuta el humano.
-- **Cierre de sesión (`keepit`) — obligatorio, sin excepción.** A diferencia de `ward` (a discreción del humano), el cierre de sesión **siempre** dispara el registro completo: `SPEC.md`, `brain/sesiones.md`, `brain/ADR-*.md` si corresponde, commit y push. No depende de que el humano lo pida con esa palabra — si la sesión está terminando (despedida, "cerremos", "hasta mañana"), esto pasa sí o sí.
+- **Umbral (Code, por su cuenta).** Al **terminar una tarea** — nunca a mitad de la codificación activa — Code ejecuta el procedimiento de `ward` si se cumple al menos uno de estos criterios:
+  - cerró un ítem de la §3, o se acordaron ítems nuevos;
+  - se tomó una decisión que merece un registro (ADR, INT, NOC, DEP o REF);
+  - se aprendió algo que **no se puede recuperar leyendo el código ni `git log`** (el motivo de un cambio, una restricción o preferencia del humano).
 
-**Regla explícita, para que quede sin ambigüedad:** Code **no** escribe en `brain/` ni actualiza `SPEC.md` en medio de la codificación activa, ni "porque completó algo que parece importante". La decisión de cuándo registrar es del humano (`ward`) o está atada al cierre de sesión (`keepit`), nunca al juicio de Code sobre qué tan importante fue un cambio.
+  Cómo lo hace: commit **local, sin push**, y avisa **después** en una línea con el hash del commit y cómo revertirlo (`git reset --soft HEAD~1`). Si hay duda entre dos categorías de registro, o el contenido podría ser sensible, **pregunta antes de escribir**. Lo que el humano pide expresamente no registrar, no se registra. Los cambios menores no cruzan el umbral: esperan al siguiente disparador.
+- **`ward` explícito**, invocado por el humano en cualquier momento (salir a una reunión, respaldo por si acaso). Hace lo mismo que el umbral, pero muestra el resumen antes de escribir.
+- **Cierre de sesión (`keepit`) — obligatorio, sin excepción.** Siempre dispara el registro completo — `SPEC.md`, `brain/sesiones.md`, `brain/ADR-*.md` si corresponde, commit y push. No depende de que el humano diga la palabra: si la sesión está terminando (despedida, "cerremos", "hasta mañana"), esto pasa sí o sí.
+
+**Qué no cambia:** el **push** solo ocurre en `keepit`. Un registro por umbral deja commits locales, que no están a salvo hasta el push.
 
 ## Aviso de colisión con comandos locales
 
@@ -45,8 +51,8 @@ En orden (detalle completo en `commands/ward.md` — esta skill no lo duplica):
 3. Actualiza `SPEC.md` **reemplazando, no acumulando** — cierre de ítems a `spec/cerrados.md` (ID original + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben — reglas completas en `spec-driven-development`
 4. Reconcilia pendientes: `- [ ]` y listas fuera de §3 se consolidan en §3 o se marcan obsoletos
 5. Actualiza `brain/index.md` si corresponde y crea el registro (ADR/INT/NOC/DEP/REF/REFX) que corresponda
-6. **Muestra un resumen al humano antes de escribir** — nunca asume silenciosamente qué contó como hito
-7. **Chequeo de `SPEC.md`** contra la lista de topes (líneas, sesiones, footer, pendientes fuera de §3) antes del commit; si excede, no se commitea
+6. **Muestra un resumen al humano antes de escribir** (en un registro por umbral, lo informa justo después) — nunca asume silenciosamente qué contó como hito
+7. **Chequeo de `SPEC.md`**: consistencia (sesiones, footer, pendientes fuera de §3, IDs) antes del commit; el tamaño solo avisa
 8. `git commit` con mensaje descriptivo del período — **sin push**
 
 ## Cierre de sesión — el disparador que nunca se salta

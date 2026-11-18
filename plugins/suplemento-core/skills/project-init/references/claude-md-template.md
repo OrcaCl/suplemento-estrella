@@ -101,7 +101,7 @@ Al finalizar cada sesión de trabajo, proponer actualizaciones a:
 
 Valores por defecto de `suplemento-core`; borrar la línea que no se quiera cambiar (ver skill `spec-driven-development`).
 
-- registro: diferido            # diferido = en `ward`/`keepit` · inmediato = tras cada breakthrough
+- registro: umbral              # umbral = Code al terminar una tarea con conocimiento nuevo + `ward`/`keepit` · diferido = solo `ward` del humano o `keepit` · inmediato = tras cada breakthrough
 - spec_tope_lineas: 1000        # referencia: al 80 % o más solo se avisa, no bloquea
 - sesiones_anteriores_en_spec: 0
 

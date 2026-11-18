@@ -39,7 +39,7 @@ Trabajar siempre en modo secuencial — una tarea a la vez, **cero subagentes po
 
 ## Convención de documentación
 
-Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` queda diferido hasta un `ward` explícito (invocado por el humano; commit local sin push) o hasta el cierre de sesión con `keepit`, que es obligatorio (commit + push) (ver skill `documentation-convention`).
+Commits de código con normalidad según avanza el trabajo. El registro de `brain/` y `SPEC.md` lo hace Code por umbral al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código (commit local sin push, avisando después); también con un `ward` explícito del humano y en el cierre de sesión con `keepit`, que es obligatorio (commit + push) (ver skill `documentation-convention`).
 
 - `brain/sesiones.md` — hitos y descubrimientos de la sesión
 - `SPEC.md` — reemplazar, no acumular: ítems cerrados salen de la §3 hacia `spec/cerrados.md` (mismo ID + fecha + evidencia, ordenado por ID), "Última sesión" y footer se sobrescriben. Referencia de 1000 líneas que solo avisa (sin límite por línea) — se revisa al leerlo y antes de cada commit (ver skill `spec-driven-development`)
@@ -49,7 +49,7 @@ Commits de código con normalidad según avanza el trabajo. El registro de `brai
 
 ### Configuración de SPEC
 
-- registro: diferido
+- registro: umbral
 - spec_tope_lineas: 1000
 - sesiones_anteriores_en_spec: 0
 

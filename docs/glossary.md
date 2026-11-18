@@ -10,7 +10,7 @@ Los conceptos propios de Suplemento Estrella, en orden alfabético.
 
 **Brain KMS** — *Brain Knowledge Management System.* El sistema `brain/`: la memoria persistente compartida entre el desarrollador y su agente, que vive dentro del repositorio. Ver [brain.md](brain.md).
 
-**`ward`** — Comando (del lore de internet: guardar algo para volver a revisarlo sin perder lo que se va agregando). Registra lo pendiente en `brain/` y `SPEC.md` y hace commit **local, sin push**. Solo lo dispara el humano; el agente nunca decide por su cuenta que "amerita" uno. Ver [workflow.md](workflow.md).
+**`ward`** — Comando (del lore de internet: guardar algo para volver a revisarlo sin perder lo que se va agregando). Registra lo pendiente en `brain/` y `SPEC.md` y hace commit **local, sin push**. Lo dispara el humano cuando quiere; además, el agente ejecuta el mismo procedimiento por su cuenta al terminar una tarea que cruce el umbral de conocimiento nuevo (`registro: umbral`, ADR-012). Ver [workflow.md](workflow.md).
 
 **`keepit`** — Comando de cierre de sesión: verifica que no falte nada por respaldar en `brain/` y `SPEC.md`, revisa que no queden pendientes fuera de la lista, ejecuta `ward`, y hace el commit y push finales. Es obligatorio antes de dar la sesión por terminada.
 

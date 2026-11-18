@@ -13,7 +13,7 @@ Los proyectos ajustan esta skill con líneas `clave: valor` en su `CLAUDE.md` (s
 
 | Clave | Por defecto | Qué controla |
 |---|---|---|
-| `registro` | `diferido` | Cuándo se registra en `SPEC.md`/`spec/`/`brain/`: `diferido` (en `ward` o `keepit`) o `inmediato` (tras cada breakthrough) |
+| `registro` | `umbral` | Cuándo se registra en `SPEC.md`/`spec/`/`brain/`: `umbral` (Code al terminar una tarea con conocimiento nuevo, más `ward` y `keepit`), `diferido` (solo `ward` del humano o `keepit`) o `inmediato` (tras cada breakthrough) |
 | `spec_tope_lineas` | `1000` | Referencia de líneas de `SPEC.md`. Al llegar al 80 % o superarla **solo se avisa** y se propone condensar; nunca bloquea un commit |
 | `sesiones_anteriores_en_spec` | `0` | Cuántas filas "Sesión anterior" (≤ 2 líneas cada una) se conservan en la §2 |
 
@@ -45,10 +45,11 @@ Qué se actualiza en cada registro (igual en ambos modos):
 
 Cuándo ocurre:
 
-- **`registro: diferido` (por defecto, y siempre que el proyecto use `ward`/`keepit`):** se registra solo al ejecutar `ward` o al cerrar sesión con `keepit` — nunca por iniciativa de Code a mitad del trabajo. Ver skill `documentation-convention`.
+- **`registro: umbral` (por defecto):** Code registra por su cuenta al terminar una tarea que cierre un ítem, tome una decisión registrable o deje conocimiento no recuperable del código; también se registra con `ward` y al cerrar con `keepit`. Nunca a mitad de la codificación activa. Ver skill `documentation-convention`.
+- **`registro: diferido` (estricto):** se registra solo al ejecutar `ward` el humano o al cerrar sesión con `keepit` — nunca por iniciativa de Code.
 - **`registro: inmediato`:** tras cada breakthrough (feature completada, bug crítico resuelto, migración ejecutada), antes de seguir con la siguiente tarea. Aun así, el cierre de sesión (`keepit`) sigue siendo obligatorio.
 
-Si el proyecto usa `ward`/`keepit` y no declara `registro`, es `diferido`. **No mezclar modos:** una regla de "no esperar al cierre" solo aplica si el proyecto declaró `registro: inmediato`.
+Si el proyecto no declara `registro`, es `umbral`. **No mezclar modos:** el registro tras cada breakthrough solo aplica si el proyecto declaró `registro: inmediato`.
 
 ## Dónde va cada cosa — tabla de decisión
 
@@ -131,7 +132,7 @@ Si algo de esa lista falla, se corrige antes del commit porque es un error de co
 
 Cuando se detecta una inconsistencia de este tipo:
 1. No asumir silenciosamente cuál versión es la correcta — confirmar con el usuario.
-2. Una vez confirmado, corregir `SPEC.md` en el registro (de inmediato si `registro: inmediato`; en el próximo `ward` o `keepit` si es `diferido`), verificando el ítem contra código o datos reales antes de dejarlo abierto o cerrado.
+2. Una vez confirmado, corregir `SPEC.md` en el registro (de inmediato si `registro: inmediato`; en el siguiente registro — por umbral, `ward` o `keepit` — si es `umbral` o `diferido`), verificando el ítem contra código o datos reales antes de dejarlo abierto o cerrado.
 3. Si la sección quedó inconsistente por haber evolucionado en varios pasos (ADR tras ADR, por ejemplo), documentar en `brain/sesiones.md` o en el ADR correspondiente que hubo una corrección de documentación, con fecha — para que quede trazable que el código iba bien y era la documentación la que estaba atrás, no al revés.
 
 Para un `SPEC.md` ya degradado (cientos de KB, decenas de filas de sesión, pendientes dispersos), seguir `references/normalizacion-spec.md`.
