@@ -23,6 +23,7 @@ Este directorio complementa el `SPEC.md`. Documenta el **por qué** de las decis
 | [ADR-011](ADR-011-tamano-de-spec-organico-solo-avisos.md) | Tamaño de `SPEC.md`: criterio orgánico, solo avisos (reemplaza el tope duro de ADR-006/008) | ADR | Vigente |
 | [ADR-012](ADR-012-registro-por-umbral.md) | Registro de `brain/` y `SPEC.md` por umbral: Code registra al terminar una tarea con conocimiento nuevo (reemplaza "Code nunca decide") | ADR | Vigente |
 | [ADR-013](ADR-013-comando-housekeeping.md) | Comando `housekeeping`: lint de documentación con informe y aprobación | ADR | Vigente |
+| [ADR-014](ADR-014-skill-seguridad-por-diseno.md) | Skill `seguridad-por-diseno`: guía de seguridad por tipo de cambio (OWASP, ASVS, ASI, STRIDE, SSDF) | ADR | Vigente |
 | [DEP-001](DEP-001-retiro-de-checkpoint-y-listeilor.md) | Retiro de los comandos `checkpoint` y `listeilor` (0.15.0) | DEP | Vigente |
 | [NOC-001](NOC-001-claude-mem-presion-comercial-y-captura-global.md) | claude-mem: presión hacia el plan Pro y captura global de proyectos | NOC | Monitoreo activo |
 

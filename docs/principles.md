@@ -45,6 +45,10 @@ Skill: `spec-driven-development`. `SPEC.md` y `spec/` son la fuente de verdad de
 
 Skill: `documentation-convention`. Los commits de código son continuos; el registro en `brain/` y `SPEC.md` lo hace el agente al terminar una tarea que cruce el umbral de conocimiento nuevo (commit local, sin push), o se pide con un **`ward`**, o ocurre al **cierre de sesión con `keepit`** (obligatorio; verifica, revisa pendientes y hace push). Ver [workflow.md](workflow.md).
 
+## Seguridad por diseño
+
+Skill: `seguridad-por-diseno`. El código que se escribe con el harness debe acercarse a lo esperado de software de producción actual. La skill es una **guía, no una puerta**: según el tipo de cambio (autenticación, entrada de datos, secretos, dependencias, archivos, errores y logs) aplica controles basados en OWASP Top 10:2025 y ASVS 5.0, suma las reglas de OWASP para agentes (ASI 2026) y el modelado de amenazas, y al terminar avisa lo que no pudo cumplir. No reemplaza una auditoría. Ver ADR-014.
+
 ## Integración
 
 El agente se adapta al proyecto, no al revés. Los cambios estructurales solo se proponen cuando hay una necesidad real y el desarrollador decide implementarlos. Ver [philosophy.md](philosophy.md#principio-de-integración).
