@@ -3,6 +3,16 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — Modern Web Guidance como plugin
+
+**Contexto:** el autor propuso sumar Modern Web Guidance al suplemento, por el trabajo con interfaces web, y preguntó si conviene usarlo vía `npx` o como plugin de Claude Code.
+
+- **Decisión (ADR-015):** recomendarlo como plugin desde el marketplace `googlechrome` y no vendorizarlo; el autor estuvo de acuerdo.
+- **Hallazgos del README:** la CLI hace búsqueda offline; hay telemetría anónima (IDs de guías y búsquedas del agente) desactivable con `DISABLE_TELEMETRY=1`; no usar la copia de `claude-plugins-official`, que quedó sin actualizar el 12-oct. No se supo qué escribe el asistente de `npx`.
+- **Ítem 20 registrado** (Media) con la integración. No se instaló nada: instalar un plugin de terceros lo decide el autor.
+
+---
+
 ## Sesión — 2026-11-17 — skill `seguridad-por-diseno`
 
 **Contexto:** tras una semana de ataques informáticos, el autor quería que el código creado con el harness saliera con medidas de seguridad acordes a producción actual, y no conocía una skill externa con ese contenido. Antes de diseñar se revisaron las fuentes vigentes.
