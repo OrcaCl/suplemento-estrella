@@ -1,6 +1,6 @@
 # OWASP ASVS 5.0
 
-Versión 5.0.0, publicada en mayo de 2025. Los capítulos se confirmaron en el repositorio oficial (OWASP/ASVS, etiqueta v5.0.0). Cifras como "unos 350 requisitos" provienen de fuentes secundarias: consultar el repositorio para el número exacto y para el texto de cada requisito antes de citarlo.
+Versión 5.0.0, publicada en mayo de 2025. Capítulos y cifras verificados el 2026-11-17 contra el repositorio oficial (OWASP/ASVS, etiqueta v5.0.0, archivo `5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.csv`): **345 requisitos** en 17 capítulos. Para el texto exacto de un requisito, leerlo ahí.
 
 ## Capítulos (17)
 
@@ -18,7 +18,15 @@ Versión 5.0.0, publicada en mayo de 2025. Los capítulos se confirmaron en el r
 
 ## Niveles
 
-Tres niveles acumulativos. En la versión 5.0 se calibran según el **riesgo** de la aplicación, no como "mínimo, estándar y avanzado" fijos.
+Tres niveles acumulativos. En la versión 5.0 se calibran según el **riesgo** de la aplicación, no como "mínimo, estándar y avanzado" fijos. Cada requisito del CSV oficial declara el primer nivel en que aplica (columna `L`):
+
+| Nivel | Requisitos nuevos en ese nivel | Total acumulado |
+|---|---|---|
+| 1 | 70 | 70 |
+| 2 | 183 | 253 |
+| 3 | 92 | 345 |
+
+El nivel 1 es mucho más acotado que en ASVS 4 (donde tenía 131 controles, según una fuente secundaria): es una base realista para empezar.
 
 | Nivel | Para qué | Cómo se usa en este harness |
 |---|---|---|

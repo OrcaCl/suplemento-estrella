@@ -3,6 +3,18 @@
 Hitos relevantes por sesión de trabajo. Las entradas más recientes van arriba.
 
 
+## Sesión — 2026-11-17 — verificación de fuentes de `seguridad-por-diseno`
+
+**Contexto:** ítem 19, verificar las fuentes que la skill tomó de resúmenes de terceros.
+
+- **ASVS 5.0.0 — verificado contra el repositorio oficial** (CSV de `5.0/docs_en`): **345 requisitos** (no "unos 350") en 17 capítulos con los mismos nombres de la referencia; nivel 1 = 70, nivel 2 = 183 nuevos (253 acumulados), nivel 3 = 92 nuevos (345). La referencia `asvs-5.md` se corrigió.
+- **ASI 2026 — verificación indirecta:** el PDF original responde "No Access" a la descarga (exige permiso) y no se intentó eludir. Los diez IDs y nombres coinciden en tres fuentes secundarias independientes (Cycode, Indusface, Kratikal). La referencia lo dice así.
+- **NIST SSDF 1.2:** la página oficial del proyecto (actualizada el 6-oct-2026) lista la 1.1 y SP 800-218A como finales y no menciona la 1.2; sin evidencia de que sea final.
+- **Hallazgo:** existe un proyecto OWASP separado, "Agentic Skills Top 10" (`OWASP/www-project-agentic-skills-top-10`), no leído; podría ser relevante para las skills de este repo.
+- **Ítem 19 reducido** a lo que sigue abierto: probar la skill en un proyecto real, leer el PDF de ASI y revisar ese proyecto.
+
+---
+
 ## Sesión — 2026-11-17 — Modern Web Guidance como plugin
 
 **Contexto:** el autor propuso sumar Modern Web Guidance al suplemento, por el trabajo con interfaces web, y preguntó si conviene usarlo vía `npx` o como plugin de Claude Code.

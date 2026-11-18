@@ -1,6 +1,6 @@
 # OWASP Top 10 para aplicaciones con agentes (ASI) 2026
 
-Publicado por OWASP GenAI Security Project (9 de diciembre de 2025). **Verificación pendiente:** no se pudo leer el documento original (está en un PDF). La lista de abajo viene del resumen de Cycode, un tercero; contrastarla con el documento oficial antes de citar los nombres como textuales.
+Publicado por OWASP GenAI Security Project (9 de diciembre de 2025). **Estado de la verificación (2026-11-17):** el documento original (PDF en genai.owasp.org) responde "No Access" a la descarga automática y no se pudo leer. La lista de abajo se contrastó con **tres fuentes secundarias independientes** (Cycode, Indusface y Kratikal) y coinciden en los diez IDs y nombres. Es una verificación indirecta: antes de citar los nombres como textuales de OWASP, leer el PDF oficial.
 
 | ID | Riesgo | Qué significa para Code |
 |---|---|---|
