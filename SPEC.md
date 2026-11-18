@@ -59,11 +59,10 @@ Suplemento Estrella es un **harness** de desarrollo asistido por agentes de cód
 
 **Baja / Externo**
 
-- [ ] **5** — `docs/getting-started.md` dice que `project-init` prepara "una estructura simple o una completa según el tamaño", pero hoy crea siempre la estructura completa: corregir el texto
 - [ ] **9** — Diseñar una memoria propia local para reemplazar a claude-mem: por proyecto (sin mezclar proyectos personales, laborales y privados), con respaldo local en un NVMe de 500 GB (a montar) y/o respaldo externo opcional. Requiere diseño previo (NOC-001)
 - [ ] **15** — Revisar con calma (idealmente en un `housekeeping`) skills externas de referencia de ingenieros reconocidos, y dejar el harness pensado para el uso del autor sin volverlo inutilizable si un tercero o un equipo quisiera adoptarlo
 
-Cerrados: 1, 2, 4, 7, 8, 10, 11, 12, 13, 16, 17, 20, 22, 25, 26 _(detalle en `spec/cerrados.md`)_
+Cerrados: 1, 2, 4, 5, 7, 8, 10, 11, 12, 13, 16, 17, 20, 22, 25, 26 _(detalle en `spec/cerrados.md`)_
 
 ---
 
